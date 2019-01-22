@@ -13,9 +13,7 @@ export default class Container extends React.Component {
 				<TabBarIOS.Item
 					title='Beasts'
 					selected={this.state.tab === 'beasts'}
-					onPress={() => {
-						this.setState({ tab: 'beasts' });
-					}}>
+					onPress={() => this.setState({ tab: 'beasts' })}>
 					<BeastsList/>
 				</TabBarIOS.Item>
 				<TabBarIOS.Item
