@@ -24,7 +24,8 @@ export default class BeastsList extends React.Component {
 					}
 					renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
 					renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-					keyExtractor={(item, index) => index}/>
+					keyExtractor={(item, index) => index}
+				/>
 			</View>
 		);
 	}
