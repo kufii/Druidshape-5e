@@ -5,30 +5,28 @@ import beasts from '../../data/beasts.json';
 import { groupBy, sortBy } from '../util.js';
 
 const crToNum = cr => cr.includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
+const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
 
-export default class BeastsList extends React.Component {
-	render() {
-		const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
-		return (
-			<View style={styles.container}>
-				<SectionList
-					sections={
-						Object.entries(beastsByCr)
-							.sort(sortBy(
-								([cr]) => crToNum(cr)
-							))
-							.map(([cr, list]) => ({
-								title: cr,
-								data: list.map(({ name }) => name).sort()
-							}))
-					}
-					renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-					renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-					keyExtractor={(item, index) => index}
-				/>
-			</View>
-		);
-	}
+export default function BeastsList() {
+	return (
+		<View style={styles.container}>
+			<SectionList
+				sections={
+					Object.entries(beastsByCr)
+						.sort(sortBy(
+							([cr]) => crToNum(cr)
+						))
+						.map(([cr, list]) => ({
+							title: cr,
+							data: list.map(({ name }) => name).sort()
+						}))
+				}
+				renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+				renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+				keyExtractor={(item, index) => index}
+			/>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({

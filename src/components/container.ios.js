@@ -3,10 +3,8 @@ import { TabBarIOS, Text } from 'react-native';
 import BeastsList from './beasts-list';
 
 export default class Container extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { tab: 'beasts' };
-	}
+	state = { tab: 'beasts' };
+
 	render() {
 		return (
 			<TabBarIOS>

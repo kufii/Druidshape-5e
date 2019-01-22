@@ -13,9 +13,10 @@
     "react-native-vector-icons": "^6.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.12.1",
-    "eslint-config-adpyke-react-native": "^1.0.3",
+    "eslint-config-adpyke-react-native": "^1.0.6",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-native": "^3.6.0"
   },
