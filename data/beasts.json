@@ -16,11 +16,13 @@
     "skill": "Perception +5",
     "passive": 15,
     "cr": 2,
-    "trait": {
-      "trait-name": "Pounce",
-      "text": "If the allosaurus moves at least 30 ft. straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the allosaurus can make one bite attack against it as a bonus action."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Pounce",
+        "text": "If the allosaurus moves at least 30 ft. straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the allosaurus can make one bite attack against it as a bonus action."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 15 (2d10 + 4) piercing damage.",
@@ -49,10 +51,12 @@
     "cha": 5,
     "passive": 11,
     "cr": 3,
-    "action": {
-      "action-name": "Tail",
-      "text": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 18 (4d6 + 4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
-    }
+    "actions": [
+      {
+        "action-name": "Tail",
+        "text": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 18 (4d6 + 4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
+      }
+    ]
   },
   {
     "name": "Ape",
@@ -72,7 +76,7 @@
     "skill": "Athletics +5, Perception +3",
     "passive": 13,
     "cr": "1/2",
-    "action": [
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The ape makes two fist attacks."
@@ -105,11 +109,13 @@
     "cha": 5,
     "passive": 10,
     "cr": "1/4",
-    "action": {
-      "action-name": "Beak",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) slashing damage.",
-      "attack": "Beak|4|1d8+2"
-    }
+    "actions": [
+      {
+        "action-name": "Beak",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) slashing damage.",
+        "attack": "Beak|4|1d8+2"
+      }
+    ]
   },
   {
     "name": "Baboon",
@@ -128,15 +134,19 @@
     "cha": 6,
     "passive": 11,
     "cr": 0,
-    "trait": {
-      "trait-name": "Pack Tactics",
-      "text": "The baboon has advantage on an attack roll against a creature if at least one of the baboon's allies is within 5 ft. of the creature and the ally isn't incapacitated."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 — 1) piercing damage.",
-      "attack": "Bite|1|1d4-1"
-    }
+    "traits": [
+      {
+        "trait-name": "Pack Tactics",
+        "text": "The baboon has advantage on an attack roll against a creature if at least one of the baboon's allies is within 5 ft. of the creature and the ally isn't incapacitated."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 — 1) piercing damage.",
+        "attack": "Bite|1|1d4-1"
+      }
+    ]
   },
   {
     "name": "Badger",
@@ -156,15 +166,19 @@
     "senses": "darkvision 30 ft.",
     "passive": 11,
     "cr": 0,
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The badger has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
-      "attack": "Bite|2|1"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The badger has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
+        "attack": "Bite|2|1"
+      }
+    ]
   },
   {
     "name": "Bat",
@@ -184,7 +198,7 @@
     "senses": "blindsight 60 ft.",
     "passive": 11,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Echolocation",
         "text": "The bat can't use its blindsight while deafened."
@@ -194,11 +208,13 @@
         "text": "The bat has advantage on Wisdom (Perception) checks that rely on hearing."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.",
-      "attack": "Bite||1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.",
+        "attack": "Bite||1"
+      }
+    ]
   },
   {
     "name": "Black Bear",
@@ -217,11 +233,13 @@
     "cha": 7,
     "passive": 13,
     "cr": "1/2",
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The bear makes two attacks: one with its bite and one with its claws."
@@ -256,7 +274,7 @@
     "skill": "Perception +4",
     "passive": 14,
     "cr": "1/8",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Sight",
         "text": "The hawk has advantage on Wisdom (Perception) checks that rely on sight."
@@ -266,11 +284,13 @@
         "text": "The hawk has advantage on an attack roll against a creature if at least one of the hawk's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": {
-      "action-name": "Beak",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
-      "attack": "Beak|4|1d4+2"
-    }
+    "actions": [
+      {
+        "action-name": "Beak",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
+        "attack": "Beak|4|1d4+2"
+      }
+    ]
   },
   {
     "name": "Boar",
@@ -288,7 +308,7 @@
     "cha": 5,
     "passive": 9,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Charge",
         "text": "If the boar moves at least 20 ft. straight toward a target and then hits it with a tusk attack on the same turn, the target takes an extra 3 (1d6) slashing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
@@ -299,11 +319,13 @@
         "text": "If the boar takes 7 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
       }
     ],
-    "action": {
-      "action-name": "Tusk",
-      "text": "Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) slashing damage.",
-      "attack": "Tusk|3|1d6+1"
-    }
+    "actions": [
+      {
+        "action-name": "Tusk",
+        "text": "Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) slashing damage.",
+        "attack": "Tusk|3|1d6+1"
+      }
+    ]
   },
   {
     "name": "Brown Bear",
@@ -323,11 +345,13 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 1,
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The bear makes two attacks: one with its bite and one with its claws."
@@ -360,11 +384,13 @@
     "cha": 5,
     "passive": 9,
     "cr": "1/8",
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage.",
-      "attack": "Bite|5|1d4"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage.",
+        "attack": "Bite|5|1d4"
+      }
+    ]
   },
   {
     "name": "Cat",
@@ -384,15 +410,19 @@
     "skill": "Perception +3, Stealth +4",
     "passive": 13,
     "cr": 0,
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The cat has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": {
-      "action-name": "Claws",
-      "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
-      "attack": "Claws||1"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The cat has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Claws",
+        "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
+        "attack": "Claws||1"
+      }
+    ]
   },
   {
     "name": "Cave Bear",
@@ -413,11 +443,13 @@
     "senses": "darkvision 60 ft.",
     "passive": 13,
     "cr": 2,
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The bear makes two attacks: one with its bite and one with its claws."
@@ -452,7 +484,7 @@
     "senses": "blindsight 10 ft.",
     "passive": 10,
     "cr": "1/4",
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage.",
@@ -484,15 +516,19 @@
     "senses": "blindsight 30 ft.",
     "passive": 9,
     "cr": 0,
-    "trait": {
-      "trait-name": "Amphibious",
-      "text": "The crab can breathe air and water."
-    },
-    "action": {
-      "action-name": "Claw",
-      "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 bludgeoning damage.",
-      "attack": "Claw||1"
-    }
+    "traits": [
+      {
+        "trait-name": "Amphibious",
+        "text": "The crab can breathe air and water."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Claw",
+        "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 bludgeoning damage.",
+        "attack": "Claw||1"
+      }
+    ]
   },
   {
     "name": "Crocodile",
@@ -512,15 +548,19 @@
     "skill": "Stealth +2",
     "passive": 10,
     "cr": "1/2",
-    "trait": {
-      "trait-name": "Hold Breath",
-      "text": "The crocodile can hold its breath for 15 minutes."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target is grappled (escape DC 12). Until this grapple ends, the target is restrained, and the crocodile can't bite another target",
-      "attack": "Bite|4|1d10+2"
-    }
+    "traits": [
+      {
+        "trait-name": "Hold Breath",
+        "text": "The crocodile can hold its breath for 15 minutes."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target is grappled (escape DC 12). Until this grapple ends, the target is restrained, and the crocodile can't bite another target",
+        "attack": "Bite|4|1d10+2"
+      }
+    ]
   },
   {
     "name": "Deer",
@@ -538,11 +578,13 @@
     "cha": 5,
     "passive": 12,
     "cr": 0,
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.",
-      "attack": "Bite|2|1d4"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.",
+        "attack": "Bite|2|1d4"
+      }
+    ]
   },
   {
     "name": "Dire Wolf",
@@ -561,7 +603,7 @@
     "skill": "Perception +3, Stealth +4",
     "passive": 13,
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Hearing and Smell",
         "text": "The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell."
@@ -571,11 +613,13 @@
         "text": "The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
-      "attack": "Bite|5|2d6+3"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
+        "attack": "Bite|5|2d6+3"
+      }
+    ]
   },
   {
     "name": "Draft Horse",
@@ -593,11 +637,13 @@
     "cha": 7,
     "passive": 10,
     "cr": "1/4",
-    "action": {
-      "action-name": "Hooves",
-      "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (2d4 + 4) bludgeoning damage.",
-      "attack": "Hooves|6|2d4+4"
-    }
+    "actions": [
+      {
+        "action-name": "Hooves",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (2d4 + 4) bludgeoning damage.",
+        "attack": "Hooves|6|2d4+4"
+      }
+    ]
   },
   {
     "name": "Eagle",
@@ -617,15 +663,19 @@
     "skill": "Perception +4",
     "passive": 14,
     "cr": 0,
-    "trait": {
-      "trait-name": "Keen Sight",
-      "text": "The eagle has advantage on Wisdom (Perception) checks that rely on sight."
-    },
-    "action": {
-      "action-name": "Talons",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage.",
-      "attack": "Talons|4|1d4+2"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Sight",
+        "text": "The eagle has advantage on Wisdom (Perception) checks that rely on sight."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Talons",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage.",
+        "attack": "Talons|4|1d4+2"
+      }
+    ]
   },
   {
     "name": "Elephant",
@@ -643,11 +693,13 @@
     "cha": 6,
     "passive": 10,
     "cr": 4,
-    "trait": {
-      "trait-name": "Trampling Charge",
-      "text": "If the elephant moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the elephant can make one stomp attack against it as a bonus action."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Trampling Charge",
+        "text": "If the elephant moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the elephant can make one stomp attack against it as a bonus action."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Gore",
         "text": "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 18 (3d8 + 5) piercing damage.",
@@ -676,12 +728,14 @@
     "cha": 6,
     "passive": 10,
     "cr": "1/4",
-    "trait": {
-      "trait-name": "Charge",
-      "text": "If the elk moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
-      "attack": "Charge||2d6"
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Charge",
+        "text": "If the elk moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
+        "attack": "Charge||2d6"
+      }
+    ],
+    "actions": [
       {
         "action-name": "Ram",
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) bludgeoning damage."
@@ -711,15 +765,19 @@
     "senses": "blindsight 10 ft.",
     "passive": 11,
     "cr": "1/8",
-    "trait": {
-      "trait-name": "Flyby",
-      "text": "The snake doesn't provoke opportunity attacks when it flies out of an enemy's reach."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 1 piercing damage plus 7 (3d4) poison damage.",
-      "attack": "Bite|6|1"
-    }
+    "traits": [
+      {
+        "trait-name": "Flyby",
+        "text": "The snake doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 1 piercing damage plus 7 (3d4) poison damage.",
+        "attack": "Bite|6|1"
+      }
+    ]
   },
   {
     "name": "Frog",
@@ -740,7 +798,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 11,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Amphibious",
         "text": "The frog can breathe air and water"
@@ -769,11 +827,13 @@
     "senses": "darkvision 30 ft.",
     "passive": 11,
     "cr": "1/4",
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The badger has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The badger has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The badger makes two attacks: one with its bite and one with its claws."
@@ -808,7 +868,7 @@
     "senses": "blindsight 60 ft.",
     "passive": 11,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Echolocation",
         "text": "The bat can't use its blindsight while deafened."
@@ -818,11 +878,13 @@
         "text": "The bat has advantage on Wisdom (Perception) checks that rely on hearing."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage.",
-      "attack": "Bite|4|1d6+2"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage.",
+        "attack": "Bite|4|1d6+2"
+      }
+    ]
   },
   {
     "name": "Giant Boar",
@@ -840,7 +902,7 @@
     "cha": 5,
     "passive": 8,
     "cr": 2,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Charge",
         "text": "If the boar moves at least 20 ft. straight toward a target and then hits it with a tusk attack on the same turn, the target takes an extra 7 (2d6) slashing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
@@ -851,11 +913,13 @@
         "text": "If the boar takes 10 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
       }
     ],
-    "action": {
-      "action-name": "Tusk",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.",
-      "attack": "Tusk|5|2d6+3"
-    }
+    "actions": [
+      {
+        "action-name": "Tusk",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.",
+        "attack": "Tusk|5|2d6+3"
+      }
+    ]
   },
   {
     "name": "Giant Centipede",
@@ -875,11 +939,13 @@
     "senses": "blindsight 30 ft.",
     "passive": 8,
     "cr": "1/4",
-    "action": {
-      "action-name": "Bite",
-      "text": "Bite. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 4 (1d4 + 2) piercing damage, and the target must succeed on a DC 11 Constitution saving throw or take 10 (3d6) poison damage. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
-      "attack": "Bite|4|1d4+2"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Bite. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 4 (1d4 + 2) piercing damage, and the target must succeed on a DC 11 Constitution saving throw or take 10 (3d6) poison damage. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
+        "attack": "Bite|4|1d4+2"
+      }
+    ]
   },
   {
     "name": "Giant Constrictor Snake",
@@ -900,7 +966,7 @@
     "senses": "blindsight 10 ft.",
     "passive": 12,
     "cr": 2,
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one creature. Hit: 11 (2d6 + 4) piercing damage.",
@@ -932,15 +998,19 @@
     "senses": "blindsight 30 ft.",
     "passive": 9,
     "cr": "1/8",
-    "trait": {
-      "trait-name": "Amphibious",
-      "text": "The crab can breathe air and water."
-    },
-    "action": {
-      "action-name": "Claw",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage, and the target is grappled (escape DC 11). The crab has two claws, each of which can grapple only one target.",
-      "attack": "Claw|3|1d6+1"
-    }
+    "traits": [
+      {
+        "trait-name": "Amphibious",
+        "text": "The crab can breathe air and water."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Claw",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage, and the target is grappled (escape DC 11). The crab has two claws, each of which can grapple only one target.",
+        "attack": "Claw|3|1d6+1"
+      }
+    ]
   },
   {
     "name": "Giant Crocodile",
@@ -960,11 +1030,13 @@
     "skill": "Stealth +5",
     "passive": 10,
     "cr": 5,
-    "trait": {
-      "trait-name": "Hold Breath",
-      "text": "The crocodile can hold its breath for 30 minutes."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Hold Breath",
+        "text": "The crocodile can hold its breath for 30 minutes."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The crocodile makes two attacks: one with its bite and one with its tail."
@@ -1000,11 +1072,13 @@
     "passive": 14,
     "languages": "Giant Eagle, understands Common and Auran but can't speak",
     "cr": 1,
-    "trait": {
-      "trait-name": "Keen Sight",
-      "text": "The eagle has advantage on Wisdom (Perception) checks that rely on sight."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Keen Sight",
+        "text": "The eagle has advantage on Wisdom (Perception) checks that rely on sight."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The eagle makes two attacks: one with its beak and one with its talons."
@@ -1039,12 +1113,14 @@
     "passive": 14,
     "languages": "Giant Elk, understands Common, Elvish, and Sylvan but can't speak",
     "cr": 2,
-    "trait": {
-      "trait-name": "Charge",
-      "text": "If the elk moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone.",
-      "attack": "Charge||2d6"
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Charge",
+        "text": "If the elk moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone.",
+        "attack": "Charge||2d6"
+      }
+    ],
+    "actions": [
       {
         "action-name": "Ram",
         "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage.",
@@ -1074,15 +1150,19 @@
     "senses": "blindsight 30 ft.",
     "passive": 8,
     "cr": 0,
-    "trait": {
-      "trait-name": "Illumination",
-      "text": "The beetle sheds bright light in a 10-foot radius and dim light for an additional 10 ft.."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6 — 1) slashing damage.",
-      "attack": "Bite|1|1d6-1"
-    }
+    "traits": [
+      {
+        "trait-name": "Illumination",
+        "text": "The beetle sheds bright light in a 10-foot radius and dim light for an additional 10 ft.."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6 — 1) slashing damage.",
+        "attack": "Bite|1|1d6-1"
+      }
+    ]
   },
   {
     "name": "Giant Fly",
@@ -1122,7 +1202,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 12,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Amphibious",
         "text": "The frog can breathe air and water"
@@ -1132,7 +1212,7 @@
         "text": "The frog's long jump is up to 20 ft. and its high jump is up to 10 ft., with or without a running start."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage, and the target is grappled (escape DC 11). Until this grapple ends, the target is restrained, and the frog can't bite another target.",
@@ -1160,7 +1240,7 @@
     "cha": 6,
     "passive": 11,
     "cr": "1/2",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Charge",
         "text": "If the goat moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 (2d4) bludgeoning damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
@@ -1171,11 +1251,13 @@
         "text": "The goat has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
       }
     ],
-    "action": {
-      "action-name": "Ram",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) bludgeoning damage.",
-      "attack": "Ram|5|2d4+3"
-    }
+    "actions": [
+      {
+        "action-name": "Ram",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) bludgeoning damage.",
+        "attack": "Ram|5|2d4+3"
+      }
+    ]
   },
   {
     "name": "Giant Hyena",
@@ -1194,15 +1276,19 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 1,
-    "trait": {
-      "trait-name": "Rampage",
-      "text": "When the hyena reduces a creature to 0 hit points with a melee attack on its turn, the hyena can take a bonus action to move up to half its speed and make a bite attack."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage.",
-      "attack": "Bite|5|1d6+3"
-    }
+    "traits": [
+      {
+        "trait-name": "Rampage",
+        "text": "When the hyena reduces a creature to 0 hit points with a melee attack on its turn, the hyena can take a bonus action to move up to half its speed and make a bite attack."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage.",
+        "attack": "Bite|5|1d6+3"
+      }
+    ]
   },
   {
     "name": "Giant Lizard",
@@ -1222,7 +1308,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 10,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Variant: Hold Breath",
         "text": "The lizard can hold its breath for 15 minutes. (A lizard that has this trait also has a swimming speed of 30 feet.)"
@@ -1232,11 +1318,13 @@
         "text": "The lizard can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
-      "attack": "Bite|4|1d8+2"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
+        "attack": "Bite|4|1d8+2"
+      }
+    ]
   },
   {
     "name": "Giant Octopus",
@@ -1257,7 +1345,7 @@
     "senses": "darkvision 60 ft.",
     "passive": 14,
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Hold Breath",
         "text": "While out of water, the octopus can hold its breath for 1 hour."
@@ -1271,7 +1359,7 @@
         "text": "The octopus can breathe only underwater."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Tentacles",
         "text": "Melee Weapon Attack: +5 to hit, reach 15 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage. If the target is a creature, it is grappled (escape DC 16). Until this grapple ends, the target is restrained, and the octopus can't use its tentacles on another target.",
@@ -1303,7 +1391,7 @@
     "passive": 15,
     "languages": "Giant Owl, understands Common, Elvish, and Sylvan but can't speak",
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Flyby",
         "text": "The owl doesn't provoke opportunity attacks when it flies out of an enemy's reach."
@@ -1313,11 +1401,13 @@
         "text": "The owl has advantage on Wisdom (Perception) checks that rely on hearing or sight."
       }
     ],
-    "action": {
-      "action-name": "Talons",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 8 (2d6 + 1) slashing damage.",
-      "attack": "Talons|3|2d6+1"
-    }
+    "actions": [
+      {
+        "action-name": "Talons",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 8 (2d6 + 1) slashing damage.",
+        "attack": "Talons|3|2d6+1"
+      }
+    ]
   },
   {
     "name": "Giant Poisonous Snake",
@@ -1338,11 +1428,13 @@
     "senses": "blindsight 10 ft.",
     "passive": 12,
     "cr": "1/4",
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 6 (1d4 + 4) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one.",
-      "attack": "Bite|6|1d4+4"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 6 (1d4 + 4) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one.",
+        "attack": "Bite|6|1d4+4"
+      }
+    ]
   },
   {
     "name": "Giant Rat",
@@ -1361,7 +1453,7 @@
     "senses": "darkvision 60 ft.",
     "passive": 10,
     "cr": "1/8",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Smell",
         "text": "The rat has advantage on Wisdom (Perception) checks that rely on smell."
@@ -1371,11 +1463,13 @@
         "text": "The rat has advantage on an attack roll against a creature if at least one of the rat's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
-      "attack": "Bite|4|1d4+2"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
+        "attack": "Bite|4|1d4+2"
+      }
+    ]
   },
   {
     "name": "Giant Rat (Diseased)",
@@ -1394,11 +1488,13 @@
     "senses": "darkvision 60 ft.",
     "passive": 10,
     "cr": "1/8",
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage. If the target is a creature, it must succeed on a DC 10 Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 (1d6) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies.",
-      "attack": "Bite|3|1d4+1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage. If the target is a creature, it must succeed on a DC 10 Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 (1d6) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies.",
+        "attack": "Bite|3|1d4+1"
+      }
+    ]
   },
   {
     "name": "Giant Scorpion",
@@ -1417,7 +1513,7 @@
     "senses": "blindsight 60 ft.",
     "passive": 9,
     "cr": 3,
-    "action": [
+    "actions": [
       {
         "action-name": "Claw",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) bludgeoning damage, and the target is grappled (escape DC 12). The scorpion has two claws, each of which can grapple only one target.",
@@ -1451,7 +1547,7 @@
     "cha": 5,
     "passive": 11,
     "cr": "1/2",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Charge",
         "text": "If the sea horse moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) bludgeoning damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
@@ -1462,11 +1558,13 @@
         "text": "The sea horse can breathe only underwater."
       }
     ],
-    "action": {
-      "action-name": "Ram",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage.",
-      "attack": "|3|1d6+1"
-    }
+    "actions": [
+      {
+        "action-name": "Ram",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage.",
+        "attack": "|3|1d6+1"
+      }
+    ]
   },
   {
     "name": "Giant Shark",
@@ -1486,7 +1584,7 @@
     "senses": "blindsight 60 ft.",
     "passive": 13,
     "cr": 5,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Blood Frenzy",
         "text": "The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points."
@@ -1496,11 +1594,13 @@
         "text": "The shark can breathe only underwater."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 22 (3d10 + 6) piercing damage.",
-      "attack": "Bite|9|3d10+6"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 22 (3d10 + 6) piercing damage.",
+        "attack": "Bite|9|3d10+6"
+      }
+    ]
   },
   {
     "name": "Giant Spider",
@@ -1521,7 +1621,7 @@
     "senses": "blindsight 10 ft., darkvision 60 ft.",
     "passive": 10,
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Spider Climb",
         "text": "The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -1535,7 +1635,7 @@
         "text": "The spider ignores movement restrictions caused by webbing."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 7 (1d8 + 3) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 (2d8) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
@@ -1566,7 +1666,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 10,
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Amphibious",
         "text": "The toad can breathe air and water"
@@ -1576,7 +1676,7 @@
         "text": "The toad's long jump is up to 20 ft. and its high jump is up to 10 ft., with or without a running start."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10 + 2) piercing damage plus 5 (1d10) poison damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the toad can't bite another target.",
@@ -1584,10 +1684,7 @@
       },
       {
         "action-name": "Swallow",
-        "text": [
-          "The toad makes one bite attack against a Medium or smaller target it is grappling. If the attack hits, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the toad, and it takes 10 (3d6) acid damage at the start of each of the toad's turns. The toad can have only one target swallowed at a time.",
-          "If the toad dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 feet of movement, exiting prone."
-        ]
+        "text": "The toad makes one bite attack against a Medium or smaller target it is grappling. If the attack hits, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the toad, and it takes 10 (3d6) acid damage at the start of each of the toad's turns. The toad can have only one target swallowed at a time.\nIf the toad dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 feet of movement, exiting prone."
       }
     ]
   },
@@ -1610,7 +1707,7 @@
     "passive": 13,
     "languages": "understands Common but can't speak",
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Sight and Smell",
         "text": "The vulture has advantage on Wisdom (Perception) checks that rely on sight or smell."
@@ -1620,7 +1717,7 @@
         "text": "The vulture has advantage on an attack roll against a creature if at least one of the vulture's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The vulture makes two attacks: one with its beak and one with its talons."
@@ -1655,11 +1752,13 @@
     "cha": 3,
     "passive": 10,
     "cr": "1/2",
-    "action": {
-      "action-name": "Sting",
-      "text": "Sting. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
-      "attack": "Sting|4|1d6+2"
-    }
+    "actions": [
+      {
+        "action-name": "Sting",
+        "text": "Sting. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
+        "attack": "Sting|4|1d6+2"
+      }
+    ]
   },
   {
     "name": "Giant Weasel",
@@ -1679,15 +1778,19 @@
     "senses": "darkvision 60 ft.",
     "passive": 13,
     "cr": "1/8",
-    "trait": {
-      "trait-name": "Keen Hearing and Smell",
-      "text": "The weasel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) piercing damage.",
-      "attack": "Bite|5|1d4+3"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Hearing and Smell",
+        "text": "The weasel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) piercing damage.",
+        "attack": "Bite|5|1d4+3"
+      }
+    ]
   },
   {
     "name": "Giant Wolf Spider",
@@ -1708,7 +1811,7 @@
     "senses": "blindsight 10 ft., darkvision 60 ft.",
     "passive": 13,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Spider Climb",
         "text": "The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -1722,11 +1825,13 @@
         "text": "The spider ignores movement restrictions caused by webbing."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 4 (1d6 + 1) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 7 (2d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
-      "attack": "Bite|3|1d6+1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 4 (1d6 + 1) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 7 (2d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
+        "attack": "Bite|3|1d6+1"
+      }
+    ]
   },
   {
     "name": "Goat",
@@ -1744,7 +1849,7 @@
     "cha": 5,
     "passive": 10,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Charge",
         "text": "If the goat moves at least 20 ft. straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 2 (1d4) bludgeoning damage. If the target is a creature, it must succeed on a DC 10 Strength saving throw or be knocked prone.",
@@ -1755,11 +1860,13 @@
         "text": "The goat has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
       }
     ],
-    "action": {
-      "action-name": "Ram",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage.",
-      "attack": "Ram|3|1d4+1"
-    }
+    "actions": [
+      {
+        "action-name": "Ram",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage.",
+        "attack": "Ram|3|1d4+1"
+      }
+    ]
   },
   {
     "name": "Hawk",
@@ -1779,15 +1886,19 @@
     "skill": "Perception +4",
     "passive": 14,
     "cr": 0,
-    "trait": {
-      "trait-name": "Keen Sight",
-      "text": "The hawk has advantage on Wisdom (Perception) checks that rely on sight."
-    },
-    "action": {
-      "action-name": "Talons",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
-      "attack": "Talons|5|1"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Sight",
+        "text": "The hawk has advantage on Wisdom (Perception) checks that rely on sight."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Talons",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
+        "attack": "Talons|5|1"
+      }
+    ]
   },
   {
     "name": "Hunter Shark",
@@ -1807,7 +1918,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 12,
     "cr": 2,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Blood Frenzy",
         "text": "The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points."
@@ -1817,11 +1928,13 @@
         "text": "The shark can breathe only underwater."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) piercing damage.",
-      "attack": "Bite|6|2d8+4"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) piercing damage.",
+        "attack": "Bite|6|2d8+4"
+      }
+    ]
   },
   {
     "name": "Hyena",
@@ -1840,15 +1953,19 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 0,
-    "trait": {
-      "trait-name": "Pack Tactics",
-      "text": "The hyena has advantage on an attack roll against a creature if at least one of the hyena's allies is within 5 ft. of the creature and the ally isn't incapacitated."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) piercing damage.",
-      "attack": "Bite|2|1d6"
-    }
+    "traits": [
+      {
+        "trait-name": "Pack Tactics",
+        "text": "The hyena has advantage on an attack roll against a creature if at least one of the hyena's allies is within 5 ft. of the creature and the ally isn't incapacitated."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) piercing damage.",
+        "attack": "Bite|2|1d6"
+      }
+    ]
   },
   {
     "name": "Jackal",
@@ -1867,7 +1984,7 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Hearing and Smell",
         "text": "The jackal has advantage on Wisdom (Perception) checks that rely on hearing or smell."
@@ -1877,11 +1994,13 @@
         "text": "The jackal has advantage on an attack roll against a creature if at least one of the jackal's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 — 1) piercing damage.",
-      "attack": "Bite|1|1d4-1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 — 1) piercing damage.",
+        "attack": "Bite|1|1d4-1"
+      }
+    ]
   },
   {
     "name": "Killer Whale",
@@ -1901,7 +2020,7 @@
     "senses": "blindsight 120 ft.",
     "passive": 13,
     "cr": 3,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Echolocation",
         "text": "The whale can't use its blindsight while deafened."
@@ -1915,10 +2034,12 @@
         "text": "The whale has advantage on Wisdom (Perception) checks that rely on hearing."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 21 (5d6 + 4) piercing damage."
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 21 (5d6 + 4) piercing damage."
+      }
+    ]
   },
   {
     "name": "Lion",
@@ -1937,7 +2058,7 @@
     "skill": "Perception +3, Stealth +6",
     "passive": 13,
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Smell",
         "text": "The lion has advantage on Wisdom (Perception) checks that rely on smell."
@@ -1955,7 +2076,7 @@
         "text": "With a 10-foot running start, the lion can long jump up to 25 ft.."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage.",
@@ -1986,11 +2107,13 @@
     "senses": "darkvision 30 ft.",
     "passive": 9,
     "cr": 0,
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
-      "attack": "Bite||1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
+        "attack": "Bite||1"
+      }
+    ]
   },
   {
     "name": "Mammoth",
@@ -2008,11 +2131,13 @@
     "cha": 6,
     "passive": 10,
     "cr": 6,
-    "trait": {
-      "trait-name": "Trampling Charge",
-      "text": "If the mammoth moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 18 Strength saving throw or be knocked prone. If the target is prone, the mammoth can make one stomp attack against it as a bonus action."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Trampling Charge",
+        "text": "If the mammoth moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 18 Strength saving throw or be knocked prone. If the target is prone, the mammoth can make one stomp attack against it as a bonus action."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Gore",
         "text": "Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 25 (4d8 + 7) piercing damage.",
@@ -2042,15 +2167,19 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": "1/8",
-    "trait": {
-      "trait-name": "Keen Hearing and Smell",
-      "text": "The mastiff has advantage on Wisdom (Perception) checks that rely on hearing or smell."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
-      "attack": "Bite|3|1d6+1"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Hearing and Smell",
+        "text": "The mastiff has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
+        "attack": "Bite|3|1d6+1"
+      }
+    ]
   },
   {
     "name": "Mule",
@@ -2068,7 +2197,7 @@
     "cha": 5,
     "passive": 10,
     "cr": "1/8",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Beast of Burden",
         "text": "The mule is considered to be a Large animal for the purpose of determining its carrying capacity."
@@ -2078,11 +2207,13 @@
         "text": "The mule has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
       }
     ],
-    "action": {
-      "action-name": "Hooves",
-      "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage.",
-      "attack": "Hooves|4|1d4+2"
-    }
+    "actions": [
+      {
+        "action-name": "Hooves",
+        "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage.",
+        "attack": "Hooves|4|1d4+2"
+      }
+    ]
   },
   {
     "name": "Octopus",
@@ -2103,7 +2234,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 12,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Hold Breath",
         "text": "While out of water, the octopus can hold its breath for 30 minutes."
@@ -2117,7 +2248,7 @@
         "text": "The octopus can breathe only underwater."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Tentacles",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 bludgeoning damage, and the target is grappled (escape DC 10). Until this grapple ends, the octopus can't use its tentacles on another target.",
@@ -2148,7 +2279,7 @@
     "senses": "darkvision 120 ft.",
     "passive": 13,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Flyby",
         "text": "The owl doesn't provoke opportunity attacks when it flies out of an enemy's reach."
@@ -2158,11 +2289,13 @@
         "text": "The owl has advantage on Wisdom (Perception) checks that rely on hearing or sight."
       }
     ],
-    "action": {
-      "action-name": "Talons",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
-      "attack": "Talons|3|1"
-    }
+    "actions": [
+      {
+        "action-name": "Talons",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
+        "attack": "Talons|3|1"
+      }
+    ]
   },
   {
     "name": "Panther",
@@ -2182,7 +2315,7 @@
     "skill": "Perception +4, Stealth +6",
     "passive": 14,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Smell",
         "text": "The panther has advantage on Wisdom (Perception) checks that rely on smell."
@@ -2192,7 +2325,7 @@
         "text": "If the panther moves at least 20 ft. straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the panther can make one bite attack against it as a bonus action."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.",
@@ -2223,15 +2356,19 @@
     "skill": "Perception +3, Stealth +4",
     "passive": 13,
     "cr": 2,
-    "trait": {
-      "trait-name": "Hold Breath",
-      "text": "The plesiosaurus can hold its breath for 1 hour."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (3d6 + 4) piercing damage.",
-      "attack": "Bite|6|3d6+4"
-    }
+    "traits": [
+      {
+        "trait-name": "Hold Breath",
+        "text": "The plesiosaurus can hold its breath for 1 hour."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (3d6 + 4) piercing damage.",
+        "attack": "Bite|6|3d6+4"
+      }
+    ]
   },
   {
     "name": "Poisonous Snake",
@@ -2251,11 +2388,13 @@
     "senses": "blindsight 10 ft.",
     "passive": 10,
     "cr": "1/8",
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage, and the target must make a DC 10 Constitution saving throw, taking 5 (2d4) poison damage on a failed save, or half as much damage on a successful one.",
-      "attack": "Bite|5|1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage, and the target must make a DC 10 Constitution saving throw, taking 5 (2d4) poison damage on a failed save, or half as much damage on a successful one.",
+        "attack": "Bite|5|1"
+      }
+    ]
   },
   {
     "name": "Polar Bear",
@@ -2275,11 +2414,13 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 2,
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The bear has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Multiattack",
         "text": "The bear makes two attacks: one with its bite and one with its claws."
@@ -2312,11 +2453,13 @@
     "cha": 7,
     "passive": 10,
     "cr": "1/8",
-    "action": {
-      "action-name": "Hooves",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) bludgeoning damage.",
-      "attack": "Hooves|4|2d4+2"
-    }
+    "actions": [
+      {
+        "action-name": "Hooves",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) bludgeoning damage.",
+        "attack": "Hooves|4|2d4+2"
+      }
+    ]
   },
   {
     "name": "Pteranodon",
@@ -2336,14 +2479,18 @@
     "skill": "Perception +1",
     "passive": 11,
     "cr": "1/4",
-    "trait": {
-      "trait-name": "Flyby",
-      "text": "The pteranodon doesn't provoke opportunity attacks when it flies out of an enemy's reach."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) piercing damage"
-    }
+    "traits": [
+      {
+        "trait-name": "Flyby",
+        "text": "The pteranodon doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) piercing damage"
+      }
+    ]
   },
   {
     "name": "Quipper",
@@ -2362,7 +2509,7 @@
     "senses": "darkvision 60 ft.",
     "passive": 8,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Blood Frenzy",
         "text": "The quipper has advantage on melee attack rolls against any creature that doesn't have all its hit points."
@@ -2372,11 +2519,13 @@
         "text": "The quipper can breathe only underwater."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
-      "attack": "Bite|5|1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
+        "attack": "Bite|5|1"
+      }
+    ]
   },
   {
     "name": "Rat",
@@ -2395,15 +2544,19 @@
     "senses": "darkvision 30 ft.",
     "passive": 10,
     "cr": 0,
-    "trait": {
-      "trait-name": "Keen Smell",
-      "text": "The rat has advantage on Wisdom (Perception) checks that rely on smell."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
-      "attack": "Bite||1"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Smell",
+        "text": "The rat has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
+        "attack": "Bite||1"
+      }
+    ]
   },
   {
     "name": "Raven",
@@ -2423,14 +2576,18 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 0,
-    "trait": {
-      "trait-name": "Mimicry",
-      "text": "The raven can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check."
-    },
-    "action": {
-      "action-name": "Beak",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
-    }
+    "traits": [
+      {
+        "trait-name": "Mimicry",
+        "text": "The raven can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Beak",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
+      }
+    ]
   },
   {
     "name": "Reef Shark",
@@ -2450,7 +2607,7 @@
     "senses": "blindsight 30 ft.",
     "passive": 12,
     "cr": "1/2",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Pack Tactics",
         "text": "The shark has advantage on an attack roll against a creature if at least one of the shark's allies is within 5 ft. of the creature and the ally isn't incapacitated."
@@ -2460,11 +2617,13 @@
         "text": "The shark can breathe only underwater."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
-      "attack": "Bite|4|1d8+2"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
+        "attack": "Bite|4|1d8+2"
+      }
+    ]
   },
   {
     "name": "Rhinoceros",
@@ -2482,16 +2641,20 @@
     "cha": 6,
     "passive": 11,
     "cr": 2,
-    "trait": {
-      "trait-name": "Charge",
-      "text": "If the rhinoceros moves at least 20 ft. straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 (2d8) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone.",
-      "attack": "Charge||2d8"
-    },
-    "action": {
-      "action-name": "Gore",
-      "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.",
-      "attack": "Gore|7|2d8+5"
-    }
+    "traits": [
+      {
+        "trait-name": "Charge",
+        "text": "If the rhinoceros moves at least 20 ft. straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 (2d8) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone.",
+        "attack": "Charge||2d8"
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Gore",
+        "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.",
+        "attack": "Gore|7|2d8+5"
+      }
+    ]
   },
   {
     "name": "Riding Horse",
@@ -2509,11 +2672,13 @@
     "cha": 7,
     "passive": 10,
     "cr": "1/4",
-    "action": {
-      "action-name": "Hooves",
-      "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) bludgeoning damage.",
-      "attack": "Hooves|2|2d4+3"
-    }
+    "actions": [
+      {
+        "action-name": "Hooves",
+        "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) bludgeoning damage.",
+        "attack": "Hooves|2|2d4+3"
+      }
+    ]
   },
   {
     "name": "Saber-Toothed Tiger",
@@ -2532,7 +2697,7 @@
     "skill": "Perception +3, Stealth +6",
     "passive": 13,
     "cr": 2,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Smell",
         "text": "The tiger has advantage on Wisdom (Perception) checks that rely on smell."
@@ -2542,7 +2707,7 @@
         "text": "If the tiger moves at least 20 ft. straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (1d10 + 5) piercing damage.",
@@ -2572,11 +2737,13 @@
     "senses": "blindsight 10 ft.",
     "passive": 9,
     "cr": 0,
-    "action": {
-      "action-name": "Sting",
-      "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 (1d8) poison damage on a failed save, or half as much damage on a successful one.",
-      "attack": "Sting|2|1"
-    }
+    "actions": [
+      {
+        "action-name": "Sting",
+        "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 (1d8) poison damage on a failed save, or half as much damage on a successful one.",
+        "attack": "Sting|2|1"
+      }
+    ]
   },
   {
     "name": "Sea Horse",
@@ -2594,10 +2761,12 @@
     "cha": 2,
     "passive": 10,
     "cr": 0,
-    "trait": {
-      "trait-name": "Water Breathing",
-      "text": "The sea horse can breathe only underwater."
-    }
+    "traits": [
+      {
+        "trait-name": "Water Breathing",
+        "text": "The sea horse can breathe only underwater."
+      }
+    ]
   },
   {
     "name": "Spider",
@@ -2618,7 +2787,7 @@
     "senses": "darkvision 30 ft.",
     "passive": 12,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Spider Climb",
         "text": "The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -2632,11 +2801,13 @@
         "text": "The spider ignores movement restrictions caused by webbing."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 1 piercing damage, and the target must succeed on a DC 9 Constitution saving throw or take 2 (1d4) poison damage.",
-      "attack": "Bite|4|1"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 1 piercing damage, and the target must succeed on a DC 9 Constitution saving throw or take 2 (1d4) poison damage.",
+        "attack": "Bite|4|1"
+      }
+    ]
   },
   {
     "name": "Stirge",
@@ -2656,14 +2827,13 @@
     "senses": "darkvision 60 ft.",
     "passive": 9,
     "cr": "1/8",
-    "action": {
-      "action-name": "Blood Drain",
-      "text": [
-        "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage, and the stirge attaches to the target. While attached, the stirge doesn't attack. Instead, at the start of each of the stirge's turns, the target loses 5 (1d4 + 3) hit points due to blood loss.",
-        "The stirge can detach itself by spending 5 feet of its movement. It does so after it drains 10 hit points of blood from the target or the target dies. A creature, including the target, can use its action to detach the stirge."
-      ],
-      "attack": "Blood Drain|5|1d4+3"
-    }
+    "actions": [
+      {
+        "action-name": "Blood Drain",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage, and the stirge attaches to the target. While attached, the stirge doesn't attack. Instead, at the start of each of the stirge's turns, the target loses 5 (1d4 + 3) hit points due to blood loss.\nThe stirge can detach itself by spending 5 feet of its movement. It does so after it drains 10 hit points of blood from the target or the target dies. A creature, including the target, can use its action to detach the stirge.",
+        "attack": "Blood Drain|5|1d4+3"
+      }
+    ]
   },
   {
     "name": "Tiger",
@@ -2683,7 +2853,7 @@
     "senses": "darkvision 60 ft.",
     "passive": 13,
     "cr": 1,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Smell",
         "text": "The tiger has advantage on Wisdom (Perception) checks that rely on smell."
@@ -2693,7 +2863,7 @@
         "text": "If the tiger moves at least 20 ft. straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
       }
     ],
-    "action": [
+    "actions": [
       {
         "action-name": "Bite",
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10 + 3) piercing damage.",
@@ -2721,11 +2891,13 @@
     "cha": 5,
     "passive": 10,
     "cr": 5,
-    "trait": {
-      "trait-name": "Trampling Charge",
-      "text": "If the triceratops moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the triceratops can make one stomp attack against it as a bonus action."
-    },
-    "action": [
+    "traits": [
+      {
+        "trait-name": "Trampling Charge",
+        "text": "If the triceratops moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the triceratops can make one stomp attack against it as a bonus action."
+      }
+    ],
+    "actions": [
       {
         "action-name": "Gore",
         "text": "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 24 (4d8 + 6) piercing damage.",
@@ -2756,7 +2928,7 @@
     "skill": "Perception +3",
     "passive": 13,
     "cr": 0,
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Sight and Smell",
         "text": "The vulture has advantage on Wisdom (Perception) checks that rely on sight or smell."
@@ -2766,11 +2938,13 @@
         "text": "The vulture has advantage on an attack roll against a creature if at least one of the vulture's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": {
-      "action-name": "Beak",
-      "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.",
-      "attack": "Beak|2|1d4"
-    }
+    "actions": [
+      {
+        "action-name": "Beak",
+        "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.",
+        "attack": "Beak|2|1d4"
+      }
+    ]
   },
   {
     "name": "Warhorse",
@@ -2788,15 +2962,19 @@
     "cha": 7,
     "passive": 11,
     "cr": "1/2",
-    "trait": {
-      "trait-name": "Trampling Charge",
-      "text": "If the horse moves at least 20 ft. straight toward a creature and then hits it with a hooves attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the horse can make another attack with its hooves against it as a bonus action."
-    },
-    "action": {
-      "action-name": "Hooves",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage.",
-      "attack": "|4|2d6+4"
-    }
+    "traits": [
+      {
+        "trait-name": "Trampling Charge",
+        "text": "If the horse moves at least 20 ft. straight toward a creature and then hits it with a hooves attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the horse can make another attack with its hooves against it as a bonus action."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Hooves",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage.",
+        "attack": "|4|2d6+4"
+      }
+    ]
   },
   {
     "name": "Weasel",
@@ -2815,15 +2993,19 @@
     "skill": "Perception +3, Stealth +5",
     "passive": 13,
     "cr": 0,
-    "trait": {
-      "trait-name": "Keen Hearing and Smell",
-      "text": "The weasel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
-    },
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.",
-      "attack": "Bite|5|1"
-    }
+    "traits": [
+      {
+        "trait-name": "Keen Hearing and Smell",
+        "text": "The weasel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+      }
+    ],
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.",
+        "attack": "Bite|5|1"
+      }
+    ]
   },
   {
     "name": "Wolf",
@@ -2842,7 +3024,7 @@
     "skill": "Perception +3, Stealth +4",
     "passive": 13,
     "cr": "1/4",
-    "trait": [
+    "traits": [
       {
         "trait-name": "Keen Hearing and Smell",
         "text": "The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell."
@@ -2852,10 +3034,12 @@
         "text": "The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 ft. of the creature and the ally isn't incapacitated."
       }
     ],
-    "action": {
-      "action-name": "Bite",
-      "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
-      "attack": "Bite|4|2d4+2"
-    }
+    "actions": [
+      {
+        "action-name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
+        "attack": "Bite|4|2d4+2"
+      }
+    ]
   }
 ]
