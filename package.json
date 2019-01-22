@@ -15,7 +15,7 @@
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.12.1",
-    "eslint-config-adpyke-react-native": "^1.0.1",
+    "eslint-config-adpyke-react-native": "^1.0.2",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-native": "^3.6.0"
   },

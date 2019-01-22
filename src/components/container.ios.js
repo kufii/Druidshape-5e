@@ -15,7 +15,7 @@ export default class Container extends React.Component {
 					selected={this.state.tab === 'beasts'}
 					onPress={() => this.setState({ tab: 'beasts' })}
 				>
-					<BeastsList/>
+					<BeastsList />
 				</TabBarIOS.Item>
 				<TabBarIOS.Item
 					title='Favorites'
