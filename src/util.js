@@ -38,4 +38,10 @@ const toDict = (cbKey, cbValue) => (a, b) => {
 const _flatten = arr => arr.reduce((flat, a) => flat.concat(Array.isArray(a) ? _flatten(a) : a), []);
 const flatten = (flat, arr) => flat.concat(_flatten(arr));
 
-export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten };
+const nTimes = (cb, n) => {
+	for (let i = 0; i < n; i++) {
+		cb(i);
+	}
+};
+
+export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes };

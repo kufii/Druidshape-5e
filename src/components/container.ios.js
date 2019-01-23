@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabBarIOS, Text } from 'react-native';
-import BeastsList from './beasts-list';
+import BeastsTab from './beasts-tab';
 
 export default class Container extends React.Component {
 	state = { tab: 'beasts' };
@@ -13,7 +13,7 @@ export default class Container extends React.Component {
 					selected={this.state.tab === 'beasts'}
 					onPress={() => this.setState({ tab: 'beasts' })}
 				>
-					<BeastsList />
+					<BeastsTab />
 				</TabBarIOS.Item>
 				<TabBarIOS.Item
 					title='Favorites'
