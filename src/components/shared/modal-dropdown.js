@@ -43,7 +43,9 @@ export default class ModalDropdown extends React.Component {
 											this.setState({ visible: false });
 										}}
 									>
-										<Text style={listStyles.item}>{this.getOptionText(item.key)}</Text>
+										<View style={listStyles.item}>
+											<Text style={listStyles.itemText}>{this.getOptionText(item.key)}</Text>
+										</View>
 									</TouchableOpacity>
 								)}
 								ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}

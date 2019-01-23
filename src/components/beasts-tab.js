@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, SectionList } from 'react-native';
 import { Header, Divider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
 import ModalDropdown from './shared/modal-dropdown';
 
 import headerStyles from '../styles/header.js';
 import listStyles from '../styles/list.js';
 
-import { tabBarIOSHeight } from '../api/constants.js';
+import { tabBarIOSHeight, iconSizeLarge, textColorDisabled } from '../api/constants.js';
 
 import beasts from '../data/beasts.json';
 import { groupBy, sortBy } from '../api/util.js';
@@ -42,12 +43,19 @@ export default class BeastsTab extends React.Component {
 								([cr]) => crToNum(cr)
 							))
 							.map(([cr, list]) => ({
-								title: cr,
+								title: `CR ${cr}`,
 								data: list.map(({ name }) => name).sort()
 							}))
 					}
 					renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
-					renderItem={({ item }) => <Text style={listStyles.item}>{item}</Text>}
+					renderItem={
+						({ item }) => (
+							<View style={listStyles.item}>
+								<Text style={listStyles.itemText}>{item}</Text>
+								<Icon name='ios-star' size={iconSizeLarge} style={styles.star} />
+							</View>
+						)
+					}
 					keyExtractor={(item, index) => index}
 					ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
 					automaticallyAdjustContentInsets={false}
@@ -62,5 +70,10 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column'
+	},
+	star: {
+		color: textColorDisabled,
+		marginLeft: 'auto',
+		marginRight: 10
 	}
 });
