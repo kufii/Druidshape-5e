@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
 	},
 	headerDropdown: {
 		flex: 1,
-		flexDirection: 'row'
+		flexDirection: 'row',
+		alignItems: 'center'
 	},
 	headerDropdownText: {
 		fontWeight: 'bold',
