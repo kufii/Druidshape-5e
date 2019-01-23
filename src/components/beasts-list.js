@@ -32,6 +32,7 @@ export default function BeastsList() {
 				keyExtractor={(item, index) => index}
 				ItemSeparatorComponent={() => <Divider style={styles.divider} />}
 				automaticallyAdjustContentInsets={false}
+				contentInset={{ bottom: 54 }}
 			/>
 		</View>
 	);
