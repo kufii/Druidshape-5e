@@ -1,17 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Container from './src/components/container';
+import RootStack from './src/navigators/root.js';
+import { createAppContainer } from 'react-navigation';
+
+const AppContainer = createAppContainer(RootStack);
 
 export default function App() {
-	return (
-		<View style={styles.container}>
-			<Container />
-		</View>
-	);
+	return <AppContainer />;
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	}
-});

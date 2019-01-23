@@ -13,7 +13,7 @@ export default class ModalDropdown extends React.Component {
 	state = { visible: false };
 
 	static propTypes = {
-		items: PropTypes.array.isRequired,
+		items: PropTypes.array,
 		selected: PropTypes.string,
 		onSelect: PropTypes.func
 	};
