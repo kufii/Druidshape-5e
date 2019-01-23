@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, SectionList } from 'react-native';
 import { Header, Divider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import beasts from '../../data/beasts.json';
 import { groupBy, sortBy } from '../util.js';
@@ -12,7 +13,12 @@ export default function BeastsList() {
 	return (
 		<View style={styles.container}>
 			<Header
-				centerComponent={{ text: 'All', style: styles.headerDropdown }}
+				centerComponent={
+					<View style={styles.headerDropdown}>
+						<Text style={styles.headerDropdownText}>All</Text>
+						<Icon name='ios-arrow-down' size={16} />
+					</View>
+				}
 				containerStyle={styles.header}
 			/>
 			<Divider />
@@ -49,7 +55,12 @@ const styles = StyleSheet.create({
 		borderBottomColor: '#919191'
 	},
 	headerDropdown: {
-		fontWeight: 'bold'
+		flex: 1,
+		flexDirection: 'row'
+	},
+	headerDropdownText: {
+		fontWeight: 'bold',
+		marginRight: 2
 	},
 	sectionHeader: {
 		paddingTop: 2,
