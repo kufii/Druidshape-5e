@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
 	text: {
 		fontWeight: 'bold',
 		marginRight: 4,
-		fontSize: headerFontSize
+		fontSize: fontSizeMedium
 	}
 });
