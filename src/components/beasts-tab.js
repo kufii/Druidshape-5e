@@ -1,11 +1,15 @@
 import React from 'react';
 import { StyleSheet, View, Text, SectionList } from 'react-native';
 import { Header, Divider } from 'react-native-elements';
-
 import ModalDropdown from './shared/modal-dropdown';
 
-import beasts from '../../data/beasts.json';
-import { groupBy, sortBy } from '../util.js';
+import headerStyles from '../styles/header.js';
+import listStyles from '../styles/list.js';
+
+import { tabBarIOSHeight } from '../api/constants.js';
+
+import beasts from '../data/beasts.json';
+import { groupBy, sortBy } from '../api/util.js';
 
 const options = [
 	{ text: 'All', value: 'all' },
@@ -28,7 +32,7 @@ export default class BeastsTab extends React.Component {
 							onSelect={option => this.setState({ option })}
 						/>
 					}
-					containerStyle={styles.header}
+					containerStyle={headerStyles.container}
 				/>
 				<Divider />
 				<SectionList
@@ -42,12 +46,12 @@ export default class BeastsTab extends React.Component {
 								data: list.map(({ name }) => name).sort()
 							}))
 					}
-					renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-					renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+					renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
+					renderItem={({ item }) => <Text style={listStyles.item}>{item}</Text>}
 					keyExtractor={(item, index) => index}
-					ItemSeparatorComponent={() => <Divider style={styles.divider} />}
+					ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
 					automaticallyAdjustContentInsets={false}
-					contentInset={{ bottom: 54 }}
+					contentInset={{ bottom: tabBarIOSHeight }}
 				/>
 			</View>
 		);
@@ -58,29 +62,5 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column'
-	},
-	header: {
-		backgroundColor: 'rgba(247,247,247,1.0)',
-		borderBottomWidth: 0,
-		borderBottomColor: '#919191'
-	},
-	sectionHeader: {
-		paddingTop: 2,
-		paddingLeft: 10,
-		paddingRight: 10,
-		paddingBottom: 2,
-		fontSize: 14,
-		fontWeight: 'bold',
-		backgroundColor: 'rgba(247,247,247,1.0)',
-		color: '#919191'
-	},
-	item: {
-		padding: 10,
-		fontSize: 18,
-		height: 44
-	},
-	divider: {
-		marginLeft: 10,
-		marginRight: 10
 	}
 });
