@@ -5,7 +5,7 @@ import { Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import listStyles from '../../../styles/list.js';
 
-import { tabBarIOSHeight, iconSizeLarge, textColorDisabled } from '../../../api/constants.js';
+import { iconSizeLarge, textColorDisabled } from '../../../api/constants.js';
 
 import beasts from '../../../data/beasts.json';
 import { groupBy, sortBy } from '../../../api/util.js';
@@ -39,8 +39,6 @@ export default function BeastsTab(props) {
 			}
 			keyExtractor={(item, index) => index}
 			ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
-			automaticallyAdjustContentInsets={false}
-			contentInset={{ bottom: tabBarIOSHeight }}
 		/>
 	);
 }
