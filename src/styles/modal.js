@@ -14,6 +14,6 @@ export default StyleSheet.create({
 		backgroundColor: contentBackgroundColor,
 		marginTop: 20,
 		marginBottom: 20,
-		borderRadius: 20
+		borderRadius: 12
 	}
 });
