@@ -18,8 +18,8 @@ export default class ModalDropdown extends React.Component {
 		onSelect: PropTypes.func
 	};
 
-	getOptionText(value) {
-		return this.props.items.find(i => i.value === value).text;
+	getOptionText(key) {
+		return this.props.items.find(i => i.key === key).text;
 	}
 
 	render() {
@@ -35,7 +35,7 @@ export default class ModalDropdown extends React.Component {
 					<TouchableWithoutFeedback onPress={() => this.setState({ visible: false })}>
 						<View style={modalStyles.container}>
 							<FlatList
-								data={this.props.items.map(i => ({ key: i.value }))}
+								data={this.props.items}
 								renderItem={({ item }) => (
 									<TouchableOpacity
 										onPress={() => {
@@ -44,7 +44,7 @@ export default class ModalDropdown extends React.Component {
 										}}
 									>
 										<View style={listStyles.item}>
-											<Text style={listStyles.itemText}>{this.getOptionText(item.key)}</Text>
+											<Text style={listStyles.itemText}>{item.text}</Text>
 										</View>
 									</TouchableOpacity>
 								)}

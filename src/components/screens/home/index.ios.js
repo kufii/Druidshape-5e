@@ -5,8 +5,8 @@ import ModalDropdown from '../../shared/modal-dropdown';
 import BeastsTab from './beasts-tab';
 
 const options = [
-	{ text: 'All', value: 'all' },
-	...Array.from(new Array(20), (_, i) => ({ text: `Druid Level ${i + 1}`, value: (i + 1).toString() }))
+	{ text: 'All', key: 'all' },
+	...Array.from(new Array(20), (_, i) => ({ text: `Druid Level ${i + 1}`, key: (i + 1).toString() }))
 ];
 
 export default class HomeScreen extends React.Component {
