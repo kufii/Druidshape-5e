@@ -11,7 +11,7 @@ import { groupBy, sortBy } from '../../../api/util.js';
 import { getBeasts, crToNum } from '../../../api/beasts.js';
 
 export default function BeastsTab(props) {
-	const beastsByCr = () => getBeasts(props.navigation.getParam('level', 'all')).reduce(groupBy(b => b.cr), {});
+	const beastsByCr = () => getBeasts(props.level).reduce(groupBy(b => b.cr), {});
 	return (
 		<SectionList
 			sections={
@@ -42,6 +42,7 @@ export default function BeastsTab(props) {
 }
 
 BeastsTab.propTypes = {
+	level: PropTypes.number,
 	navigation: PropTypes.object
 };
 

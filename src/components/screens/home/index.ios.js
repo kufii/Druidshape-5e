@@ -5,7 +5,7 @@ import ModalDropdown from '../../shared/modal-dropdown';
 import BeastsTab from './beasts-tab';
 
 const options = [
-	{ text: 'All', key: 'all' },
+	{ text: 'All', key: '0' },
 	...Array.from(new Array(20), (_, i) => ({ text: `Druid Level ${i + 1}`, key: (i + 1).toString() }))
 ];
 
@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
 		headerTitle: (
 			<ModalDropdown
 				items={options}
-				selected={navigation.getParam('level', 'all')}
+				selected={navigation.getParam('level', '0')}
 				onSelect={level => navigation.setParams({ level })}
 			/>
 		)
@@ -37,7 +37,7 @@ export default class HomeScreen extends React.Component {
 					onPress={() => this.setState({ tab: 'beasts' })}
 				>
 					<BeastsTab
-						level={this.props.navigation.getParam('level', 'all')}
+						level={parseInt(this.props.navigation.getParam('level', '0'))}
 						navigation={this.props.navigation}
 					/>
 				</TabBarIOS.Item>

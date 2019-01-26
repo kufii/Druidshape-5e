@@ -2,10 +2,9 @@ import allBeasts from '../data/beasts.json';
 
 const crToNum = cr => cr.toString().includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
 
-const getBeasts = (level='all', circleOfTheMoon=false) => {
-	if (level === 'all') return allBeasts.slice();
-	level = parseInt(level);
-	if (level <= 1) return [];
+const getBeasts = (level=0, circleOfTheMoon=false) => {
+	if (level <= 0) return allBeasts.slice();
+	if (level === 1) return [];
 
 	const maxCr = circleOfTheMoon
 		? (level < 6 ? 1 : Math.floor(level / 3))
