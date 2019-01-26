@@ -7,17 +7,15 @@ import listStyles from '../../../styles/list.js';
 
 import { iconSizeLarge, textColorDisabled } from '../../../api/constants.js';
 
-import beasts from '../../../data/beasts.json';
 import { groupBy, sortBy } from '../../../api/util.js';
-
-const crToNum = cr => cr.includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
-const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
+import { getBeasts, crToNum } from '../../../api/beasts.js';
 
 export default function BeastsTab(props) {
+	const beastsByCr = () => getBeasts(props.navigation.getParam('level', 'all')).reduce(groupBy(b => b.cr), {});
 	return (
 		<SectionList
 			sections={
-				Object.entries(beastsByCr)
+				Object.entries(beastsByCr())
 					.sort(sortBy(
 						([cr]) => crToNum(cr)
 					))
