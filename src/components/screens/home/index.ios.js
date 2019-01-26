@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TabBarIOS, Text } from 'react-native';
+import { StyleSheet, View, TabBarIOS, Text } from 'react-native';
 import ModalDropdown from '../../shared/modal-dropdown';
+import ToggleIconButton from '../../shared/toggle-icon-button';
 import BeastsTab from './beasts-tab';
 
 const options = [
@@ -25,6 +26,15 @@ export default class HomeScreen extends React.Component {
 				selected={navigation.getParam('level', '0')}
 				onSelect={level => navigation.setParams({ level })}
 			/>
+		),
+		headerRight: (
+			<View style={styles.moon}>
+				<ToggleIconButton
+					icon='ios-moon'
+					active={navigation.getParam('isMoon', false)}
+					onToggle={isMoon => navigation.setParams({ isMoon })}
+				/>
+			</View>
 		)
 	});
 
@@ -38,6 +48,7 @@ export default class HomeScreen extends React.Component {
 				>
 					<BeastsTab
 						level={parseInt(this.props.navigation.getParam('level', '0'))}
+						isMoon={this.props.navigation.getParam('isMoon', false)}
 						navigation={this.props.navigation}
 					/>
 				</TabBarIOS.Item>
@@ -59,3 +70,9 @@ export default class HomeScreen extends React.Component {
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	moon: {
+		marginRight: 10
+	}
+});
