@@ -7,7 +7,7 @@ import BeastsTab from './beasts-tab';
 
 const options = [
 	{ text: 'All', key: '0' },
-	...Array.from(new Array(20), (_, i) => ({ text: `Druid Level ${i + 1}`, key: (i + 1).toString() }))
+	...Array.from(new Array(19), (_, i) => ({ text: `Druid Level ${i + 2}`, key: (i + 2).toString() }))
 ];
 
 export default class HomeScreen extends React.Component {
