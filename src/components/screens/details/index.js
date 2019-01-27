@@ -9,10 +9,10 @@ import { getModifier, getBeast } from '../../../api/beasts.js';
 
 const getSpeedString = beast => {
 	let out = `${beast.speed} ft.`;
-	if (beast.climb) out += `, ${beast.climb} ft.`;
-	if (beast.swim) out += `, ${beast.swim} ft.`;
-	if (beast.fly) out += `, ${beast.fly} ft.`;
-	if (beast.burrow) out += `, ${beast.burrow} ft.`;
+	if (beast.climb) out += `, climb ${beast.climb} ft.`;
+	if (beast.swim) out += `, swim ${beast.swim} ft.`;
+	if (beast.fly) out += `, fly ${beast.fly} ft.`;
+	if (beast.burrow) out += `, burrow ${beast.burrow} ft.`;
 	return out;
 };
 
