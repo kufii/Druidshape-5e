@@ -4,6 +4,7 @@ import { StyleSheet, View, TabBarIOS, Text } from 'react-native';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
 import BeastsTab from './beasts-tab';
+import { getPref, setPref } from '../../../api/user-prefs.js';
 
 const options = [
 	{ text: 'All', key: '0' },
@@ -24,7 +25,10 @@ export default class HomeScreen extends React.Component {
 			<ModalDropdown
 				items={options}
 				selected={navigation.getParam('level', '0')}
-				onSelect={level => navigation.setParams({ level })}
+				onSelect={level => {
+					navigation.setParams({ level });
+					setPref('level', level);
+				}}
 			/>
 		),
 		headerRight: (
@@ -32,11 +36,20 @@ export default class HomeScreen extends React.Component {
 				<ToggleIconButton
 					icon='ios-moon'
 					active={navigation.getParam('isMoon', false)}
-					onToggle={isMoon => navigation.setParams({ isMoon })}
+					onToggle={isMoon => {
+						navigation.setParams({ isMoon });
+						setPref('isMoon', isMoon);
+					}}
 				/>
 			</View>
 		)
 	});
+
+	componentDidMount() {
+		Promise.all([getPref('level', '0'), getPref('isMoon', 'false')])
+			.then(([level, isMoon]) => [level, isMoon === 'true'])
+			.then(([level, isMoon]) => this.props.navigation.setParams({ level, isMoon }));
+	}
 
 	render() {
 		return (
@@ -64,7 +77,7 @@ export default class HomeScreen extends React.Component {
 					selected={this.state.tab === 'search'}
 					onPress={() => this.setState({ tab: 'search' })}
 				>
-					<Text>Favsrtss</Text>
+					<Text>blah</Text>
 				</TabBarIOS.Item>
 			</TabBarIOS>
 		);
