@@ -13,3 +13,4 @@ export const textColor = '#000';
 export const textColorSecondary = '#919191';
 export const textColorActive = '#007AFF';
 export const textColorDisabled = '#E5E5E5';
+export const textColorAccent = '#e53935';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
 
-import { fontSizeLarge, fontSizeXLarge } from '../../../api/constants.js';
+import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants.js';
 
 import { getModifier, getBeast } from '../../../api/beasts.js';
 
@@ -135,11 +135,13 @@ const styles = StyleSheet.create({
 	},
 	header1: {
 		fontWeight: 'bold',
-		fontSize: fontSizeXLarge
+		fontSize: fontSizeXLarge,
+		color: textColorAccent
 	},
 	header2: {
 		fontWeight: 'bold',
-		fontSize: fontSizeLarge
+		fontSize: fontSizeLarge,
+		color: textColorAccent
 	},
 	size: {
 		fontStyle: 'italic'
