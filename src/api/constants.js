@@ -4,6 +4,7 @@ export const listItemHeight = 44;
 export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;
 export const fontSizeLarge = 18;
+export const fontSizeXLarge = 24;
 export const iconSizeLarge = 28;
 export const contentBackgroundColor = '#fff';
 export const primaryColor = 'rgba(247,247,247,1.0)';
