@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
+import { B, I } from '../../shared/helper.js';
 
 import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants.js';
 
@@ -30,20 +31,20 @@ export default class DetailsScreen extends React.Component {
 		return (
 			<ScrollView style={styles.container} contentContainerStyle={styles.containerContent}>
 				<Text style={styles.header1}>{beast.name}</Text>
-				<Text style={styles.size}>{beast.size} beast</Text>
+				<I>{beast.size} beast</I>
 				<Divider style={styles.divider} />
-				<View style={styles.row}>
-					<Text style={styles.lbl}>Armor Class</Text>
-					<Text style={styles.description}>{beast.ac + (beast.ac !== (10 + getModifier(beast.dex)) ? ' (Natural Armor)' : '')}</Text>
-				</View>
-				<View style={styles.row}>
-					<Text style={styles.lbl}>Hit Points</Text>
-					<Text style={styles.description}>{beast.hp} ({beast.roll})</Text>
-				</View>
-				<View style={styles.row}>
-					<Text style={styles.lbl}>Speed</Text>
-					<Text style={styles.description}>{getSpeedString(beast)}</Text>
-				</View>
+				<Text>
+					<B>Armor Class </B>
+					{beast.ac + (beast.ac !== (10 + getModifier(beast.dex)) ? ' (Natural Armor)' : '')}
+				</Text>
+				<Text>
+					<B>Hit Points </B>
+					{beast.hp} ({beast.roll})
+				</Text>
+				<Text>
+					<B>Speed </B>
+					{getSpeedString(beast)}
+				</Text>
 				<Divider style={styles.divider} />
 				<View style={styles.row}>
 					<View style={styles.stat}>
@@ -60,35 +61,35 @@ export default class DetailsScreen extends React.Component {
 					</View>
 				</View>
 				<Divider style={styles.divider} />
-				<View style={styles.row}>
-					<Text style={styles.lbl}>Passive Perception</Text>
-					<Text style={styles.description}>{beast.passive}</Text>
-				</View>
+				<Text>
+					<B>Passive Perception </B>
+					{beast.passive}
+				</Text>
 				{beast.skills && (
-					<View style={styles.row}>
-						<Text style={styles.lbl}>Skills</Text>
-						<Text style={styles.description}>{beast.skills}</Text>
-					</View>
+					<Text>
+						<B>Skills </B>
+						{beast.skills}
+					</Text>
 				)}
 				{beast.senses && (
-					<View style={styles.row}>
-						<Text style={styles.lbl}>Senses</Text>
-						<Text style={styles.description}>{beast.senses}</Text>
-					</View>
+					<Text>
+						<B>Senses </B>
+						{beast.senses}
+					</Text>
 				)}
-				<View style={styles.row}>
-					<Text style={styles.lbl}>Challenge</Text>
+				<Text>
+					<B>Challenge </B>
 					<Text>{beast.cr}</Text>
-				</View>
+				</Text>
 				{beast.traits && (
 					<>
 						<Divider style={styles.divider} />
 						<Text style={styles.header2}>Traits</Text>
 						{beast.traits.map(trait => (
-							<View key={trait.name} style={styles.row}>
-								<Text style={styles.lbl}>{trait.name}</Text>
-								<Text style={styles.description}>{trait.text}</Text>
-							</View>
+							<Text key={trait.name}>
+								<B>{trait.name} </B>
+								{trait.text}
+							</Text>
 						))}
 					</>
 				)}
@@ -97,10 +98,10 @@ export default class DetailsScreen extends React.Component {
 						<Divider style={styles.divider} />
 						<Text style={styles.header2}>Actions</Text>
 						{beast.actions.map(action => (
-							<View key={action.name} style={styles.row}>
-								<Text style={styles.lbl}>{action.name}</Text>
-								<Text style={styles.description}>{action.text}</Text>
-							</View>
+							<Text key={action.name}>
+								<B>{action.name} </B>
+								{action.text}
+							</Text>
 						))}
 					</>
 				)}
@@ -125,14 +126,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'row'
 	},
-	lbl: {
-		fontWeight: 'bold',
-		marginRight: 5
-	},
-	description: {
-		flex: 1,
-		flexWrap: 'wrap'
-	},
 	header1: {
 		fontWeight: 'bold',
 		fontSize: fontSizeXLarge,
@@ -142,9 +135,6 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: fontSizeLarge,
 		color: textColorAccent
-	},
-	size: {
-		fontStyle: 'italic'
 	},
 	stat: {
 		flex: 1,
