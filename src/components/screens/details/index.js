@@ -17,6 +17,8 @@ const getSpeedString = beast => {
 	return out;
 };
 
+const hasNaturalArmor = beast => beast.ac !== 10 + getModifier(beast.dex);
+
 export default class DetailsScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: navigation.getParam('beast')
@@ -33,18 +35,9 @@ export default class DetailsScreen extends React.Component {
 				<Text style={styles.header1}>{beast.name}</Text>
 				<I>{beast.size} beast</I>
 				<Divider style={styles.divider} />
-				<Text>
-					<B>Armor Class </B>
-					{beast.ac + (beast.ac !== (10 + getModifier(beast.dex)) ? ' (Natural Armor)' : '')}
-				</Text>
-				<Text>
-					<B>Hit Points </B>
-					{beast.hp} ({beast.roll})
-				</Text>
-				<Text>
-					<B>Speed </B>
-					{getSpeedString(beast)}
-				</Text>
+				<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
+				<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
+				<Text style={styles.attribute}><B>Speed</B> {getSpeedString(beast)}</Text>
 				<Divider style={styles.divider} />
 				<View style={styles.row}>
 					<View style={styles.stat}>
@@ -61,35 +54,20 @@ export default class DetailsScreen extends React.Component {
 					</View>
 				</View>
 				<Divider style={styles.divider} />
-				<Text>
-					<B>Passive Perception </B>
-					{beast.passive}
-				</Text>
+				<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
 				{beast.skills && (
-					<Text>
-						<B>Skills </B>
-						{beast.skills}
-					</Text>
+					<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
 				)}
 				{beast.senses && (
-					<Text>
-						<B>Senses </B>
-						{beast.senses}
-					</Text>
+					<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
 				)}
-				<Text>
-					<B>Challenge </B>
-					<Text>{beast.cr}</Text>
-				</Text>
+				<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
 				{beast.traits && (
 					<>
 						<Divider style={styles.divider} />
 						<Text style={styles.header2}>Traits</Text>
 						{beast.traits.map(trait => (
-							<Text key={trait.name}>
-								<B>{trait.name} </B>
-								{trait.text}
-							</Text>
+							<Text key={trait.name} style={styles.attribute}><B>{trait.name}</B> {trait.text}</Text>
 						))}
 					</>
 				)}
@@ -98,10 +76,7 @@ export default class DetailsScreen extends React.Component {
 						<Divider style={styles.divider} />
 						<Text style={styles.header2}>Actions</Text>
 						{beast.actions.map(action => (
-							<Text key={action.name}>
-								<B>{action.name} </B>
-								{action.text}
-							</Text>
+							<Text key={action.name} style={styles.attribute}><B>{action.name}</B> {action.text}</Text>
 						))}
 					</>
 				)}
@@ -125,6 +100,10 @@ const styles = StyleSheet.create({
 	row: {
 		flex: 1,
 		flexDirection: 'row'
+	},
+	attribute: {
+		marginTop: 2,
+		marginBottom: 2
 	},
 	header1: {
 		fontWeight: 'bold',
