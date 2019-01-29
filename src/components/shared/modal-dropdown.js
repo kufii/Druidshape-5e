@@ -31,7 +31,7 @@ export default class ModalDropdown extends React.Component {
 						<Icon name='ios-arrow-down' size={fontSizeMedium} />
 					</View>
 				</TouchableOpacity>
-				<Modal visible={this.state.visible} transparent>
+				<Modal visible={this.state.visible} transparent onRequestClose={() => null}>
 					<TouchableWithoutFeedback onPress={() => this.setState({ visible: false })}>
 						<View style={modalStyles.container}>
 							<FlatList
@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
+		marginLeft: 10,
+		marginRight: 10
 	},
 	text: {
 		fontWeight: 'bold',

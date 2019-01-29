@@ -1,5 +1,6 @@
-export const tabBarIOSHeight = 54;
-export const headerHeight = 64;
+import { Header } from 'react-navigation';
+
+export const headerHeight = Header.HEIGHT;
 export const listItemHeight = 44;
 export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;

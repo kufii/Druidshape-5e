@@ -36,7 +36,7 @@ export default class BeastsScreen extends React.Component {
 			/>
 		),
 		headerRight: (
-			<View style={styles.moon}>
+			<View style={styles.margin}>
 				<ToggleIconButton
 					icon='ios-moon'
 					active={navigation.getParam('isMoon', false)}
@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
 		marginLeft: 'auto',
 		marginRight: 10
 	},
-	moon: {
+	margin: {
+		marginLeft: 10,
 		marginRight: 10
 	}
 });
