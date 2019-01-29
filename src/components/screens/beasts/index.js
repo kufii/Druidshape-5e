@@ -79,7 +79,7 @@ export default class BeastsScreen extends React.Component {
 				renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
 				renderItem={
 					({ item }) => (
-						<TouchableOpacity onPress={() => this.props.navigation.push('Details', { beast: item })}>
+						<TouchableOpacity onPress={() => this.props.navigation.navigate('Details', { beast: item })}>
 							<View style={listStyles.item}>
 								<Text style={listStyles.itemText}>{item}</Text>
 								<Icon name='ios-star' size={iconSizeLarge} style={styles.star} />
