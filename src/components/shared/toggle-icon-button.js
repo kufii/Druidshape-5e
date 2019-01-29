@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { textColorSecondary, textColorActive, iconSizeLarge } from '../../api/constants.js';
+import { textColorSecondary, textColorActive, iconSizeLarge } from '../../api/constants';
 
 export default function ToggleIconButton(props) {
 	return (

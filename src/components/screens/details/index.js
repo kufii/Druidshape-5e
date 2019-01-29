@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
-import { B, I } from '../../shared/helper.js';
+import { B, I } from '../../shared/helper';
 
-import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants.js';
+import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants';
 
-import { getModifier, getBeast } from '../../../api/beasts.js';
+import { getModifier, getBeast } from '../../../api/beasts';
 
 const getSpeedString = beast => {
 	let out = `${beast.speed} ft.`;

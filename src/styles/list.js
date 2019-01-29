@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { listItemHeight, fontSizeStandard, fontSizeMedium, primaryColorDark, textColorSecondary } from '../api/constants.js';
+import { listItemHeight, fontSizeStandard, fontSizeMedium, primaryColorDark, textColorSecondary } from '../api/constants';
 
 export default StyleSheet.create({
 	sectionHeader: {

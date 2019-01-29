@@ -4,10 +4,10 @@ import { StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, TouchableWit
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Divider } from 'react-native-elements';
 
-import modalStyles from '../../styles/modal.js';
-import listStyles from '../../styles/list.js';
+import modalStyles from '../../styles/modal';
+import listStyles from '../../styles/list';
 
-import { fontSizeMedium } from '../../api/constants.js';
+import { fontSizeMedium } from '../../api/constants';
 
 export default class ModalDropdown extends React.Component {
 	state = { visible: false };

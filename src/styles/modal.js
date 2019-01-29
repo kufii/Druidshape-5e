@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { headerHeight, contentBackgroundColor } from '../api/constants.js';
+import { headerHeight, contentBackgroundColor } from '../api/constants';
 
 export default StyleSheet.create({
 	container: {

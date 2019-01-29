@@ -1,17 +1,8 @@
 import { createStackNavigator } from 'react-navigation';
-import HomeScreen from '../components/screens/home/index';
-import DetailsScreen from '../components/screens/details/index';
+import Tabs from './tabs';
 
-export default createStackNavigator(
-	{
-		Home: {
-			screen: HomeScreen
-		},
-		Details: {
-			screen: DetailsScreen
-		}
-	},
-	{
-		initialRouteName: 'Home'
+export default createStackNavigator({
+	Tabs: {
+		screen: Tabs
 	}
-);
+}, { headerMode: 'none' });
