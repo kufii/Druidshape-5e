@@ -1,30 +1,24 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Beasts from './beasts';
 import Favorites from './favorites';
 import Settings from './settings';
 
-const BeastsIcon = ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />;
-const FavoritesIcon = ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />;
-const SettingsIcon = ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />;
-BeastsIcon.propTypes = FavoritesIcon.propTypes = SettingsIcon.propTypes = {
-	tintColor: PropTypes.string
-};
-
 const Tabs = createBottomTabNavigator({
 	Beasts: {
 		screen: Beasts,
-		tabBarIcon: BeastsIcon
+		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
 	},
 	Favorites: {
 		screen: Favorites,
-		tabBarIcon: FavoritesIcon
+		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
 	},
 	Settings: {
 		screen: Settings,
-		tabBarIcon: SettingsIcon
+		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
 	}
 }, {
 	tabBarOptions: {
