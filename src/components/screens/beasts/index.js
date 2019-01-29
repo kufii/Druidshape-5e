@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text, SectionList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ModalDropdown from '../../shared/modal-dropdown';
@@ -8,7 +8,7 @@ import ToggleIconButton from '../../shared/toggle-icon-button';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, textColorActive } from '../../../api/constants';
 
 import { groupBy, sortBy } from '../../../api/util';
 import { getBeasts, crToNum } from '../../../api/beasts';
@@ -19,6 +19,10 @@ const options = [
 ];
 
 export default class BeastsScreen extends React.Component {
+	state = {
+		favs: {}
+	};
+
 	static propTypes = {
 		navigation: PropTypes.object
 	};
@@ -60,6 +64,7 @@ export default class BeastsScreen extends React.Component {
 	componentDidMount() {
 		Promise.all([getPref('level', '0'), getPref('isMoon', false)])
 			.then(([level, isMoon]) => this.props.navigation.setParams({ level, isMoon }));
+		getPref('favs', {}).then(favs => this.setState({ favs }));
 	}
 
 	render() {
@@ -82,7 +87,22 @@ export default class BeastsScreen extends React.Component {
 						<TouchableOpacity onPress={() => this.props.navigation.navigate('Details', { beast: item })}>
 							<View style={listStyles.item}>
 								<Text style={listStyles.itemText}>{item}</Text>
-								<Icon name='ios-star' size={iconSizeLarge} style={styles.star} />
+								<TouchableWithoutFeedback
+									onPress={() => {
+										this.setState(prev => {
+											const favs = Object.assign(prev.favs, { [item]: !prev.favs[item] });
+											setPref('favs', favs);
+											return { favs };
+										});
+									}}
+								>
+									<Icon
+										name='ios-star'
+										size={iconSizeLarge}
+										style={styles.star}
+										color={this.state.favs[item] ? textColorActive : textColorDisabled}
+									/>
+								</TouchableWithoutFeedback>
 							</View>
 						</TouchableOpacity>
 					)
@@ -96,7 +116,6 @@ export default class BeastsScreen extends React.Component {
 
 const styles = StyleSheet.create({
 	star: {
-		color: textColorDisabled,
 		marginLeft: 'auto',
 		marginRight: 10
 	},
