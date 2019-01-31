@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
-import { B, I } from '../../shared/helper';
+import { B, I, BI } from '../../shared/helper';
 
 import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants';
 
@@ -66,8 +66,8 @@ export default class DetailsScreen extends React.Component {
 					<>
 						<Divider style={styles.divider} />
 						<Text style={styles.header2}>Traits</Text>
-						{beast.traits.map(trait => (
-							<Text key={trait.name} style={styles.attribute}><B>{trait.name}</B> {trait.text}</Text>
+						{beast.traits.map(({ name, text }) => (
+							<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
 						))}
 					</>
 				)}
@@ -75,8 +75,8 @@ export default class DetailsScreen extends React.Component {
 					<>
 						<Divider style={styles.divider} />
 						<Text style={styles.header2}>Actions</Text>
-						{beast.actions.map(action => (
-							<Text key={action.name} style={styles.attribute}><B>{action.name}</B> {action.text}</Text>
+						{beast.actions.map(({ name, text }) => (
+							<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
 						))}
 					</>
 				)}
