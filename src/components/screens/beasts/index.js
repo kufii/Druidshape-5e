@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, StyleSheet, View, Text, SectionList, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Divider, Tooltip } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
@@ -9,7 +9,8 @@ import ToggleIconButton from '../../shared/toggle-icon-button';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
+import inputStyles from '../../../styles/input';
+import { iconSizeLarge, fontSizeLarge, textColorDisabled, textColorActive, textColorAccent, textColorSecondary } from '../../../api/constants';
 
 import { groupBy, sortBy } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
@@ -21,7 +22,8 @@ const options = [
 
 export default class BeastsScreen extends React.Component {
 	state = {
-		favs: {}
+		favs: {},
+		filter: ''
 	};
 
 	static propTypes = {
@@ -65,7 +67,7 @@ export default class BeastsScreen extends React.Component {
 
 	componentDidMount() {
 		Promise.all([
-			getPref('level', '0'),
+			getPref('level', 0),
 			getPref('isMoon', false),
 			getPref('favs', {})
 		]).then(([level, isMoon, favs]) => {
@@ -83,6 +85,7 @@ export default class BeastsScreen extends React.Component {
 
 		return (
 			<SectionList
+				keyboardShouldPersistTaps='always'
 				sections={[
 					...favorites.length ? [{
 						title: 'FAVORITES',
@@ -97,6 +100,28 @@ export default class BeastsScreen extends React.Component {
 							data: list.map(({ name }) => name).sort()
 						}))
 				]}
+				ListHeaderComponent={(
+					<View style={styles.filterContainer}>
+						<View style={inputStyles.text}>
+							<Icon name='ios-search' color={textColorSecondary} size={fontSizeLarge} />
+							<TextInput
+								style={styles.filter}
+								placeholder='Filter Beasts'
+								placeholderTextColor={textColorSecondary}
+								onChangeText={filter => this.setState({ filter })}
+								value={this.state.filter}
+							/>
+						</View>
+						<Button
+							title='Cancel'
+							type='clear'
+							onPress={() => {
+								Keyboard.dismiss();
+								this.setState({ filter: '' });
+							}}
+						/>
+					</View>
+				)}
 				renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
 				renderItem={
 					({ item }) => (
@@ -114,13 +139,11 @@ export default class BeastsScreen extends React.Component {
 									</Tooltip>
 								)}
 								<TouchableWithoutFeedback
-									onPress={() => {
-										this.setState(prev => {
-											const favs = Object.assign(prev.favs, { [item]: !prev.favs[item] });
-											setPref('favs', favs);
-											return { favs };
-										});
-									}}
+									onPress={() => this.setState(prev => {
+										const favs = Object.assign(prev.favs, { [item]: !prev.favs[item] });
+										setPref('favs', favs);
+										return { favs };
+									})}
 								>
 									<Icon
 										name='ios-star'
@@ -151,5 +174,17 @@ const styles = StyleSheet.create({
 	},
 	tooltip: {
 		color: '#fff'
+	},
+	filterContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		padding: 10,
+		backgroundColor: '#fff'
+	},
+	filter: {
+		marginLeft: 10,
+		marginRight: 10,
+		width: '100%',
+		fontSize: fontSizeLarge
 	}
 });
