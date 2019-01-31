@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard, StyleSheet, View, Text, SectionList, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Divider, Tooltip } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
+import TextBox from '../../shared/textbox';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import inputStyles from '../../../styles/input';
-import { iconSizeLarge, fontSizeLarge, textColorDisabled, textColorActive, textColorAccent, textColorSecondary } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
 
 import { groupBy, sortBy } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
@@ -102,24 +102,7 @@ export default class BeastsScreen extends React.Component {
 				]}
 				ListHeaderComponent={(
 					<View style={styles.filterContainer}>
-						<View style={inputStyles.text}>
-							<Icon name='ios-search' color={textColorSecondary} size={fontSizeLarge} />
-							<TextInput
-								style={styles.filter}
-								placeholder='Filter Beasts'
-								placeholderTextColor={textColorSecondary}
-								onChangeText={filter => this.setState({ filter })}
-								value={this.state.filter}
-							/>
-						</View>
-						<Button
-							title='Cancel'
-							type='clear'
-							onPress={() => {
-								Keyboard.dismiss();
-								this.setState({ filter: '' });
-							}}
-						/>
+						<TextBox icon='ios-search' text={this.state.filter} onChange={text => this.setState({ filter: text })} />
 					</View>
 				)}
 				renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
@@ -180,11 +163,5 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		padding: 10,
 		backgroundColor: '#fff'
-	},
-	filter: {
-		marginLeft: 10,
-		marginRight: 10,
-		width: '100%',
-		fontSize: fontSizeLarge
 	}
 });
