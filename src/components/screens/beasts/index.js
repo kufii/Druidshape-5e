@@ -102,7 +102,14 @@ export default class BeastsScreen extends React.Component {
 				]}
 				ListHeaderComponent={(
 					<View style={styles.filterContainer}>
-						<TextBox icon='ios-search' text={this.state.filter} onChange={text => this.setState({ filter: text })} />
+						<TextBox
+							icon='ios-search'
+							placeholder='Filter Beasts'
+							onChangeText={filter => this.setState({ filter })}
+							value={this.state.filter}
+							clearButtonMode='always'
+							returnKeyType='search'
+						/>
 					</View>
 				)}
 				renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}

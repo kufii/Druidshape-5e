@@ -9,24 +9,18 @@ export default function TextBox(props) {
 	return (
 		<View style={styles.container}>
 			{props.icon ? (
-				<Icon name={props.icon} color={textColorSecondary} size={fontSizeLarge} />
+				<Icon name={props.icon} color={textColorSecondary} size={fontSizeLarge} style={styles.icon} />
 			) : null}
 			<TextInput
+				{...props}
 				style={styles.input}
-				placeholder='Filter Beasts'
 				placeholderTextColor={textColorSecondary}
-				onChangeText={text => props.onChange(text)}
-				value={props.text}
-				clearButtonMode='always'
-				returnKeyType='search'
 			/>
 		</View>
 	);
 }
 TextBox.propTypes = {
-	text: PropTypes.string,
-	icon: PropTypes.string,
-	onChange: PropTypes.func
+	icon: PropTypes.string
 };
 
 const styles = StyleSheet.create({
@@ -38,10 +32,11 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderRadius: 10
 	},
+	icon: {
+		marginRight: 10
+	},
 	input: {
 		flex: 1,
-		marginLeft: 10,
-		marginRight: 10,
 		fontSize: fontSizeLarge
 	}
 });
