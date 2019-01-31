@@ -13,7 +13,6 @@ const getPref = async(key, def) => {
 
 const setPref = async(key, value) => {
 	try {
-		console.log(key, value);
 		if (value == null) value = '';
 		await AsyncStorage.setItem(key, JSON.stringify(value));
 	} catch (error) {

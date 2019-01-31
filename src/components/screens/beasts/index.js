@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { Divider } from 'react-native-elements';
+import { Divider, Tooltip } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, textColorActive } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
 
 import { groupBy, sortBy } from '../../../api/util';
 import { getBeasts, crToNum } from '../../../api/beasts';
@@ -47,6 +48,7 @@ export default class BeastsScreen extends React.Component {
 					onToggle={isMoon => {
 						navigation.setParams({ isMoon });
 						setPref('isMoon', isMoon);
+						Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
 					}}
 				/>
 			</View>
@@ -68,11 +70,19 @@ export default class BeastsScreen extends React.Component {
 	}
 
 	render() {
-		const beastsByCr = () => getBeasts(this.level, this.isMoon).reduce(groupBy(b => b.cr), {});
+		const beasts = getBeasts(this.level, this.isMoon);
+		const beastsByCr = () => beasts.reduce(groupBy(b => b.cr), {});
 		return (
 			<SectionList
-				sections={
-					Object.entries(beastsByCr())
+				sections={[
+					{
+						title: 'FAVORITES',
+						data: Object.entries(this.state.favs)
+							.filter(([_, isFav]) => isFav)
+							.map(([key]) => key)
+							.sort()
+					},
+					...Object.entries(beastsByCr())
 						.sort(sortBy(
 							([cr]) => crToNum(cr)
 						))
@@ -80,13 +90,23 @@ export default class BeastsScreen extends React.Component {
 							title: `CR ${cr}`,
 							data: list.map(({ name }) => name).sort()
 						}))
-				}
+				]}
 				renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
 				renderItem={
 					({ item }) => (
 						<TouchableOpacity onPress={() => this.props.navigation.navigate('Details', { beast: item })}>
 							<View style={listStyles.item}>
 								<Text style={listStyles.itemText}>{item}</Text>
+								{!beasts.find(b => b.name === item) && (
+									<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
+										<Icon
+											name='ios-alert'
+											size={iconSizeLarge}
+											style={styles.margin}
+											color={textColorAccent}
+										/>
+									</Tooltip>
+								)}
 								<TouchableWithoutFeedback
 									onPress={() => {
 										this.setState(prev => {
@@ -122,5 +142,8 @@ const styles = StyleSheet.create({
 	margin: {
 		marginLeft: 10,
 		marginRight: 10
+	},
+	tooltip: {
+		color: '#fff'
 	}
 });
