@@ -53,6 +53,20 @@ export default class DetailsScreen extends React.Component {
 						<Text>{beast.con} ({getModifier(beast.con)})</Text>
 					</View>
 				</View>
+				<View style={styles.row}>
+					<View style={styles.stat}>
+						<Text style={styles.header2}>INT</Text>
+						<Text>{beast.int} ({getModifier(beast.int)})</Text>
+					</View>
+					<View style={styles.stat}>
+						<Text style={styles.header2}>WIS</Text>
+						<Text>{beast.wis} ({getModifier(beast.wis)})</Text>
+					</View>
+					<View style={styles.stat}>
+						<Text style={styles.header2}>CHA</Text>
+						<Text>{beast.cha} ({getModifier(beast.cha)})</Text>
+					</View>
+				</View>
 				<Divider style={styles.divider} />
 				<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
 				{beast.skills && (
@@ -118,6 +132,8 @@ const styles = StyleSheet.create({
 	stat: {
 		flex: 1,
 		flexDirection: 'column',
-		alignItems: 'center'
+		alignItems: 'center',
+		marginTop: 5,
+		marginBottom: 5
 	}
 });
