@@ -12,7 +12,7 @@ import listStyles from '../../../styles/list';
 import { iconSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
 
 import { groupBy, sortBy } from '../../../api/util';
-import { getBeasts, crToNum } from '../../../api/beasts';
+import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
 
 const options = [
 	{ text: 'All', key: '0' },
@@ -71,18 +71,19 @@ export default class BeastsScreen extends React.Component {
 
 	render() {
 		const beasts = getBeasts(this.level, this.isMoon);
-		const beastsByCr = () => beasts.reduce(groupBy(b => b.cr), {});
+		const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
+		const favorites = Object.entries(this.state.favs)
+			.filter(([_, isFav]) => isFav)
+			.map(([key]) => getBeast(key));
+
 		return (
 			<SectionList
 				sections={[
-					{
+					...favorites.length ? [{
 						title: 'FAVORITES',
-						data: Object.entries(this.state.favs)
-							.filter(([_, isFav]) => isFav)
-							.map(([key]) => key)
-							.sort()
-					},
-					...Object.entries(beastsByCr())
+						data: favorites.map(({ name }) => name).sort()
+					}] : [],
+					...Object.entries(beastsByCr)
 						.sort(sortBy(
 							([cr]) => crToNum(cr)
 						))
