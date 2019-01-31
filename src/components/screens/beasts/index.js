@@ -64,9 +64,14 @@ export default class BeastsScreen extends React.Component {
 	}
 
 	componentDidMount() {
-		Promise.all([getPref('level', '0'), getPref('isMoon', false)])
-			.then(([level, isMoon]) => this.props.navigation.setParams({ level, isMoon }));
-		getPref('favs', {}).then(favs => this.setState({ favs }));
+		Promise.all([
+			getPref('level', '0'),
+			getPref('isMoon', false),
+			getPref('favs', {})
+		]).then(([level, isMoon, favs]) => {
+			this.props.navigation.setParams({ level, isMoon });
+			this.setState({ favs });
+		});
 	}
 
 	render() {
