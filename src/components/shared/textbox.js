@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { textColorSecondary, primaryColorDark, fontSizeLarge } from '../../api/constants.js';
@@ -17,12 +17,9 @@ export default function TextBox(props) {
 				placeholderTextColor={textColorSecondary}
 				onChangeText={text => props.onChange(text)}
 				value={props.text}
+				clearButtonMode='always'
+				returnKeyType='search'
 			/>
-			{props.text ? (
-				<TouchableWithoutFeedback onPress={() => props.onChange('')}>
-					<Icon name='ios-close-circle' color={textColorSecondary} size={fontSizeLarge} />
-				</TouchableWithoutFeedback>
-			) : null}
 		</View>
 	);
 }
