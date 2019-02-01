@@ -23,7 +23,8 @@ const options = [
 export default class BeastsScreen extends React.Component {
 	state = {
 		favs: {},
-		filter: ''
+		filter: '',
+		isTyping: false
 	};
 
 	static propTypes = {
@@ -113,13 +114,17 @@ export default class BeastsScreen extends React.Component {
 							value={this.state.filter}
 							clearButtonMode='always'
 							returnKeyType='search'
+							onFocus={() => this.setState({ isTyping: true })}
+							onBlur={() => this.setState({ isTyping: false })}
 						/>
-						{this.state.filter ? (
-							<TouchableOpacity onPress={() => {
-								Keyboard.dismiss();
-								this.setState({ filter: '' });
-							}}>
-								<Text style={styles.clearButton}>Clear</Text>
+						{(this.state.filter || this.state.isTyping) ? (
+							<TouchableOpacity
+								onPress={() => {
+									Keyboard.dismiss();
+									this.setState({ filter: '' });
+								}}
+							>
+								<Text style={styles.clearButton}>Cancel</Text>
 							</TouchableOpacity>
 						) : null}
 					</View>
