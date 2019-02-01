@@ -1,8 +1,8 @@
 import React from 'react';
-import RootStack from './src/navigators/tabs';
+import Tabs from './src/navigators/tabs';
 import { createAppContainer } from 'react-navigation';
 
-const AppContainer = createAppContainer(RootStack);
+const AppContainer = createAppContainer(Tabs);
 
 export default function Tab() {
 	return <AppContainer />;

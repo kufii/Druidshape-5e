@@ -10,15 +10,21 @@ import Settings from './settings';
 export default createBottomTabNavigator({
 	Beasts: {
 		screen: Beasts,
-		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
+		navigationOptions: {
+			tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
+		}
 	},
 	Homebrew: {
 		screen: Homebrew,
-		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
+		navigationOptions: {
+			tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
+		}
 	},
 	Settings: {
 		screen: Settings,
-		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
+		navigationOptions: {
+			tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
+		}
 	}
 }, {
 	tabBarOptions: {
