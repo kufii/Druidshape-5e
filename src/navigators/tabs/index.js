@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types, react/display-name */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { iconSizeTabs } from '../../api/constants';
@@ -8,23 +8,35 @@ import Beasts from './beasts';
 import Homebrew from './homebrew';
 import Settings from './settings';
 
+const TabIcon = ({ icon: i, tintColor }) => <Icon name={icon(i)} size={iconSizeTabs} color={tintColor} />;
+TabIcon.propTypes = {
+	icon: PropTypes.string,
+	tintColor: PropTypes.string
+};
+
 export default createBottomTabNavigator({
 	Beasts: {
 		screen: Beasts,
 		navigationOptions: {
-			tabBarIcon: ({ tintColor }) => <Icon name={icon('paw')} size={iconSizeTabs} color={tintColor} />
+			tabBarIcon: function BeastsIcon(props) {
+				return <TabIcon {...props} icon='paw' />;
+			}
 		}
 	},
 	Homebrew: {
 		screen: Homebrew,
 		navigationOptions: {
-			tabBarIcon: ({ tintColor }) => <Icon name={icon('construct')} size={iconSizeTabs} color={tintColor} />
+			tabBarIcon: function HomebrewIcon(props) {
+				return <TabIcon {...props} icon='construct' />;
+			}
 		}
 	},
 	Settings: {
 		screen: Settings,
 		navigationOptions: {
-			tabBarIcon: ({ tintColor }) => <Icon name={icon('settings')} size={iconSizeTabs} color={tintColor} />
+			tabBarIcon: function SettingsIcon(props) {
+				return <TabIcon {...props} icon='settings' />;
+			}
 		}
 	}
 }, {
