@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Divider, Tooltip } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
@@ -10,7 +10,7 @@ import TextBox from '../../shared/textbox';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
+import { iconSizeLarge, fontSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
 
 import { groupBy, sortBy } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
@@ -86,7 +86,11 @@ export default class BeastsScreen extends React.Component {
 		return (
 			<SectionList
 				keyboardShouldPersistTaps='always'
-				sections={[
+				sections={this.state.filter ? [{
+					data: beasts.map(({ name }) => name)
+						.filter(name => name.toLowerCase().includes(this.state.filter.toLowerCase()))
+						.sort()
+				}] : [
 					...favorites.length ? [{
 						title: 'FAVORITES',
 						data: favorites.map(({ name }) => name).sort()
@@ -110,9 +114,19 @@ export default class BeastsScreen extends React.Component {
 							clearButtonMode='always'
 							returnKeyType='search'
 						/>
+						{this.state.filter ? (
+							<TouchableOpacity onPress={() => {
+								Keyboard.dismiss();
+								this.setState({ filter: '' });
+							}}>
+								<Text style={styles.clearButton}>Clear</Text>
+							</TouchableOpacity>
+						) : null}
 					</View>
 				)}
-				renderSectionHeader={({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>}
+				renderSectionHeader={
+					this.state.filter ? null : ({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>
+				}
 				renderItem={
 					({ item }) => (
 						<TouchableOpacity onPress={() => this.props.navigation.navigate('Details', { beast: item })}>
@@ -146,7 +160,7 @@ export default class BeastsScreen extends React.Component {
 						</TouchableOpacity>
 					)
 				}
-				keyExtractor={(item, index) => index}
+				keyExtractor={(_, index) => index}
 				ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
 			/>
 		);
@@ -168,7 +182,13 @@ const styles = StyleSheet.create({
 	filterContainer: {
 		flex: 1,
 		flexDirection: 'row',
-		padding: 10,
-		backgroundColor: '#fff'
+		alignItems: 'center',
+		padding: 10
+	},
+	clearButton: {
+		fontSize: fontSizeLarge,
+		color: textColorActive,
+		marginLeft: 10,
+		marginRight: 10
 	}
 });

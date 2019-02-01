@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
 		marginRight: 10
 	},
 	input: {
+		flex: 1,
 		width: '100%',
 		fontSize: fontSizeLarge
 	}
