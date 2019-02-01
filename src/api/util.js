@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { isString } from './types.js';
 
 const distinct = (value, index, self) => self.indexOf(value) === index;
@@ -44,4 +45,6 @@ const nTimes = (cb, n) => {
 	}
 };
 
-export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes };
+const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
+
+export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes, icon };

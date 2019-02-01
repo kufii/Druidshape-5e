@@ -12,7 +12,7 @@ import { getPref, setPref } from '../../../api/user-prefs';
 import listStyles from '../../../styles/list';
 import { iconSizeLarge, fontSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
 
-import { groupBy, sortBy } from '../../../api/util';
+import { groupBy, sortBy, icon } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
 
 const options = [
@@ -46,7 +46,7 @@ export default class BeastsScreen extends React.Component {
 		headerRight: (
 			<View style={styles.margin}>
 				<ToggleIconButton
-					icon='ios-moon'
+					icon={icon('moon')}
 					active={navigation.getParam('isMoon', false)}
 					onToggle={isMoon => {
 						navigation.setParams({ isMoon });
@@ -108,7 +108,7 @@ export default class BeastsScreen extends React.Component {
 				ListHeaderComponent={(
 					<View style={styles.filterContainer}>
 						<TextBox
-							icon='ios-search'
+							icon={icon('search')}
 							placeholder='Filter Beasts'
 							onChangeText={filter => this.setState({ filter })}
 							value={this.state.filter}
@@ -140,7 +140,7 @@ export default class BeastsScreen extends React.Component {
 								{!beasts.find(b => b.name === item) && (
 									<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
 										<Icon
-											name='ios-alert'
+											name={icon('alert')}
 											size={iconSizeLarge}
 											style={styles.margin}
 											color={textColorAccent}
@@ -155,7 +155,7 @@ export default class BeastsScreen extends React.Component {
 									})}
 								>
 									<Icon
-										name='ios-star'
+										name={icon('star')}
 										size={iconSizeLarge}
 										style={styles.star}
 										color={this.state.favs[item] ? textColorActive : textColorDisabled}
