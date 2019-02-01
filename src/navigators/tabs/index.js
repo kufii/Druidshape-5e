@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Beasts from './beasts';
 import Homebrew from './homebrew';
 import Settings from './settings';
 
-const Tabs = createBottomTabNavigator({
+export default createBottomTabNavigator({
 	Beasts: {
 		screen: Beasts,
 		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
@@ -25,4 +25,3 @@ const Tabs = createBottomTabNavigator({
 		showIcon: true
 	}
 });
-export default createStackNavigator({ Tabs }, { headerMode: 'none' });
