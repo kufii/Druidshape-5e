@@ -7,7 +7,6 @@ export const fontSizeMedium = 16;
 export const fontSizeLarge = 18;
 export const fontSizeXLarge = 24;
 export const iconSizeLarge = 28;
-export const iconSizeTabs = 20;
 export const contentBackgroundColor = '#fff';
 export const primaryColor = 'rgba(247,247,247,1.0)';
 export const primaryColorDark = '#F2F3F7';
