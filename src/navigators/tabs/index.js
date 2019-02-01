@@ -4,7 +4,7 @@ import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Beasts from './beasts';
-import Favorites from './favorites';
+import Homebrew from './homebrew';
 import Settings from './settings';
 
 const Tabs = createBottomTabNavigator({
@@ -12,8 +12,8 @@ const Tabs = createBottomTabNavigator({
 		screen: Beasts,
 		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
 	},
-	Favorites: {
-		screen: Favorites,
+	Homebrew: {
+		screen: Homebrew,
 		tabBarIcon: ({ tintColor }) => <Icon name='ios-star' size={17} color={tintColor} />
 	},
 	Settings: {
