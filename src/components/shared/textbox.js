@@ -26,6 +26,8 @@ export default class TextBox extends React.Component {
 	}
 
 	render() {
+		const clearButtonMode = this.props.clearButtonMode || 'never';
+
 		return (
 			<View style={styles.container}>
 				<View style={styles.textContainer}>
@@ -46,11 +48,15 @@ export default class TextBox extends React.Component {
 							this.setState({ isFocused: false });
 						}}
 					/>
-					{Platform.OS === 'android' && this.props.value && (this.props.clearButtonMode || 'never') !== 'never' ? (
-						<TouchableOpacity onPress={() => this.clear()}>
-							<Icon name='md-close-circle' color={textColorSecondary} size={fontSizeLarge} style={styles.iconRight} />
-						</TouchableOpacity>
-					) : null}
+					{Platform.OS === 'android'
+						&& this.props.value
+						&& (clearButtonMode === 'always'
+							|| (clearButtonMode === 'while-editing' && this.state.isFocused)
+							|| (clearButtonMode === 'unless-editing' && !this.state.isFocused))? (
+							<TouchableOpacity onPress={() => this.clear()}>
+								<Icon name='md-close-circle' color={textColorSecondary} size={fontSizeLarge} style={styles.iconRight} />
+							</TouchableOpacity>
+						) : null}
 				</View>
 				{this.props.showCancelButton && (this.props.value || this.state.isFocused) ? (
 					<TouchableOpacity
