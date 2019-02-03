@@ -52,7 +52,7 @@ export default class TextBox extends React.Component {
 						&& this.props.value
 						&& (clearButtonMode === 'always'
 							|| (clearButtonMode === 'while-editing' && this.state.isFocused)
-							|| (clearButtonMode === 'unless-editing' && !this.state.isFocused))? (
+							|| (clearButtonMode === 'unless-editing' && !this.state.isFocused)) ? (
 							<TouchableOpacity onPress={() => this.clear()}>
 								<Icon name='md-close-circle' color={textColorSecondary} size={fontSizeLarge} style={styles.iconRight} />
 							</TouchableOpacity>
