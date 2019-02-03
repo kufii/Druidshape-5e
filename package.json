@@ -13,7 +13,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-elements": "^1.0.0-beta7",
     "react-native-root-toast": "^3.0.2",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "react-navigation-collapsible": "^3.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

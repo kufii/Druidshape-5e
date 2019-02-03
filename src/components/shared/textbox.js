@@ -1,38 +1,79 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
+import { Platform, Keyboard, StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { textColorSecondary, primaryColorDark, fontSizeLarge } from '../../api/constants.js';
+import { textColorSecondary, textColorActive, primaryColorDark, fontSizeLarge } from '../../api/constants.js';
 
-export default function TextBox(props) {
-	return (
-		<View style={styles.container}>
-			{props.icon ? (
-				<Icon name={props.icon} color={textColorSecondary} size={fontSizeLarge} style={styles.iconLeft} />
-			) : null}
-			<TextInput
-				{...props}
-				style={styles.input}
-				placeholderTextColor={textColorSecondary}
-			/>
-			{Platform.OS === 'android' && props.value && (props.clearButtonMode || 'never') !== 'never' ? (
-				<TouchableOpacity onPress={props.onChangeText && (() => props.onChangeText(''))}>
-					<Icon name='md-close-circle' color={textColorSecondary} size={fontSizeLarge} style={styles.iconRight} />
-				</TouchableOpacity>
-			) : null}
-		</View>
-	);
+export default class TextBox extends React.Component {
+	state = {
+		isFocused: false
+	};
+
+	static propTypes = {
+		icon: PropTypes.string,
+		showCancelButton: PropTypes.bool,
+		clearButtonMode: PropTypes.string,
+		value: PropTypes.string,
+		onChangeText: PropTypes.func,
+		onFocus: PropTypes.func,
+		onBlur: PropTypes.func
+	};
+
+	clear() {
+		this.input.clear();
+		this.props.onChangeText && this.props.onChangeText('');
+	}
+
+	render() {
+		return (
+			<View style={styles.container}>
+				<View style={styles.textContainer}>
+					{this.props.icon ? (
+						<Icon name={this.props.icon} color={textColorSecondary} size={fontSizeLarge} style={styles.iconLeft} />
+					) : null}
+					<TextInput
+						{...this.props}
+						ref={input => this.input = input}
+						style={styles.input}
+						placeholderTextColor={textColorSecondary}
+						onFocus={() => {
+							this.props.onFocus && this.props.onFocus();
+							this.setState({ isFocused: true });
+						}}
+						onBlur={() => {
+							this.props.onBlur && this.props.onBlur();
+							this.setState({ isFocused: false });
+						}}
+					/>
+					{Platform.OS === 'android' && this.props.value && (this.props.clearButtonMode || 'never') !== 'never' ? (
+						<TouchableOpacity onPress={() => this.clear()}>
+							<Icon name='md-close-circle' color={textColorSecondary} size={fontSizeLarge} style={styles.iconRight} />
+						</TouchableOpacity>
+					) : null}
+				</View>
+				{this.props.showCancelButton && (this.props.value || this.state.isFocused) ? (
+					<TouchableOpacity
+						onPress={() => {
+							Keyboard.dismiss();
+							this.clear();
+						}}
+					>
+						<Text style={styles.cancelButton}>Cancel</Text>
+					</TouchableOpacity>
+				) : null}
+			</View>
+		);
+	}
 }
-TextBox.propTypes = {
-	icon: PropTypes.string,
-	clearButtonMode: PropTypes.string,
-	value: PropTypes.string,
-	onChangeText: PropTypes.func
-};
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	textContainer: {
 		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: primaryColorDark,
@@ -50,5 +91,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		width: '100%',
 		fontSize: fontSizeLarge
+	},
+	cancelButton: {
+		fontSize: fontSizeLarge,
+		color: textColorActive,
+		marginLeft: 10,
+		marginRight: 10
 	}
 });
