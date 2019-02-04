@@ -15,7 +15,8 @@ export default class ModalDropdown extends React.Component {
 	static propTypes = {
 		items: PropTypes.array,
 		selected: PropTypes.string,
-		onSelect: PropTypes.func
+		onSelect: PropTypes.func,
+		style: PropTypes.object
 	};
 
 	closeModal() {
@@ -30,7 +31,7 @@ export default class ModalDropdown extends React.Component {
 		return (
 			<>
 				<TouchableOpacity onPress={() => this.setState({ visible: true })}>
-					<View style={styles.dropdown}>
+					<View style={[styles.dropdown, this.props.style]}>
 						<Text style={styles.text}>{this.getOptionText(this.props.selected)}</Text>
 						<Icon name='ios-arrow-down' size={fontSizeMedium} color={headerTextColor} />
 					</View>
@@ -68,9 +69,7 @@ const styles = StyleSheet.create({
 	dropdown: {
 		flex: 1,
 		flexDirection: 'row',
-		alignItems: 'center',
-		marginLeft: 10,
-		marginRight: 10
+		alignItems: 'center'
 	},
 	text: {
 		fontWeight: 'bold',

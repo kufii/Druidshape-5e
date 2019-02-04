@@ -54,6 +54,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		headerTitle: (
 			<ModalDropdown
+				style={styles.marginLarge}
 				items={options}
 				selected={navigation.getParam('level', 0).toString()}
 				onSelect={level => {
@@ -64,7 +65,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		),
 		headerRight: (
-			<View style={styles.margin}>
+			<View style={styles.marginLarge}>
 				<ToggleIconButton
 					icon={icon('moon')}
 					active={navigation.getParam('isMoon', false)}
@@ -201,6 +202,10 @@ const styles = StyleSheet.create({
 	margin: {
 		marginLeft: 10,
 		marginRight: 10
+	},
+	marginLarge: {
+		marginLeft: 20,
+		marginRight: 20
 	},
 	tooltip: {
 		color: '#fff'
