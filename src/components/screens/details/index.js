@@ -4,7 +4,7 @@ import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { B, I, BI } from '../../shared/helper';
 
-import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants';
+import { fontSizeLarge, fontSizeXLarge, headerColorDark } from '../../../api/constants';
 
 import { getModifier, getBeast } from '../../../api/beasts';
 
@@ -122,12 +122,12 @@ const styles = StyleSheet.create({
 	header1: {
 		fontWeight: 'bold',
 		fontSize: fontSizeXLarge,
-		color: textColorAccent
+		color: headerColorDark
 	},
 	header2: {
 		fontWeight: 'bold',
 		fontSize: fontSizeLarge,
-		color: textColorAccent
+		color: headerColorDark
 	},
 	stat: {
 		flex: 1,

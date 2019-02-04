@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Platform, StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Divider } from 'react-native-elements';
 
 import modalStyles from '../../styles/modal';
 import listStyles from '../../styles/list';
 
-import { fontSizeMedium } from '../../api/constants';
+import { fontSizeMedium, fontSizeLarge, headerTextColor } from '../../api/constants';
 
 export default class ModalDropdown extends React.Component {
 	state = { visible: false };
@@ -28,7 +28,7 @@ export default class ModalDropdown extends React.Component {
 				<TouchableOpacity onPress={() => this.setState({ visible: true })}>
 					<View style={styles.container}>
 						<Text style={styles.text}>{this.getOptionText(this.props.selected)}</Text>
-						<Icon name='ios-arrow-down' size={fontSizeMedium} />
+						<Icon name='ios-arrow-down' size={fontSizeMedium} color={headerTextColor} />
 					</View>
 				</TouchableOpacity>
 				<Modal visible={this.state.visible} transparent onRequestClose={() => null}>
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontWeight: 'bold',
 		marginRight: 4,
-		fontSize: fontSizeMedium
+		fontSize: Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge,
+		color: headerTextColor
 	}
 });

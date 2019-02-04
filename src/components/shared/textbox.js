@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import { Platform, Keyboard, StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { textColorSecondary, textColorActive, primaryColorDark, fontSizeLarge } from '../../api/constants.js';
+import { textColorSecondary, textColorActive, contentBackgroundColorDark, fontSizeLarge } from '../../api/constants.js';
+
+const customPropTypes = {
+	icon: PropTypes.string,
+	showCancelButton: PropTypes.bool,
+	backgroundColor: PropTypes.string,
+	textColor: PropTypes.string,
+	cancelButtonColor: PropTypes.string,
+	placeholderColor: PropTypes.string
+};
 
 export default class TextBox extends React.Component {
 	state = {
@@ -11,13 +20,17 @@ export default class TextBox extends React.Component {
 	};
 
 	static propTypes = {
-		icon: PropTypes.string,
-		showCancelButton: PropTypes.bool,
 		clearButtonMode: PropTypes.string,
 		value: PropTypes.string,
 		onChangeText: PropTypes.func,
 		onFocus: PropTypes.func,
-		onBlur: PropTypes.func
+		onBlur: PropTypes.func,
+		icon: PropTypes.string,
+		showCancelButton: PropTypes.bool,
+		backgroundColor: PropTypes.string,
+		textColor: PropTypes.string,
+		cancelButtonColor: PropTypes.string,
+		placeholderColor: PropTypes.string
 	};
 
 	clear() {
@@ -26,19 +39,20 @@ export default class TextBox extends React.Component {
 	}
 
 	render() {
-		const clearButtonMode = this.props.clearButtonMode || 'never';
+		const { clearButtonMode='never' } = this.props;
+		const { icon, showCancelButton, backgroundColor=contentBackgroundColorDark, textColor='#000', cancelButtonColor=textColorActive, placeholderColor=textColorSecondary, ...other } = this.props;
 
 		return (
 			<View style={styles.container}>
-				<View style={styles.textContainer}>
-					{this.props.icon ? (
-						<Icon name={this.props.icon} color={textColorSecondary} size={fontSizeLarge} style={styles.iconLeft} />
+				<View style={[styles.textContainer, { backgroundColor }]}>
+					{icon ? (
+						<Icon name={icon} color={placeholderColor} size={fontSizeLarge} style={styles.iconLeft} />
 					) : null}
 					<TextInput
-						{...this.props}
+						{...other}
 						ref={input => this.input = input}
-						style={styles.input}
-						placeholderTextColor={textColorSecondary}
+						style={[styles.input, { color: textColor }]}
+						placeholderTextColor={placeholderColor}
 						onFocus={() => {
 							this.props.onFocus && this.props.onFocus();
 							this.setState({ isFocused: true });
@@ -53,19 +67,24 @@ export default class TextBox extends React.Component {
 						&& (clearButtonMode === 'always'
 							|| (clearButtonMode === 'while-editing' && this.state.isFocused)
 							|| (clearButtonMode === 'unless-editing' && !this.state.isFocused)) ? (
-							<TouchableOpacity onPress={() => this.clear()}>
-								<Icon name='md-close-circle' color={textColorSecondary} size={fontSizeLarge} style={styles.iconRight} />
+							<TouchableOpacity
+								onPress={() => {
+									this.clear();
+									this.input.focus();
+								}}
+							>
+								<Icon name='md-close-circle' color={placeholderColor} size={fontSizeLarge} style={styles.iconRight} />
 							</TouchableOpacity>
 						) : null}
 				</View>
-				{this.props.showCancelButton && (this.props.value || this.state.isFocused) ? (
+				{showCancelButton && (this.props.value || this.state.isFocused) ? (
 					<TouchableOpacity
 						onPress={() => {
 							Keyboard.dismiss();
 							this.clear();
 						}}
 					>
-						<Text style={styles.cancelButton}>Cancel</Text>
+						<Text style={[styles.cancelButton, { color: cancelButtonColor }]}>Cancel</Text>
 					</TouchableOpacity>
 				) : null}
 			</View>
@@ -82,10 +101,9 @@ const styles = StyleSheet.create({
 	textContainer: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: primaryColorDark,
 		alignItems: 'center',
 		padding: 10,
-		borderRadius: 10
+		borderRadius: 100
 	},
 	iconLeft: {
 		marginRight: 10
@@ -100,7 +118,6 @@ const styles = StyleSheet.create({
 	},
 	cancelButton: {
 		fontSize: fontSizeLarge,
-		color: textColorActive,
 		marginLeft: 10,
 		marginRight: 10
 	}

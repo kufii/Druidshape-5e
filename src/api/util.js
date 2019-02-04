@@ -1,5 +1,8 @@
 import { Platform } from 'react-native';
-import { isString } from './types.js';
+import { withCollapsible as _withCollapsible } from 'react-navigation-collapsible';
+import { isString } from './types';
+import { headerColor } from '../api/constants';
+
 
 const distinct = (value, index, self) => self.indexOf(value) === index;
 
@@ -47,4 +50,12 @@ const nTimes = (cb, n) => {
 
 const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
 
-export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes, icon };
+const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
+	collapsibleComponent: collapse,
+	collapsibleBackgroundStyle: Object.assign({
+		height,
+		backgroundColor: headerColor
+	})
+});
+
+export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes, icon, withCollapsible };

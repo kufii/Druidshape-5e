@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { listItemHeight, fontSizeStandard, fontSizeMedium, primaryColor, textColorSecondary } from '../api/constants';
+import { listItemHeight, fontSizeStandard, fontSizeMedium, contentBackgroundColorDark, textColorSecondary } from '../api/constants';
 
 export default StyleSheet.create({
 	sectionHeader: {
@@ -10,7 +10,7 @@ export default StyleSheet.create({
 		paddingBottom: 2,
 		fontSize: fontSizeStandard,
 		fontWeight: 'bold',
-		backgroundColor: primaryColor,
+		backgroundColor: contentBackgroundColorDark,
 		color: textColorSecondary
 	},
 	item: {

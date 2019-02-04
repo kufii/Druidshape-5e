@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard, StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Animated, StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Divider, Tooltip } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
@@ -10,24 +10,45 @@ import TextBox from '../../shared/textbox';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, fontSizeLarge, textColorDisabled, textColorActive, textColorAccent } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorDark, headerColorExtraDark, headerTextColor } from '../../../api/constants';
 
-import { groupBy, sortBy, icon } from '../../../api/util';
+import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
+
+const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 const options = [
 	{ text: 'All', key: '0' },
 	...Array.from(new Array(19), (_, i) => ({ text: `Druid Level ${i + 2}`, key: (i + 2).toString() }))
 ];
 
-export default class BeastsScreen extends React.Component {
+const ExtendedHeader = ({ navigation }) => (
+	<View style={styles.filterContainer}>
+		<TextBox
+			icon={icon('search')}
+			placeholder='Filter Beasts'
+			onChangeText={filter => navigation.setParams({ filter })}
+			value={navigation.getParam('filter', '')}
+			clearButtonMode='always'
+			returnKeyType='search'
+			showCancelButton
+			backgroundColor={headerColorDark}
+			textColor={headerTextColor}
+			cancelButtonColor={headerTextColor}
+			placeholderColor={headerColorExtraDark}
+		/>
+	</View>
+);
+ExtendedHeader.propTypes = { navigation: PropTypes.object };
+
+export default withCollapsible(class BeastsScreen extends React.Component {
 	state = {
-		favs: {},
-		filter: ''
+		favs: {}
 	};
 
 	static propTypes = {
-		navigation: PropTypes.object
+		navigation: PropTypes.object,
+		collapsible: PropTypes.object
 	};
 
 	static navigationOptions = ({ navigation }) => ({
@@ -52,6 +73,8 @@ export default class BeastsScreen extends React.Component {
 						setPref('isMoon', isMoon);
 						Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
 					}}
+					activeColor={headerTextColor}
+					inactiveColor={headerColorDark}
 				/>
 			</View>
 		)
@@ -63,6 +86,10 @@ export default class BeastsScreen extends React.Component {
 
 	get isMoon() {
 		return this.props.navigation.getParam('isMoon', false);
+	}
+
+	get filter() {
+		return this.props.navigation.getParam('filter', '');
 	}
 
 	componentDidMount() {
@@ -83,12 +110,14 @@ export default class BeastsScreen extends React.Component {
 			.filter(([_, isFav]) => isFav)
 			.map(([key]) => getBeast(key));
 
+		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
+
 		return (
-			<SectionList
+			<AnimatedSectionList
 				keyboardShouldPersistTaps='always'
-				sections={this.state.filter ? [{
+				sections={this.filter ? [{
 					data: beasts.map(({ name }) => name)
-						.filter(name => name.toLowerCase().includes(this.state.filter.toLowerCase()))
+						.filter(name => name.toLowerCase().includes(this.filter.toLowerCase()))
 						.sort()
 				}] : [
 					...favorites.length ? [{
@@ -104,21 +133,8 @@ export default class BeastsScreen extends React.Component {
 							data: list.map(({ name }) => name).sort()
 						}))
 				]}
-				ListHeaderComponent={(
-					<View style={styles.filterContainer}>
-						<TextBox
-							icon={icon('search')}
-							placeholder='Filter Beasts'
-							onChangeText={filter => this.setState({ filter })}
-							value={this.state.filter}
-							clearButtonMode='always'
-							returnKeyType='search'
-							showCancelButton
-						/>
-					</View>
-				)}
 				renderSectionHeader={
-					this.state.filter ? null : ({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>
+					this.filter ? null : ({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>
 				}
 				renderItem={
 					({ item }) => (
@@ -131,7 +147,7 @@ export default class BeastsScreen extends React.Component {
 											name={icon('alert')}
 											size={iconSizeLarge}
 											style={styles.margin}
-											color={textColorAccent}
+											color={alertColor}
 										/>
 									</Tooltip>
 								)}
@@ -146,7 +162,7 @@ export default class BeastsScreen extends React.Component {
 										name={icon('star')}
 										size={iconSizeLarge}
 										style={styles.star}
-										color={this.state.favs[item] ? textColorActive : textColorDisabled}
+										color={this.state.favs[item] ? starColor : textColorDisabled}
 									/>
 								</TouchableWithoutFeedback>
 							</View>
@@ -155,10 +171,14 @@ export default class BeastsScreen extends React.Component {
 				}
 				keyExtractor={(_, index) => index}
 				ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
+				contentContainerStyle={{ paddingTop: paddingHeight }}
+				scrollIndicatorInsets={{ top: paddingHeight }}
+				onScroll={onScroll}
+				_mustAddThis={animatedY}
 			/>
 		);
 	}
-}
+}, ExtendedHeader, 60);
 
 const styles = StyleSheet.create({
 	star: {
