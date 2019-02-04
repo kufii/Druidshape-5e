@@ -92,7 +92,19 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		return this.props.navigation.getParam('filter', '');
 	}
 
+	scrollToTop() {
+		this.list && this.list.getNode().scrollToLocation({
+			itemIndex: 0,
+			sectionIndex: 0,
+			viewPosition: 100,
+			animated: true
+		});
+	}
+
 	componentDidMount() {
+		this.props.navigation.setParams({
+			scrollToTop: this.scrollToTop.bind(this)
+		});
 		Promise.all([
 			getPref('level', 0),
 			getPref('isMoon', false),
@@ -114,6 +126,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 
 		return (
 			<AnimatedSectionList
+				ref={list => this.list = list}
 				keyboardShouldPersistTaps='always'
 				sections={this.filter ? [{
 					data: beasts.map(({ name }) => name)
@@ -155,6 +168,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 									onPress={() => this.setState(prev => {
 										const favs = Object.assign(prev.favs, { [item]: !prev.favs[item] });
 										setPref('favs', favs);
+										this._scrollToTop();
 										return { favs };
 									})}
 								>

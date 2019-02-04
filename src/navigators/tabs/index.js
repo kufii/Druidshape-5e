@@ -14,23 +14,41 @@ const createTabIcon = name => {
 	return TabIcon;
 };
 
+const tabBarOnPress = ({ navigation, defaultHandler }) => {
+	const { isFocused, state } = navigation;
+	const { index, routes } = state;
+
+	if (isFocused() && index === 0) {
+		const stackNavigation = routes[0];
+		if (stackNavigation && stackNavigation.params && stackNavigation.params.scrollToTop) {
+			stackNavigation.params.scrollToTop();
+		}
+	} else {
+		defaultHandler(navigation);
+	}
+};
+
+
 export default createBottomTabNavigator({
 	Beasts: {
 		screen: Beasts,
 		navigationOptions: {
-			tabBarIcon: createTabIcon('paw')
+			tabBarIcon: createTabIcon('paw'),
+			tabBarOnPress
 		}
 	},
 	Homebrew: {
 		screen: Homebrew,
 		navigationOptions: {
-			tabBarIcon: createTabIcon('construct')
+			tabBarIcon: createTabIcon('construct'),
+			tabBarOnPress
 		}
 	},
 	Settings: {
 		screen: Settings,
 		navigationOptions: {
-			tabBarIcon: createTabIcon('settings')
+			tabBarIcon: createTabIcon('settings'),
+			tabBarOnPress
 		}
 	}
 }, {
