@@ -10,7 +10,7 @@ import TextBox from '../../shared/textbox';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorDark, headerColorExtraDark, headerTextColor } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
@@ -32,10 +32,11 @@ const ExtendedHeader = ({ navigation }) => (
 			clearButtonMode='always'
 			returnKeyType='search'
 			showCancelButton
-			backgroundColor={headerColorDark}
+			backgroundColor={headerColorLight}
 			textColor={headerTextColor}
 			cancelButtonColor={headerTextColor}
-			placeholderColor={headerColorExtraDark}
+			placeholderColor={headerTextColorFaded}
+			iconColor={headerTextColor}
 		/>
 	</View>
 );

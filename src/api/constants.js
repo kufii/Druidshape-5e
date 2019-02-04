@@ -1,7 +1,8 @@
 export const headerColor = '#388e3c';
 export const headerColorDark = '#2e7d32';
-export const headerColorExtraDark = '#1b5e20';
+export const headerColorLight = '#5fa463';
 export const headerTextColor = '#fff';
+export const headerTextColorFaded = '#afd2b1';
 export const starColor = '#ffd600';
 export const alertColor = '#e53935';
 export const contentBackgroundColor = '#fff';
@@ -15,4 +16,5 @@ export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;
 export const fontSizeLarge = 18;
 export const fontSizeXLarge = 24;
+export const iconSizeMedium = 20;
 export const iconSizeLarge = 28;

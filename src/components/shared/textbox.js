@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import { Platform, Keyboard, StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { textColorSecondary, textColorActive, contentBackgroundColorDark, fontSizeLarge } from '../../api/constants.js';
-
-const customPropTypes = {
-	icon: PropTypes.string,
-	showCancelButton: PropTypes.bool,
-	backgroundColor: PropTypes.string,
-	textColor: PropTypes.string,
-	cancelButtonColor: PropTypes.string,
-	placeholderColor: PropTypes.string
-};
+import { textColorSecondary, textColorActive, contentBackgroundColorDark, fontSizeLarge, iconSizeMedium } from '../../api/constants.js';
 
 export default class TextBox extends React.Component {
 	state = {
@@ -30,7 +21,8 @@ export default class TextBox extends React.Component {
 		backgroundColor: PropTypes.string,
 		textColor: PropTypes.string,
 		cancelButtonColor: PropTypes.string,
-		placeholderColor: PropTypes.string
+		placeholderColor: PropTypes.string,
+		iconColor: PropTypes.string
 	};
 
 	clear() {
@@ -40,13 +32,13 @@ export default class TextBox extends React.Component {
 
 	render() {
 		const { clearButtonMode='never' } = this.props;
-		const { icon, showCancelButton, backgroundColor=contentBackgroundColorDark, textColor='#000', cancelButtonColor=textColorActive, placeholderColor=textColorSecondary, ...other } = this.props;
+		const { icon, showCancelButton, backgroundColor=contentBackgroundColorDark, textColor='#000', cancelButtonColor=textColorActive, placeholderColor=textColorSecondary, iconColor=textColorSecondary, ...other } = this.props;
 
 		return (
 			<View style={styles.container}>
 				<View style={[styles.textContainer, { backgroundColor }]}>
 					{icon ? (
-						<Icon name={icon} color={placeholderColor} size={fontSizeLarge} style={styles.iconLeft} />
+						<Icon name={icon} color={iconColor} size={iconSizeMedium} style={styles.iconLeft} />
 					) : null}
 					<TextInput
 						{...other}
@@ -73,7 +65,7 @@ export default class TextBox extends React.Component {
 									this.input.focus();
 								}}
 							>
-								<Icon name='md-close-circle' color={placeholderColor} size={fontSizeLarge} style={styles.iconRight} />
+								<Icon name='md-close-circle' color={iconColor} size={iconSizeMedium} style={styles.iconRight} />
 							</TouchableOpacity>
 						) : null}
 				</View>
@@ -102,7 +94,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
-		padding: 10,
+		paddingTop: 5,
+		paddingBottom: 5,
+		paddingLeft: 15,
+		paddingRight: 15,
 		borderRadius: 100
 	},
 	iconLeft: {
@@ -114,7 +109,8 @@ const styles = StyleSheet.create({
 	input: {
 		flex: 1,
 		width: '100%',
-		fontSize: fontSizeLarge
+		fontSize: fontSizeLarge,
+		textAlignVertical: 'center'
 	},
 	cancelButton: {
 		fontSize: fontSizeLarge,
