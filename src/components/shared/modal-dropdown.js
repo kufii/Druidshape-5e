@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Platform, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Divider } from 'react-native-elements';
 
-import modalStyles from '../../styles/modal';
 import listStyles from '../../styles/list';
 
-import { fontSizeMedium, fontSizeLarge, headerTextColor } from '../../api/constants';
+import { fontSizeMedium, fontSizeLarge, headerTextColor, contentBackgroundColor } from '../../api/constants';
 
 export default class ModalDropdown extends React.Component {
 	state = { visible: false };
@@ -18,6 +18,10 @@ export default class ModalDropdown extends React.Component {
 		onSelect: PropTypes.func
 	};
 
+	closeModal() {
+		this.setState({ visible: false });
+	}
+
 	getOptionText(key) {
 		return this.props.items.find(i => i.key === key).text;
 	}
@@ -26,33 +30,30 @@ export default class ModalDropdown extends React.Component {
 		return (
 			<>
 				<TouchableOpacity onPress={() => this.setState({ visible: true })}>
-					<View style={styles.container}>
+					<View style={styles.dropdown}>
 						<Text style={styles.text}>{this.getOptionText(this.props.selected)}</Text>
 						<Icon name='ios-arrow-down' size={fontSizeMedium} color={headerTextColor} />
 					</View>
 				</TouchableOpacity>
-				<Modal visible={this.state.visible} transparent onRequestClose={() => null}>
-					<TouchableWithoutFeedback onPress={() => this.setState({ visible: false })}>
-						<View style={modalStyles.container}>
-							<FlatList
-								data={this.props.items}
-								renderItem={({ item }) => (
-									<TouchableOpacity
-										onPress={() => {
-											this.props.onSelect && this.props.onSelect(item.key);
-											this.setState({ visible: false });
-										}}
-									>
-										<View style={listStyles.item}>
-											<Text style={listStyles.itemText}>{item.text}</Text>
-										</View>
-									</TouchableOpacity>
-								)}
-								ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
-								style={modalStyles.content}
-							/>
-						</View>
-					</TouchableWithoutFeedback>
+				<Modal isVisible={this.state.visible} onBackdropPress={() => this.closeModal()} onBackButtonPress={() => this.closeModal()}>
+					<View style={styles.container}>
+						<FlatList
+							data={this.props.items}
+							renderItem={({ item }) => (
+								<TouchableOpacity
+									onPress={() => {
+										this.props.onSelect && this.props.onSelect(item.key);
+										this.closeModal();
+									}}
+								>
+									<View style={listStyles.item}>
+										<Text style={listStyles.itemText}>{item.text}</Text>
+									</View>
+								</TouchableOpacity>
+							)}
+							ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
+						/>
+					</View>
 				</Modal>
 			</>
 		);
@@ -61,6 +62,10 @@ export default class ModalDropdown extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
+		backgroundColor: contentBackgroundColor
+	},
+	dropdown: {
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
