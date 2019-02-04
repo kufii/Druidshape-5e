@@ -168,7 +168,6 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 									onPress={() => this.setState(prev => {
 										const favs = Object.assign(prev.favs, { [item]: !prev.favs[item] });
 										setPref('favs', favs);
-										this._scrollToTop();
 										return { favs };
 									})}
 								>
