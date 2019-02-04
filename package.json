@@ -15,7 +15,8 @@
     "react-native-modal": "^7.0.2",
     "react-native-root-toast": "^3.0.2",
     "react-navigation": "^3.0.9",
-    "react-navigation-collapsible": "^3.0.3"
+    "react-navigation-collapsible": "^3.0.3",
+    "react-navigation-slide-from-right-transition": "^1.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
