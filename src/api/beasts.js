@@ -1,5 +1,7 @@
 import allBeasts from '../data/beasts.json';
 
+const sizes = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
+
 const getModifier = num => Math.floor((num - 10) / 2);
 
 const crToNum = cr => cr.toString().includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
@@ -25,4 +27,4 @@ const getBeasts = (level=0, circleOfTheMoon=false) => {
 
 const getBeast = name => allBeasts.find(b => b.name === name);
 
-export { getModifier, crToNum, getBeasts, getBeast };
+export { sizes, getModifier, crToNum, getBeasts, getBeast };
