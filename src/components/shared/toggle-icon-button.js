@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { textColorSecondary, textColorActive, iconSizeLarge } from '../../api/constants';
+import { textColorSecondary, textColor, iconSizeLarge } from '../../api/constants';
 
 export default function ToggleIconButton(props) {
 	return (
@@ -12,7 +12,7 @@ export default function ToggleIconButton(props) {
 				size={props.size || iconSizeLarge}
 				color={
 					props.active
-						? (props.activeColor || textColorActive)
+						? (props.activeColor || textColor)
 						: (props.inactiveColor || textColorSecondary)}
 			/>
 		</TouchableOpacity>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Platform, Keyboard, StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { textColorSecondary, textColorActive, contentBackgroundColorDark, fontSizeLarge, iconSizeMedium } from '../../api/constants.js';
+import { textboxHeight, textColorSecondary, contentBackgroundColorDark, fontSizeLarge, iconSizeMedium } from '../../api/constants.js';
 
 export default class TextBox extends React.Component {
 	state = {
@@ -32,7 +32,7 @@ export default class TextBox extends React.Component {
 
 	render() {
 		const { clearButtonMode='never' } = this.props;
-		const { icon, showCancelButton, backgroundColor=contentBackgroundColorDark, textColor='#000', cancelButtonColor=textColorActive, placeholderColor=textColorSecondary, iconColor=textColorSecondary, ...other } = this.props;
+		const { icon, showCancelButton, backgroundColor=contentBackgroundColorDark, textColor='#000', cancelButtonColor=textColor, placeholderColor=textColorSecondary, iconColor=textColorSecondary, ...other } = this.props;
 
 		return (
 			<View style={styles.container}>
@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
 		paddingBottom: 5,
 		paddingLeft: 15,
 		paddingRight: 15,
-		borderRadius: 100
+		height: textboxHeight,
+		borderRadius: textboxHeight / 2
 	},
 	iconLeft: {
 		marginRight: 10
