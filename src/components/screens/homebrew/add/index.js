@@ -46,7 +46,6 @@ const options = {
 export default class AddHomebrew extends React.Component {
 	state = {
 		model: {
-			size: 'Medium',
 			speed: 0,
 			climb: 0,
 			swim: 0,

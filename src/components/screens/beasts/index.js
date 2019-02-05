@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Animated, StyleSheet, View, Text, SectionList, TouchableOpacity } from 'react-native';
+import { Platform, Animated, StyleSheet, View, Text, SectionList, TouchableOpacity } from 'react-native';
 import { Divider, Tooltip, SearchBar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
@@ -23,15 +23,21 @@ const options = [
 
 const ExtendedHeader = ({ navigation }) => (
 	<SearchBar
-		round
+		platform={Platform.OS}
 		containerStyle={styles.filterContainer}
 		inputContainerStyle={styles.filter}
 		placeholderTextColor={headerTextColorFaded}
 		color={headerTextColor}
 		clearIcon={styles.filterText}
 		searchIcon={styles.filterText}
+		cancelIcon={styles.filterText}
 		inputStyle={styles.filterText}
 		placeholder='Filter Beasts'
+		cancelButtonTitle='Cancel'
+		cancelButtonProps={{
+			buttonStyle: 'clear',
+			color: headerTextColor
+		}}
 		onChangeText={filter => navigation.setParams({ filter })}
 		value={navigation.getParam('filter', '')}
 	/>
@@ -191,7 +197,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		);
 	}
-}, ExtendedHeader, 56);
+}, ExtendedHeader);
 
 const styles = StyleSheet.create({
 	star: {
@@ -210,13 +216,15 @@ const styles = StyleSheet.create({
 		color: '#fff'
 	},
 	filterContainer: {
-		padding: 10,
-		backgroundColor: 'transparent',
-		borderBottomWidth: 0,
-		borderTopWidth: 0
+		paddingTop: 10,
+		paddingBottom: 10,
+		paddingLeft: Platform.OS === 'android' ? 10 : 0,
+		paddingRight: Platform.OS === 'android' ? 10 : 0,
+		backgroundColor: 'transparent'
 	},
 	filter: {
-		backgroundColor: headerColorLight
+		backgroundColor: headerColorLight,
+		borderRadius: 20
 	},
 	filterText: {
 		color: headerTextColor
