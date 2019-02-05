@@ -166,20 +166,22 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 										/>
 									</Tooltip>
 								)}
-								<TouchableWithoutFeedback
-									onPress={() => this.setState(prev => {
-										const favs = Object.assign(prev.favs, { [item]: !prev.favs[item] });
-										setPref('favs', favs);
-										return { favs };
-									})}
-								>
-									<Icon
-										name={icon('star')}
+								<View style={styles.star}>
+									<ToggleIconButton
+										noFeedback
+										active={this.state.favs[item]}
+										icon={icon('star')}
 										size={iconSizeLarge}
-										style={styles.star}
-										color={this.state.favs[item] ? starColor : textColorDisabled}
+										activeColor={starColor}
+										inactiveColor={textColorDisabled}
+										onToggle={active => this.setState(prev => {
+											const favs = prev.favs;
+											favs[item] = active;
+											setPref('favs', favs);
+											return { favs };
+										})}
 									/>
-								</TouchableWithoutFeedback>
+								</View>
 							</View>
 						</TouchableOpacity>
 					)
