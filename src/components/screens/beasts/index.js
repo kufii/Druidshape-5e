@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Animated, StyleSheet, View, Text, SectionList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { Divider, Tooltip } from 'react-native-elements';
+import { Animated, StyleSheet, View, Text, SectionList, TouchableOpacity } from 'react-native';
+import { Divider, Tooltip, SearchBar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
-import TextBox from '../../shared/textbox';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textboxHeight, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
@@ -23,22 +22,19 @@ const options = [
 ];
 
 const ExtendedHeader = ({ navigation }) => (
-	<View style={styles.filterContainer}>
-		<TextBox
-			icon={icon('search')}
-			placeholder='Filter Beasts'
-			onChangeText={filter => navigation.setParams({ filter })}
-			value={navigation.getParam('filter', '')}
-			clearButtonMode='always'
-			returnKeyType='search'
-			showCancelButton
-			backgroundColor={headerColorLight}
-			textColor={headerTextColor}
-			cancelButtonColor={headerTextColor}
-			placeholderColor={headerTextColorFaded}
-			iconColor={headerTextColor}
-		/>
-	</View>
+	<SearchBar
+		round
+		containerStyle={styles.filterContainer}
+		inputContainerStyle={styles.filter}
+		placeholderTextColor={headerTextColorFaded}
+		color={headerTextColor}
+		clearIcon={styles.filterText}
+		searchIcon={styles.filterText}
+		inputStyle={styles.filterText}
+		placeholder='Filter Beasts'
+		onChangeText={filter => navigation.setParams({ filter })}
+		value={navigation.getParam('filter', '')}
+	/>
 );
 ExtendedHeader.propTypes = { navigation: PropTypes.object };
 
@@ -195,7 +191,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		);
 	}
-}, ExtendedHeader, textboxHeight + 20);
+}, ExtendedHeader, 56);
 
 const styles = StyleSheet.create({
 	star: {
@@ -214,9 +210,15 @@ const styles = StyleSheet.create({
 		color: '#fff'
 	},
 	filterContainer: {
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center',
-		padding: 10
+		padding: 10,
+		backgroundColor: 'transparent',
+		borderBottomWidth: 0,
+		borderTopWidth: 0
+	},
+	filter: {
+		backgroundColor: headerColorLight
+	},
+	filterText: {
+		color: headerTextColor
 	}
 });

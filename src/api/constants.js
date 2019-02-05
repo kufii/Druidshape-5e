@@ -12,7 +12,6 @@ export const textColorSecondary = '#919191';
 export const textColorDisabled = '#e5e5e5';
 export const textColorAccent = '#8a9a5b';
 export const listItemHeight = 44;
-export const textboxHeight = 38;
 export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;
 export const fontSizeLarge = 18;
