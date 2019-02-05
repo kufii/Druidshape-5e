@@ -10,7 +10,7 @@ import TextBox from '../../shared/textbox';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
+import { iconSizeLarge, textboxHeight, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
@@ -193,7 +193,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		);
 	}
-}, ExtendedHeader, 60);
+}, ExtendedHeader, textboxHeight + 20);
 
 const styles = StyleSheet.create({
 	star: {
