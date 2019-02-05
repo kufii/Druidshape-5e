@@ -1,5 +1,5 @@
 export const headerColor = '#388e3c';
-export const headerColorDark = '#2e7d32';
+export const headerColorDark = '#225524';
 export const headerColorLight = '#5fa463';
 export const headerTextColor = '#fff';
 export const headerTextColorFaded = '#afd2b1';
