@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, KeyboardAvoidingView, ScrollView, StatusBar } from 'react-native';
+import { Header } from 'react-navigation';
 
 export const B = props => <Text style={[styles.bold, props.style]}>{props.children}</Text>;
 export const I = props => <Text style={[styles.italic, props.style]}>{props.children}</Text>;
@@ -13,7 +14,16 @@ B.propTypes = I.propTypes = BI.propTypes = {
 export const KeyboardAvoidingScrollView = props => {
 	const { children, ...other } = props;
 	return (
-		<KeyboardAvoidingView style={styles.avoidKeyboard} behavior='padding' enabled keyboardVerticalOffset={100}>
+		<KeyboardAvoidingView
+			style={styles.avoidKeyboard}
+			behavior='padding'
+			enabled
+			keyboardVerticalOffset={
+				Platform.OS === 'android'
+					? Header.HEIGHT + StatusBar.currentHeight
+					: 64
+			}
+		>
 			<ScrollView {...other}>
 				{children}
 			</ScrollView>
