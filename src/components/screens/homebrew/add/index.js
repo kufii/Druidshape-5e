@@ -1,11 +1,20 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import t from 'tcomb-form-native';
+import listTemplate from '../../../../styles/tcomb/list';
+
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
-import { sizes } from '../../../../api/beasts';
 
 const Form = t.form.Form;
-const Size = t.enums.of(sizes, 'Size');
+
+const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
+const ChallengeRating = t.enums.of(['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'], 'ChallengeRating');
+
+const Attribute = t.struct({
+	name: t.String,
+	text: t.String
+}, 'Attribute');
+
 const Beast = t.struct({
 	name: t.String,
 	size: Size,
@@ -22,13 +31,18 @@ const Beast = t.struct({
 	wis: t.Number,
 	cha: t.Number,
 	passive: t.Number,
-	cr: t.String
+	skills: t.maybe(t.String),
+	senses: t.maybe(t.String),
+	cr: ChallengeRating,
+	traits: t.maybe(t.list(Attribute)),
+	actions: t.maybe(t.list(Attribute))
 });
+
 const options = {
 	fields: {
 		hp: { label: 'HP' },
 		roll: { label: 'Hit Dice' },
-		speed: { label: 'Speed (ft.)' },
+		speed: { label: 'pSeed (ft.)' },
 		climb: { label: 'Climb Speed (ft.)' },
 		swim: { label: 'Swim Speed (ft.)' },
 		fly: { label: 'Fly Speed (ft.)' },
@@ -39,7 +53,30 @@ const options = {
 		wis: { label: 'WIS' },
 		cha: { label: 'CHA' },
 		passive: { label: 'Passive Perception' },
-		cr: { label: 'Challenge Rating' }
+		skills: {
+			placeholder: 'e.g. +5 Perception',
+			multiline: true
+		},
+		senses: {
+			placeholder: 'e.g. blindsight 60 ft.'
+		},
+		cr: { label: 'Challenge Rating' },
+		traits: {
+			template: listTemplate,
+			item: {
+				fields: {
+					text: { multiline: true }
+				}
+			}
+		},
+		actions: {
+			template: listTemplate,
+			item: {
+				fields: {
+					text: { multiline: true }
+				}
+			}
+		}
 	}
 };
 
