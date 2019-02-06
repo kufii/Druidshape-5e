@@ -42,7 +42,7 @@ const options = {
 	fields: {
 		hp: { label: 'HP' },
 		roll: { label: 'Hit Dice' },
-		speed: { label: 'pSeed (ft.)' },
+		speed: { label: 'Speed (ft.)' },
 		climb: { label: 'Climb Speed (ft.)' },
 		swim: { label: 'Swim Speed (ft.)' },
 		fly: { label: 'Fly Speed (ft.)' },
