@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, StyleSheet, Text, KeyboardAvoidingView, ScrollView, StatusBar } from 'react-native';
 import { Header } from 'react-navigation';
+import { isIPhoneX } from '../../api/util';
 
 export const B = props => <Text style={[styles.bold, props.style]}>{props.children}</Text>;
 export const I = props => <Text style={[styles.italic, props.style]}>{props.children}</Text>;
@@ -21,7 +22,7 @@ export const KeyboardAvoidingScrollView = props => {
 			keyboardVerticalOffset={
 				Platform.OS === 'android'
 					? Header.HEIGHT + StatusBar.currentHeight
-					: 64
+					: (isIPhoneX ? 84 : 64)
 			}
 		>
 			<ScrollView {...other}>

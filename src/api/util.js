@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 import { withCollapsible as _withCollapsible } from 'react-navigation-collapsible';
 import { isString } from './types';
 import { headerColor } from '../api/constants';
@@ -58,4 +58,6 @@ const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
 	})
 });
 
-export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes, icon, withCollapsible };
+const isIPhoneX = Platform.OS === 'ios' && Dimensions.get('window').height === 812;
+
+export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes, icon, withCollapsible, isIPhoneX };
