@@ -6,6 +6,7 @@ import listTemplate from '../../../../styles/tcomb/list';
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 
 const Form = t.form.Form;
+Form.templates.list = listTemplate;
 
 const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
 const ChallengeRating = t.enums.of(['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'], 'ChallengeRating');
@@ -62,7 +63,6 @@ const options = {
 		},
 		cr: { label: 'Challenge Rating' },
 		traits: {
-			template: listTemplate,
 			item: {
 				fields: {
 					text: { multiline: true }
@@ -70,7 +70,6 @@ const options = {
 			}
 		},
 		actions: {
-			template: listTemplate,
 			item: {
 				fields: {
 					text: { multiline: true }

@@ -47,9 +47,7 @@ const renderRow = item => (
 );
 
 export default function ListTemplate(locals) {
-	if (locals.hidden) {
-		return null;
-	}
+	if (locals.hidden) return null;
 
 	const stylesheet = locals.stylesheet;
 	const fieldsetStyle = stylesheet.fieldset;
@@ -62,12 +60,11 @@ export default function ListTemplate(locals) {
 	const label = locals.label ? (
 		<Text style={controlLabelStyle}>{locals.label}</Text>
 	) : null;
-	const error
-		= locals.hasError && locals.error ? (
-			<Text accessibilityLiveRegion='polite' style={stylesheet.errorBlock}>
-				{locals.error}
-			</Text>
-		) : null;
+	const error = locals.hasError && locals.error ? (
+		<Text accessibilityLiveRegion='polite' style={stylesheet.errorBlock}>
+			{locals.error}
+		</Text>
+	) : null;
 
 	const rows = locals.items.map(item => item.buttons.length === 0
 		? renderRowWithoutButtons(item)
