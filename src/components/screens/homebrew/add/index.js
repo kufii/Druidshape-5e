@@ -5,11 +5,14 @@ import listTemplate from '../../../../styles/tcomb/list';
 
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 
+const sizes = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
+const crs = ['0', '1', '2', '3', '4', '5', '6', '1/8', '1/4', '1/2'];
+
 const Form = t.form.Form;
 Form.templates.list = listTemplate;
 
-const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
-const ChallengeRating = t.enums.of(['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'], 'ChallengeRating');
+const Size = t.enums.of(sizes, 'Size');
+const ChallengeRating = t.enums.of(crs, 'ChallengeRating');
 
 const Attribute = t.struct({
 	name: t.String,
@@ -76,7 +79,10 @@ const options = {
 		senses: {
 			placeholder: 'e.g. blindsight 60 ft.'
 		},
-		cr: { label: 'Challenge Rating' },
+		cr: {
+			label: 'Challenge Rating',
+			disableOrder: true
+		},
 		traits: attributeListConfig,
 		actions: attributeListConfig
 	}

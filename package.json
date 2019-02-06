@@ -7,7 +7,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^32.0.0",
+    "expo": "^32.0.4",
     "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
@@ -15,7 +15,7 @@
     "react-native-elements": "^1.0.0",
     "react-native-modal": "^7.0.2",
     "react-native-root-toast": "^3.0.2",
-    "react-navigation": "^3.0.9",
+    "react-navigation": "^3.1.5",
     "react-navigation-collapsible": "^3.0.3",
     "react-navigation-slide-from-right-transition": "^1.0.4",
     "tcomb-form-native": "^0.6.20"
