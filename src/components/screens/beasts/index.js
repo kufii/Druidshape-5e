@@ -170,7 +170,6 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 								)}
 								<View style={styles.star}>
 									<ToggleIconButton
-										noFeedback
 										active={this.state.favs[item]}
 										icon={icon('star')}
 										size={iconSizeLarge}
