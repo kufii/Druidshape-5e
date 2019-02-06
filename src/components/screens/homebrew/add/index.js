@@ -15,6 +15,21 @@ const Attribute = t.struct({
 	name: t.String,
 	text: t.String
 }, 'Attribute');
+const attributeListConfig = {
+	item: {
+		auto: 'none',
+		fields: {
+			name: {
+				auto: 'labels',
+				multiline: true
+			},
+			text: {
+				auto: 'labels',
+				multiline: true
+			}
+		}
+	}
+};
 
 const Beast = t.struct({
 	name: t.String,
@@ -62,20 +77,8 @@ const options = {
 			placeholder: 'e.g. blindsight 60 ft.'
 		},
 		cr: { label: 'Challenge Rating' },
-		traits: {
-			item: {
-				fields: {
-					text: { multiline: true }
-				}
-			}
-		},
-		actions: {
-			item: {
-				fields: {
-					text: { multiline: true }
-				}
-			}
-		}
+		traits: attributeListConfig,
+		actions: attributeListConfig
 	}
 };
 
