@@ -5,11 +5,14 @@ import { Button } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import listTemplate from '../../../../styles/tcomb/list';
 
+import LoadingScreen from '../../../shared/loading-screen';
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import { formButtonColor } from '../../../../api/constants';
 
+import { refreshHomebrew, addHomebrew, getBeasts } from '../../../../api/beasts';
+
 const sizes = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
-const crs = ['0', '1', '2', '3', '4', '5', '6', '1/8', '1/4', '1/2'];
+const crs = ['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'];
 
 const Form = t.form.Form;
 Form.templates.list = listTemplate;
@@ -40,6 +43,7 @@ const attributeListConfig = {
 const Beast = t.struct({
 	name: t.String,
 	size: Size,
+	ac: t.Number,
 	hp: t.Number,
 	roll: t.String,
 	speed: t.Number,
@@ -62,10 +66,12 @@ const Beast = t.struct({
 
 const options = {
 	fields: {
+		ac: { label: 'Armor Class' },
 		hp: { label: 'HP' },
 		roll: {
 			label: 'Hit Dice',
-			placeholder: 'e.g. 2d8 + 2'
+			placeholder: 'e.g. 2d8 + 2',
+			autoCapitalize: 'none'
 		},
 		speed: { label: 'Speed (ft.)' },
 		climb: { label: 'Climb Speed (ft.)' },
@@ -97,6 +103,8 @@ const options = {
 
 export default class AddHomebrew extends React.Component {
 	state = {
+		isLoading: true,
+		beasts: [],
 		model: {
 			speed: 0,
 			climb: 0,
@@ -116,18 +124,26 @@ export default class AddHomebrew extends React.Component {
 	};
 
 	submit() {
-		const value = this.form.getValue();
-		if (value) {
+		const beast = this.form.getValue();
+		if (beast) {
+			addHomebrew(beast);
 			this.props.navigation.dismiss();
 		}
 	}
 
 	validate(key) {
-		this.form.getComponent(key).validate();
+		const component = this.form.getComponent(key);
+		if (component) {
+			component.validate();
+		}
+	}
+
+	componentDidMount() {
+		refreshHomebrew().then(() => this.setState({ beasts: getBeasts(), isLoading: false }));
 	}
 
 	render() {
-		return (
+		return this.state.isLoading ? <LoadingScreen /> : (
 			<View style={styles.container}>
 				<KeyboardAvoidingScrollView contentContainerStyle={styles.form}>
 					<Form

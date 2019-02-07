@@ -13,7 +13,7 @@ import listStyles from '../../../styles/list';
 import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
-import { getBeasts, crToNum, getBeast } from '../../../api/beasts';
+import { refreshHomebrew, getBeasts, crToNum, getBeast } from '../../../api/beasts';
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
@@ -114,7 +114,8 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		Promise.all([
 			getPref('level', 0),
 			getPref('isMoon', false),
-			getPref('favs', {})
+			getPref('favs', {}),
+			refreshHomebrew()
 		]).then(([level, isMoon, favs]) => {
 			this.props.navigation.setParams({ level, isMoon });
 			this.setState({ favs, isLoading: false });
