@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { textColorSecondary, textColor, iconSizeLarge } from '../../api/constants';
@@ -7,6 +8,7 @@ import { textColorSecondary, textColor, iconSizeLarge } from '../../api/constant
 export default function ToggleIconButton(props) {
 	return (
 		<Button
+			buttonStyle={styles.button}
 			type='clear'
 			icon={
 				<Icon
@@ -30,3 +32,7 @@ ToggleIconButton.propTypes = {
 	activeColor: PropTypes.string,
 	inactiveColor: PropTypes.string
 };
+
+const styles = StyleSheet.create({
+	button: { padding: 0 }
+});

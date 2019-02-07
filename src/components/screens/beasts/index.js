@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, Animated, StyleSheet, View, Text, SectionList, TouchableOpacity } from 'react-native';
-import { Divider, Tooltip, SearchBar } from 'react-native-elements';
+import { Divider, Tooltip, SearchBar, ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
@@ -70,7 +70,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		),
 		headerRight: (
-			<View style={styles.margin}>
+			<View style={styles.marginLarge}>
 				<ToggleIconButton
 					icon={icon('moon')}
 					active={navigation.getParam('isMoon', false)}
@@ -158,40 +158,44 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 				}
 				renderItem={
 					({ item }) => (
-						<TouchableOpacity onPress={() => this.props.navigation.navigate('Details', { beast: item })}>
-							<View style={listStyles.item}>
-								<Text style={listStyles.itemText}>{item}</Text>
-								{!beasts.find(b => b.name === item) && (
-									<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
-										<Icon
-											name={icon('alert')}
-											size={iconSizeLarge}
-											style={styles.margin}
-											color={alertColor}
-										/>
-									</Tooltip>
-								)}
-								<View style={styles.star}>
-									<ToggleIconButton
-										active={this.state.favs[item]}
-										icon={icon('star')}
-										size={iconSizeLarge}
-										activeColor={starColor}
-										inactiveColor={textColorDisabled}
-										onToggle={active => this.setState(prev => {
-											const favs = prev.favs;
-											favs[item] = active;
-											setPref('favs', favs);
-											return { favs };
-										})}
-									/>
+						<ListItem
+							onPress={() => this.props.navigation.navigate('Details', { beast: item })}
+							title={(
+								<View style={styles.row}>
+									<Text style={listStyles.itemText}>{item}</Text>
+									{!beasts.find(b => b.name === item) && (
+										<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
+											<Icon
+												name={icon('alert')}
+												size={iconSizeLarge}
+												style={styles.margin}
+												color={alertColor}
+											/>
+										</Tooltip>
+									)}
 								</View>
-							</View>
-						</TouchableOpacity>
+							)}
+							titleStyle={listStyles.itemText}
+							rightIcon={(
+								<ToggleIconButton
+									active={this.state.favs[item]}
+									icon={icon('star')}
+									size={iconSizeLarge}
+									activeColor={starColor}
+									inactiveColor={textColorDisabled}
+									onToggle={active => this.setState(prev => {
+										const favs = prev.favs;
+										favs[item] = active;
+										setPref('favs', favs);
+										return { favs };
+									})}
+								/>
+							)}
+						/>
 					)
 				}
 				keyExtractor={(_, index) => index}
-				ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
+				ItemSeparatorComponent={() => <Divider />}
 				contentContainerStyle={{ paddingTop: paddingHeight }}
 				scrollIndicatorInsets={{ top: paddingHeight }}
 				onScroll={onScroll}
@@ -202,8 +206,8 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 }, ExtendedHeader);
 
 const styles = StyleSheet.create({
-	star: {
-		marginLeft: 'auto'
+	row: {
+		flexDirection: 'row'
 	},
 	margin: {
 		marginLeft: 10,
