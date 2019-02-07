@@ -115,8 +115,15 @@ export default class AddHomebrew extends React.Component {
 		gesturesEnabled: false
 	};
 
-	routerWillLeave() {
-		return 'You have unsaved changes. Are you sure?';
+	submit() {
+		const value = this.form.getValue();
+		if (value) {
+			this.props.navigation.dismiss();
+		}
+	}
+
+	validate(key) {
+		this.form.getComponent(key).validate();
 	}
 
 	render() {
@@ -128,7 +135,10 @@ export default class AddHomebrew extends React.Component {
 						type={Beast}
 						options={options}
 						value={this.state.model}
-						onChange={model => this.setState({ model })}
+						onChange={(model, key) => {
+							this.validate(key);
+							this.setState({ model });
+						}}
 					/>
 				</KeyboardAvoidingScrollView>
 				<View style={styles.buttons}>
@@ -144,6 +154,7 @@ export default class AddHomebrew extends React.Component {
 						type='clear'
 						containerStyle={[styles.button, styles.saveButton]}
 						titleStyle={styles.saveButtonTitle}
+						onPress={() => this.submit()}
 					/>
 				</View>
 			</View>
