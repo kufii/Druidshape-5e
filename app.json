@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.adpyke.wildshape",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.adpyke.wildshape"
     }
   }
 }
