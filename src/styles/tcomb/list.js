@@ -8,9 +8,21 @@ import { icon } from '../../api/util';
 
 const renderRowWithoutButtons = item => <View key={item.key}>{item.input}</View>;
 
-const renderRowButton = ({ type, click }) => type === 'add' ? (
-	<Button key={type} buttonStyle={styles.button} onPress={click} title='Add' />
-) : (
+const renderAddButton = ({ click }) => (
+	<Button
+		key='add'
+		type='outline'
+		buttonStyle={[styles.marginBottom, styles.addButton]}
+		onPress={click}
+		title='Add'
+		titleStyle={styles.button}
+	/>
+);
+renderAddButton.propTypes = {
+	click: PropTypes.func
+};
+
+const renderRowButton = ({ type, click }) => (
 	<Button
 		key={type}
 		type='clear'
@@ -41,7 +53,7 @@ const renderButtonGroup = buttons => (
 );
 
 const renderRow = item => (
-	<Card key={item.key} title={renderButtonGroup(item.buttons)} containerStyle={styles.card}>
+	<Card key={item.key} title={renderButtonGroup(item.buttons)} containerStyle={styles.marginBottom}>
 		<View style={styles.flex}>{item.input}</View>
 	</Card>
 );
@@ -70,7 +82,7 @@ export default function ListTemplate(locals) {
 		? renderRowWithoutButtons(item)
 		: renderRow(item));
 
-	const addButton = locals.add ? renderRowButton(locals.add) : null;
+	const addButton = locals.add ? renderAddButton(locals.add) : null;
 
 	return (
 		<View style={fieldsetStyle}>
@@ -85,15 +97,18 @@ export default function ListTemplate(locals) {
 const styles = StyleSheet.create({
 	flex: { flex: 1 },
 	row: { flexDirection: 'row' },
-	button: {
-		backgroundColor: formButtonColor
+	marginBottom: {
+		marginBottom: 10
 	},
 	iconButton: {
 		marginLeft: 2,
 		marginRight: 2,
 		borderRadius: 100
 	},
-	card: {
-		marginBottom: 10
+	addButton: {
+		borderColor: formButtonColor
+	},
+	button: {
+		color: formButtonColor
 	}
 });

@@ -18,7 +18,7 @@ export default class HomebrewScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<ActionButton onPress={() => this.props.navigation.navigate('AddHomebrew')} degrees={0}>
+				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewAdd')} degrees={0}>
 					<Icon name={icon('add')} size={iconSizeMedium} color={textColorHeader} />
 				</ActionButton>
 			</View>

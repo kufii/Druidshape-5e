@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
+import LoadingScreen from '../../shared/loading-screen';
 import { getPref, setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
@@ -46,6 +47,7 @@ ExtendedHeader.propTypes = { navigation: PropTypes.object };
 
 export default withCollapsible(class BeastsScreen extends React.Component {
 	state = {
+		isLoading: true,
 		favs: {}
 	};
 
@@ -115,7 +117,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			getPref('favs', {})
 		]).then(([level, isMoon, favs]) => {
 			this.props.navigation.setParams({ level, isMoon });
-			this.setState({ favs });
+			this.setState({ favs, isLoading: false });
 		});
 	}
 
@@ -128,7 +130,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
-		return (
+		return this.state.isLoading ? <LoadingScreen /> : (
 			<AnimatedSectionList
 				ref={list => this.list = list}
 				keyboardShouldPersistTaps='always'
