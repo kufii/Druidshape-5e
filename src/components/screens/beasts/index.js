@@ -68,7 +68,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		),
 		headerRight: (
-			<View style={styles.marginLarge}>
+			<View style={styles.margin}>
 				<ToggleIconButton
 					icon={icon('moon')}
 					active={navigation.getParam('isMoon', false)}
@@ -200,8 +200,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 
 const styles = StyleSheet.create({
 	star: {
-		marginLeft: 'auto',
-		marginRight: 10
+		marginLeft: 'auto'
 	},
 	margin: {
 		marginLeft: 10,
