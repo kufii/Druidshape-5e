@@ -24,7 +24,7 @@
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.13.0",
-    "eslint-config-adpyke-react-native": "^1.0.6",
+    "eslint-config-adpyke-react-native": "^1.0.7",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-native": "^3.6.0"
   },
