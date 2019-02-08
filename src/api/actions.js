@@ -1,4 +1,4 @@
-import { getPref } from './user-prefs';
+import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
 
 export const initialState = {
@@ -23,7 +23,12 @@ export const actions = (update, states) => ({
 		const favs = states().favs;
 		favs[name] = !favs[name];
 		update({ favs });
+		setPref('favs', favs);
 	},
-	addHomebrew: beast => update({ homebrew: [...states().homebrew, beast] }),
+	addHomebrew: beast => {
+		const homebrew = [...states().homebrew, beast];
+		update({ homebrew });
+		setPref('homebrew', homebrew);
+	},
 	getAllBeasts: () => [...states().beasts, ...states().homebrew]
 });
