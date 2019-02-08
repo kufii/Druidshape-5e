@@ -6,7 +6,7 @@ import { B, I, BI } from '../../shared/helper';
 
 import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants';
 
-import { getModifier, getBeast } from '../../../api/beasts';
+import { getModifier } from '../../../api/beasts';
 
 const getSpeedString = beast => {
 	let out = `${beast.speed} ft.`;
@@ -28,8 +28,16 @@ export default class DetailsScreen extends React.Component {
 		navigation: PropTypes.object
 	};
 
+	get actions() {
+		return this.props.navigation.getParam('actions');
+	}
+
+	get beastName() {
+		return this.props.navigation.getParam('beast');
+	}
+
 	render() {
-		const beast = getBeast(this.props.navigation.getParam('beast'));
+		const beast = this.actions.getAllBeasts().find(b => b.name === this.beastName);
 		return (
 			<ScrollView style={styles.container} contentContainerStyle={styles.containerContent}>
 				<Text style={styles.header1}>{beast.name}</Text>

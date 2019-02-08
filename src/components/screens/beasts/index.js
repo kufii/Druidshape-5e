@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, Animated, StyleSheet, View, Text, SectionList, TouchableOpacity } from 'react-native';
+import { Platform, Animated, StyleSheet, View, Text, SectionList } from 'react-native';
 import { Divider, Tooltip, SearchBar, ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
-import LoadingScreen from '../../shared/loading-screen';
-import { getPref, setPref } from '../../../api/user-prefs';
+import { setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
 import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
-import { refreshHomebrew, getBeasts, crToNum, getBeast } from '../../../api/beasts';
+import { filterBeasts, crToNum } from '../../../api/beasts';
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
@@ -46,12 +45,8 @@ const ExtendedHeader = ({ navigation }) => (
 ExtendedHeader.propTypes = { navigation: PropTypes.object };
 
 export default withCollapsible(class BeastsScreen extends React.Component {
-	state = {
-		isLoading: true,
-		favs: {}
-	};
-
 	static propTypes = {
+		screenProps: PropTypes.object,
 		navigation: PropTypes.object,
 		collapsible: PropTypes.object
 	};
@@ -108,30 +103,28 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 	}
 
 	componentDidMount() {
+		const { state } = this.props.screenProps;
+		const { level, isMoon } = state;
 		this.props.navigation.setParams({
+			level,
+			isMoon,
 			scrollToTop: this.scrollToTop.bind(this)
-		});
-		Promise.all([
-			getPref('level', 0),
-			getPref('isMoon', false),
-			getPref('favs', {}),
-			refreshHomebrew()
-		]).then(([level, isMoon, favs]) => {
-			this.props.navigation.setParams({ level, isMoon });
-			this.setState({ favs, isLoading: false });
 		});
 	}
 
 	render() {
-		const beasts = getBeasts(this.level, this.isMoon);
+		const { state, actions } = this.props.screenProps;
+
+		const allBeasts = actions.getAllBeasts();
+		const beasts = filterBeasts(allBeasts, this.level, this.isMoon);
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
-		const favorites = Object.entries(this.state.favs)
+		const favorites = Object.entries(state.favs)
 			.filter(([_, isFav]) => isFav)
-			.map(([key]) => getBeast(key));
+			.map(([key]) => allBeasts.find(b => b.name === key));
 
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
-		return this.state.isLoading ? <LoadingScreen /> : (
+		return (
 			<AnimatedSectionList
 				ref={list => this.list = list}
 				keyboardShouldPersistTaps='always'
@@ -159,7 +152,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 				renderItem={
 					({ item }) => (
 						<ListItem
-							onPress={() => this.props.navigation.navigate('Details', { beast: item })}
+							onPress={() => this.props.navigation.navigate('Details', { beast: item, state, actions })}
 							title={(
 								<View style={styles.row}>
 									<Text style={listStyles.itemText}>{item}</Text>
@@ -178,17 +171,12 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 							titleStyle={listStyles.itemText}
 							rightIcon={(
 								<ToggleIconButton
-									active={this.state.favs[item]}
+									active={state.favs[item]}
 									icon={icon('star')}
 									size={iconSizeLarge}
 									activeColor={starColor}
 									inactiveColor={textColorDisabled}
-									onToggle={active => this.setState(prev => {
-										const favs = prev.favs;
-										favs[item] = active;
-										setPref('favs', favs);
-										return { favs };
-									})}
+									onToggle={() => actions.toggleFav(item)}
 								/>
 							)}
 						/>

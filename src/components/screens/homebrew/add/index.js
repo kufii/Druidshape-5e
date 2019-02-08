@@ -5,11 +5,8 @@ import { Button } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import listTemplate from '../../../../styles/tcomb/list';
 
-import LoadingScreen from '../../../shared/loading-screen';
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import { formButtonColor } from '../../../../api/constants';
-
-import { refreshHomebrew, addHomebrew, getBeasts } from '../../../../api/beasts';
 
 const sizes = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
 const crs = ['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'];
@@ -103,8 +100,6 @@ const options = {
 
 export default class AddHomebrew extends React.Component {
 	state = {
-		isLoading: true,
-		beasts: [],
 		model: {
 			speed: 0,
 			climb: 0,
@@ -123,10 +118,14 @@ export default class AddHomebrew extends React.Component {
 		gesturesEnabled: false
 	};
 
+	get actions() {
+		return this.props.navigation.getParam('actions');
+	}
+
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
-			addHomebrew(beast);
+			this.actions.addHomebrew(beast);
 			this.props.navigation.dismiss();
 		}
 	}
@@ -138,12 +137,8 @@ export default class AddHomebrew extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		refreshHomebrew().then(() => this.setState({ beasts: getBeasts(), isLoading: false }));
-	}
-
 	render() {
-		return this.state.isLoading ? <LoadingScreen /> : (
+		return (
 			<View style={styles.container}>
 				<KeyboardAvoidingScrollView contentContainerStyle={styles.form}>
 					<Form

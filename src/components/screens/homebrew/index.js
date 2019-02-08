@@ -4,19 +4,13 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import LoadingScreen from '../../shared/loading-screen';
-import { getPref } from '../../../api/user-prefs';
 import { icon } from '../../../api/util';
 import listStyles from '../../../styles/list';
 import { iconSizeMedium, iconSizeLarge, textColorHeader, contentBackgroundColorDark, listIconColor } from '../../../api/constants';
 
 export default class HomebrewScreen extends React.Component {
-	state = {
-		isLoading: true,
-		homebrew: []
-	};
-
 	static propTypes = {
+		screenProps: PropTypes.object,
 		navigation: PropTypes.object
 	};
 
@@ -24,15 +18,13 @@ export default class HomebrewScreen extends React.Component {
 		title: 'Homebrew'
 	};
 
-	componentDidMount() {
-		getPref('homebrew', []).then(homebrew => this.setState({ homebrew, isLoading: false }));
-	}
-
 	render() {
-		return this.state.isLoading ? <LoadingScreen /> : (
+		const { state, actions } = this.props.screenProps;
+
+		return (
 			<View style={styles.container}>
 				<FlatList
-					data={this.state.homebrew.map(({ name }) => name).sort()}
+					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<ListItem
 							title={item}
@@ -45,7 +37,7 @@ export default class HomebrewScreen extends React.Component {
 					keyExtractor={(item, index) => index.toString()}
 					ItemSeparatorComponent={() => <Divider />}
 				/>
-				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewAdd')} degrees={0}>
+				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions })} degrees={0}>
 					<Icon name={icon('add')} size={iconSizeMedium} color={textColorHeader} />
 				</ActionButton>
 			</View>

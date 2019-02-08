@@ -1,23 +1,9 @@
-import beasts from '../data/beasts.json';
-import { getPref, setPref } from './user-prefs';
+export const getModifier = num => Math.floor((num - 10) / 2);
 
-let homebrew = [];
+export const crToNum = cr => cr.toString().includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
 
-const refreshHomebrew = async() => homebrew = await getPref('homebrew', []);
-
-const addHomebrew = async beast => {
-	homebrew.push(beast);
-	await setPref('homebrew', homebrew);
-};
-
-const allBeasts = () => beasts.concat(homebrew);
-
-const getModifier = num => Math.floor((num - 10) / 2);
-
-const crToNum = cr => cr.toString().includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
-
-const getBeasts = (level=0, circleOfTheMoon=false) => {
-	if (level <= 0) return allBeasts();
+export const filterBeasts = (beasts, level=0, circleOfTheMoon=false) => {
+	if (level <= 0) return beasts.slice();
 	if (level === 1) return [];
 
 	const maxCr = circleOfTheMoon
@@ -28,13 +14,9 @@ const getBeasts = (level=0, circleOfTheMoon=false) => {
 	const canSwim = level >= 4;
 	const canFly = level >= 8;
 
-	let beasts = allBeasts().filter(({ cr }) => crToNum(cr) <= maxCr);
-	if (!canSwim) beasts = beasts.filter(b => !b.swim);
-	if (!canFly) beasts = beasts.filter(b => !b.fly);
+	let filtered = beasts.slice().filter(({ cr }) => crToNum(cr) <= maxCr);
+	if (!canSwim) filtered = filtered.filter(b => !b.swim);
+	if (!canFly) filtered = filtered.filter(b => !b.fly);
 
-	return beasts;
+	return filtered;
 };
-
-const getBeast = name => allBeasts().find(b => b.name === name);
-
-export { refreshHomebrew, addHomebrew, getModifier, crToNum, getBeasts, getBeast };
