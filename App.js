@@ -9,7 +9,7 @@ setExpoStatusBarHeight(Constants.statusBarHeight);
 
 const AppContainer = createAppContainer(Root);
 
-export default function Tab() {
+export default function App() {
 	StatusBar.setBarStyle('light-content');
 	return <AppContainer />;
 }
