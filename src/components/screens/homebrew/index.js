@@ -18,12 +18,23 @@ export default class HomebrewScreen extends React.Component {
 		title: 'Homebrew'
 	};
 
+	scrollToTop() {
+		this.list && this.list.scrollToIndex({ index: 0 });
+	}
+
+	componentDidMount() {
+		this.props.navigation.setParams({
+			scrollToTop: this.scrollToTop.bind(this)
+		});
+	}
+
 	render() {
 		const { state, actions } = this.props.screenProps;
 
 		return (
 			<View style={styles.container}>
 				<FlatList
+					ref={list => this.list = list}
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<ListItem
