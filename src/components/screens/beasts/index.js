@@ -201,7 +201,8 @@ const styles = StyleSheet.create({
 		backgroundColor: contentBackgroundColorDark
 	},
 	row: {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		alignItems: 'center'
 	},
 	margin: {
 		marginLeft: 10,
