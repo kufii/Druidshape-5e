@@ -9,7 +9,7 @@ import ToggleIconButton from '../../shared/toggle-icon-button';
 import { setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor, contentBackgroundColorDark } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { filterBeasts, crToNum } from '../../../api/beasts';
@@ -125,75 +125,81 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
 		return (
-			<AnimatedSectionList
-				ref={list => this.list = list}
-				keyboardShouldPersistTaps='always'
-				sections={this.filter ? [{
-					data: beasts.map(({ name }) => name)
-						.filter(name => name.toLowerCase().includes(this.filter.toLowerCase()))
-						.sort()
-				}] : [
-					...favorites.length ? [{
-						title: 'FAVORITES',
-						data: favorites.map(({ name }) => name).sort()
-					}] : [],
-					...Object.entries(beastsByCr)
-						.sort(sortBy(
-							([cr]) => crToNum(cr)
-						))
-						.map(([cr, list]) => ({
-							title: `CR ${cr}`,
-							data: list.map(({ name }) => name).sort()
-						}))
-				]}
-				renderSectionHeader={
-					this.filter ? null : ({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>
-				}
-				renderItem={
-					({ item }) => (
-						<ListItem
-							onPress={() => this.props.navigation.navigate('Details', { beast: item, state, actions })}
-							title={(
-								<View style={styles.row}>
-									<Text style={listStyles.itemText}>{item}</Text>
-									{!beasts.find(b => b.name === item) && (
-										<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
-											<Icon
-												name={icon('alert')}
-												size={iconSizeLarge}
-												style={styles.margin}
-												color={alertColor}
-											/>
-										</Tooltip>
-									)}
-								</View>
-							)}
-							titleStyle={listStyles.itemText}
-							rightIcon={(
-								<ToggleIconButton
-									active={state.favs[item]}
-									icon={icon('star')}
-									size={iconSizeLarge}
-									activeColor={starColor}
-									inactiveColor={textColorDisabled}
-									onToggle={() => actions.toggleFav(item)}
-								/>
-							)}
-						/>
-					)
-				}
-				keyExtractor={(_, index) => index}
-				ItemSeparatorComponent={() => <Divider />}
-				contentContainerStyle={{ paddingTop: paddingHeight }}
-				scrollIndicatorInsets={{ top: paddingHeight }}
-				onScroll={onScroll}
-				_mustAddThis={animatedY}
-			/>
+			<View style={styles.container}>
+				<AnimatedSectionList
+					ref={list => this.list = list}
+					keyboardShouldPersistTaps='always'
+					sections={this.filter ? [{
+						data: beasts.map(({ name }) => name)
+							.filter(name => name.toLowerCase().includes(this.filter.toLowerCase()))
+							.sort()
+					}] : [
+						...favorites.length ? [{
+							title: 'FAVORITES',
+							data: favorites.map(({ name }) => name).sort()
+						}] : [],
+						...Object.entries(beastsByCr)
+							.sort(sortBy(
+								([cr]) => crToNum(cr)
+							))
+							.map(([cr, list]) => ({
+								title: `CR ${cr}`,
+								data: list.map(({ name }) => name).sort()
+							}))
+					]}
+					renderSectionHeader={
+						this.filter ? null : ({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>
+					}
+					renderItem={
+						({ item }) => (
+							<ListItem
+								onPress={() => this.props.navigation.navigate('Details', { beast: item, state, actions })}
+								title={(
+									<View style={styles.row}>
+										<Text style={listStyles.itemText}>{item}</Text>
+										{!beasts.find(b => b.name === item) && (
+											<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
+												<Icon
+													name={icon('alert')}
+													size={iconSizeLarge}
+													style={styles.margin}
+													color={alertColor}
+												/>
+											</Tooltip>
+										)}
+									</View>
+								)}
+								titleStyle={listStyles.itemText}
+								rightIcon={(
+									<ToggleIconButton
+										active={state.favs[item]}
+										icon={icon('star')}
+										size={iconSizeLarge}
+										activeColor={starColor}
+										inactiveColor={textColorDisabled}
+										onToggle={() => actions.toggleFav(item)}
+									/>
+								)}
+							/>
+						)
+					}
+					keyExtractor={(_, index) => index}
+					ItemSeparatorComponent={() => <Divider />}
+					contentContainerStyle={{ paddingTop: paddingHeight }}
+					scrollIndicatorInsets={{ top: paddingHeight }}
+					onScroll={onScroll}
+					_mustAddThis={animatedY}
+				/>
+			</View>
 		);
 	}
 }, ExtendedHeader);
 
 const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: contentBackgroundColorDark
+	},
 	row: {
 		flexDirection: 'row'
 	},
