@@ -46,8 +46,7 @@ const options = {
 		cha: { label: 'CHA' },
 		passive: { label: 'Passive Perception' },
 		skills: {
-			placeholder: 'e.g. +5 Perception',
-			multiline: true
+			placeholder: 'e.g. +5 Perception'
 		},
 		senses: {
 			placeholder: 'e.g. blindsight 60 ft.',
