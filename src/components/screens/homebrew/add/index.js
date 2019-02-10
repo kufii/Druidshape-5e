@@ -16,8 +16,7 @@ const attributeListConfig = {
 		auto: 'none',
 		fields: {
 			name: {
-				auto: 'labels',
-				multiline: true
+				auto: 'labels'
 			},
 			text: {
 				auto: 'labels',
