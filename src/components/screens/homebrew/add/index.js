@@ -8,19 +8,9 @@ import listTemplate from '../../../../styles/tcomb/list';
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import { formButtonColor } from '../../../../api/constants';
 
-const sizes = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
-const crs = ['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'];
-
 const Form = t.form.Form;
 Form.templates.list = listTemplate;
 
-const Size = t.enums.of(sizes, 'Size');
-const ChallengeRating = t.enums.of(crs, 'ChallengeRating');
-
-const Attribute = t.struct({
-	name: t.String,
-	text: t.String
-}, 'Attribute');
 const attributeListConfig = {
 	item: {
 		auto: 'none',
@@ -36,31 +26,6 @@ const attributeListConfig = {
 		}
 	}
 };
-
-const Beast = t.struct({
-	name: t.String,
-	size: Size,
-	ac: t.Number,
-	hp: t.Number,
-	roll: t.String,
-	speed: t.Number,
-	climb: t.Number,
-	swim: t.Number,
-	fly: t.Number,
-	str: t.Number,
-	dex: t.Number,
-	con: t.Number,
-	int: t.Number,
-	wis: t.Number,
-	cha: t.Number,
-	passive: t.Number,
-	skills: t.maybe(t.String),
-	senses: t.maybe(t.String),
-	cr: ChallengeRating,
-	traits: t.maybe(t.list(Attribute)),
-	actions: t.maybe(t.list(Attribute))
-});
-
 const options = {
 	fields: {
 		ac: { label: 'Armor Class' },
@@ -99,15 +64,6 @@ const options = {
 };
 
 export default class AddHomebrew extends React.Component {
-	state = {
-		model: {
-			speed: 0,
-			climb: 0,
-			swim: 0,
-			fly: 0
-		}
-	};
-
 	static propTypes = {
 		navigation: PropTypes.object
 	};
@@ -118,8 +74,59 @@ export default class AddHomebrew extends React.Component {
 		gesturesEnabled: false
 	};
 
-	get actions() {
-		return this.props.navigation.getParam('actions');
+	constructor(props) {
+		super(props);
+
+		const actions = props.navigation.getParam('actions');
+		const state = props.navigation.getParam('state');
+		const beasts = actions.getAllBeasts().filter(b => b.name !== this.edit);
+
+		const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
+		const ChallengeRating = t.enums.of(['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'], 'ChallengeRating');
+
+		const Attribute = t.struct({
+			name: t.String,
+			text: t.String
+		}, 'Attribute');
+
+		const Name = t.refinement(t.String, n => !beasts.find(b => b.name === n));
+		Name.getValidationErrorMessage = value => value && 'A beast with that name already exists';
+
+		const struct = t.struct({
+			name: Name,
+			size: Size,
+			ac: t.Number,
+			hp: t.Number,
+			roll: t.String,
+			speed: t.Number,
+			climb: t.Number,
+			swim: t.Number,
+			fly: t.Number,
+			str: t.Number,
+			dex: t.Number,
+			con: t.Number,
+			int: t.Number,
+			wis: t.Number,
+			cha: t.Number,
+			passive: t.Number,
+			skills: t.maybe(t.String),
+			senses: t.maybe(t.String),
+			cr: ChallengeRating,
+			traits: t.maybe(t.list(Attribute)),
+			actions: t.maybe(t.list(Attribute))
+		});
+
+		const model = this.edit && state.homebrew.find(h => h.name === this.edit);
+
+		this.state = {
+			struct,
+			model: model || {
+				speed: 0,
+				climb: 0,
+				swim: 0,
+				fly: 0
+			}
+		};
 	}
 
 	get edit() {
@@ -129,10 +136,11 @@ export default class AddHomebrew extends React.Component {
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
+			const actions = this.props.navigation.getParam('actions');
 			if (this.edit) {
-				this.actions.editHomebrew(this.edit, beast);
+				actions.editHomebrew(this.edit, beast);
 			} else {
-				this.actions.addHomebrew(beast);
+				actions.addHomebrew(beast);
 			}
 			this.props.navigation.dismiss();
 		}
@@ -145,20 +153,13 @@ export default class AddHomebrew extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		if (this.edit) {
-			const state = this.props.navigation.getParam('state');
-			this.setState({ model: state.homebrew.find(h => h.name === this.edit) });
-		}
-	}
-
 	render() {
 		return (
 			<View style={styles.container}>
 				<KeyboardAvoidingScrollView contentContainerStyle={styles.form}>
 					<Form
 						ref={form => this.form = form}
-						type={Beast}
+						type={this.state.struct}
 						options={options}
 						value={this.state.model}
 						onChange={(model, key) => {
