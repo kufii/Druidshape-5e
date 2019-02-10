@@ -122,10 +122,18 @@ export default class AddHomebrew extends React.Component {
 		return this.props.navigation.getParam('actions');
 	}
 
+	get edit() {
+		return this.props.navigation.getParam('edit');
+	}
+
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
-			this.actions.addHomebrew(beast);
+			if (this.edit) {
+				this.actions.editHomebrew(this.edit, beast);
+			} else {
+				this.actions.addHomebrew(beast);
+			}
 			this.props.navigation.dismiss();
 		}
 	}
@@ -134,6 +142,13 @@ export default class AddHomebrew extends React.Component {
 		const component = this.form.getComponent(key);
 		if (component) {
 			component.validate();
+		}
+	}
+
+	componentDidMount() {
+		if (this.edit) {
+			const state = this.props.navigation.getParam('state');
+			this.setState({ model: state.homebrew.find(h => h.name === this.edit) });
 		}
 	}
 

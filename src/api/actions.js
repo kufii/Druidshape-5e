@@ -30,5 +30,10 @@ export const actions = (update, states) => ({
 		update({ homebrew });
 		setPref('homebrew', homebrew);
 	},
+	editHomebrew: (name, beast) => {
+		const homebrew = [...states().homebrew.filter(h => h.name !== name), beast];
+		update({ homebrew });
+		setPref('homebrew', homebrew);
+	},
 	getAllBeasts: () => [...states().beasts, ...states().homebrew]
 });

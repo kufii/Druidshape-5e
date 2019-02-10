@@ -38,6 +38,7 @@ export default class HomebrewScreen extends React.Component {
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<ListItem
+							onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions, edit: item })}
 							title={item}
 							titleStyle={listStyles.itemText}
 							rightIcon={
