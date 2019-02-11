@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
 import t from 'tcomb-form-native';
 import listTemplate from '../../../../styles/tcomb/list';
 
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
-import { formButtonColor } from '../../../../api/constants';
+import { icon } from '../../../../api/util';
+import { formButtonColor, headerTextColor, iconSizeLarge } from '../../../../api/constants';
 
 const Form = t.form.Form;
 Form.templates.list = listTemplate;
@@ -68,6 +70,18 @@ export default class AddHomebrew extends React.Component {
 
 	static navigationOptions = ({ navigation }) => ({
 		title: navigation.getParam('edit') ? 'Edit Beast' : 'Add New Beast',
+		headerRight: navigation.getParam('edit') ? (
+			<Button
+				type='clear'
+				buttonStyle={styles.deleteButton}
+				icon={<Icon name={icon('trash')} color={headerTextColor} size={iconSizeLarge} />}
+				onPress={() => {
+					const actions = navigation.getParam('actions');
+					actions.deleteHomebrew(navigation.getParam('edit'));
+					navigation.dismiss();
+				}}
+			/>
+		) : null,
 		headerLeft: null,
 		gesturesEnabled: false
 	});
@@ -215,5 +229,9 @@ const styles = StyleSheet.create({
 	},
 	saveButtonTitle: {
 		color: '#fff'
+	},
+	deleteButton: {
+		marginRight: 10,
+		borderRadius: 100
 	}
 });
