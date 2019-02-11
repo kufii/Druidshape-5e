@@ -5,6 +5,7 @@ import { ListItem, Divider } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import AlertDelete from './details/alert-delete';
 import { icon } from '../../../api/util';
 import listStyles from '../../../styles/list';
 import { iconSizeMedium, iconSizeLarge, textColorHeader, contentBackgroundColorDark, swipeoutDeleteColor } from '../../../api/constants';
@@ -42,11 +43,11 @@ export default class HomebrewScreen extends React.Component {
 							right={[{
 								text: 'Delete',
 								backgroundColor: swipeoutDeleteColor,
-								onPress: () => actions.deleteHomebrew(item)
+								onPress: () => AlertDelete(item, actions)
 							}]}
 						>
 							<ListItem
-								onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions, edit: item })}
+								onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions, edit: item })}
 								title={item}
 								titleStyle={listStyles.itemText}
 								chevron={{ size: iconSizeLarge }}
@@ -56,7 +57,7 @@ export default class HomebrewScreen extends React.Component {
 					keyExtractor={(item, index) => index.toString()}
 					ItemSeparatorComponent={() => <Divider />}
 				/>
-				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions })} degrees={0}>
+				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions })} degrees={0}>
 					<Icon name={icon('add')} size={iconSizeMedium} color={textColorHeader} />
 				</ActionButton>
 			</View>

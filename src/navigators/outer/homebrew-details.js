@@ -1,9 +1,9 @@
 import { createStackNavigator } from 'react-navigation';
-import HomebrewAddScreen from '../../components/screens/homebrew/add';
+import HomebrewDetailsScreen from '../../components/screens/homebrew/details';
 import config from '../../styles/navigation';
 
 export default createStackNavigator({
-	HomebrewAdd: {
-		screen: HomebrewAddScreen
+	HomebrewDetails: {
+		screen: HomebrewDetailsScreen
 	}
 }, config);

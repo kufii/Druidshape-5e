@@ -7,6 +7,7 @@ import t from 'tcomb-form-native';
 import listTemplate from '../../../../styles/tcomb/list';
 
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
+import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
 import { formButtonColor, headerTextColor, iconSizeLarge } from '../../../../api/constants';
 
@@ -75,11 +76,11 @@ export default class AddHomebrew extends React.Component {
 				type='clear'
 				buttonStyle={styles.deleteButton}
 				icon={<Icon name={icon('trash')} color={headerTextColor} size={iconSizeLarge} />}
-				onPress={() => {
-					const actions = navigation.getParam('actions');
-					actions.deleteHomebrew(navigation.getParam('edit'));
-					navigation.dismiss();
-				}}
+				onPress={() => AlertDelete(
+					navigation.getParam('edit'),
+					navigation.getParam('actions'),
+					() => navigation.dismiss()
+				)}
 			/>
 		) : null,
 		headerLeft: null,
