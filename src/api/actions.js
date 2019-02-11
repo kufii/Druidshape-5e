@@ -51,8 +51,9 @@ export const actions = (update, states) => {
 		},
 		deleteHomebrew: name => {
 			const homebrew = states().homebrew.filter(h => h.name !== name);
-			const favs = states().favs;
+			let favs = states().favs;
 			favs[name] = false;
+			favs = privateActions.cleanupFavs(favs);
 			update({ homebrew, favs });
 			setPref('homebrew', homebrew);
 			setPref('favs', favs);

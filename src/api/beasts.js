@@ -17,7 +17,7 @@ export const filterBeasts = (beasts, level=0, circleOfTheMoon=false, search) => 
 	let filtered = beasts.slice().filter(({ cr }) => crToNum(cr) <= maxCr);
 	if (!canSwim) filtered = filtered.filter(b => !b.swim);
 	if (!canFly) filtered = filtered.filter(b => !b.fly);
-	if (search) filtered = filtered.filter(b => b.name.toLowerCase().includes(search.toLowerCase()))
+	if (search) filtered = filtered.filter(b => b.name.toLowerCase().includes(search.toLowerCase()));
 
 	return filtered;
 };

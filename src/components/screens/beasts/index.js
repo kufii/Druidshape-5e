@@ -65,7 +65,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		),
 		headerRight: (
-			<View style={styles.marginLarge}>
+			<View style={styles.margin}>
 				<ToggleIconButton
 					icon={icon('moon')}
 					active={navigation.getParam('isMoon', false)}
@@ -165,6 +165,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 										)}
 									</View>
 								)}
+								containerStyle={styles.item}
 								titleStyle={listStyles.itemText}
 								rightIcon={(
 									<ToggleIconButton
@@ -224,5 +225,11 @@ const styles = StyleSheet.create({
 	},
 	filterText: {
 		color: headerTextColor
+	},
+	item: {
+		paddingTop: 0,
+		paddingBottom: 0,
+		paddingRight: 10,
+		height: 60
 	}
 });
