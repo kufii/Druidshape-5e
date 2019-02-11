@@ -66,11 +66,11 @@ export default class AddHomebrew extends React.Component {
 		navigation: PropTypes.object
 	};
 
-	static navigationOptions = {
-		title: 'Add New Beast',
+	static navigationOptions = ({ navigation }) => ({
+		title: navigation.getParam('edit') ? 'Edit Beast' : 'Add New Beast',
 		headerLeft: null,
 		gesturesEnabled: false
-	};
+	});
 
 	constructor(props) {
 		super(props);
