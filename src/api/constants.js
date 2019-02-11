@@ -13,6 +13,7 @@ export const textColorDisabled = '#e5e5e5';
 export const textColorAccent = '#8a9a5b';
 export const formButtonColor = '#388e3c';
 export const listIconColor = '#c8d0d8';
+export const swipeoutDeleteColor = '#fe3a2f';
 export const listItemHeight = 44;
 export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;

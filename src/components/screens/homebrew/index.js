@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
+import Swipeout from 'react-native-swipeout';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { icon } from '../../../api/util';
 import listStyles from '../../../styles/list';
-import { iconSizeMedium, iconSizeLarge, textColorHeader, contentBackgroundColorDark, listIconColor } from '../../../api/constants';
+import { iconSizeMedium, iconSizeLarge, textColorHeader, contentBackgroundColorDark, swipeoutDeleteColor } from '../../../api/constants';
 
 export default class HomebrewScreen extends React.Component {
 	static propTypes = {
@@ -37,12 +38,20 @@ export default class HomebrewScreen extends React.Component {
 					ref={list => this.list = list}
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
-						<ListItem
-							onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions, edit: item })}
-							title={item}
-							titleStyle={listStyles.itemText}
-							chevron={{ size: iconSizeLarge }}
-						/>
+						<Swipeout
+							right={[{
+								text: 'Delete',
+								backgroundColor: swipeoutDeleteColor,
+								onPress: () => actions.deleteHomebrew(item)
+							}]}
+						>
+							<ListItem
+								onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions, edit: item })}
+								title={item}
+								titleStyle={listStyles.itemText}
+								chevron={{ size: iconSizeLarge }}
+							/>
+						</Swipeout>
 					)}
 					keyExtractor={(item, index) => index.toString()}
 					ItemSeparatorComponent={() => <Divider />}

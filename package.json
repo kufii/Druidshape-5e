@@ -16,6 +16,7 @@
     "react-native-elements": "^1.0.0",
     "react-native-modal": "^7.0.2",
     "react-native-root-toast": "^3.0.2",
+    "react-native-swipeout": "^2.3.6",
     "react-navigation": "^3.1.5",
     "react-navigation-collapsible": "^3.0.3",
     "react-navigation-slide-from-right-transition": "^1.0.4",
