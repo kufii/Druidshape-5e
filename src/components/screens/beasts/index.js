@@ -120,7 +120,8 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
 		const favorites = Object.entries(state.favs)
 			.filter(([_, isFav]) => isFav)
-			.map(([key]) => allBeasts.find(b => b.name === key));
+			.map(([key]) => allBeasts.find(b => b.name === key))
+			.filter(b => b);
 
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
