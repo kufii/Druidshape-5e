@@ -1,5 +1,6 @@
 import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
+import { toDict } from './util';
 
 export const initialState = {
 	isLoading: true,
@@ -11,6 +12,11 @@ export const initialState = {
 };
 
 export const actions = (update, states) => {
+	const privateActions = {
+		cleanupFavs: favs => Object.entries(favs)
+			.filter(([_, value]) => value)
+			.reduce(toDict(([key]) => key, () => true), {})
+	};
 	const actions = {
 		loadPrefs: () => Promise.all([
 			getPref('level', 0),
@@ -33,13 +39,23 @@ export const actions = (update, states) => {
 		},
 		editHomebrew: (name, beast) => {
 			const homebrew = [...states().homebrew.filter(h => h.name !== name), beast];
-			update({ homebrew });
+			let favs = states().favs;
+			if (name !== beast.name) {
+				favs[beast.name] = favs[name];
+				favs[name] = false;
+				favs = privateActions.cleanupFavs(favs);
+				setPref('favs', favs);
+			}
+			update({ homebrew, favs });
 			setPref('homebrew', homebrew);
 		},
 		deleteHomebrew: name => {
 			const homebrew = states().homebrew.filter(h => h.name !== name);
-			update({ homebrew });
+			const favs = states().favs;
+			favs[name] = false;
+			update({ homebrew, favs });
 			setPref('homebrew', homebrew);
+			setPref('favs', favs);
 		},
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
 		getFavorites: () => Object.entries(states().favs)
