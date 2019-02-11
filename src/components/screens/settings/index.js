@@ -6,7 +6,8 @@ import listStyles from '../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
 	static propTypes = {
-		screenProps: PropTypes.object
+		screenProps: PropTypes.object,
+		navigation: PropTypes.object
 	};
 
 	static navigationOptions = {
@@ -22,6 +23,16 @@ export default class SettingsScreen extends React.Component {
 				flex: 1,
 				backgroundColor: theme.contentBackgroundColorDark
 			}
+		});
+	}
+
+	scrollToTop() {
+		this.list && this.list.scrollTo({ x: 0, y: 0, animated: true });
+	}
+
+	componentDidMount() {
+		this.props.navigation.setParams({
+			scrollToTop: this.scrollToTop.bind(this)
 		});
 	}
 
