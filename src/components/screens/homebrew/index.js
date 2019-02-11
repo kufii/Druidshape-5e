@@ -41,9 +41,7 @@ export default class HomebrewScreen extends React.Component {
 							onPress={() => this.props.navigation.navigate('HomebrewAdd', { state, actions, edit: item })}
 							title={item}
 							titleStyle={listStyles.itemText}
-							rightIcon={
-								<Icon name={icon('arrow-forward')} size={iconSizeLarge} color={listIconColor} />
-							}
+							chevron={{ size: iconSizeLarge }}
 						/>
 					)}
 					keyExtractor={(item, index) => index.toString()}
