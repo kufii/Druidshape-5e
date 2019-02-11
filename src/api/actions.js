@@ -4,6 +4,7 @@ import { toDict } from './util';
 
 export const initialState = {
 	isLoading: true,
+	darkMode: false,
 	level: 0,
 	isMoon: false,
 	favs: {},
@@ -26,6 +27,7 @@ export const actions = (update, states) => {
 		]).then(
 			([level, isMoon, favs, homebrew]) => update({ level, isMoon, favs, homebrew, isLoading: false })
 		),
+		setDarkMode: darkMode => update({ darkMode }),
 		toggleFav: name => {
 			const favs = states().favs;
 			favs[name] = !favs[name];

@@ -21,7 +21,7 @@ export default class HomebrewScreen extends React.Component {
 	};
 
 	scrollToTop() {
-		this.list && this.list.scrollToIndex({ index: 0 });
+		this.list && this.list.scrollToOffset({ offset: 0 });
 	}
 
 	componentDidMount() {

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { listItemHeightCompact, fontSizeStandard, fontSizeMedium, contentBackgroundColorDark, textColorSecondary } from '../api/constants';
+import { listItemHeight, listItemHeightCompact, fontSizeStandard, fontSizeMedium, contentBackgroundColorDark, textColorSecondary } from '../api/constants';
 
 export default StyleSheet.create({
 	sectionHeader: {
@@ -13,7 +13,7 @@ export default StyleSheet.create({
 		backgroundColor: contentBackgroundColorDark,
 		color: textColorSecondary
 	},
-	item: {
+	itemCompact: {
 		flex: 1,
 		flexDirection: 'row',
 		paddingLeft: 10,
@@ -21,6 +21,11 @@ export default StyleSheet.create({
 		alignItems: 'center',
 		height: listItemHeightCompact,
 		width: '100%'
+	},
+	item: {
+		paddingTop: 0,
+		paddingBottom: 0,
+		height: listItemHeight
 	},
 	itemText: {
 		fontSize: fontSizeMedium
