@@ -116,12 +116,9 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		const { state, actions } = this.props.screenProps;
 
 		const allBeasts = actions.getAllBeasts();
-		const beasts = filterBeasts(allBeasts, this.level, this.isMoon);
+		const beasts = filterBeasts(allBeasts, this.level, this.isMoon, this.filter);
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr), {});
-		const favorites = Object.entries(state.favs)
-			.filter(([_, isFav]) => isFav)
-			.map(([key]) => allBeasts.find(b => b.name === key))
-			.filter(b => b);
+		const favorites = actions.getFavorites();
 
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
@@ -131,9 +128,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 					ref={list => this.list = list}
 					keyboardShouldPersistTaps='always'
 					sections={this.filter ? [{
-						data: beasts.map(({ name }) => name)
-							.filter(name => name.toLowerCase().includes(this.filter.toLowerCase()))
-							.sort()
+						data: beasts.map(({ name }) => name).sort()
 					}] : [
 						...favorites.length ? [{
 							title: 'FAVORITES',
