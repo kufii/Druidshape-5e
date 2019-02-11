@@ -9,7 +9,7 @@ import ToggleIconButton from '../../shared/toggle-icon-button';
 import { setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor, contentBackgroundColorDark } from '../../../api/constants';
+import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor, contentBackgroundColorDark, listItemHeight } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { filterBeasts, crToNum } from '../../../api/beasts';
@@ -230,6 +230,6 @@ const styles = StyleSheet.create({
 		paddingTop: 0,
 		paddingBottom: 0,
 		paddingRight: 10,
-		height: 60
+		height: listItemHeight
 	}
 });

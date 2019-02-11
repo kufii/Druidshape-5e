@@ -11,7 +11,4 @@ const obj = [
 }, {
 	isGenerator: a => a instanceof (function*() { yield; }).constructor
 });
-const { isArguments, isFunction, isString, isNumber, isDate, isRegExp, isGenerator } = obj;
-
-export default obj;
-export { isArguments, isFunction, isString, isNumber, isDate, isRegExp, isGenerator };
+export const { isArguments, isFunction, isString, isNumber, isDate, isRegExp, isGenerator } = obj;

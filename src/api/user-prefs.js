@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 
-const getPref = async(key, def) => {
+export const getPref = async(key, def) => {
 	try {
 		const value = await AsyncStorage.getItem(key);
 		if (value == null || value === '') return def;
@@ -11,7 +11,7 @@ const getPref = async(key, def) => {
 	return def;
 };
 
-const setPref = async(key, value) => {
+export const setPref = async(key, value) => {
 	try {
 		if (value == null) value = '';
 		await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -19,5 +19,3 @@ const setPref = async(key, value) => {
 		console.log(error.message);
 	}
 };
-
-export { getPref, setPref };

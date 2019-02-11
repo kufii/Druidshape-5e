@@ -3,14 +3,13 @@ import { withCollapsible as _withCollapsible } from 'react-navigation-collapsibl
 import { isString } from './types';
 import { headerColor } from '../api/constants';
 
+export const distinct = (value, index, self) => self.indexOf(value) === index;
 
-const distinct = (value, index, self) => self.indexOf(value) === index;
+export const maxBy = cb => (a, b) => cb(b) > cb(a) ? b : a;
 
-const maxBy = cb => (a, b) => cb(b) > cb(a) ? b : a;
+export const minBy = cb => (a, b) => cb(b) < cb(a) ? b : a;
 
-const minBy = cb => (a, b) => cb(b) < cb(a) ? b : a;
-
-const sortBy = (...cbs) => (a, b) => {
+export const sortBy = (...cbs) => (a, b) => {
 	for (let i = 0; i < cbs.length; i++) {
 		const cb = cbs[i].desc ? cbs[i].cb : cbs[i];
 		const aa = cb(a);
@@ -22,9 +21,9 @@ const sortBy = (...cbs) => (a, b) => {
 	}
 	return 0;
 };
-const desc = cb => ({ desc: true, cb });
+export const desc = cb => ({ desc: true, cb });
 
-const groupBy = (cbKey, cbValue) => (a, b) => {
+export const groupBy = (cbKey, cbValue) => (a, b) => {
 	const key = cbKey(b);
 	const value = cbValue ? cbValue(b) : b;
 	if (!a[key]) a[key] = [];
@@ -32,7 +31,7 @@ const groupBy = (cbKey, cbValue) => (a, b) => {
 	return a;
 };
 
-const toDict = (cbKey, cbValue) => (a, b) => {
+export const toDict = (cbKey, cbValue) => (a, b) => {
 	const key = cbKey(b);
 	const value = cbValue ? cbValue(b) : b;
 	a[key] = value;
@@ -40,17 +39,17 @@ const toDict = (cbKey, cbValue) => (a, b) => {
 };
 
 const _flatten = arr => arr.reduce((flat, a) => flat.concat(Array.isArray(a) ? _flatten(a) : a), []);
-const flatten = (flat, arr) => flat.concat(_flatten(arr));
+export const flatten = (flat, arr) => flat.concat(_flatten(arr));
 
-const nTimes = (cb, n) => {
+export const nTimes = (cb, n) => {
 	for (let i = 0; i < n; i++) {
 		cb(i);
 	}
 };
 
-const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
+export const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
 
-const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
+export const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
 	collapsibleComponent: collapse,
 	collapsibleBackgroundStyle: Object.assign({
 		height,
@@ -58,6 +57,4 @@ const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
 	})
 });
 
-const isIPhoneX = Platform.OS === 'ios' && Dimensions.get('window').height === 812;
-
-export { distinct, maxBy, minBy, sortBy, desc, groupBy, toDict, flatten, nTimes, icon, withCollapsible, isIPhoneX };
+export const isIPhoneX = Platform.OS === 'ios' && Dimensions.get('window').height === 812;
