@@ -4,7 +4,7 @@ import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { B, I, BI } from '../../shared/helper';
 
-import { fontSizeLarge, fontSizeXLarge, textColorAccent } from '../../../api/constants';
+import { fontSizeLarge, fontSizeXLarge } from '../../../api/constants';
 
 import { getModifier } from '../../../api/beasts';
 
@@ -36,8 +36,51 @@ export default class DetailsScreen extends React.Component {
 		return this.props.navigation.getParam('beast');
 	}
 
+	get styles() {
+		const theme = this.actions.getCurrentTheme();
+		return StyleSheet.create({
+			container: {
+				flex: 1,
+				flexDirection: 'column'
+			},
+			containerContent: {
+				padding: 10
+			},
+			divider: {
+				marginTop: 10,
+				marginBottom: 10
+			},
+			row: {
+				flex: 1,
+				flexDirection: 'row'
+			},
+			attribute: {
+				marginTop: 2,
+				marginBottom: 2
+			},
+			header1: {
+				fontWeight: 'bold',
+				fontSize: fontSizeXLarge,
+				color: theme.textColorAccent
+			},
+			header2: {
+				fontWeight: 'bold',
+				fontSize: fontSizeLarge,
+				color: theme.textColorAccent
+			},
+			stat: {
+				flex: 1,
+				flexDirection: 'column',
+				alignItems: 'center',
+				marginTop: 5,
+				marginBottom: 5
+			}
+		});
+	}
+
 	render() {
 		const beast = this.actions.getAllBeasts().find(b => b.name === this.beastName);
+		const styles = this.styles;
 		return (
 			<ScrollView style={styles.container} contentContainerStyle={styles.containerContent}>
 				<Text style={styles.header1}>{beast.name}</Text>
@@ -106,42 +149,3 @@ export default class DetailsScreen extends React.Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: 'column'
-	},
-	containerContent: {
-		padding: 10
-	},
-	divider: {
-		marginTop: 10,
-		marginBottom: 10
-	},
-	row: {
-		flex: 1,
-		flexDirection: 'row'
-	},
-	attribute: {
-		marginTop: 2,
-		marginBottom: 2
-	},
-	header1: {
-		fontWeight: 'bold',
-		fontSize: fontSizeXLarge,
-		color: textColorAccent
-	},
-	header2: {
-		fontWeight: 'bold',
-		fontSize: fontSizeLarge,
-		color: textColorAccent
-	},
-	stat: {
-		flex: 1,
-		flexDirection: 'column',
-		alignItems: 'center',
-		marginTop: 5,
-		marginBottom: 5
-	}
-});

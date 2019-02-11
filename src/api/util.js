@@ -1,7 +1,7 @@
 import { Platform, Dimensions } from 'react-native';
 import { withCollapsible as _withCollapsible } from 'react-navigation-collapsible';
 import { isString } from './types';
-import { headerColor } from '../api/constants';
+import { lightTheme } from '../api/constants';
 
 export const distinct = (value, index, self) => self.indexOf(value) === index;
 
@@ -53,7 +53,7 @@ export const withCollapsible = (main, collapse, height=60) => _withCollapsible(m
 	collapsibleComponent: collapse,
 	collapsibleBackgroundStyle: Object.assign({
 		height,
-		backgroundColor: headerColor
+		backgroundColor: lightTheme.headerColor
 	})
 });
 

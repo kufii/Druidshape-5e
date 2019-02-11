@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { iconSizeLarge, formButtonColor } from '../../api/constants';
+import { iconSizeLarge, lightTheme } from '../../api/constants';
 import { icon } from '../../api/util';
 
 const renderRowWithoutButtons = item => <View key={item.key}>{item.input}</View>;
@@ -36,7 +36,7 @@ const renderRowButton = ({ type, click }) => (
 					'move-down': 'arrow-down'
 				}[type])}
 				size={iconSizeLarge}
-				color={formButtonColor}
+				color={lightTheme.formButtonColor}
 			/>
 		}
 	/>
@@ -106,9 +106,9 @@ const styles = StyleSheet.create({
 		borderRadius: 100
 	},
 	addButton: {
-		borderColor: formButtonColor
+		borderColor: lightTheme.formButtonColor
 	},
 	button: {
-		color: formButtonColor
+		color: lightTheme.formButtonColor
 	}
 });

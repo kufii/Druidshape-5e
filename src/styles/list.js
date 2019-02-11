@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import { listItemHeight, listItemHeightCompact, fontSizeStandard, fontSizeMedium, contentBackgroundColorDark, textColorSecondary } from '../api/constants';
+import { listItemHeight, listItemHeightCompact, fontSizeStandard, fontSizeMedium } from '../api/constants';
 
-export default StyleSheet.create({
+export default theme => StyleSheet.create({
 	sectionHeader: {
 		paddingTop: 2,
 		paddingLeft: 10,
@@ -10,8 +10,8 @@ export default StyleSheet.create({
 		paddingBottom: 2,
 		fontSize: fontSizeStandard,
 		fontWeight: 'bold',
-		backgroundColor: contentBackgroundColorDark,
-		color: textColorSecondary
+		backgroundColor: theme.contentBackgroundColorDark,
+		color: theme.textColorSecondary
 	},
 	itemCompact: {
 		flex: 1,

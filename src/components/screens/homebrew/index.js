@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import AlertDelete from './details/alert-delete';
 import { icon } from '../../../api/util';
 import listStyles from '../../../styles/list';
-import { iconSizeMedium, iconSizeLarge, textColorHeader, contentBackgroundColorDark, swipeoutDeleteColor } from '../../../api/constants';
+import { iconSizeMedium, iconSizeLarge } from '../../../api/constants';
 
 export default class HomebrewScreen extends React.Component {
 	static propTypes = {
@@ -30,9 +30,21 @@ export default class HomebrewScreen extends React.Component {
 		});
 	}
 
+	get styles() {
+		const { actions } = this.props.screenProps;
+		const theme = actions.getCurrentTheme();
+		return StyleSheet.create({
+			container: {
+				flex: 1,
+				backgroundColor: theme.contentBackgroundColorDark
+			}
+		});
+	}
+
 	render() {
 		const { state, actions } = this.props.screenProps;
-
+		const theme = actions.getCurrentTheme();
+		const styles = this.styles;
 		return (
 			<View style={styles.container}>
 				<FlatList
@@ -42,7 +54,7 @@ export default class HomebrewScreen extends React.Component {
 						<Swipeout
 							right={[{
 								text: 'Delete',
-								backgroundColor: swipeoutDeleteColor,
+								backgroundColor: theme.swipeoutDeleteColor,
 								onPress: () => AlertDelete(item, actions)
 							}]}
 						>
@@ -58,16 +70,9 @@ export default class HomebrewScreen extends React.Component {
 					ItemSeparatorComponent={() => <Divider />}
 				/>
 				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions })} degrees={0}>
-					<Icon name={icon('add')} size={iconSizeMedium} color={textColorHeader} />
+					<Icon name={icon('add')} size={iconSizeMedium} color={theme.textColorHeader} />
 				</ActionButton>
 			</View>
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: contentBackgroundColorDark
-	}
-});

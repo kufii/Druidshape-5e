@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import listStyles from '../../../styles/list';
-import { contentBackgroundColorDark } from '../../../api/constants';
 
 export default class SettingsScreen extends React.Component {
 	static propTypes = {
@@ -14,15 +13,30 @@ export default class SettingsScreen extends React.Component {
 		title: 'Settings'
 	};
 
+	get styles() {
+		const { actions } = this.props.screenProps;
+		const theme = actions.getCurrentTheme();
+
+		return StyleSheet.create({
+			container: {
+				flex: 1,
+				backgroundColor: theme.contentBackgroundColorDark
+			}
+		});
+	}
+
 	render() {
 		const { state, actions } = this.props.screenProps;
+		const theme = actions.getCurrentTheme();
+		const styles = this.styles;
+		const listTheme = listStyles(theme);
 
 		return (
 			<ScrollView ref={list => this.list = list} contentContainerStyle={styles.container}>
 				<ListItem
 					title='Dark Mode'
-					containerStyle={listStyles.item}
-					titleStyle={listStyles.itemText}
+					containerStyle={listTheme.item}
+					titleStyle={listTheme.itemText}
 					switch={{
 						value: state.darkMode,
 						onValueChange: value => actions.setDarkMode(value)
@@ -32,10 +46,3 @@ export default class SettingsScreen extends React.Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: contentBackgroundColorDark
-	}
-});

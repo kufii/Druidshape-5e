@@ -9,7 +9,7 @@ import ToggleIconButton from '../../shared/toggle-icon-button';
 import { setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, textColorDisabled, starColor, alertColor, headerColorLight, headerColorDark, headerTextColorFaded, headerTextColor, contentBackgroundColorDark } from '../../../api/constants';
+import { iconSizeLarge, lightTheme } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { filterBeasts, crToNum } from '../../../api/beasts';
@@ -24,19 +24,19 @@ const options = [
 const ExtendedHeader = ({ navigation }) => (
 	<SearchBar
 		platform={Platform.OS}
-		containerStyle={styles.filterContainer}
-		inputContainerStyle={styles.filter}
-		placeholderTextColor={headerTextColorFaded}
-		color={headerTextColor}
-		clearIcon={styles.filterText}
-		searchIcon={styles.filterText}
-		cancelIcon={styles.filterText}
-		inputStyle={styles.filterText}
+		containerStyle={globalStyles.filterContainer}
+		inputContainerStyle={globalStyles.filter}
+		placeholderTextColor={lightTheme.headerTextColorFaded}
+		color={lightTheme.headerTextColor}
+		clearIcon={globalStyles.filterText}
+		searchIcon={globalStyles.filterText}
+		cancelIcon={globalStyles.filterText}
+		inputStyle={globalStyles.filterText}
 		placeholder='Filter Beasts'
 		cancelButtonTitle='Cancel'
 		cancelButtonProps={{
 			buttonStyle: 'clear',
-			color: headerTextColor
+			color: lightTheme.headerTextColor
 		}}
 		onChangeText={filter => navigation.setParams({ filter })}
 		value={navigation.getParam('filter', '')}
@@ -54,7 +54,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		headerTitle: (
 			<ModalDropdown
-				style={styles.marginLarge}
+				style={globalStyles.marginLarge}
 				items={options}
 				selected={navigation.getParam('level', 0).toString()}
 				onSelect={level => {
@@ -65,7 +65,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			/>
 		),
 		headerRight: (
-			<View style={styles.margin}>
+			<View style={globalStyles.margin}>
 				<ToggleIconButton
 					icon={icon('moon')}
 					active={navigation.getParam('isMoon', false)}
@@ -74,8 +74,8 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 						setPref('isMoon', isMoon);
 						Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
 					}}
-					activeColor={headerTextColor}
-					inactiveColor={headerColorDark}
+					activeColor={lightTheme.headerTextColor}
+					inactiveColor={lightTheme.headerColorDark}
 				/>
 			</View>
 		)
@@ -91,6 +91,28 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 
 	get filter() {
 		return this.props.navigation.getParam('filter', '');
+	}
+
+	get styles() {
+		const { actions } = this.props.screenProps;
+		const theme = actions.getCurrentTheme();
+
+		return StyleSheet.create({
+			container: {
+				flex: 1,
+				backgroundColor: theme.contentBackgroundColorDark
+			},
+			row: {
+				flexDirection: 'row',
+				alignItems: 'center'
+			},
+			tooltip: {
+				color: '#fff'
+			},
+			item: {
+				paddingRight: 10
+			}
+		});
 	}
 
 	scrollToTop() {
@@ -114,6 +136,9 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 
 	render() {
 		const { state, actions } = this.props.screenProps;
+		const theme = actions.getCurrentTheme();
+		const listTheme = listStyles(theme);
+		const styles = this.styles;
 
 		const allBeasts = actions.getAllBeasts();
 		const beasts = filterBeasts(allBeasts, this.level, this.isMoon, this.filter);
@@ -144,7 +169,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 							}))
 					]}
 					renderSectionHeader={
-						this.filter ? null : ({ section }) => <Text style={listStyles.sectionHeader}>{section.title}</Text>
+						this.filter ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
 					}
 					renderItem={
 						({ item }) => (
@@ -152,28 +177,28 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 								onPress={() => this.props.navigation.navigate('Details', { beast: item, state, actions })}
 								title={(
 									<View style={styles.row}>
-										<Text style={listStyles.itemText}>{item}</Text>
+										<Text style={listTheme.itemText}>{item}</Text>
 										{!beasts.find(b => b.name === item) && (
 											<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
 												<Icon
 													name={icon('alert')}
 													size={iconSizeLarge}
 													style={styles.margin}
-													color={alertColor}
+													color={theme.alertColor}
 												/>
 											</Tooltip>
 										)}
 									</View>
 								)}
-								containerStyle={[listStyles.item, styles.item]}
-								titleStyle={listStyles.itemText}
+								containerStyle={[listTheme.item, styles.item]}
+								titleStyle={listTheme.itemText}
 								rightIcon={(
 									<ToggleIconButton
 										active={state.favs[item]}
 										icon={icon('star')}
 										size={iconSizeLarge}
-										activeColor={starColor}
-										inactiveColor={textColorDisabled}
+										activeColor={theme.starColor}
+										inactiveColor={theme.textColorDisabled}
 										onToggle={() => actions.toggleFav(item)}
 									/>
 								)}
@@ -192,15 +217,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 	}
 }, ExtendedHeader);
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: contentBackgroundColorDark
-	},
-	row: {
-		flexDirection: 'row',
-		alignItems: 'center'
-	},
+const globalStyles = StyleSheet.create({
 	margin: {
 		marginLeft: 10,
 		marginRight: 10
@@ -208,9 +225,6 @@ const styles = StyleSheet.create({
 	marginLarge: {
 		marginLeft: 20,
 		marginRight: 20
-	},
-	tooltip: {
-		color: '#fff'
 	},
 	filterContainer: {
 		paddingTop: 10,
@@ -220,13 +234,10 @@ const styles = StyleSheet.create({
 		backgroundColor: 'transparent'
 	},
 	filter: {
-		backgroundColor: headerColorLight,
+		backgroundColor: lightTheme.headerColorLight,
 		borderRadius: 20
 	},
 	filterText: {
-		color: headerTextColor
-	},
-	item: {
-		paddingRight: 10
+		color: lightTheme.headerTextColor
 	}
 });

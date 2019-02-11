@@ -1,6 +1,7 @@
 import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
 import { toDict } from './util';
+import { lightTheme, darkTheme } from './constants';
 
 export const initialState = {
 	isLoading: true,
@@ -20,14 +21,19 @@ export const actions = (update, states) => {
 	};
 	const actions = {
 		loadPrefs: () => Promise.all([
+			getPref('darkMode', false),
 			getPref('level', 0),
 			getPref('isMoon', false),
 			getPref('favs', {}),
 			getPref('homebrew', [])
 		]).then(
-			([level, isMoon, favs, homebrew]) => update({ level, isMoon, favs, homebrew, isLoading: false })
+			([darkMode, level, isMoon, favs, homebrew]) => update({ darkMode, level, isMoon, favs, homebrew, isLoading: false })
 		),
-		setDarkMode: darkMode => update({ darkMode }),
+		setDarkMode: darkMode => {
+			update({ darkMode });
+			setPref('darkMode', darkMode);
+		},
+		getCurrentTheme: () => states().darkMode ? darkTheme : lightTheme,
 		toggleFav: name => {
 			const favs = states().favs;
 			favs[name] = !favs[name];

@@ -1,6 +1,8 @@
 import { Platform } from 'react-native';
-import { headerColor, headerTextColor } from '../api/constants';
+import { lightTheme } from '../api/constants';
 import slideFromRightTransition from 'react-navigation-slide-from-right-transition';
+
+const { headerColor, headerTextColor } = lightTheme;
 
 export default {
 	transitionConfig: Platform.OS === 'android' ? slideFromRightTransition : null,

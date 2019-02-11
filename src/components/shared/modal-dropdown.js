@@ -7,7 +7,7 @@ import { Divider } from 'react-native-elements';
 
 import listStyles from '../../styles/list';
 
-import { fontSizeMedium, fontSizeLarge, headerTextColor, contentBackgroundColor } from '../../api/constants';
+import { fontSizeMedium, fontSizeLarge, lightTheme } from '../../api/constants';
 
 export default class ModalDropdown extends React.Component {
 	state = { visible: false };
@@ -28,12 +28,13 @@ export default class ModalDropdown extends React.Component {
 	}
 
 	render() {
+		const listTheme = listStyles(lightTheme);
 		return (
 			<>
 				<TouchableOpacity onPress={() => this.setState({ visible: true })}>
 					<View style={[styles.dropdown, this.props.style]}>
 						<Text style={styles.text}>{this.getOptionText(this.props.selected)}</Text>
-						<Icon name='ios-arrow-down' size={fontSizeMedium} color={headerTextColor} />
+						<Icon name='ios-arrow-down' size={fontSizeMedium} color={lightTheme.headerTextColor} />
 					</View>
 				</TouchableOpacity>
 				<Modal isVisible={this.state.visible} onBackdropPress={() => this.closeModal()} onBackButtonPress={() => this.closeModal()}>
@@ -47,12 +48,12 @@ export default class ModalDropdown extends React.Component {
 										this.closeModal();
 									}}
 								>
-									<View style={listStyles.item}>
-										<Text style={listStyles.itemText}>{item.text}</Text>
+									<View style={listTheme.itemCompact}>
+										<Text style={listTheme.itemText}>{item.text}</Text>
 									</View>
 								</TouchableOpacity>
 							)}
-							ItemSeparatorComponent={() => <Divider style={listStyles.divider} />}
+							ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 						/>
 					</View>
 				</Modal>
@@ -64,7 +65,7 @@ export default class ModalDropdown extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: contentBackgroundColor
+		backgroundColor: lightTheme.contentBackgroundColor
 	},
 	dropdown: {
 		flex: 1,
@@ -75,6 +76,6 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		marginRight: 4,
 		fontSize: Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge,
-		color: headerTextColor
+		color: lightTheme.headerTextColor
 	}
 });

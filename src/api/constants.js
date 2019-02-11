@@ -1,19 +1,39 @@
-export const headerColor = '#388e3c';
-export const headerColorDark = '#225524';
-export const headerColorLight = '#5fa463';
-export const headerTextColor = '#fff';
-export const headerTextColorFaded = '#afd2b1';
-export const starColor = '#ffd600';
-export const alertColor = '#e53935';
-export const contentBackgroundColor = '#fff';
-export const contentBackgroundColorDark = '#f2f3f7';
-export const textColor = '#000';
-export const textColorSecondary = '#919191';
-export const textColorDisabled = '#e5e5e5';
-export const textColorAccent = '#8a9a5b';
-export const formButtonColor = '#388e3c';
-export const listIconColor = '#c8d0d8';
-export const swipeoutDeleteColor = '#fe3a2f';
+export const lightTheme = {
+	headerColor: '#388e3c',
+	headerColorDark: '#225524',
+	headerColorLight: '#5fa463',
+	headerTextColor: '#fff',
+	headerTextColorFaded: '#afd2b1',
+	starColor: '#ffd600',
+	alertColor: '#e53935',
+	contentBackgroundColor: '#fff',
+	contentBackgroundColorDark: '#f2f3f7',
+	textColor: '#000',
+	textColorSecondary: '#919191',
+	textColorDisabled: '#e5e5e5',
+	textColorAccent: '#8a9a5b',
+	formButtonColor: '#388e3c',
+	listIconColor: '#c8d0d8',
+	swipeoutDeleteColor: '#fe3a2f'
+};
+export const darkTheme = {
+	headerColor: '#388e3c',
+	headerColorDark: '#225524',
+	headerColorLight: '#5fa463',
+	headerTextColor: '#fff',
+	headerTextColorFaded: '#afd2b1',
+	starColor: '#ffd600',
+	alertColor: '#e53935',
+	contentBackgroundColor: '#fff',
+	contentBackgroundColorDark: '#f2f3f7',
+	textColor: '#000',
+	textColorSecondary: '#919191',
+	textColorDisabled: '#e5e5e5',
+	textColorAccent: '#8a9a5b',
+	formButtonColor: '#388e3c',
+	listIconColor: '#c8d0d8',
+	swipeoutDeleteColor: '#fe3a2f'
+};
 export const listItemHeight = 60;
 export const listItemHeightCompact = 44;
 export const fontSizeStandard = 14;

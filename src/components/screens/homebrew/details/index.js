@@ -9,7 +9,7 @@ import listTemplate from '../../../../styles/tcomb/list';
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
-import { formButtonColor, headerTextColor, iconSizeLarge } from '../../../../api/constants';
+import { iconSizeLarge, lightTheme } from '../../../../api/constants';
 
 const Form = t.form.Form;
 Form.templates.list = listTemplate;
@@ -74,8 +74,8 @@ export default class AddHomebrew extends React.Component {
 		headerRight: navigation.getParam('edit') ? (
 			<Button
 				type='clear'
-				buttonStyle={styles.deleteButton}
-				icon={<Icon name={icon('trash')} color={headerTextColor} size={iconSizeLarge} />}
+				buttonStyle={globalStyles.deleteButton}
+				icon={<Icon name={icon('trash')} color={lightTheme.headerTextColor} size={iconSizeLarge} />}
 				onPress={() => AlertDelete(
 					navigation.getParam('edit'),
 					navigation.getParam('actions'),
@@ -146,6 +146,46 @@ export default class AddHomebrew extends React.Component {
 		return this.props.navigation.getParam('edit');
 	}
 
+	get styles() {
+		const actions = this.props.navigation.getParam('actions');
+		const theme = actions.getCurrentTheme();
+
+		return StyleSheet.create({
+			container: {
+				flex: 1
+			},
+			form: {
+				padding: 10
+			},
+			buttons: {
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+				borderTopColor: theme.formButtonColor,
+				borderTopWidth: StyleSheet.hairlineWidth
+			},
+			button: {
+				width: '50%',
+				borderRadius: 0
+			},
+			cancelButton: {
+				backgroundColor: '#fff'
+			},
+			cancelButtonTitle: {
+				color: theme.formButtonColor
+			},
+			saveButton: {
+				backgroundColor: theme.formButtonColor
+			},
+			saveButtonTitle: {
+				color: '#fff'
+			},
+			deleteButton: {
+				marginRight: 10,
+				borderRadius: 100
+			}
+		});
+	}
+
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
@@ -167,6 +207,7 @@ export default class AddHomebrew extends React.Component {
 	}
 
 	render() {
+		const styles = this.styles;
 		return (
 			<View style={styles.container}>
 				<KeyboardAvoidingScrollView contentContainerStyle={styles.form}>
@@ -202,35 +243,7 @@ export default class AddHomebrew extends React.Component {
 	}
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	},
-	form: {
-		padding: 10
-	},
-	buttons: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		borderTopColor: formButtonColor,
-		borderTopWidth: StyleSheet.hairlineWidth
-	},
-	button: {
-		width: '50%',
-		borderRadius: 0
-	},
-	cancelButton: {
-		backgroundColor: '#fff'
-	},
-	cancelButtonTitle: {
-		color: formButtonColor
-	},
-	saveButton: {
-		backgroundColor: formButtonColor
-	},
-	saveButtonTitle: {
-		color: '#fff'
-	},
+const globalStyles = StyleSheet.create({
 	deleteButton: {
 		marginRight: 10,
 		borderRadius: 100

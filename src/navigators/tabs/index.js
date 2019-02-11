@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { iconSizeLarge, headerColor } from '../../api/constants';
+import { iconSizeLarge, lightTheme } from '../../api/constants';
 import { icon } from '../../api/util';
 import Beasts from './beasts';
 import Homebrew from './homebrew';
@@ -54,6 +54,6 @@ export default createBottomTabNavigator({
 }, {
 	tabBarOptions: {
 		showIcon: true,
-		activeTintColor: headerColor
+		activeTintColor: lightTheme.headerColor
 	}
 });
