@@ -183,7 +183,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 												<Icon
 													name={icon('alert')}
 													size={iconSizeLarge}
-													style={styles.margin}
+													style={globalStyles.margin}
 													color={theme.alertColor}
 												/>
 											</Tooltip>

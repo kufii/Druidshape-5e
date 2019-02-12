@@ -66,7 +66,7 @@ export default class HomebrewScreen extends React.Component {
 							/>
 						</Swipeout>
 					)}
-					keyExtractor={(item, index) => index.toString()}
+					keyExtractor={item => item}
 					ItemSeparatorComponent={() => <Divider />}
 				/>
 				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions })} degrees={0}>
