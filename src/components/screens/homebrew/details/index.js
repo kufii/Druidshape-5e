@@ -63,9 +63,9 @@ export default class AddHomebrew extends React.Component {
 			hp: t.Number,
 			roll: t.String,
 			speed: t.Number,
-			climb: t.Number,
-			swim: t.Number,
-			fly: t.Number,
+			climb: t.maybe(t.Number),
+			swim: t.maybe(t.Number),
+			fly: t.maybe(t.Number),
 			str: t.Number,
 			dex: t.Number,
 			con: t.Number,
@@ -84,12 +84,7 @@ export default class AddHomebrew extends React.Component {
 
 		this.state = {
 			struct,
-			model: model || {
-				speed: 0,
-				climb: 0,
-				swim: 0,
-				fly: 0
-			}
+			model: model || {}
 		};
 	}
 
@@ -159,6 +154,24 @@ export default class AddHomebrew extends React.Component {
 		const stylesheet = this.stylesheet;
 		const theme = this.theme;
 		const placeholderTextColor = theme.textColorSecondary;
+
+		const multilineStylesheet = {
+			...stylesheet,
+			textbox: {
+				...stylesheet.textbox,
+				normal: {
+					...stylesheet.textbox.normal,
+					height: 100,
+					textAlignVertical: 'top'
+				},
+				error: {
+					...stylesheet.textbox.error,
+					height: 100,
+					textAlignVertical: 'top'
+				}
+			}
+		};
+
 		const attributeListConfig = {
 			item: {
 				auto: 'none',
@@ -168,11 +181,13 @@ export default class AddHomebrew extends React.Component {
 					},
 					text: {
 						auto: 'labels',
-						multiline: true
+						multiline: true,
+						stylesheet: multilineStylesheet
 					}
 				}
 			}
 		};
+
 		return {
 			stylesheet,
 			fields: {
