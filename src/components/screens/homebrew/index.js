@@ -53,9 +53,10 @@ export default class HomebrewScreen extends React.Component {
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<Swipeout
+							backgroundColor={theme.contentBackgroundColorDark}
 							right={[{
 								text: 'Delete',
-								backgroundColor: theme.swipeoutDeleteColor,
+								type: 'delete',
 								onPress: () => AlertDelete(item, actions)
 							}]}
 						>
