@@ -10,6 +10,7 @@
     "expo": "^32.0.5",
     "flyd": "^0.2.8",
     "lodash": "^4.17.11",
+    "pickerdialog": "0.0.1",
     "prop-types": "^15.7.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",

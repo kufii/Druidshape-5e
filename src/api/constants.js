@@ -21,26 +21,26 @@ export const lightTheme = {
 	tabBarInactiveTintColor: '#8e8e93'
 };
 export const darkTheme = {
-	headerColor: '#388e3c',
-	headerColorDark: '#225524',
+	headerColor: '#26292b',
+	headerColorDark: '#181919',
 	headerColorLight: '#5fa463',
 	headerTextColor: '#fff',
 	headerTextColorFaded: '#afd2b1',
 	starColor: '#ffd600',
 	alertColor: '#e53935',
-	contentBackgroundColor: '#15202b',
-	contentBackgroundColorDark: '#10171e',
+	contentBackgroundColor: '#1f2122',
+	contentBackgroundColorDark: '#181919',
 	textColor: '#fff',
-	textColorSecondary: '#798995',
-	textColorDisabled: '#3d5466',
+	textColorSecondary: '#6b737b',
+	textColorDisabled: '#4d5053',
 	textColorAccent: '#8a9a5b',
 	formButtonColor: '#388e3c',
 	swipeoutDeleteColor: '#fe3a2f',
 	dividerColor: '#313b45',
 	fabColor: 'rgb(233, 30, 99)',
-	tabBarColor: '#131d28',
+	tabBarColor: '#26292b',
 	tabBarActiveTintColor: '#388e3c',
-	tabBarInactiveTintColor: '#3d5466'
+	tabBarInactiveTintColor: '#4d5053'
 };
 export const listItemHeight = 60;
 export const listItemHeightCompact = 44;

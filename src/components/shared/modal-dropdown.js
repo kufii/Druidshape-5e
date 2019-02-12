@@ -7,17 +7,39 @@ import { Divider } from 'react-native-elements';
 
 import listStyles from '../../styles/list';
 
-import { fontSizeMedium, fontSizeLarge, lightTheme } from '../../api/constants';
+import { fontSizeMedium, fontSizeLarge } from '../../api/constants';
 
 export default class ModalDropdown extends React.Component {
 	state = { visible: false };
 
 	static propTypes = {
+		actions: PropTypes.object,
 		items: PropTypes.array,
 		selected: PropTypes.string,
 		onSelect: PropTypes.func,
 		style: PropTypes.object
 	};
+
+	get styles() {
+		const theme = this.props.actions.getCurrentTheme();
+		return StyleSheet.create({
+			container: {
+				flex: 1,
+				backgroundColor: theme.contentBackgroundColor
+			},
+			dropdown: {
+				flex: 1,
+				flexDirection: 'row',
+				alignItems: 'center'
+			},
+			text: {
+				fontWeight: 'bold',
+				marginRight: 4,
+				fontSize: Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge,
+				color: theme.headerTextColor
+			}
+		});
+	}
 
 	closeModal() {
 		this.setState({ visible: false });
@@ -28,13 +50,15 @@ export default class ModalDropdown extends React.Component {
 	}
 
 	render() {
-		const listTheme = listStyles(lightTheme);
+		const theme = this.props.actions.getCurrentTheme();
+		const styles = this.styles;
+		const listTheme = listStyles(theme);
 		return (
 			<>
 				<TouchableOpacity onPress={() => this.setState({ visible: true })}>
 					<View style={[styles.dropdown, this.props.style]}>
 						<Text style={styles.text}>{this.getOptionText(this.props.selected)}</Text>
-						<Icon name='ios-arrow-down' size={fontSizeMedium} color={lightTheme.headerTextColor} />
+						<Icon name='ios-arrow-down' size={fontSizeMedium} color={theme.headerTextColor} />
 					</View>
 				</TouchableOpacity>
 				<Modal isVisible={this.state.visible} onBackdropPress={() => this.closeModal()} onBackButtonPress={() => this.closeModal()}>
@@ -61,21 +85,3 @@ export default class ModalDropdown extends React.Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: lightTheme.contentBackgroundColor
-	},
-	dropdown: {
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center'
-	},
-	text: {
-		fontWeight: 'bold',
-		marginRight: 4,
-		fontSize: Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge,
-		color: lightTheme.headerTextColor
-	}
-});

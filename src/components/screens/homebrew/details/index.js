@@ -97,9 +97,13 @@ export default class AddHomebrew extends React.Component {
 		return this.props.navigation.getParam('edit');
 	}
 
-	get styles() {
+	get theme() {
 		const actions = this.props.navigation.getParam('actions');
-		const theme = actions.getCurrentTheme();
+		return actions.getCurrentTheme();
+	}
+
+	get styles() {
+		const theme = this.theme;
 
 		return StyleSheet.create({
 			container: {
@@ -139,18 +143,21 @@ export default class AddHomebrew extends React.Component {
 	}
 
 	get stylesheet() {
-		const actions = this.props.navigation.getParam('actions');
-		const theme = actions.getCurrentTheme();
+		const theme = this.theme;
 		const stylesheet = _.cloneDeep(Form.stylesheet);
 		stylesheet.textbox.normal.color = theme.textColor;
 		stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
+		stylesheet.textbox.normal.borderColor = theme.textColorSecondary;
 		stylesheet.controlLabel.normal.color = theme.textColor;
 		stylesheet.select.normal.color = theme.textColor;
+		stylesheet.select.normal.borderColor = theme.textColorSecondary;
 		return stylesheet;
 	}
 
 	get options() {
 		const stylesheet = this.stylesheet;
+		const theme = this.theme;
+		const placeholderTextColor = theme.textColorSecondary;
 		const attributeListConfig = {
 			item: {
 				auto: 'none',
@@ -173,7 +180,8 @@ export default class AddHomebrew extends React.Component {
 				roll: {
 					label: 'Hit Dice',
 					placeholder: 'e.g. 2d8 + 2',
-					autoCapitalize: 'none'
+					autoCapitalize: 'none',
+					placeholderTextColor
 				},
 				speed: { label: 'Speed (ft.)' },
 				climb: { label: 'Climb Speed (ft.)' },
@@ -187,10 +195,12 @@ export default class AddHomebrew extends React.Component {
 				cha: { label: 'CHA' },
 				passive: { label: 'Passive Perception' },
 				skills: {
-					placeholder: 'e.g. +5 Perception'
+					placeholder: 'e.g. +5 Perception',
+					placeholderTextColor
 				},
 				senses: {
 					placeholder: 'e.g. blindsight 60 ft.',
+					placeholderTextColor,
 					autoCapitalize: 'none'
 				},
 				cr: {

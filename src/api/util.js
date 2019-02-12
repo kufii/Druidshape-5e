@@ -51,10 +51,10 @@ export const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
 
 export const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
 	collapsibleComponent: collapse,
-	collapsibleBackgroundStyle: Object.assign({
+	collapsibleBackgroundStyle: {
 		height,
 		backgroundColor: lightTheme.headerColor
-	})
+	}
 });
 
 export const isIPhoneX = Platform.OS === 'ios' && Dimensions.get('window').height === 812;

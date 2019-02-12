@@ -9,7 +9,7 @@ import ToggleIconButton from '../../shared/toggle-icon-button';
 import { setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
-import { iconSizeLarge, lightTheme } from '../../../api/constants';
+import { iconSizeLarge } from '../../../api/constants';
 
 import { withCollapsible, groupBy, sortBy, icon } from '../../../api/util';
 import { filterBeasts, crToNum } from '../../../api/beasts';
@@ -21,28 +21,53 @@ const options = [
 	...Array.from(new Array(19), (_, i) => ({ text: `Druid Level ${i + 2}`, key: (i + 2).toString() }))
 ];
 
-const ExtendedHeader = ({ navigation }) => (
-	<SearchBar
-		platform={Platform.OS}
-		containerStyle={globalStyles.filterContainer}
-		inputContainerStyle={globalStyles.filter}
-		placeholderTextColor={lightTheme.headerTextColorFaded}
-		color={lightTheme.headerTextColor}
-		clearIcon={globalStyles.filterText}
-		searchIcon={globalStyles.filterText}
-		cancelIcon={globalStyles.filterText}
-		inputStyle={globalStyles.filterText}
-		placeholder='Filter Beasts'
-		cancelButtonTitle='Cancel'
-		cancelButtonProps={{
-			buttonStyle: 'clear',
-			color: lightTheme.headerTextColor
-		}}
-		onChangeText={filter => navigation.setParams({ filter })}
-		value={navigation.getParam('filter', '')}
-	/>
-);
-ExtendedHeader.propTypes = { navigation: PropTypes.object };
+const ExtendedHeader = ({ navigation, screenProps }) => {
+	const { actions } = screenProps;
+	const theme = actions.getCurrentTheme();
+
+	const styles = StyleSheet.create({
+		filterContainer: {
+			paddingTop: 10,
+			paddingBottom: 10,
+			paddingLeft: Platform.OS === 'android' ? 10 : 0,
+			paddingRight: Platform.OS === 'android' ? 10 : 0,
+			backgroundColor: 'transparent'
+		},
+		filter: {
+			backgroundColor: theme.headerColorLight,
+			borderRadius: 20
+		},
+		filterText: {
+			color: theme.headerTextColor
+		}
+	});
+
+	return (
+		<SearchBar
+			platform={Platform.OS}
+			containerStyle={styles.filterContainer}
+			inputContainerStyle={styles.filter}
+			placeholderTextColor={theme.headerTextColorFaded}
+			color={theme.headerTextColor}
+			clearIcon={styles.filterText}
+			searchIcon={styles.filterText}
+			cancelIcon={styles.filterText}
+			inputStyle={styles.filterText}
+			placeholder='Filter Beasts'
+			cancelButtonTitle='Cancel'
+			cancelButtonProps={{
+				buttonStyle: 'clear',
+				color: theme.headerTextColor
+			}}
+			onChangeText={filter => navigation.setParams({ filter })}
+			value={navigation.getParam('filter', '')}
+		/>
+	);
+};
+ExtendedHeader.propTypes = {
+	navigation: PropTypes.object,
+	screenProps: PropTypes.object
+};
 
 export default withCollapsible(class BeastsScreen extends React.Component {
 	static propTypes = {
@@ -51,35 +76,41 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		collapsible: PropTypes.object
 	};
 
-	static navigationOptions = ({ navigation }) => ({
-		headerTitle: (
-			<ModalDropdown
-				style={globalStyles.marginLarge}
-				items={options}
-				selected={navigation.getParam('level', 0).toString()}
-				onSelect={level => {
-					level = parseInt(level);
-					navigation.setParams({ level });
-					setPref('level', level);
-				}}
-			/>
-		),
-		headerRight: (
-			<View style={globalStyles.margin}>
-				<ToggleIconButton
-					icon={icon('moon')}
-					active={navigation.getParam('isMoon', false)}
-					onToggle={isMoon => {
-						navigation.setParams({ isMoon });
-						setPref('isMoon', isMoon);
-						Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
+	static navigationOptions = ({ navigation, screenProps }) => {
+		const { state, actions } = screenProps;
+		const theme = actions.getCurrentTheme();
+		return {
+			headerTitle: (
+				<ModalDropdown
+					state={state}
+					actions={actions}
+					style={globalStyles.marginLarge}
+					items={options}
+					selected={navigation.getParam('level', 0).toString()}
+					onSelect={level => {
+						level = parseInt(level);
+						navigation.setParams({ level });
+						setPref('level', level);
 					}}
-					activeColor={lightTheme.headerTextColor}
-					inactiveColor={lightTheme.headerColorDark}
 				/>
-			</View>
-		)
-	});
+			),
+			headerRight: (
+				<View style={globalStyles.margin}>
+					<ToggleIconButton
+						icon={icon('moon')}
+						active={navigation.getParam('isMoon', false)}
+						onToggle={isMoon => {
+							navigation.setParams({ isMoon });
+							setPref('isMoon', isMoon);
+							Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
+						}}
+						activeColor={theme.headerTextColor}
+						inactiveColor={theme.headerColorDark}
+					/>
+				</View>
+			)
+		};
+	};
 
 	get level() {
 		return this.props.navigation.getParam('level', 0);
@@ -225,19 +256,5 @@ const globalStyles = StyleSheet.create({
 	marginLarge: {
 		marginLeft: 20,
 		marginRight: 20
-	},
-	filterContainer: {
-		paddingTop: 10,
-		paddingBottom: 10,
-		paddingLeft: Platform.OS === 'android' ? 10 : 0,
-		paddingRight: Platform.OS === 'android' ? 10 : 0,
-		backgroundColor: 'transparent'
-	},
-	filter: {
-		backgroundColor: lightTheme.headerColorLight,
-		borderRadius: 20
-	},
-	filterText: {
-		color: lightTheme.headerTextColor
 	}
 });
