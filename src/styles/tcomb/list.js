@@ -57,7 +57,7 @@ const renderRow = (item, stylesheet) => (
 		key={item.key}
 		title={renderButtonGroup(item.buttons)}
 		containerStyle={[styles.card, {
-			backgroundColor: stylesheet.formGroup.normal.borderColor
+			backgroundColor: stylesheet.formGroup.normal.cardColor
 		}]}
 	>
 		<View style={styles.flex}>{item.input}</View>

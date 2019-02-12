@@ -151,7 +151,7 @@ export default class AddHomebrew extends React.Component {
 		stylesheet.controlLabel.normal.color = theme.textColor;
 		stylesheet.select.normal.color = theme.textColor;
 		stylesheet.select.normal.borderColor = theme.textColorSecondary;
-		stylesheet.formGroup.normal.borderColor = theme.cardColor;
+		stylesheet.formGroup.normal.cardColor = theme.cardColor;
 		return stylesheet;
 	}
 
