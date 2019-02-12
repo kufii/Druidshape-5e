@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Divider } from 'react-native-elements';
+import { DocumentPicker, FileSystem } from 'expo';
 import listStyles from '../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
@@ -52,6 +53,24 @@ export default class SettingsScreen extends React.Component {
 						value: state.darkMode,
 						thumbColor: theme.formButtonColor,
 						onValueChange: value => actions.setDarkMode(value)
+					}}
+				/>
+				<Divider style={listTheme.divider} />
+				<ListItem
+					title='Export Homebrew'
+					containerStyle={listTheme.item}
+					titleStyle={listTheme.itemText}
+				/>
+				<Divider style={listTheme.divider} />
+				<ListItem
+					title='Import Homebrew'
+					containerStyle={listTheme.item}
+					titleStyle={listTheme.itemText}
+					onPress={() => {
+						DocumentPicker.getDocumentAsync({ type: 'application/json' })
+							.then(({ type, uri }) => type === 'success' && FileSystem.readAsStringAsync(uri))
+							.then(doc => doc && JSON.parse(doc))
+							.then(beasts => beasts && actions.importHomebrews(beasts));
 					}}
 				/>
 			</ScrollView>

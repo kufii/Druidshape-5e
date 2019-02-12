@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
 import { toDict } from './util';
@@ -17,7 +18,51 @@ export const actions = (update, states) => {
 	const privateActions = {
 		cleanupFavs: favs => Object.entries(favs)
 			.filter(([_, value]) => value)
-			.reduce(toDict(([key]) => key, () => true), {})
+			.reduce(toDict(([key]) => key, () => true), {}),
+		getHomebrewImportMergeList: beasts => new Promise(resolve => {
+			const toImport = [];
+
+			const iterate = (function*() {
+				for (const beast of beasts) {
+					yield beast;
+				}
+			}());
+			const next = () => {
+				const { value, done } = iterate.next();
+				if (done) {
+					resolve(toImport);
+				} else if (states().beasts.find(b => b.name === value.name)) {
+					next();
+				} else if (states().homebrew.find(b => b.name === value.name)) {
+					Alert.alert(
+						`${value.name} Already Exists`,
+						`There is already an existing homebrew named ${value.name}.`,
+						[
+							{
+								text: 'Cancel',
+								style: 'cancel',
+								onPress: () => resolve([])
+							},
+							{
+								text: 'Skip',
+								onPress: () => next()
+							},
+							{
+								text: 'Replace',
+								onPress: () => {
+									toImport.push(value);
+									next();
+								}
+							}
+						]
+					);
+				} else {
+					toImport.push(value);
+					next();
+				}
+			};
+			next();
+		})
 	};
 	const actions = {
 		loadPrefs: () => Promise.all([
@@ -65,6 +110,19 @@ export const actions = (update, states) => {
 			update({ homebrew, favs });
 			setPref('homebrew', homebrew);
 			setPref('favs', favs);
+		},
+		importHomebrews: beasts => {
+			privateActions
+				.getHomebrewImportMergeList(beasts)
+				.then(beasts => {
+					let homebrew = states().homebrew;
+					beasts.forEach(b => {
+						homebrew = homebrew.filter(h => h.name !== b.name);
+						homebrew.push(b);
+					});
+					update({ homebrew });
+					setPref('homebrew', homebrew);
+				});
 		},
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
 		getFavorites: () => Object.entries(states().favs)
