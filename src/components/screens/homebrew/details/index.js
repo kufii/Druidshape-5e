@@ -124,7 +124,7 @@ export default class AddHomebrew extends React.Component {
 				borderRadius: 0
 			},
 			cancelButton: {
-				backgroundColor: '#fff'
+				backgroundColor: theme.formButtonColorSecondary
 			},
 			cancelButtonTitle: {
 				color: theme.formButtonColor
