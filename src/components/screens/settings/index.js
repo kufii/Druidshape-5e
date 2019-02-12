@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import { DocumentPicker, FileSystem } from 'expo';
+import Toast from 'react-native-root-toast';
+import { escapeFileString } from '../../../api/util';
 import listStyles from '../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
@@ -60,6 +62,10 @@ export default class SettingsScreen extends React.Component {
 					title='Export Homebrew'
 					containerStyle={listTheme.item}
 					titleStyle={listTheme.itemText}
+					onPress={() => FileSystem.writeAsStringAsync(
+						FileSystem.documentDirectory + escapeFileString(`homebrew-${new Date().toLocaleString()}.json`),
+						JSON.stringify(state.homebrew)
+					).then(() => Toast.show('Exported'))}
 				/>
 				<Divider style={listTheme.divider} />
 				<ListItem

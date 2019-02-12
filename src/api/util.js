@@ -48,6 +48,8 @@ export const nTimes = (cb, n) => {
 
 export const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
 
+export const escapeFileString = file => file.replace(/[/\\]/g, '-');
+
 export const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
 	collapsibleComponent: collapse,
 	collapsibleBackgroundStyle: {
