@@ -19,7 +19,8 @@ export const lightTheme = {
 	fabColor: 'rgb(233, 30, 99)',
 	tabBarColor: '#fff',
 	tabBarActiveTintColor: '#388e3c',
-	tabBarInactiveTintColor: '#8e8e93'
+	tabBarInactiveTintColor: '#8e8e93',
+	cardColor: '#fff'
 };
 export const darkTheme = {
 	headerColor: '#26292b',
@@ -42,7 +43,8 @@ export const darkTheme = {
 	fabColor: 'rgb(233, 30, 99)',
 	tabBarColor: '#26292b',
 	tabBarActiveTintColor: '#388e3c',
-	tabBarInactiveTintColor: '#4d5053'
+	tabBarInactiveTintColor: '#4d5053',
+	cardColor: '#26292b'
 };
 export const listItemHeight = 60;
 export const listItemHeightCompact = 44;

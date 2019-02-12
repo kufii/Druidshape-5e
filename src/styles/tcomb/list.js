@@ -56,7 +56,9 @@ const renderRow = (item, stylesheet) => (
 	<Card
 		key={item.key}
 		title={renderButtonGroup(item.buttons)}
-		containerStyle={[styles.marginBottom, { backgroundColor: stylesheet.textbox.normal.backgroundColor }]}
+		containerStyle={[styles.card, {
+			backgroundColor: stylesheet.formGroup.normal.borderColor
+		}]}
 	>
 		<View style={styles.flex}>{item.input}</View>
 	</Card>
@@ -103,6 +105,11 @@ const styles = StyleSheet.create({
 	row: { flexDirection: 'row' },
 	marginBottom: {
 		marginBottom: 10
+	},
+	card: {
+		marginBottom: 10,
+		borderColor: 'transparent',
+		elevation: 4
 	},
 	iconButton: {
 		marginLeft: 2,
