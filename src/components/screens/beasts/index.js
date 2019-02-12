@@ -31,7 +31,7 @@ const ExtendedHeader = ({ navigation, screenProps }) => {
 			paddingBottom: 10,
 			paddingLeft: Platform.OS === 'android' ? 10 : 0,
 			paddingRight: Platform.OS === 'android' ? 10 : 0,
-			backgroundColor: 'transparent'
+			backgroundColor: theme.headerColor
 		},
 		filter: {
 			backgroundColor: theme.headerColorLight,

@@ -23,9 +23,9 @@ export const lightTheme = {
 export const darkTheme = {
 	headerColor: '#26292b',
 	headerColorDark: '#181919',
-	headerColorLight: '#5fa463',
+	headerColorLight: '#515355',
 	headerTextColor: '#fff',
-	headerTextColorFaded: '#afd2b1',
+	headerTextColorFaded: '#a8a9aa',
 	starColor: '#ffd600',
 	alertColor: '#e53935',
 	contentBackgroundColor: '#1f2122',
