@@ -1,4 +1,5 @@
 import { Alert } from 'react-native';
+import Toast from 'react-native-root-toast';
 import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
 import { toDict } from './util';
@@ -122,6 +123,7 @@ export const actions = (update, states) => {
 					});
 					update({ homebrew });
 					setPref('homebrew', homebrew);
+					Toast.show('Import complete.');
 				});
 		},
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
