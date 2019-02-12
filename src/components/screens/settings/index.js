@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Alert, Share, Clipboard } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import { DocumentPicker, FileSystem } from 'expo';
 import Toast from 'react-native-root-toast';
@@ -62,22 +62,50 @@ export default class SettingsScreen extends React.Component {
 					title='Export Homebrew'
 					containerStyle={listTheme.item}
 					titleStyle={listTheme.itemText}
-					onPress={() => FileSystem.writeAsStringAsync(
-						FileSystem.documentDirectory + escapeFileString(`homebrew-${new Date().toLocaleString()}.json`),
-						JSON.stringify(state.homebrew)
-					).then(() => Toast.show('Exported'))}
+					onPress={() => Alert.alert(
+						'Export Homebrew',
+						'How would you like to export?',
+						[
+							{
+								text: 'File',
+								onPress: () => FileSystem.writeAsStringAsync(
+									FileSystem.documentDirectory + escapeFileString(`homebrew-${new Date().toLocaleString()}.json`),
+									JSON.stringify(state.homebrew, null, 2)
+								).then(() => Toast.show('Exported to file.'))
+							},
+							{
+								text: 'Share',
+								onPress: () => Share.share({ message: JSON.stringify(state.homebrew, null, 2) })
+							}
+						]
+					)}
 				/>
 				<Divider style={listTheme.divider} />
 				<ListItem
 					title='Import Homebrew'
 					containerStyle={listTheme.item}
 					titleStyle={listTheme.itemText}
-					onPress={() => {
-						DocumentPicker.getDocumentAsync({ type: 'application/json' })
-							.then(({ type, uri }) => type === 'success' && FileSystem.readAsStringAsync(uri))
-							.then(doc => doc && JSON.parse(doc))
-							.then(beasts => beasts && actions.importHomebrews(beasts));
-					}}
+					onPress={() => Alert.alert(
+						'Import Homebrew',
+						'How would you like to import?',
+						[
+							{
+								text: 'File',
+								onPress: () => DocumentPicker.getDocumentAsync({ type: 'application/json' })
+									.then(({ type, uri }) => type === 'success' && FileSystem.readAsStringAsync(uri))
+									.then(doc => doc && JSON.parse(doc))
+									.then(beasts => beasts && actions.importHomebrews(beasts))
+									.catch(() => Toast.show('Failed to import homebrew.'))
+							},
+							{
+								text: 'Clipboard',
+								onPress: () => Clipboard.getString()
+									.then(data => data && JSON.parse(data))
+									.then(beasts => beasts && actions.importHomebrews(beasts))
+									.catch(() => Toast.show('Failed to import homebrew.'))
+							}
+						]
+					)}
 				/>
 			</ScrollView>
 		);
