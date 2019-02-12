@@ -141,11 +141,16 @@ export default class AddHomebrew extends React.Component {
 		const theme = this.theme;
 		const stylesheet = _.cloneDeep(Form.stylesheet);
 		stylesheet.textbox.normal.color = theme.textColor;
+		stylesheet.textbox.error.color = theme.textColor;
 		stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
 		stylesheet.textbox.normal.borderColor = theme.textColorSecondary;
 		stylesheet.controlLabel.normal.color = theme.textColor;
 		stylesheet.select.normal.color = theme.textColor;
 		stylesheet.select.normal.borderColor = theme.textColorSecondary;
+		stylesheet.pickerContainer.normal.color = theme.textColor;
+		stylesheet.pickerContainer.normal.borderColor = theme.textColorSecondary;
+		stylesheet.pickerValue.normal.color = theme.textColor;
+		stylesheet.pickerValue.error.color = theme.textColor;
 		stylesheet.formGroup.normal.cardColor = theme.cardColor;
 		return stylesheet;
 	}
@@ -191,6 +196,13 @@ export default class AddHomebrew extends React.Component {
 		return {
 			stylesheet,
 			fields: {
+				size: {
+					style: { color: theme.textColor },
+					textStyle: { color: theme.textColor },
+					itemTextStyle: { color: theme.textColor },
+					itemStyle: { color: theme.textColor },
+					placeholderTextColor: theme.textColor
+				},
 				ac: { label: 'Armor Class' },
 				hp: { label: 'HP' },
 				roll: {
