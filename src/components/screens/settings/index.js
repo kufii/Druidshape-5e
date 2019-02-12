@@ -50,6 +50,7 @@ export default class SettingsScreen extends React.Component {
 					titleStyle={listTheme.itemText}
 					switch={{
 						value: state.darkMode,
+						thumbColor: theme.formButtonColor,
 						onValueChange: value => actions.setDarkMode(value)
 					}}
 				/>
