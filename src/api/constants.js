@@ -13,8 +13,12 @@ export const lightTheme = {
 	textColorDisabled: '#e5e5e5',
 	textColorAccent: '#8a9a5b',
 	formButtonColor: '#388e3c',
-	listIconColor: '#c8d0d8',
-	swipeoutDeleteColor: '#fe3a2f'
+	swipeoutDeleteColor: '#fe3a2f',
+	dividerColor: '#c8c7cc',
+	fabColor: 'rgb(233, 30, 99)',
+	tabBarColor: '#fff',
+	tabBarActiveTintColor: '#388e3c',
+	tabBarInactiveTintColor: '#8e8e93'
 };
 export const darkTheme = {
 	headerColor: '#388e3c',
@@ -24,15 +28,19 @@ export const darkTheme = {
 	headerTextColorFaded: '#afd2b1',
 	starColor: '#ffd600',
 	alertColor: '#e53935',
-	contentBackgroundColor: '#fff',
-	contentBackgroundColorDark: '#f2f3f7',
-	textColor: '#000',
-	textColorSecondary: '#919191',
-	textColorDisabled: '#e5e5e5',
+	contentBackgroundColor: '#15202b',
+	contentBackgroundColorDark: '#10171e',
+	textColor: '#fff',
+	textColorSecondary: '#798995',
+	textColorDisabled: '#3d5466',
 	textColorAccent: '#8a9a5b',
 	formButtonColor: '#388e3c',
-	listIconColor: '#c8d0d8',
-	swipeoutDeleteColor: '#fe3a2f'
+	swipeoutDeleteColor: '#fe3a2f',
+	dividerColor: '#313b45',
+	fabColor: 'rgb(233, 30, 99)',
+	tabBarColor: '#131d28',
+	tabBarActiveTintColor: '#388e3c',
+	tabBarInactiveTintColor: '#3d5466'
 };
 export const listItemHeight = 60;
 export const listItemHeightCompact = 44;

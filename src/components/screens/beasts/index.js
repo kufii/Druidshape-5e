@@ -206,7 +206,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 						)
 					}
 					keyExtractor={(_, index) => index}
-					ItemSeparatorComponent={() => <Divider />}
+					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 					contentContainerStyle={{ paddingTop: paddingHeight }}
 					scrollIndicatorInsets={{ top: paddingHeight }}
 					onScroll={onScroll}

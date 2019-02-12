@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, BottomTabBar } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { iconSizeLarge, lightTheme } from '../../api/constants';
+import { iconSizeLarge } from '../../api/constants';
 import { icon } from '../../api/util';
 import Beasts from './beasts';
 import Homebrew from './homebrew';
@@ -28,6 +28,20 @@ const tabBarOnPress = ({ navigation, defaultHandler }) => {
 	}
 };
 
+const TabBarComponent = props => {
+	const { actions } = props.screenProps;
+	const theme = actions.getCurrentTheme();
+	return <BottomTabBar
+		activeTintColor={theme.tabBarActiveTintColor}
+		inactiveTintColor={theme.tabBarInactiveTintColor}
+		style={{
+			backgroundColor: theme.tabBarColor,
+			borderTopColor: theme.dividerColor
+		}}
+		{...props}
+	       />;
+};
+TabBarComponent.propTypes = { screenProps: PropTypes.object };
 
 export default createBottomTabNavigator({
 	Beasts: {
@@ -52,8 +66,5 @@ export default createBottomTabNavigator({
 		}
 	}
 }, {
-	tabBarOptions: {
-		showIcon: true,
-		activeTintColor: lightTheme.headerColor
-	}
+	tabBarComponent: TabBarComponent
 });

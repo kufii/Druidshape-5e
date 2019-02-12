@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import t from 'tcomb-form-native';
+import _ from 'lodash';
 import listTemplate from '../../../../styles/tcomb/list';
 
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
@@ -13,56 +14,6 @@ import { iconSizeLarge, lightTheme } from '../../../../api/constants';
 
 const Form = t.form.Form;
 Form.templates.list = listTemplate;
-
-const attributeListConfig = {
-	item: {
-		auto: 'none',
-		fields: {
-			name: {
-				auto: 'labels'
-			},
-			text: {
-				auto: 'labels',
-				multiline: true
-			}
-		}
-	}
-};
-const options = {
-	fields: {
-		ac: { label: 'Armor Class' },
-		hp: { label: 'HP' },
-		roll: {
-			label: 'Hit Dice',
-			placeholder: 'e.g. 2d8 + 2',
-			autoCapitalize: 'none'
-		},
-		speed: { label: 'Speed (ft.)' },
-		climb: { label: 'Climb Speed (ft.)' },
-		swim: { label: 'Swim Speed (ft.)' },
-		fly: { label: 'Fly Speed (ft.)' },
-		str: { label: 'STR' },
-		dex: { label: 'DEX' },
-		con: { label: 'CON' },
-		int: { label: 'INT' },
-		wis: { label: 'WIS' },
-		cha: { label: 'CHA' },
-		passive: { label: 'Passive Perception' },
-		skills: {
-			placeholder: 'e.g. +5 Perception'
-		},
-		senses: {
-			placeholder: 'e.g. blindsight 60 ft.',
-			autoCapitalize: 'none'
-		},
-		cr: {
-			label: 'Challenge Rating',
-			disableOrder: true
-		},
-		traits: attributeListConfig,
-		actions: attributeListConfig
-	}
-};
 
 export default class AddHomebrew extends React.Component {
 	static propTypes = {
@@ -152,7 +103,8 @@ export default class AddHomebrew extends React.Component {
 
 		return StyleSheet.create({
 			container: {
-				flex: 1
+				flex: 1,
+				backgroundColor: theme.contentBackgroundColor
 			},
 			form: {
 				padding: 10
@@ -186,6 +138,71 @@ export default class AddHomebrew extends React.Component {
 		});
 	}
 
+	get stylesheet() {
+		const actions = this.props.navigation.getParam('actions');
+		const theme = actions.getCurrentTheme();
+		const stylesheet = _.cloneDeep(Form.stylesheet);
+		stylesheet.textbox.normal.color = theme.textColor;
+		stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
+		stylesheet.controlLabel.normal.color = theme.textColor;
+		stylesheet.select.normal.color = theme.textColor;
+		return stylesheet;
+	}
+
+	get options() {
+		const stylesheet = this.stylesheet;
+		const attributeListConfig = {
+			item: {
+				auto: 'none',
+				fields: {
+					name: {
+						auto: 'labels'
+					},
+					text: {
+						auto: 'labels',
+						multiline: true
+					}
+				}
+			}
+		};
+		return {
+			stylesheet,
+			fields: {
+				ac: { label: 'Armor Class' },
+				hp: { label: 'HP' },
+				roll: {
+					label: 'Hit Dice',
+					placeholder: 'e.g. 2d8 + 2',
+					autoCapitalize: 'none'
+				},
+				speed: { label: 'Speed (ft.)' },
+				climb: { label: 'Climb Speed (ft.)' },
+				swim: { label: 'Swim Speed (ft.)' },
+				fly: { label: 'Fly Speed (ft.)' },
+				str: { label: 'STR' },
+				dex: { label: 'DEX' },
+				con: { label: 'CON' },
+				int: { label: 'INT' },
+				wis: { label: 'WIS' },
+				cha: { label: 'CHA' },
+				passive: { label: 'Passive Perception' },
+				skills: {
+					placeholder: 'e.g. +5 Perception'
+				},
+				senses: {
+					placeholder: 'e.g. blindsight 60 ft.',
+					autoCapitalize: 'none'
+				},
+				cr: {
+					label: 'Challenge Rating',
+					disableOrder: true
+				},
+				traits: attributeListConfig,
+				actions: attributeListConfig
+			}
+		};
+	}
+
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
@@ -214,7 +231,7 @@ export default class AddHomebrew extends React.Component {
 					<Form
 						ref={form => this.form = form}
 						type={this.state.struct}
-						options={options}
+						options={this.options}
 						value={this.state.model}
 						onChange={(model, key) => {
 							this.validate(key);

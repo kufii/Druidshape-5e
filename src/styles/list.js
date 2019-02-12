@@ -20,18 +20,25 @@ export default theme => StyleSheet.create({
 		paddingRight: 10,
 		alignItems: 'center',
 		height: listItemHeightCompact,
-		width: '100%'
+		width: '100%',
+		backgroundColor: theme.contentBackgroundColor
 	},
 	item: {
 		paddingTop: 0,
 		paddingBottom: 0,
-		height: listItemHeight
+		height: listItemHeight,
+		backgroundColor: theme.contentBackgroundColor
 	},
 	itemText: {
-		fontSize: fontSizeMedium
+		fontSize: fontSizeMedium,
+		color: theme.textColor
+	},
+	dividerCompact: {
+		marginLeft: 10,
+		marginRight: 10,
+		backgroundColor: theme.dividerColor
 	},
 	divider: {
-		marginLeft: 10,
-		marginRight: 10
+		backgroundColor: theme.dividerColor
 	}
 });

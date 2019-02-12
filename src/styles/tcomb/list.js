@@ -52,8 +52,12 @@ const renderButtonGroup = buttons => (
 	</View>
 );
 
-const renderRow = item => (
-	<Card key={item.key} title={renderButtonGroup(item.buttons)} containerStyle={styles.marginBottom}>
+const renderRow = (item, stylesheet) => (
+	<Card
+		key={item.key}
+		title={renderButtonGroup(item.buttons)}
+		containerStyle={[styles.marginBottom, { backgroundColor: stylesheet.textbox.normal.backgroundColor }]}
+	>
 		<View style={styles.flex}>{item.input}</View>
 	</Card>
 );
@@ -80,7 +84,7 @@ export default function ListTemplate(locals) {
 
 	const rows = locals.items.map(item => item.buttons.length === 0
 		? renderRowWithoutButtons(item)
-		: renderRow(item));
+		: renderRow(item, stylesheet));
 
 	const addButton = locals.add ? renderAddButton(locals.add) : null;
 

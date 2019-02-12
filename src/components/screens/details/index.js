@@ -41,14 +41,16 @@ export default class DetailsScreen extends React.Component {
 		return StyleSheet.create({
 			container: {
 				flex: 1,
-				flexDirection: 'column'
+				flexDirection: 'column',
+				backgroundColor: theme.contentBackgroundColor
 			},
 			containerContent: {
 				padding: 10
 			},
 			divider: {
 				marginTop: 10,
-				marginBottom: 10
+				marginBottom: 10,
+				backgroundColor: theme.dividerColor
 			},
 			row: {
 				flex: 1,
@@ -56,7 +58,8 @@ export default class DetailsScreen extends React.Component {
 			},
 			attribute: {
 				marginTop: 2,
-				marginBottom: 2
+				marginBottom: 2,
+				color: theme.textColor
 			},
 			header1: {
 				fontWeight: 'bold',
@@ -74,6 +77,9 @@ export default class DetailsScreen extends React.Component {
 				alignItems: 'center',
 				marginTop: 5,
 				marginBottom: 5
+			},
+			text: {
+				color: theme.textColor
 			}
 		});
 	}
@@ -84,7 +90,7 @@ export default class DetailsScreen extends React.Component {
 		return (
 			<ScrollView style={styles.container} contentContainerStyle={styles.containerContent}>
 				<Text style={styles.header1}>{beast.name}</Text>
-				<I>{beast.size} beast</I>
+				<Text style={styles.text}><I>{beast.size} beast</I></Text>
 				<Divider style={styles.divider} />
 				<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
 				<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
@@ -93,29 +99,29 @@ export default class DetailsScreen extends React.Component {
 				<View style={styles.row}>
 					<View style={styles.stat}>
 						<Text style={styles.header2}>STR</Text>
-						<Text>{beast.str} ({getModifier(beast.str)})</Text>
+						<Text style={styles.text}>{beast.str} ({getModifier(beast.str)})</Text>
 					</View>
 					<View style={styles.stat}>
 						<Text style={styles.header2}>DEX</Text>
-						<Text>{beast.dex} ({getModifier(beast.dex)})</Text>
+						<Text style={styles.text}>{beast.dex} ({getModifier(beast.dex)})</Text>
 					</View>
 					<View style={styles.stat}>
 						<Text style={styles.header2}>CON</Text>
-						<Text>{beast.con} ({getModifier(beast.con)})</Text>
+						<Text style={styles.text}>{beast.con} ({getModifier(beast.con)})</Text>
 					</View>
 				</View>
 				<View style={styles.row}>
 					<View style={styles.stat}>
 						<Text style={styles.header2}>INT</Text>
-						<Text>{beast.int} ({getModifier(beast.int)})</Text>
+						<Text style={styles.text}>{beast.int} ({getModifier(beast.int)})</Text>
 					</View>
 					<View style={styles.stat}>
 						<Text style={styles.header2}>WIS</Text>
-						<Text>{beast.wis} ({getModifier(beast.wis)})</Text>
+						<Text style={styles.text}>{beast.wis} ({getModifier(beast.wis)})</Text>
 					</View>
 					<View style={styles.stat}>
 						<Text style={styles.header2}>CHA</Text>
-						<Text>{beast.cha} ({getModifier(beast.cha)})</Text>
+						<Text style={styles.text}>{beast.cha} ({getModifier(beast.cha)})</Text>
 					</View>
 				</View>
 				<Divider style={styles.divider} />

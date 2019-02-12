@@ -44,6 +44,7 @@ export default class HomebrewScreen extends React.Component {
 	render() {
 		const { state, actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
+		const listTheme = listStyles(theme);
 		const styles = this.styles;
 		return (
 			<View style={styles.container}>
@@ -61,15 +62,20 @@ export default class HomebrewScreen extends React.Component {
 							<ListItem
 								onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions, edit: item })}
 								title={item}
-								titleStyle={listStyles.itemText}
+								titleStyle={listTheme.itemText}
+								containerStyle={listTheme.item}
 								chevron={{ size: iconSizeLarge }}
 							/>
 						</Swipeout>
 					)}
 					keyExtractor={item => item}
-					ItemSeparatorComponent={() => <Divider />}
+					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 				/>
-				<ActionButton onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions })} degrees={0}>
+				<ActionButton
+					onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions })}
+					degrees={0}
+					buttonColor={theme.fabColor}
+				>
 					<Icon name={icon('add')} size={iconSizeMedium} color={theme.textColorHeader} />
 				</ActionButton>
 			</View>
