@@ -85,9 +85,10 @@ export default class DetailsScreen extends React.Component {
 	}
 
 	render() {
-		const beast = this.actions.getAllBeasts().find(b => b.name === this.beastName);
+		const beast = this.actions.getBeast(this.beastName);
+		if (!beast) this.props.navigation.dismiss();
 		const styles = this.styles;
-		return (
+		return beast ? (
 			<ScrollView style={styles.container} contentContainerStyle={styles.containerContent}>
 				<Text style={styles.header1}>{beast.name}</Text>
 				<Text style={styles.text}><I>{beast.size} beast</I></Text>
@@ -152,6 +153,6 @@ export default class DetailsScreen extends React.Component {
 					</>
 				)}
 			</ScrollView>
-		);
+		) : <View />;
 	}
 }

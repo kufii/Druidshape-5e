@@ -127,9 +127,10 @@ export const actions = (update, states) => {
 				});
 		},
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
+		getBeast: name => actions.getAllBeasts().find(b => b.name === name),
 		getFavorites: () => Object.entries(states().favs)
 			.filter(([_, isFav]) => isFav)
-			.map(([key]) => actions.getAllBeasts().find(b => b.name === key))
+			.map(([key]) => actions.getBeast(key))
 			.filter(b => b)
 	};
 	return actions;
