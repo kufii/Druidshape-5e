@@ -43,6 +43,9 @@ export default class DetailsScreen extends React.Component {
 				backgroundColor: theme.contentBackgroundColor,
 				alignItems: 'center'
 			},
+			scrollView: {
+				alignSelf: 'stretch'
+			},
 			containerContent: {
 				padding: 10
 			},
@@ -52,7 +55,6 @@ export default class DetailsScreen extends React.Component {
 				backgroundColor: theme.dividerColor
 			},
 			row: {
-				flex: 1,
 				flexDirection: 'row'
 			},
 			attribute: {
@@ -90,7 +92,7 @@ export default class DetailsScreen extends React.Component {
 		const styles = this.styles;
 		return beast ? (
 			<View style={styles.container}>
-				<ScrollView contentContainerStyle={styles.containerContent}>
+				<ScrollView style={styles.scrollView} contentContainerStyle={styles.containerContent}>
 					<Text style={styles.header1}>{beast.name}</Text>
 					<Text style={styles.text}><I>{beast.size} beast</I></Text>
 					<Divider style={styles.divider} />
