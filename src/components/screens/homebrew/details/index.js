@@ -46,7 +46,7 @@ export default class AddHomebrew extends React.Component {
 		const beasts = actions.getAllBeasts().filter(b => b.name !== this.edit);
 
 		const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
-		const ChallengeRating = t.enums.of(['0', '1/8', '1/4', '1/2', '1', '2', '3', '4', '5', '6'], 'ChallengeRating');
+		const ChallengeRating = t.enums.of(['0 ', '1/8', '1/4', '1/2', '1 ', '2 ', '3 ', '4 ', '5 ', '6 '], 'ChallengeRating');
 
 		const Attribute = t.struct({
 			name: t.String,
