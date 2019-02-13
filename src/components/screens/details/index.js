@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { B, I, BI } from '../../shared/helper';
+import BannerAd from '../../shared/ads';
 
 import { fontSizeLarge, fontSizeXLarge } from '../../../api/constants';
 
@@ -88,70 +89,73 @@ export default class DetailsScreen extends React.Component {
 		const beast = this.actions.getBeast(this.beastName);
 		const styles = this.styles;
 		return beast ? (
-			<ScrollView style={styles.container} contentContainerStyle={styles.containerContent}>
-				<Text style={styles.header1}>{beast.name}</Text>
-				<Text style={styles.text}><I>{beast.size} beast</I></Text>
-				<Divider style={styles.divider} />
-				<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
-				<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
-				<Text style={styles.attribute}><B>Speed</B> {getSpeedString(beast)}</Text>
-				<Divider style={styles.divider} />
-				<View style={styles.row}>
-					<View style={styles.stat}>
-						<Text style={styles.header2}>STR</Text>
-						<Text style={styles.text}>{beast.str} ({getModifier(beast.str)})</Text>
+			<View style={styles.container}>
+				<ScrollView contentContainerStyle={styles.containerContent}>
+					<Text style={styles.header1}>{beast.name}</Text>
+					<Text style={styles.text}><I>{beast.size} beast</I></Text>
+					<Divider style={styles.divider} />
+					<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
+					<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
+					<Text style={styles.attribute}><B>Speed</B> {getSpeedString(beast)}</Text>
+					<Divider style={styles.divider} />
+					<View style={styles.row}>
+						<View style={styles.stat}>
+							<Text style={styles.header2}>STR</Text>
+							<Text style={styles.text}>{beast.str} ({getModifier(beast.str)})</Text>
+						</View>
+						<View style={styles.stat}>
+							<Text style={styles.header2}>DEX</Text>
+							<Text style={styles.text}>{beast.dex} ({getModifier(beast.dex)})</Text>
+						</View>
+						<View style={styles.stat}>
+							<Text style={styles.header2}>CON</Text>
+							<Text style={styles.text}>{beast.con} ({getModifier(beast.con)})</Text>
+						</View>
 					</View>
-					<View style={styles.stat}>
-						<Text style={styles.header2}>DEX</Text>
-						<Text style={styles.text}>{beast.dex} ({getModifier(beast.dex)})</Text>
+					<View style={styles.row}>
+						<View style={styles.stat}>
+							<Text style={styles.header2}>INT</Text>
+							<Text style={styles.text}>{beast.int} ({getModifier(beast.int)})</Text>
+						</View>
+						<View style={styles.stat}>
+							<Text style={styles.header2}>WIS</Text>
+							<Text style={styles.text}>{beast.wis} ({getModifier(beast.wis)})</Text>
+						</View>
+						<View style={styles.stat}>
+							<Text style={styles.header2}>CHA</Text>
+							<Text style={styles.text}>{beast.cha} ({getModifier(beast.cha)})</Text>
+						</View>
 					</View>
-					<View style={styles.stat}>
-						<Text style={styles.header2}>CON</Text>
-						<Text style={styles.text}>{beast.con} ({getModifier(beast.con)})</Text>
-					</View>
-				</View>
-				<View style={styles.row}>
-					<View style={styles.stat}>
-						<Text style={styles.header2}>INT</Text>
-						<Text style={styles.text}>{beast.int} ({getModifier(beast.int)})</Text>
-					</View>
-					<View style={styles.stat}>
-						<Text style={styles.header2}>WIS</Text>
-						<Text style={styles.text}>{beast.wis} ({getModifier(beast.wis)})</Text>
-					</View>
-					<View style={styles.stat}>
-						<Text style={styles.header2}>CHA</Text>
-						<Text style={styles.text}>{beast.cha} ({getModifier(beast.cha)})</Text>
-					</View>
-				</View>
-				<Divider style={styles.divider} />
-				<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
-				{beast.skills && (
-					<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
-				)}
-				{beast.senses && (
-					<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
-				)}
-				<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
-				{beast.traits && (
-					<>
-						<Divider style={styles.divider} />
-						<Text style={styles.header2}>Traits</Text>
-						{beast.traits.map(({ name, text }) => (
-							<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
-						))}
-					</>
-				)}
-				{beast.actions && (
-					<>
-						<Divider style={styles.divider} />
-						<Text style={styles.header2}>Actions</Text>
-						{beast.actions.map(({ name, text }) => (
-							<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
-						))}
-					</>
-				)}
-			</ScrollView>
+					<Divider style={styles.divider} />
+					<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
+					{beast.skills && (
+						<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
+					)}
+					{beast.senses && (
+						<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
+					)}
+					<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
+					{beast.traits && (
+						<>
+							<Divider style={styles.divider} />
+							<Text style={styles.header2}>Traits</Text>
+							{beast.traits.map(({ name, text }) => (
+								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
+							))}
+						</>
+					)}
+					{beast.actions && (
+						<>
+							<Divider style={styles.divider} />
+							<Text style={styles.header2}>Actions</Text>
+							{beast.actions.map(({ name, text }) => (
+								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
+							))}
+						</>
+					)}
+				</ScrollView>
+				<BannerAd />
+			</View>
 		) : <View style={styles.container} />;
 	}
 }
