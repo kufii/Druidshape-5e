@@ -54,6 +54,7 @@ export default class HomebrewScreen extends React.Component {
 					renderItem={({ item }) => (
 						<Swipeout
 							backgroundColor={theme.contentBackgroundColorDark}
+							buttonWidth={100}
 							right={[{
 								text: 'Delete',
 								type: 'delete',
