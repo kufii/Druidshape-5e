@@ -138,7 +138,7 @@
     "actions": [
       {
         "name": "Bite",
-        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 — 1) piercing damage.",
+        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) piercing damage.",
         "attack": "Bite|1|1d4-1"
       }
     ]
@@ -1122,7 +1122,7 @@
     "actions": [
       {
         "name": "Bite",
-        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6 — 1) slashing damage.",
+        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6 - 1) slashing damage.",
         "attack": "Bite|1|1d6-1"
       }
     ]
@@ -1935,7 +1935,7 @@
     "actions": [
       {
         "name": "Bite",
-        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 — 1) piercing damage.",
+        "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) piercing damage.",
         "attack": "Bite|1|1d4-1"
       }
     ]

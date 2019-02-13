@@ -1,4 +1,4 @@
-import { Alert } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import Toast from 'react-native-root-toast';
 import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from './constants';
 
 export const initialState = {
 	isLoading: true,
+	showAds: Platform.OS === 'ios',
 	darkMode: false,
 	level: 0,
 	isMoon: false,

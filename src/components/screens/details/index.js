@@ -29,21 +29,19 @@ export default class DetailsScreen extends React.Component {
 		navigation: PropTypes.object
 	};
 
-	get actions() {
-		return this.props.navigation.getParam('actions');
-	}
-
 	get beastName() {
 		return this.props.navigation.getParam('beast');
 	}
 
 	get styles() {
-		const theme = this.actions.getCurrentTheme();
+		const actions = this.props.navigation.getParam('actions');
+		const theme = actions.getCurrentTheme();
 		return StyleSheet.create({
 			container: {
 				flex: 1,
 				flexDirection: 'column',
-				backgroundColor: theme.contentBackgroundColor
+				backgroundColor: theme.contentBackgroundColor,
+				alignItems: 'center'
 			},
 			containerContent: {
 				padding: 10
@@ -86,7 +84,9 @@ export default class DetailsScreen extends React.Component {
 	}
 
 	render() {
-		const beast = this.actions.getBeast(this.beastName);
+		const actions = this.props.navigation.getParam('actions');
+		const state = this.props.navigation.getParam('state');
+		const beast = actions.getBeast(this.beastName);
 		const styles = this.styles;
 		return beast ? (
 			<View style={styles.container}>
@@ -154,7 +154,7 @@ export default class DetailsScreen extends React.Component {
 						</>
 					)}
 				</ScrollView>
-				<BannerAd />
+				{state.showAds && <BannerAd />}
 			</View>
 		) : <View style={styles.container} />;
 	}
