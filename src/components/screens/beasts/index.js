@@ -105,7 +105,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 							Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
 						}}
 						activeColor={theme.headerTextColor}
-						inactiveColor={theme.headerColorDark}
+						inactiveColor={theme.headerColorLight}
 					/>
 				</View>
 			)
