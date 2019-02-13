@@ -186,10 +186,10 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 					sections={this.filter ? [{
 						data: beasts.map(({ name }) => name).sort()
 					}] : [
-						...favorites.length ? [{
+						...(favorites.length ? [{
 							title: 'FAVORITES',
 							data: favorites.map(({ name }) => name).sort()
-						}] : [],
+						}] : []),
 						...Object.entries(beastsByCr)
 							.sort(sortBy(
 								([cr]) => crToNum(cr)
