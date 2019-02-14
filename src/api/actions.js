@@ -127,14 +127,16 @@ export const actions = (update, states) => {
 			privateActions
 				.getHomebrewImportMergeList(beasts)
 				.then(beasts => {
-					let homebrew = states().homebrew;
-					beasts.forEach(b => {
-						homebrew = homebrew.filter(h => h.name !== b.name);
-						homebrew.push(b);
-					});
-					update({ homebrew });
-					setPref('homebrew', homebrew);
-					Toast.show('Import complete.');
+					if (beasts.length > 0) {
+						let homebrew = states().homebrew;
+						beasts.forEach(b => {
+							homebrew = homebrew.filter(h => h.name !== b.name);
+							homebrew.push(b);
+						});
+						update({ homebrew });
+						setPref('homebrew', homebrew);
+						Toast.show('Import complete.');
+					}
 				});
 		},
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
