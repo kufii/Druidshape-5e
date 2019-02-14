@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-root-toast';
 import ModalDropdown from '../../shared/modal-dropdown';
 import ToggleIconButton from '../../shared/toggle-icon-button';
-import { setPref } from '../../../api/user-prefs';
 
 import listStyles from '../../../styles/list';
 import { iconSizeLarge } from '../../../api/constants';
