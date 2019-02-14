@@ -81,6 +81,16 @@ export const actions = (update, states) => {
 			setPref('darkMode', darkMode);
 		},
 		getCurrentTheme: () => states().darkMode ? darkTheme : lightTheme,
+		toggleMoon: () => {
+			const isMoon = !states().isMoon;
+			update({ isMoon });
+			setPref('isMoon', isMoon);
+		},
+		setLevel: level => {
+			level = parseInt(level);
+			update({ level });
+			setPref('level', level);
+		},
 		toggleFav: name => {
 			const favs = states().favs;
 			favs[name] = !favs[name];

@@ -76,7 +76,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		collapsible: PropTypes.object
 	};
 
-	static navigationOptions = ({ navigation, screenProps }) => {
+	static navigationOptions = ({ screenProps }) => {
 		const { state, actions } = screenProps;
 		const theme = actions.getCurrentTheme();
 		return {
@@ -86,22 +86,17 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 					actions={actions}
 					style={globalStyles.marginLarge}
 					items={options}
-					selected={navigation.getParam('level', 0).toString()}
-					onSelect={level => {
-						level = parseInt(level);
-						navigation.setParams({ level });
-						setPref('level', level);
-					}}
+					selected={state.level.toString()}
+					onSelect={actions.setLevel}
 				/>
 			),
 			headerRight: (
 				<View style={globalStyles.margin}>
 					<ToggleIconButton
 						icon={icon('moon')}
-						active={navigation.getParam('isMoon', false)}
+						active={state.isMoon}
 						onToggle={isMoon => {
-							navigation.setParams({ isMoon });
-							setPref('isMoon', isMoon);
+							actions.toggleMoon();
 							Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
 						}}
 						activeColor={theme.headerTextColor}
@@ -111,14 +106,6 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 			)
 		};
 	};
-
-	get level() {
-		return this.props.navigation.getParam('level', 0);
-	}
-
-	get isMoon() {
-		return this.props.navigation.getParam('isMoon', false);
-	}
 
 	get filter() {
 		return this.props.navigation.getParam('filter', '');
@@ -156,11 +143,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 	}
 
 	componentDidMount() {
-		const { state } = this.props.screenProps;
-		const { level, isMoon } = state;
 		this.props.navigation.setParams({
-			level,
-			isMoon,
 			scrollToTop: this.scrollToTop.bind(this)
 		});
 	}
@@ -172,7 +155,7 @@ export default withCollapsible(class BeastsScreen extends React.Component {
 		const styles = this.styles;
 
 		const allBeasts = actions.getAllBeasts();
-		const beasts = filterBeasts(allBeasts, this.level, this.isMoon, this.filter);
+		const beasts = filterBeasts(allBeasts, state.level, state.isMoon, this.filter);
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
 		const favorites = actions.getFavorites();
 
