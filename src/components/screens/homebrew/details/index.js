@@ -13,7 +13,7 @@ import { Form, getStruct, getOptions } from './form';
 
 export default class HomebrewDetailsScreen extends React.Component {
 	static propTypes = {
-		navigation: PropTypes.object
+		navigation: PropTypes.object.isRequired
 	};
 
 	static navigationOptions = ({ navigation }) => ({

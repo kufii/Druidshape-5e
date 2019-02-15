@@ -31,17 +31,22 @@ const tabBarOnPress = ({ navigation, defaultHandler }) => {
 const TabBarComponent = props => {
 	const { actions } = props.screenProps;
 	const theme = actions.getCurrentTheme();
-	return <BottomTabBar
-		activeTintColor={theme.tabBarActiveTintColor}
-		inactiveTintColor={theme.tabBarInactiveTintColor}
-		style={{
-			backgroundColor: theme.tabBarColor,
-			borderTopColor: theme.dividerColor
-		}}
-		{...props}
-	       />;
+	return (
+		<BottomTabBar
+			activeTintColor={theme.tabBarActiveTintColor}
+			inactiveTintColor={theme.tabBarInactiveTintColor}
+			style={{
+				backgroundColor: theme.tabBarColor,
+				borderTopColor: theme.dividerColor
+			}}
+			{...props}
+		/>
+	);
 };
-TabBarComponent.propTypes = { screenProps: PropTypes.object };
+TabBarComponent.propTypes = { screenProps: PropTypes.shape({
+	state: PropTypes.object,
+	actions: PropTypes.object
+}).isRequired };
 
 export default createBottomTabNavigator({
 	Beasts: {

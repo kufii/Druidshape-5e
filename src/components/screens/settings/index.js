@@ -9,8 +9,11 @@ import listStyles from '../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
 	static propTypes = {
-		screenProps: PropTypes.object,
-		navigation: PropTypes.object
+		screenProps: PropTypes.shape({
+			state: PropTypes.object,
+			actions: PropTypes.object
+		}).isRequired,
+		navigation: PropTypes.object.isRequired
 	};
 
 	static navigationOptions = {

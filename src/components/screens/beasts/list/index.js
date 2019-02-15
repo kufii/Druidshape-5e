@@ -15,9 +15,12 @@ const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export default withCollapsible(class BeastListScreen extends React.Component {
 	static propTypes = {
-		screenProps: PropTypes.object,
-		navigation: PropTypes.object,
-		collapsible: PropTypes.object
+		screenProps: PropTypes.shape({
+			state: PropTypes.object,
+			actions: PropTypes.object
+		}).isRequired,
+		navigation: PropTypes.object.isRequired,
+		collapsible: PropTypes.object.isRequired
 	};
 
 	static navigationOptions = Header;

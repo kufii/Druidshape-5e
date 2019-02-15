@@ -23,9 +23,9 @@ export default function ToggleIconButton(props) {
 	);
 }
 ToggleIconButton.propTypes = {
+	icon: PropTypes.string.isRequired,
 	onToggle: PropTypes.func,
 	active: PropTypes.bool,
-	icon: PropTypes.string,
 	size: PropTypes.number,
 	activeColor: PropTypes.string,
 	inactiveColor: PropTypes.string

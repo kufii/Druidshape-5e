@@ -12,8 +12,11 @@ import { iconSizeMedium, iconSizeLarge } from '../../../../api/constants';
 
 export default class HomebrewListScreen extends React.Component {
 	static propTypes = {
-		screenProps: PropTypes.object,
-		navigation: PropTypes.object
+		screenProps: PropTypes.shape({
+			state: PropTypes.object,
+			actions: PropTypes.object
+		}).isRequired,
+		navigation: PropTypes.object.isRequired
 	};
 
 	static navigationOptions = {

@@ -26,7 +26,7 @@ export default class BeastDetailsScreen extends React.Component {
 	});
 
 	static propTypes = {
-		navigation: PropTypes.object
+		navigation: PropTypes.object.isRequired
 	};
 
 	get beastName() {

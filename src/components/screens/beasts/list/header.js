@@ -87,8 +87,11 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 	);
 };
 ExtendedHeader.propTypes = {
-	navigation: PropTypes.object,
-	screenProps: PropTypes.object
+	navigation: PropTypes.object.isRequired,
+	screenProps: PropTypes.shape({
+		state: PropTypes.object,
+		actions: PropTypes.object
+	}).isRequired
 };
 
 const globalStyles = StyleSheet.create({

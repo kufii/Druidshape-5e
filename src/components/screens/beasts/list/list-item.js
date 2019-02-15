@@ -46,10 +46,10 @@ export default function BeastListItem({ actions, state, navigation, item, showTo
 	);
 }
 BeastListItem.propTypes = {
-	actions: PropTypes.object,
-	state: PropTypes.object,
-	navigation: PropTypes.object,
-	item: PropTypes.string,
+	actions: PropTypes.object.isRequired,
+	state: PropTypes.object.isRequired,
+	navigation: PropTypes.object.isRequired,
+	item: PropTypes.string.isRequired,
 	showTooltip: PropTypes.bool
 };
 

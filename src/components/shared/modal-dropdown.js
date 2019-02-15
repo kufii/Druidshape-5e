@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { ViewPropTypes, Platform, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Divider } from 'react-native-elements';
@@ -13,11 +13,14 @@ export default class ModalDropdown extends React.Component {
 	state = { visible: false };
 
 	static propTypes = {
-		actions: PropTypes.object,
-		items: PropTypes.array,
+		actions: PropTypes.object.isRequired,
+		items: PropTypes.arrayOf(PropTypes.shape({
+			key: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired
+		})).isRequired,
 		selected: PropTypes.string,
 		onSelect: PropTypes.func,
-		style: PropTypes.object
+		style: ViewPropTypes.style
 	};
 
 	get styles() {
