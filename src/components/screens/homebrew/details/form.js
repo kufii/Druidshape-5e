@@ -43,7 +43,7 @@ export const getStruct = beasts => {
 };
 
 export const getOptions = theme => {
-	const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+	const stylesheet = _.cloneDeep(Form.stylesheet);
 	stylesheet.textbox.normal.color = theme.textColor;
 	stylesheet.textbox.error.color = theme.textColor;
 	stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
