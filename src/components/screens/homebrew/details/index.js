@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
-import t from 'tcomb-form-native';
-import _ from 'lodash';
-import listTemplate from '../../../../styles/tcomb/list';
 
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge, lightTheme } from '../../../../api/constants';
 
-const Form = t.form.Form;
-Form.templates.list = listTemplate;
+import { Form, getStruct, getOptions } from './form';
 
 export default class AddHomebrew extends React.Component {
 	static propTypes = {
@@ -45,47 +41,10 @@ export default class AddHomebrew extends React.Component {
 		const state = props.navigation.getParam('state');
 		const beasts = actions.getAllBeasts().filter(b => b.name !== this.edit);
 
-		const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
-		const ChallengeRating = t.enums.of(['0 ', '1/8', '1/4', '1/2', '1 ', '2 ', '3 ', '4 ', '5 ', '6 '], 'ChallengeRating');
+		const struct = getStruct(beasts);
+		const model = (this.edit && state.homebrew.find(h => h.name === this.edit)) || {};
 
-		const Attribute = t.struct({
-			name: t.String,
-			text: t.String
-		}, 'Attribute');
-
-		const Name = t.refinement(t.String, n => !beasts.find(b => b.name === n));
-		Name.getValidationErrorMessage = value => value && 'A beast with that name already exists';
-
-		const struct = t.struct({
-			name: Name,
-			size: Size,
-			ac: t.Number,
-			hp: t.Number,
-			roll: t.String,
-			speed: t.Number,
-			climb: t.maybe(t.Number),
-			swim: t.maybe(t.Number),
-			fly: t.maybe(t.Number),
-			str: t.Number,
-			dex: t.Number,
-			con: t.Number,
-			int: t.Number,
-			wis: t.Number,
-			cha: t.Number,
-			passive: t.Number,
-			skills: t.maybe(t.String),
-			senses: t.maybe(t.String),
-			cr: ChallengeRating,
-			traits: t.maybe(t.list(Attribute)),
-			actions: t.maybe(t.list(Attribute))
-		});
-
-		const model = this.edit && state.homebrew.find(h => h.name === this.edit);
-
-		this.state = {
-			struct,
-			model: model || {}
-		};
+		this.state = { struct, model };
 	}
 
 	get edit() {
@@ -137,110 +96,6 @@ export default class AddHomebrew extends React.Component {
 		});
 	}
 
-	get stylesheet() {
-		const theme = this.theme;
-		const stylesheet = _.cloneDeep(Form.stylesheet);
-		stylesheet.textbox.normal.color = theme.textColor;
-		stylesheet.textbox.error.color = theme.textColor;
-		stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
-		stylesheet.textbox.normal.borderColor = theme.textColorSecondary;
-		stylesheet.controlLabel.normal.color = theme.textColor;
-		stylesheet.select.normal.color = theme.textColor;
-		stylesheet.select.normal.borderColor = theme.textColorSecondary;
-		stylesheet.pickerContainer.normal.color = theme.textColor;
-		stylesheet.pickerContainer.normal.borderColor = theme.textColorSecondary;
-		stylesheet.pickerValue.normal.color = theme.textColor;
-		stylesheet.pickerValue.error.color = theme.textColor;
-		stylesheet.formGroup.normal.cardColor = theme.cardColor;
-		return stylesheet;
-	}
-
-	get options() {
-		const stylesheet = this.stylesheet;
-		const theme = this.theme;
-		const placeholderTextColor = theme.textColorSecondary;
-
-		const multilineStylesheet = {
-			...stylesheet,
-			textbox: {
-				...stylesheet.textbox,
-				normal: {
-					...stylesheet.textbox.normal,
-					height: 100,
-					textAlignVertical: 'top'
-				},
-				error: {
-					...stylesheet.textbox.error,
-					height: 100,
-					textAlignVertical: 'top'
-				}
-			}
-		};
-
-		const attributeListConfig = {
-			item: {
-				auto: 'none',
-				fields: {
-					name: {
-						auto: 'labels'
-					},
-					text: {
-						auto: 'labels',
-						multiline: true,
-						stylesheet: multilineStylesheet
-					}
-				}
-			}
-		};
-
-		return {
-			stylesheet,
-			fields: {
-				size: {
-					style: { color: theme.textColor },
-					textStyle: { color: theme.textColor },
-					itemTextStyle: { color: theme.textColor },
-					itemStyle: { color: theme.textColor },
-					placeholderTextColor: theme.textColor
-				},
-				ac: { label: 'Armor Class' },
-				hp: { label: 'HP' },
-				roll: {
-					label: 'Hit Dice',
-					placeholder: 'e.g. 2d8 + 2',
-					autoCapitalize: 'none',
-					placeholderTextColor
-				},
-				speed: { label: 'Speed (ft.)' },
-				climb: { label: 'Climb Speed (ft.)' },
-				swim: { label: 'Swim Speed (ft.)' },
-				fly: { label: 'Fly Speed (ft.)' },
-				str: { label: 'STR' },
-				dex: { label: 'DEX' },
-				con: { label: 'CON' },
-				int: { label: 'INT' },
-				wis: { label: 'WIS' },
-				cha: { label: 'CHA' },
-				passive: { label: 'Passive Perception' },
-				skills: {
-					placeholder: 'e.g. +5 Perception',
-					placeholderTextColor
-				},
-				senses: {
-					placeholder: 'e.g. blindsight 60 ft.',
-					placeholderTextColor,
-					autoCapitalize: 'none'
-				},
-				cr: {
-					label: 'Challenge Rating',
-					disableOrder: true
-				},
-				traits: attributeListConfig,
-				actions: attributeListConfig
-			}
-		};
-	}
-
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
@@ -269,7 +124,7 @@ export default class AddHomebrew extends React.Component {
 					<Form
 						ref={form => this.form = form}
 						type={this.state.struct}
-						options={this.options}
+						options={getOptions(this.theme)}
 						value={this.state.model}
 						onChange={(model, key) => {
 							this.validate(key);

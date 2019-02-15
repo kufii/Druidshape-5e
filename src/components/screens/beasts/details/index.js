@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
-import { B, I, BI } from '../../shared/helper';
-import BannerAd from '../../shared/ads';
+import { B, I, BI } from '../../../shared/helper';
+import BannerAd from '../../../shared/ads';
 
-import { fontSizeLarge, fontSizeXLarge } from '../../../api/constants';
+import { fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
 
-import { getModifier } from '../../../api/beasts';
+import { getModifier } from '../../../../api/beasts';
 
 const getSpeedString = beast => {
 	let out = `${beast.speed} ft.`;
