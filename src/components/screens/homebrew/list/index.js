@@ -5,12 +5,12 @@ import { ListItem, Divider } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import AlertDelete from './details/alert-delete';
-import { icon } from '../../../api/util';
-import listStyles from '../../../styles/list';
-import { iconSizeMedium, iconSizeLarge } from '../../../api/constants';
+import AlertDelete from '../details/alert-delete';
+import { icon } from '../../../../api/util';
+import listStyles from '../../../../styles/list';
+import { iconSizeMedium, iconSizeLarge } from '../../../../api/constants';
 
-export default class HomebrewScreen extends React.Component {
+export default class HomebrewListScreen extends React.Component {
 	static propTypes = {
 		screenProps: PropTypes.object,
 		navigation: PropTypes.object

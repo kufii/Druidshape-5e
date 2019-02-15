@@ -20,7 +20,7 @@ const getSpeedString = beast => {
 
 const hasNaturalArmor = beast => beast.ac !== 10 + getModifier(beast.dex);
 
-export default class DetailsScreen extends React.Component {
+export default class BeastDetailsScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: navigation.getParam('beast')
 	});

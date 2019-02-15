@@ -13,7 +13,7 @@ import BeastListItem from './list-item';
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
-export default withCollapsible(class BeastsScreen extends React.Component {
+export default withCollapsible(class BeastListScreen extends React.Component {
 	static propTypes = {
 		screenProps: PropTypes.object,
 		navigation: PropTypes.object,

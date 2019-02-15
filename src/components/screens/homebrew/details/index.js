@@ -11,7 +11,7 @@ import { iconSizeLarge, lightTheme } from '../../../../api/constants';
 
 import { Form, getStruct, getOptions } from './form';
 
-export default class AddHomebrew extends React.Component {
+export default class HomebrewDetailsScreen extends React.Component {
 	static propTypes = {
 		navigation: PropTypes.object
 	};
