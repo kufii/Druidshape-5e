@@ -5,7 +5,7 @@ import listTemplate from '../../../../styles/tcomb/list';
 export const Form = t.form.Form;
 Form.templates.list = listTemplate;
 
-export const getStruct = (beasts) => {
+export const getStruct = beasts => {
 	const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
 	const ChallengeRating = t.enums.of(['0 ', '1/8', '1/4', '1/2', '1 ', '2 ', '3 ', '4 ', '5 ', '6 '], 'ChallengeRating');
 
