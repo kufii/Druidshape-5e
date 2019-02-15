@@ -89,8 +89,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 ExtendedHeader.propTypes = {
 	navigation: PropTypes.object.isRequired,
 	screenProps: PropTypes.shape({
-		state: PropTypes.object,
-		actions: PropTypes.object
+		state: PropTypes.object.isRequired,
+		actions: PropTypes.object.isRequired
 	}).isRequired
 };
 

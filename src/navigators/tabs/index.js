@@ -44,8 +44,8 @@ const TabBarComponent = props => {
 	);
 };
 TabBarComponent.propTypes = { screenProps: PropTypes.shape({
-	state: PropTypes.object,
-	actions: PropTypes.object
+	state: PropTypes.object.isRequired,
+	actions: PropTypes.object.isRequired
 }).isRequired };
 
 export default createBottomTabNavigator({
