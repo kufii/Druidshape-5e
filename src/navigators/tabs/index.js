@@ -22,6 +22,8 @@ const tabBarOnPress = ({ navigation, defaultHandler }) => {
 		const stackNavigation = routes[0];
 		if (stackNavigation && stackNavigation.params && stackNavigation.params.scrollToTop) {
 			stackNavigation.params.scrollToTop();
+		} else {
+			defaultHandler(navigation);
 		}
 	} else {
 		defaultHandler(navigation);
