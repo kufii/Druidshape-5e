@@ -15,6 +15,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-action-button": "^2.8.5",
     "react-native-elements": "^1.0.0",
+    "react-native-iphone-x-helper": "^1.2.0",
     "react-native-modal": "^7.0.2",
     "react-native-root-toast": "^3.0.2",
     "react-native-swipeout": "^2.3.6",
@@ -26,7 +27,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
-    "eslint": "^5.13.0",
+    "eslint": "^5.14.0",
     "eslint-config-adpyke-react-native": "^1.0.7",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-native": "^3.6.0"

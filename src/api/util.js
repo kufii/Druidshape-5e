@@ -57,5 +57,3 @@ export const withCollapsible = (main, collapse, height=60) => _withCollapsible(m
 		disableFadeoutInnerComponent: true
 	}
 });
-
-export const isIPhoneX = Platform.OS === 'ios' && Dimensions.get('window').height === 812;

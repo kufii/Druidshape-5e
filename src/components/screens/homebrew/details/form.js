@@ -56,8 +56,8 @@ export const getOptions = theme => {
 	stylesheet.formGroup.normal.cardColor = theme.cardColor;
 
 	const multilineStylesheet = _.cloneDeep(stylesheet);
-	stylesheet.textbox.normal.height = stylesheet.textbox.error.height = 100;
-	stylesheet.textbox.normal.textAlignVertical = stylesheet.textbox.error.textAlignVertical = 'top';
+	multilineStylesheet.textbox.normal.height = multilineStylesheet.textbox.error.height = 100;
+	multilineStylesheet.textbox.normal.textAlignVertical = multilineStylesheet.textbox.error.textAlignVertical = 'top';
 
 	const placeholderTextColor = theme.textColorSecondary;
 

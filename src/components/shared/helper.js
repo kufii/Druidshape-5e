@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, Text, KeyboardAvoidingView, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Text, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { Header } from 'react-navigation';
-import { isIPhoneX } from '../../api/util';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const B = props => <Text style={[styles.bold, props.style]}>{props.children}</Text>;
 export const I = props => <Text style={[styles.italic, props.style]}>{props.children}</Text>;
@@ -19,11 +19,7 @@ export const KeyboardAvoidingScrollView = props => {
 			style={styles.avoidKeyboard}
 			behavior='padding'
 			enabled
-			keyboardVerticalOffset={
-				Platform.OS === 'android'
-					? Header.HEIGHT + StatusBar.currentHeight
-					: (isIPhoneX ? 84 : 64)
-			}
+			keyboardVerticalOffset={Header.HEIGHT + getStatusBarHeight()}
 		>
 			<ScrollView {...other}>
 				{children}
