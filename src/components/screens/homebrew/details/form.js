@@ -44,8 +44,7 @@ export const getStruct = beasts => {
 
 export const getOptions = theme => {
 	const stylesheet = _.cloneDeep(Form.stylesheet);
-	stylesheet.textbox.normal.color = theme.textColor;
-	stylesheet.textbox.error.color = theme.textColor;
+	stylesheet.textbox.normal.color = stylesheet.textbox.error.color = theme.textColor;
 	stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
 	stylesheet.textbox.normal.borderColor = theme.textColorSecondary;
 	stylesheet.controlLabel.normal.color = theme.textColor;
@@ -53,28 +52,14 @@ export const getOptions = theme => {
 	stylesheet.select.normal.borderColor = theme.textColorSecondary;
 	stylesheet.pickerContainer.normal.color = theme.textColor;
 	stylesheet.pickerContainer.normal.borderColor = theme.textColorSecondary;
-	stylesheet.pickerValue.normal.color = theme.textColor;
-	stylesheet.pickerValue.error.color = theme.textColor;
+	stylesheet.pickerValue.normal.color = stylesheet.pickerValue.error.color = theme.textColor;
 	stylesheet.formGroup.normal.cardColor = theme.cardColor;
 
-	const placeholderTextColor = theme.textColorSecondary;
+	const multilineStylesheet = _.cloneDeep(stylesheet);
+	stylesheet.textbox.normal.height = stylesheet.textbox.error.height = 100;
+	stylesheet.textbox.normal.textAlignVertical = stylesheet.textbox.error.textAlignVertical = 'top';
 
-	const multilineStylesheet = {
-		...stylesheet,
-		textbox: {
-			...stylesheet.textbox,
-			normal: {
-				...stylesheet.textbox.normal,
-				height: 100,
-				textAlignVertical: 'top'
-			},
-			error: {
-				...stylesheet.textbox.error,
-				height: 100,
-				textAlignVertical: 'top'
-			}
-		}
-	};
+	const placeholderTextColor = theme.textColorSecondary;
 
 	const attributeListConfig = {
 		item: {
