@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, StyleSheet, View, ScrollView, Alert, Share, Clipboard } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
-import { DocumentPicker, FileSystem } from 'expo';
+// import { DocumentPicker, FileSystem } from 'expo';
 import Toast from 'react-native-root-toast';
-import { escapeFileString } from '../../../api/util';
+// import { escapeFileString } from '../../../api/util';
 import listStyles from '../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
@@ -71,13 +71,13 @@ export default class SettingsScreen extends React.Component {
 							'How would you like to export?',
 							[
 								{
-									text: 'File',
-									onPress: () => FileSystem.writeAsStringAsync(
-										FileSystem.documentDirectory + escapeFileString(`homebrew-${new Date().toLocaleString()}.json`),
-										JSON.stringify(state.homebrew, null, 2)
-									)
-										.then(() => Toast.show('Exported to file.'))
-										.catch(() => Toast.show('Failed to export homebrew.'))
+									text: 'File'
+									// onPress: () => FileSystem.writeAsStringAsync(
+									// 	FileSystem.documentDirectory + escapeFileString(`homebrew-${new Date().toLocaleString()}.json`),
+									// 	JSON.stringify(state.homebrew, null, 2)
+									// )
+									// 	.then(() => Toast.show('Exported to file.'))
+									// 	.catch(() => Toast.show('Failed to export homebrew.'))
 								},
 								{
 									text: 'Share',
@@ -96,12 +96,12 @@ export default class SettingsScreen extends React.Component {
 							'How would you like to import?',
 							[
 								{
-									text: 'File',
-									onPress: () => DocumentPicker.getDocumentAsync()
-										.then(({ type, uri }) => type === 'success' && FileSystem.readAsStringAsync(uri))
-										.then(doc => doc && JSON.parse(doc))
-										.then(beasts => beasts && actions.importHomebrews(beasts))
-										.catch(() => Toast.show('Failed to import homebrew.'))
+									text: 'File'
+									// onPress: () => DocumentPicker.getDocumentAsync()
+									// 	.then(({ type, uri }) => type === 'success' && FileSystem.readAsStringAsync(uri))
+									// 	.then(doc => doc && JSON.parse(doc))
+									// 	.then(beasts => beasts && actions.importHomebrews(beasts))
+									// 	.catch(() => Toast.show('Failed to import homebrew.'))
 								},
 								{
 									text: 'Clipboard',

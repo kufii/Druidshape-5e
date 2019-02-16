@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdMobBanner } from 'expo';
+import { AdMobBanner } from 'react-native-admob';
 
 const BANNER_ID = 'ca-app-pub-1425926517331745/4139536433';
 

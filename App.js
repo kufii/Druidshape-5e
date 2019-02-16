@@ -1,15 +1,11 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { setExpoStatusBarHeight } from 'react-navigation-collapsible';
-import { Constants } from 'expo';
 import flyd from 'flyd';
 import Root from './src/navigators/root';
 import LoadingScreen from './src/components/shared/loading-screen';
 
 import { initialState, actions as actionsBuilder } from './src/api/actions';
-
-setExpoStatusBarHeight(Constants.statusBarHeight);
 
 const AppContainer = createAppContainer(Root);
 
