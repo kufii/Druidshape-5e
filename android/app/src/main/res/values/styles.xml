@@ -3,6 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:editTextStyle">@style/AppEditTextStyle</item>
+        <item name="editTextStyle">@style/AppEditTextStyle</item>
     </style>
-
+    <style name="AppEditTextStyle" parent="@style/Widget.AppCompat.EditText">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
 </resources>

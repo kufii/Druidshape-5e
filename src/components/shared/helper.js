@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { Header } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
@@ -17,7 +17,7 @@ export const KeyboardAvoidingScrollView = props => {
 	return (
 		<KeyboardAvoidingView
 			style={styles.avoidKeyboard}
-			behavior='padding'
+			behavior={Platform.OS === 'ios' && 'padding'}
 			enabled
 			keyboardVerticalOffset={Header.HEIGHT + getStatusBarHeight()}
 		>

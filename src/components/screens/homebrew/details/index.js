@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import AlertDelete from './alert-delete';
@@ -77,17 +78,22 @@ export default class HomebrewDetailsScreen extends React.Component {
 				width: '50%',
 				borderRadius: 0
 			},
+			btn: {
+				height: 49 + getBottomSpace()
+			},
 			cancelButton: {
 				backgroundColor: theme.formButtonColorSecondary
 			},
 			cancelButtonTitle: {
-				color: theme.formButtonColor
+				color: theme.formButtonColor,
+				paddingBottom: getBottomSpace()
 			},
 			saveButton: {
 				backgroundColor: theme.formButtonColor
 			},
 			saveButtonTitle: {
-				color: '#fff'
+				color: '#fff',
+				paddingBottom: getBottomSpace()
 			},
 			deleteButton: {
 				marginRight: 10,
@@ -137,6 +143,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 						title='Cancel'
 						type='clear'
 						containerStyle={[styles.button, styles.cancelButton]}
+						buttonStyle={styles.btn}
 						titleStyle={styles.cancelButtonTitle}
 						onPress={() => this.props.navigation.dismiss()}
 					/>
@@ -144,6 +151,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 						title='Save'
 						type='clear'
 						containerStyle={[styles.button, styles.saveButton]}
+						buttonStyle={styles.btn}
 						titleStyle={styles.saveButtonTitle}
 						onPress={() => this.submit()}
 					/>

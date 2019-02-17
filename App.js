@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import flyd from 'flyd';
 import Root from './src/navigators/root';
@@ -23,7 +23,10 @@ export default class App extends React.Component {
 
 	render() {
 		const state = this.state;
-		StatusBar.setBarStyle('light-content');
+		const theme = actions.getCurrentTheme();
+		Platform.OS === 'ios'
+			? StatusBar.setBarStyle('light-content')
+			: StatusBar.setBackgroundColor(theme.headerColorDark);
 		return state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />;
 	}
 }
