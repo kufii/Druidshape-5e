@@ -8,7 +8,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
-import { iconSizeLarge, lightTheme } from '../../../../api/constants';
+import { iconSizeLarge, bottomButtonHeight, lightTheme } from '../../../../api/constants';
 
 import { Form, getStruct, getOptions } from './form';
 
@@ -79,7 +79,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 				borderRadius: 0
 			},
 			btn: {
-				height: 49 + getBottomSpace()
+				height: bottomButtonHeight + getBottomSpace()
 			},
 			cancelButton: {
 				backgroundColor: theme.formButtonColorSecondary

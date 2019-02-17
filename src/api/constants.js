@@ -46,6 +46,7 @@ export const darkTheme = {
 };
 export const listItemHeight = 60;
 export const listItemHeightCompact = 44;
+export const bottomButtonHeight = 49;
 export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;
 export const fontSizeLarge = 18;
