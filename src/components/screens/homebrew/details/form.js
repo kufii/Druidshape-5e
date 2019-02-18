@@ -116,8 +116,7 @@ export const getOptions = theme => {
 				autoCapitalize: 'none'
 			},
 			cr: {
-				label: 'Challenge Rating',
-				disableOrder: true
+				label: 'Challenge Rating'
 			},
 			traits: attributeListConfig,
 			actions: attributeListConfig
