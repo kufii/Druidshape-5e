@@ -4,6 +4,10 @@ import { getPref, setPref } from './user-prefs';
 import beasts from '../data/beasts.json';
 import { toDict } from './util';
 import { lightTheme, darkTheme } from './constants';
+import { getStruct } from '../components/screens/homebrew/details/form';
+import t from 'tcomb-validation';
+
+const homebrewStruct = getStruct();
 
 export const initialState = {
 	isLoading: true,
@@ -21,7 +25,7 @@ export const actions = (update, states) => {
 		cleanupFavs: favs => Object.entries(favs)
 			.filter(([_, value]) => value)
 			.reduce(toDict(([key]) => key, () => true), {}),
-		getHomebrewImportMergeList: beasts => new Promise(resolve => {
+		getHomebrewImportMergeList: beasts => new Promise((resolve, reject) => {
 			const toImport = [];
 
 			const iterate = (function*() {
@@ -33,6 +37,8 @@ export const actions = (update, states) => {
 				const { value, done } = iterate.next();
 				if (done) {
 					resolve(toImport);
+				} else if (!t.validate(value, homebrewStruct).isValid()) {
+					reject(new Error('Invalid Data'));
 				} else if (states().beasts.find(b => b.name === value.name)) {
 					next();
 				} else if (states().homebrew.find(b => b.name === value.name)) {
@@ -123,22 +129,20 @@ export const actions = (update, states) => {
 			setPref('homebrew', homebrew);
 			setPref('favs', favs);
 		},
-		importHomebrews: beasts => {
-			privateActions
-				.getHomebrewImportMergeList(beasts)
-				.then(beasts => {
-					if (beasts.length > 0) {
-						let homebrew = states().homebrew;
-						beasts.forEach(b => {
-							homebrew = homebrew.filter(h => h.name !== b.name);
-							homebrew.push(b);
-						});
-						update({ homebrew });
-						setPref('homebrew', homebrew);
-						Toast.show('Import complete.');
-					}
-				});
-		},
+		importHomebrews: beasts => privateActions
+			.getHomebrewImportMergeList(beasts)
+			.then(beasts => {
+				if (beasts.length > 0) {
+					let homebrew = states().homebrew;
+					beasts.forEach(b => {
+						homebrew = homebrew.filter(h => h.name !== b.name);
+						homebrew.push(b);
+					});
+					update({ homebrew });
+					setPref('homebrew', homebrew);
+					Toast.show('Import complete.');
+				}
+			}),
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
 		getBeast: name => actions.getAllBeasts().find(b => b.name === name),
 		getFavorites: () => Object.entries(states().favs)

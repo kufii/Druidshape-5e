@@ -14,7 +14,7 @@ export const getStruct = beasts => {
 		text: t.String
 	}, 'Attribute');
 
-	const Name = t.refinement(t.String, n => !beasts.find(b => b.name === n));
+	const Name = t.refinement(t.String, n => beasts ? !beasts.find(b => b.name === n) : true);
 	Name.getValidationErrorMessage = value => value && 'A beast with that name already exists';
 
 	return t.struct({
