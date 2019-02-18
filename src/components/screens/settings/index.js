@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, StyleSheet, View, ScrollView, Alert, Share, Clipboard } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
-// import { DocumentPicker, FileSystem } from 'expo';
+import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
+import RNFS from 'react-native-fs';
 import Toast from 'react-native-root-toast';
-// import { escapeFileString } from '../../../api/util';
 import listStyles from '../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
@@ -66,25 +66,7 @@ export default class SettingsScreen extends React.Component {
 						title='Export Homebrew'
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
-						onPress={() => Platform.OS === 'android' ? Alert.alert(
-							'Export Homebrew',
-							'How would you like to export?',
-							[
-								{
-									text: 'File'
-									// onPress: () => FileSystem.writeAsStringAsync(
-									// 	FileSystem.documentDirectory + escapeFileString(`homebrew-${new Date().toLocaleString()}.json`),
-									// 	JSON.stringify(state.homebrew, null, 2)
-									// )
-									// 	.then(() => Toast.show('Exported to file.'))
-									// 	.catch(() => Toast.show('Failed to export homebrew.'))
-								},
-								{
-									text: 'Share',
-									onPress: () => Share.share({ message: JSON.stringify(state.homebrew, null, 2) })
-								}
-							]
-						) : Share.share({ message: JSON.stringify(state.homebrew, null, 2) })}
+						onPress={() => Share.share({ message: JSON.stringify(state.homebrew, null, 2) })}
 					/>
 					<Divider style={listTheme.divider} />
 					<ListItem
@@ -96,12 +78,21 @@ export default class SettingsScreen extends React.Component {
 							'How would you like to import?',
 							[
 								{
-									text: 'File'
-									// onPress: () => DocumentPicker.getDocumentAsync()
-									// 	.then(({ type, uri }) => type === 'success' && FileSystem.readAsStringAsync(uri))
-									// 	.then(doc => doc && JSON.parse(doc))
-									// 	.then(beasts => beasts && actions.importHomebrews(beasts))
-									// 	.catch(() => Toast.show('Failed to import homebrew.'))
+									text: 'File',
+									onPress: () => DocumentPicker.show({
+										filetype: [
+											Platform.OS === 'android' ? 'application/json' : 'public.json',
+											DocumentPickerUtil.plainText()
+										]
+									}, (err, res) => {
+										if (err) return Toast.show('Failed to import homebrew.');
+										if (res) {
+											RNFS.readFile(res.uri)
+												.then(doc => doc && JSON.parse(doc))
+												.then(beasts => beasts && actions.importHomebrews(beasts))
+												.catch(() => Toast.show('Failed to import homebrew.'));
+										}
+									})
 								},
 								{
 									text: 'Clipboard',

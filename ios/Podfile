@@ -7,4 +7,8 @@ target 'wildshapecompanion' do
 
   # Pods for wildshapecompanion
   pod 'Google-Mobile-Ads-SDK'
+  pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
 end
