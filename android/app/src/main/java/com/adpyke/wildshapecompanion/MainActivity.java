@@ -1,4 +1,4 @@
-package com.wildshapecompanion;
+package com.adpyke.wildshapecompanion;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

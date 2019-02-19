@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.wildshapecompanion",
+    package = "com.adpyke.wildshapecompanion",
 )
 
 android_resource(
     name = "res",
-    package = "com.wildshapecompanion",
+    package = "com.adpyke.wildshapecompanion",
     res = "src/main/res",
 )
 
