@@ -11,6 +11,7 @@ import { iconSizeLarge } from '../../../../api/constants';
 export default class BeastListItem extends React.Component {
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
+		state: PropTypes.object.isRequired,
 		item: PropTypes.string.isRequired,
 		showTooltip: PropTypes.bool,
 		isFav: PropTypes.bool,
@@ -20,7 +21,8 @@ export default class BeastListItem extends React.Component {
 
 	shouldComponentUpdate(nextProps) {
 		return nextProps.isFav !== this.props.isFav
-			|| nextProps.showTooltip !== this.props.showTooltip;
+			|| nextProps.showTooltip !== this.props.showTooltip
+			|| nextProps.state.darkMode !== this.props.state.darkMode;
 	}
 
 	render() {
