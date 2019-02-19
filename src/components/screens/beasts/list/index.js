@@ -69,13 +69,14 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
+		const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
 		const sections = this.filter ? [{
-			data: beasts.sort(sortBy(b => b.name))
+			data: getData(beasts)
 		}] : [
 			...(favorites.length ? [{
 				key: 'favs',
 				title: 'FAVORITES',
-				data: favorites.map(b => ({ ...b, key: `fav-${b.name}` })).sort(sortBy(b => b.name))
+				data: getData(favorites, 'fav')
 			}] : []),
 			...Object.entries(beastsByCr)
 				.sort(sortBy(
@@ -84,7 +85,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 				.map(([cr, list]) => ({
 					key: cr.toString(),
 					title: `CR ${cr}`,
-					data: list.map(b => ({ ...b, key: `item-${b.name}` })).sort(sortBy(b => b.name))
+					data: getData(list)
 				}))
 		];
 
