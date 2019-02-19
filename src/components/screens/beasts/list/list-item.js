@@ -8,50 +8,60 @@ import listStyles from '../../../../styles/list';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge } from '../../../../api/constants';
 
-export default function BeastListItem({ actions, state, navigation, item, showTooltip }) {
-	const theme = actions.getCurrentTheme();
-	const listTheme = listStyles(theme);
+export default class BeastListItem extends React.Component {
+	static propTypes = {
+		actions: PropTypes.object.isRequired,
+		item: PropTypes.string.isRequired,
+		showTooltip: PropTypes.bool,
+		isFav: PropTypes.bool,
+		onPress: PropTypes.func,
+		onFav: PropTypes.func
+	};
 
-	return (
-		<ListItem
-			onPress={() => navigation.navigate('BeastDetails', { beast: item, state, actions })}
-			title={(
-				<View style={styles.row}>
-					<Text style={listTheme.itemText}>{item}</Text>
-					{showTooltip && (
-						<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
-							<Icon
-								name={icon('alert')}
-								size={iconSizeLarge}
-								style={styles.margin}
-								color={theme.alertColor}
-							/>
-						</Tooltip>
-					)}
-				</View>
-			)}
-			containerStyle={[listTheme.item, styles.item]}
-			titleStyle={listTheme.itemText}
-			rightIcon={(
-				<ToggleIconButton
-					active={state.favs[item]}
-					icon={icon('star')}
-					size={iconSizeLarge}
-					activeColor={theme.starColor}
-					inactiveColor={theme.textColorDisabled}
-					onToggle={() => actions.toggleFav(item)}
-				/>
-			)}
-		/>
-	);
+	shouldComponentUpdate(nextProps) {
+		return nextProps.isFav !== this.props.isFav
+			|| nextProps.showTooltip !== this.props.showTooltip;
+	}
+
+	render() {
+		const { actions, item, showTooltip, isFav, onPress, onFav } = this.props;
+		const theme = actions.getCurrentTheme();
+		const listTheme = listStyles(theme);
+
+		return (
+			<ListItem
+				onPress={onPress}
+				title={(
+					<View style={styles.row}>
+						<Text style={listTheme.itemText}>{item}</Text>
+						{showTooltip && (
+							<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
+								<Icon
+									name={icon('alert')}
+									size={iconSizeLarge}
+									style={styles.margin}
+									color={theme.alertColor}
+								/>
+							</Tooltip>
+						)}
+					</View>
+				)}
+				containerStyle={[listTheme.item, styles.item]}
+				titleStyle={listTheme.itemText}
+				rightIcon={(
+					<ToggleIconButton
+						active={isFav}
+						icon={icon('star')}
+						size={iconSizeLarge}
+						activeColor={theme.starColor}
+						inactiveColor={theme.textColorDisabled}
+						onToggle={onFav}
+					/>
+				)}
+			/>
+		);
+	}
 }
-BeastListItem.propTypes = {
-	actions: PropTypes.object.isRequired,
-	state: PropTypes.object.isRequired,
-	navigation: PropTypes.object.isRequired,
-	item: PropTypes.string.isRequired,
-	showTooltip: PropTypes.bool
-};
 
 const styles = StyleSheet.create({
 	row: {

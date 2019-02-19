@@ -70,11 +70,11 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
 		const sections = this.filter ? [{
-			data: beasts.map(({ name }) => name).sort()
+			data: beasts.sort(sortBy(b => b.name))
 		}] : [
 			...(favorites.length ? [{
 				title: 'FAVORITES',
-				data: favorites.map(({ name }) => name).sort()
+				data: favorites.sort(sortBy(b => b.name))
 			}] : []),
 			...Object.entries(beastsByCr)
 				.sort(sortBy(
@@ -82,7 +82,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 				))
 				.map(([cr, list]) => ({
 					title: `CR ${cr}`,
-					data: list.map(({ name }) => name).sort()
+					data: list.sort(sortBy(b => b.name))
 				}))
 		];
 
@@ -98,15 +98,16 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 					renderItem={
 						({ item }) => (
 							<BeastListItem
-								state={state}
 								actions={actions}
-								navigation={this.props.navigation}
-								item={item}
-								showTooltip={!beasts.find(b => b.name === item)}
+								item={item.name}
+								showTooltip={!beasts.find(b => b.name === item.name)}
+								isFav={state.favs[item.name]}
+								onPress={() => this.props.navigation.navigate('BeastDetails', { beast: item.name, state, actions })}
+								onFav={() => actions.toggleFav(item.name)}
 							/>
 						)
 					}
-					keyExtractor={(_, index) => index}
+					keyExtractor={({ name, isFav }) => `${isFav ? 'fav' : 'item'}-${name}`}
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 					contentContainerStyle={{ paddingTop: paddingHeight }}
 					scrollIndicatorInsets={{ top: paddingHeight }}
