@@ -73,6 +73,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 			data: beasts.sort(sortBy(b => b.name))
 		}] : [
 			...(favorites.length ? [{
+				key: 'favs',
 				title: 'FAVORITES',
 				data: favorites.sort(sortBy(b => b.name))
 			}] : []),
@@ -81,6 +82,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 					([cr]) => crToNum(cr)
 				))
 				.map(([cr, list]) => ({
+					key: cr.toString(),
 					title: `CR ${cr}`,
 					data: list.sort(sortBy(b => b.name))
 				}))
