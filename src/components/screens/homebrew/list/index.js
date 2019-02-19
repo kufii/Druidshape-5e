@@ -45,10 +45,13 @@ export default class HomebrewListScreen extends React.Component {
 	}
 
 	render() {
-		const { state, actions } = this.props.screenProps;
+		const { screenProps, navigation } = this.props;
+		const { state, actions } = screenProps;
+
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
 		const styles = this.styles;
+
 		return (
 			<View style={styles.container}>
 				<FlatList
@@ -65,7 +68,7 @@ export default class HomebrewListScreen extends React.Component {
 							}]}
 						>
 							<ListItem
-								onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions, edit: item })}
+								onPress={() => navigation.navigate('HomebrewDetails', { state, actions, edit: item })}
 								title={item}
 								titleStyle={listTheme.itemText}
 								containerStyle={listTheme.item}
@@ -77,7 +80,7 @@ export default class HomebrewListScreen extends React.Component {
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 				/>
 				<ActionButton
-					onPress={() => this.props.navigation.navigate('HomebrewDetails', { state, actions })}
+					onPress={() => navigation.navigate('HomebrewDetails', { state, actions })}
 					degrees={0}
 					buttonColor={theme.fabColor}
 				>

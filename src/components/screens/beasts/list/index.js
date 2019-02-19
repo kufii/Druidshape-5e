@@ -57,7 +57,10 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 	}
 
 	render() {
-		const { state, actions } = this.props.screenProps;
+		const { screenProps, navigation, collapsible } = this.props;
+		const { state, actions } = screenProps;
+		const { paddingHeight, animatedY, onScroll } = collapsible;
+
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
 		const styles = this.styles;
@@ -66,8 +69,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		const beasts = filterBeasts(allBeasts, state.level, state.isMoon, this.filter);
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
 		const favorites = actions.getFavorites();
-
-		const { paddingHeight, animatedY, onScroll } = this.props.collapsible;
 
 		const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
 		const sections = this.filter ? [{
@@ -106,7 +107,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 								item={item.name}
 								showTooltip={!beasts.find(b => b.name === item.name)}
 								isFav={state.favs[item.name]}
-								onPress={() => this.props.navigation.navigate('BeastDetails', { beast: item.name, state, actions })}
+								onPress={() => navigation.navigate('BeastDetails', { beast: item.name, state, actions })}
 								onFav={() => actions.toggleFav(item.name)}
 							/>
 						)
