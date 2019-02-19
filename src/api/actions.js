@@ -147,7 +147,8 @@ export const actions = (update, states) => {
 		getBeast: name => actions.getAllBeasts().find(b => b.name === name),
 		getFavorites: () => Object.entries(states().favs)
 			.filter(([_, isFav]) => isFav)
-			.map(([name]) => ({ name, isFav: true }))
+			.map(([key]) => actions.getBeast(key))
+			.filter(b => b)
 	};
 	return actions;
 };

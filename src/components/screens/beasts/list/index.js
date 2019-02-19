@@ -75,7 +75,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 			...(favorites.length ? [{
 				key: 'favs',
 				title: 'FAVORITES',
-				data: favorites.sort(sortBy(b => b.name))
+				data: favorites.map(b => ({ ...b, key: `fav-${b.name}` })).sort(sortBy(b => b.name))
 			}] : []),
 			...Object.entries(beastsByCr)
 				.sort(sortBy(
@@ -84,7 +84,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 				.map(([cr, list]) => ({
 					key: cr.toString(),
 					title: `CR ${cr}`,
-					data: list.sort(sortBy(b => b.name))
+					data: list.map(b => ({ ...b, key: `item-${b.name}` })).sort(sortBy(b => b.name))
 				}))
 		];
 
@@ -109,7 +109,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 							/>
 						)
 					}
-					keyExtractor={({ name, isFav }) => `${isFav ? 'fav' : 'item'}-${name}`}
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 					contentContainerStyle={{ paddingTop: paddingHeight }}
 					scrollIndicatorInsets={{ top: paddingHeight }}
