@@ -6,9 +6,10 @@ target 'wildshapecompanion' do
   # use_frameworks!
 
   # Pods for wildshapecompanion
+  pod 'React', :path => '../node_modules/react-native', :subspecs => ['RCTImage']
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
   pod 'Google-Mobile-Ads-SDK'
   pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
-
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
 end

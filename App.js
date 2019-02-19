@@ -24,9 +24,7 @@ export default class App extends React.Component {
 	render() {
 		const state = this.state;
 		const theme = actions.getCurrentTheme();
-		Platform.OS === 'ios'
-			? StatusBar.setBarStyle('light-content')
-			: StatusBar.setBackgroundColor(theme.headerColorDark);
+		if (Platform.OS === 'android') StatusBar.setBackgroundColor(theme.headerColorDark);
 		return state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />;
 	}
 }

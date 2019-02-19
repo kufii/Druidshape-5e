@@ -1,16 +1,48 @@
 PODS:
   - Google-Mobile-Ads-SDK (7.39.0)
+  - React (0.58.4):
+    - React/Core (= 0.58.4)
+  - react-native-document-picker (2.3.0):
+    - React
+  - React/Core (0.58.4):
+    - yoga (= 0.58.4.React)
+  - React/RCTImage (0.58.4):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTNetwork (0.58.4):
+    - React/Core
+  - RNFS (2.13.3):
+    - React
+  - yoga (0.58.4.React)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
+  - react-native-document-picker (from `../node_modules/react-native-document-picker`)
+  - React/RCTImage (from `../node_modules/react-native`)
+  - RNFS (from `../node_modules/react-native-fs`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Google-Mobile-Ads-SDK
 
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+  react-native-document-picker:
+    :path: "../node_modules/react-native-document-picker"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
+
 SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: d0f10a7c4d7015db23075ff316602350d12049db
+  React: 9b873b38b92ed8012d7cdf3b965477095ed364c4
+  react-native-document-picker: e7934f6a3c898a1b62fa68b1f09371beef6ac51a
+  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
+  yoga: 0885622311729a02c2bc02dca97167787a51488b
 
-PODFILE CHECKSUM: 21aede794dc8598e5e6d9f32183d187906bf45f9
+PODFILE CHECKSUM: c4c437bd4b06fe0f9d59e0ef812e36f5899d0833
 
 COCOAPODS: 1.5.3
