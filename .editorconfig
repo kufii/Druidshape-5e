@@ -11,7 +11,7 @@ indent_size = 4
 indent_style = space
 indent_size = 4
 
-[{*.xcworkspacedata}]
+[*.xcworkspacedata]
 indent_style = space
 indent_size = 3
 
