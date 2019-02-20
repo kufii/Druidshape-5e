@@ -73,13 +73,15 @@ export default class SettingsScreen extends React.Component {
 						title='Import Homebrew'
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
-						onPress={() => Alert.alert(
+						onPress={({ nativeEvent }) => Alert.alert(
 							'Import Homebrew',
 							'How would you like to import?',
 							[
 								{
 									text: 'File',
 									onPress: () => DocumentPicker.show({
+										top: nativeEvent.pageY,
+										left: nativeEvent.pageX,
 										filetype: [
 											Platform.OS === 'android' ? 'application/json' : 'public.json',
 											DocumentPickerUtil.plainText()
@@ -88,6 +90,7 @@ export default class SettingsScreen extends React.Component {
 										if (err) return Toast.show('Failed to import homebrew.');
 										if (res) {
 											RNFS.readFile(res.uri)
+												.then(doc => console.warn(doc))
 												.then(doc => doc && JSON.parse(doc))
 												.then(beasts => beasts && actions.importHomebrews(beasts))
 												.catch(() => Toast.show('Failed to import homebrew.'));
