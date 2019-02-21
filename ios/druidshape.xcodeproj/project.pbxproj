@@ -12,7 +12,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* wildshapecompanionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wildshapecompanionTests.m */; };
+		00E356F31AD99517003FC87E /* druidshapeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* druidshapeTests.m */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -46,7 +46,7 @@
 		D610BE75870242B68BFB5CB5 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C401EBC3382424E9E8E3685 /* Feather.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		EFDF9DCDC5164373AA345CF5 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60F502424CDC469EA0E29059 /* FontAwesome.ttf */; };
-		F847951A70CD034E5FCBD720 /* libPods-wildshapecompanion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214830795412A47BA4153C3 /* libPods-wildshapecompanion.a */; };
+		F847951A70CD034E5FCBD720 /* libPods-druidshape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214830795412A47BA4153C3 /* libPods-druidshape.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +90,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = wildshapecompanion;
+			remoteInfo = druidshape;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -360,20 +360,20 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* wildshapecompanionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wildshapecompanionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* druidshapeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = druidshapeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* wildshapecompanionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wildshapecompanionTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* druidshapeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = druidshapeTests.m; sourceTree = "<group>"; };
 		0183029665624DC494E246FB /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139289423785466A9216B668 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* wildshapecompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wildshapecompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wildshapecompanion/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = wildshapecompanion/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* druidshape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = druidshape.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = druidshape/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = druidshape/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = wildshapecompanion/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = wildshapecompanion/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = wildshapecompanion/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = druidshape/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = druidshape/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = druidshape/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		25099BD8703C43E39300DD12 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,7 +386,7 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		60F502424CDC469EA0E29059 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7A0C1B8F221BBC10002DBD23 /* wildshapecompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = wildshapecompanion.entitlements; path = wildshapecompanion/wildshapecompanion.entitlements; sourceTree = "<group>"; };
+		7A0C1B8F221BBC10002DBD23 /* druidshape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = druidshape.entitlements; path = druidshape/druidshape.entitlements; sourceTree = "<group>"; };
 		7ABDF2FA221E3341004CD8D7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7ABDF30B221E341D004CD8D7 /* RNIap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIap.xcodeproj; path = "../node_modules/react-native-iap/ios/RNIap.xcodeproj"; sourceTree = "<group>"; };
 		7C77CEBB5157480398CF4CA9 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
@@ -397,13 +397,13 @@
 		8D12C5F0DB144F18BFC4195B /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		8EBFE2BBC89540349A6573AD /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		9212A64C3EDB4C74B0BC8964 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		A09526378959CE8CA7667D37 /* Pods-wildshapecompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wildshapecompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wildshapecompanion/Pods-wildshapecompanion.debug.xcconfig"; sourceTree = "<group>"; };
+		A09526378959CE8CA7667D37 /* Pods-druidshape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-druidshape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-druidshape/Pods-druidshape.debug.xcconfig"; sourceTree = "<group>"; };
 		A5169818A9244C3F813CAC66 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		AA8F8B86B1D74C2B8D14CF3F /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AFBFED35D32E4540841BC0CD /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		B417088CDFA84CBAFA09FE06 /* Pods-wildshapecompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wildshapecompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-wildshapecompanion/Pods-wildshapecompanion.release.xcconfig"; sourceTree = "<group>"; };
-		D214830795412A47BA4153C3 /* libPods-wildshapecompanion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wildshapecompanion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B417088CDFA84CBAFA09FE06 /* Pods-druidshape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-druidshape.release.xcconfig"; path = "Pods/Target Support Files/Pods-druidshape/Pods-druidshape.release.xcconfig"; sourceTree = "<group>"; };
+		D214830795412A47BA4153C3 /* libPods-druidshape.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-druidshape.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D878B44B6F4F416E940910BC /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAdMobManager.xcodeproj; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; };
 		E3DE3D57952E4FF4BAC67F94 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -441,7 +441,7 @@
 				C37FBFF9A004498BB37ADF58 /* libRNGestureHandler.a in Frameworks */,
 				4BAB135CA4E84ADDACD9FFE1 /* libRNVectorIcons.a in Frameworks */,
 				BE5D1266E81A43E783824DDD /* libRNAdMobManager.a in Frameworks */,
-				F847951A70CD034E5FCBD720 /* libPods-wildshapecompanion.a in Frameworks */,
+				F847951A70CD034E5FCBD720 /* libPods-druidshape.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,13 +490,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* wildshapecompanionTests */ = {
+		00E356EF1AD99517003FC87E /* druidshapeTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* wildshapecompanionTests.m */,
+				00E356F21AD99517003FC87E /* druidshapeTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = wildshapecompanionTests;
+			path = druidshapeTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -527,10 +527,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* wildshapecompanion */ = {
+		13B07FAE1A68108700A75B9A /* druidshape */ = {
 			isa = PBXGroup;
 			children = (
-				7A0C1B8F221BBC10002DBD23 /* wildshapecompanion.entitlements */,
+				7A0C1B8F221BBC10002DBD23 /* druidshape.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -539,7 +539,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = wildshapecompanion;
+			name = druidshape;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -572,7 +572,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				D214830795412A47BA4153C3 /* libPods-wildshapecompanion.a */,
+				D214830795412A47BA4153C3 /* libPods-druidshape.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -696,9 +696,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* wildshapecompanion */,
+				13B07FAE1A68108700A75B9A /* druidshape */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* wildshapecompanionTests */,
+				00E356EF1AD99517003FC87E /* druidshapeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				7AFB38342218DDBC00375BC6 /* Recovered References */,
@@ -713,8 +713,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* wildshapecompanion.app */,
-				00E356EE1AD99517003FC87E /* wildshapecompanionTests.xctest */,
+				13B07F961A680F5B00A75B9A /* druidshape.app */,
+				00E356EE1AD99517003FC87E /* druidshapeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -722,8 +722,8 @@
 		8C9C5B5E69F6C354BACF5AA1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A09526378959CE8CA7667D37 /* Pods-wildshapecompanion.debug.xcconfig */,
-				B417088CDFA84CBAFA09FE06 /* Pods-wildshapecompanion.release.xcconfig */,
+				A09526378959CE8CA7667D37 /* Pods-druidshape.debug.xcconfig */,
+				B417088CDFA84CBAFA09FE06 /* Pods-druidshape.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -740,9 +740,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* wildshapecompanionTests */ = {
+		00E356ED1AD99517003FC87E /* druidshapeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "wildshapecompanionTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "druidshapeTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -753,14 +753,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = wildshapecompanionTests;
-			productName = wildshapecompanionTests;
-			productReference = 00E356EE1AD99517003FC87E /* wildshapecompanionTests.xctest */;
+			name = druidshapeTests;
+			productName = druidshapeTests;
+			productReference = 00E356EE1AD99517003FC87E /* druidshapeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* wildshapecompanion */ = {
+		13B07F861A680F5B00A75B9A /* druidshape */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "wildshapecompanion" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "druidshape" */;
 			buildPhases = (
 				AF7E43531E96A35FEE20C7E1 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -772,9 +772,9 @@
 			);
 			dependencies = (
 			);
-			name = wildshapecompanion;
+			name = druidshape;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* wildshapecompanion.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* druidshape.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -804,7 +804,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "wildshapecompanion" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "druidshape" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -883,8 +883,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* wildshapecompanion */,
-				00E356ED1AD99517003FC87E /* wildshapecompanionTests */,
+				13B07F861A680F5B00A75B9A /* druidshape */,
+				00E356ED1AD99517003FC87E /* druidshapeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1250,7 +1250,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wildshapecompanion-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-druidshape-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1264,7 +1264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* wildshapecompanionTests.m in Sources */,
+				00E356F31AD99517003FC87E /* druidshapeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1282,7 +1282,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* wildshapecompanion */;
+			target = 13B07F861A680F5B00A75B9A /* druidshape */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1294,7 +1294,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = wildshapecompanion;
+			path = druidshape;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1315,7 +1315,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
-				INFOPLIST_FILE = wildshapecompanionTests/Info.plist;
+				INFOPLIST_FILE = druidshapeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1331,7 +1331,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wildshapecompanion.app/wildshapecompanion";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/druidshape.app/druidshape";
 			};
 			name = Debug;
 		};
@@ -1347,7 +1347,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
-				INFOPLIST_FILE = wildshapecompanionTests/Info.plist;
+				INFOPLIST_FILE = druidshapeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1363,16 +1363,16 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wildshapecompanion.app/wildshapecompanion";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/druidshape.app/druidshape";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A09526378959CE8CA7667D37 /* Pods-wildshapecompanion.debug.xcconfig */;
+			baseConfigurationReference = A09526378959CE8CA7667D37 /* Pods-druidshape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = wildshapecompanion/wildshapecompanion.entitlements;
+				CODE_SIGN_ENTITLEMENTS = druidshape/druidshape.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 44JJ398N8P;
@@ -1382,15 +1382,15 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
-				INFOPLIST_FILE = wildshapecompanion/Info.plist;
+				INFOPLIST_FILE = druidshape/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adpyke.wildshapecompanion;
-				PRODUCT_NAME = wildshapecompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adpyke.druidshape;
+				PRODUCT_NAME = druidshape;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1398,10 +1398,10 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B417088CDFA84CBAFA09FE06 /* Pods-wildshapecompanion.release.xcconfig */;
+			baseConfigurationReference = B417088CDFA84CBAFA09FE06 /* Pods-druidshape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = wildshapecompanion/wildshapecompanion.entitlements;
+				CODE_SIGN_ENTITLEMENTS = druidshape/druidshape.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 44JJ398N8P;
 				HEADER_SEARCH_PATHS = (
@@ -1410,15 +1410,15 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
-				INFOPLIST_FILE = wildshapecompanion/Info.plist;
+				INFOPLIST_FILE = druidshape/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adpyke.wildshapecompanion;
-				PRODUCT_NAME = wildshapecompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adpyke.druidshape;
+				PRODUCT_NAME = druidshape;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1526,7 +1526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "wildshapecompanionTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "druidshapeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1535,7 +1535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "wildshapecompanion" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "druidshape" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1544,7 +1544,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "wildshapecompanion" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "druidshape" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

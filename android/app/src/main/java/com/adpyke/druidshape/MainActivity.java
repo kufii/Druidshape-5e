@@ -1,4 +1,4 @@
-package com.adpyke.wildshapecompanion;
+package com.adpyke.druidshape;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "wildshapecompanion";
+        return "druidshape";
     }
 
     @Override

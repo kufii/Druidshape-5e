@@ -1,5 +1,5 @@
 {
-  "name": "wildshapecompanion",
+  "name": "druidshape",
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",

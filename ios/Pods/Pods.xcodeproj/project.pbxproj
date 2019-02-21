@@ -168,7 +168,7 @@
 		7BFED43845E472349A23B5DAB87C1FD4 /* RCTSafeAreaViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84444B5F78C5B9855F83793C7FE3898E /* RCTSafeAreaViewManager.m */; };
 		7C2580C50557AF7D231DE73A96DAB6D5 /* YGNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0CA90A9D729E7E9E30CD9CEA8A6103A9 /* YGNode.cpp */; settings = {COMPILER_FLAGS = "-fno-omit-frame-pointer -fexceptions -Wall -Werror -std=c++1y -fPIC -fno-objc-arc"; }; };
 		7D0181826E7F791532544C5D5422CD80 /* RCTSurfaceRootShadowViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 901D077836767370BF4C241A11D00C84 /* RCTSurfaceRootShadowViewDelegate.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7FB7B79C40AA94EC4EA6FD2C510EDC29 /* Pods-wildshapecompanion-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E2F18ECCE0B481C508DDCD09ED1FB8 /* Pods-wildshapecompanion-dummy.m */; };
+		7FB7B79C40AA94EC4EA6FD2C510EDC29 /* Pods-druidshape-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E2F18ECCE0B481C508DDCD09ED1FB8 /* Pods-druidshape-dummy.m */; };
 		804C59C05A2F43778466027C1906DBF4 /* RCTErrorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C56AEBAC5DE7D7329A76A14040A46DDF /* RCTErrorInfo.m */; };
 		806B12E0C7E684E7733A69E0D359665B /* RCTNetInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D3FE7FFD2C3357102934DC895B626 /* RCTNetInfo.m */; };
 		8144317EA5038349203C5DAF73A9078A /* YGStyle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9CF9EBF3B53E6141060978D82596F /* YGStyle.cpp */; settings = {COMPILER_FLAGS = "-fno-omit-frame-pointer -fexceptions -Wall -Werror -std=c++1y -fPIC -fno-objc-arc"; }; };
@@ -404,7 +404,7 @@
 		0A9D301839C9474F1DC040532C8F42C1 /* Utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = yoga/Utils.h; sourceTree = "<group>"; };
 		0BDC93339E73D97E5984ED8C0218D7F3 /* RCTAccessibilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTAccessibilityManager.h; sourceTree = "<group>"; };
 		0CA90A9D729E7E9E30CD9CEA8A6103A9 /* YGNode.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = YGNode.cpp; path = yoga/YGNode.cpp; sourceTree = "<group>"; };
-		0CFBB5178A4BAF169F8A0A476CDE50BD /* libPods-wildshapecompanion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-wildshapecompanion.a"; path = "libPods-wildshapecompanion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CFBB5178A4BAF169F8A0A476CDE50BD /* libPods-druidshape.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-druidshape.a"; path = "libPods-druidshape.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D67A64F33A506F9D9773E2FB396E347 /* RCTProfileTrampoline-i386.S */ = {isa = PBXFileReference; includeInIndex = 1; path = "RCTProfileTrampoline-i386.S"; sourceTree = "<group>"; };
 		0D78BC5F19D5BB1F5C76923647D78312 /* RCTUIUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTUIUtils.h; sourceTree = "<group>"; };
 		0F218E409E755137327DF34C70C95E33 /* RCTSurfaceSizeMeasureMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSurfaceSizeMeasureMode.h; sourceTree = "<group>"; };
@@ -474,7 +474,7 @@
 		3F98BA310FA93D00F4EBE232D4C5314C /* RCTBridgeMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTBridgeMethod.h; sourceTree = "<group>"; };
 		4092953749397018E9BBD5FD99CA8FE2 /* RCTProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTProfile.m; sourceTree = "<group>"; };
 		40A40CD1175A3F45194470DCC8FF2E54 /* RCTKeyCommands.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTKeyCommands.h; sourceTree = "<group>"; };
-		40E2F18ECCE0B481C508DDCD09ED1FB8 /* Pods-wildshapecompanion-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-wildshapecompanion-dummy.m"; sourceTree = "<group>"; };
+		40E2F18ECCE0B481C508DDCD09ED1FB8 /* Pods-druidshape-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-druidshape-dummy.m"; sourceTree = "<group>"; };
 		4142D2F31659FB8CB1CBA4523E67087F /* RCTTiming.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTTiming.m; sourceTree = "<group>"; };
 		4157E5AE664D7ABD431FE8E6C766DC9B /* RCTAlertManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTAlertManager.m; sourceTree = "<group>"; };
 		41B0C90261DF0C04D67B7F62E8C18900 /* RCTEventDispatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTEventDispatcher.h; sourceTree = "<group>"; };
@@ -610,7 +610,7 @@
 		966AC169DCD024F8B43B2ACD8DCE3066 /* yoga.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = yoga.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		970940B17650CDB8301A42CC3E5331D9 /* RCTModalHostViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTModalHostViewManager.h; sourceTree = "<group>"; };
 		97D56178445A611D3F18112F14C60B70 /* RCTWKWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTWKWebView.h; sourceTree = "<group>"; };
-		97F78572B8DAF3A92500C21359A5E4CD /* Pods-wildshapecompanion-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-wildshapecompanion-acknowledgements.markdown"; sourceTree = "<group>"; };
+		97F78572B8DAF3A92500C21359A5E4CD /* Pods-druidshape-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-druidshape-acknowledgements.markdown"; sourceTree = "<group>"; };
 		982750206B9FEADA4EE4C64EA7B0BA2A /* RCTExceptionsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTExceptionsManager.h; sourceTree = "<group>"; };
 		985693FAE77B2210B7737EE87709CF08 /* RCTComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTComponent.h; sourceTree = "<group>"; };
 		9857F7D0FB6E487B6B6DC0631727D477 /* RCTUIManagerUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTUIManagerUtils.h; sourceTree = "<group>"; };
@@ -664,7 +664,7 @@
 		C08A779D651E5DC50C21A0DA7763C7F0 /* RCTFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTFont.h; sourceTree = "<group>"; };
 		C11507138C561E5357204254F07E535F /* YGFloatOptional.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YGFloatOptional.h; path = yoga/YGFloatOptional.h; sourceTree = "<group>"; };
 		C137C337F4591275C3F518FC2D42E4C7 /* Utils.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = Utils.cpp; path = yoga/Utils.cpp; sourceTree = "<group>"; };
-		C28402B513CA3E753B22C862D24B753C /* Pods-wildshapecompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-wildshapecompanion.debug.xcconfig"; sourceTree = "<group>"; };
+		C28402B513CA3E753B22C862D24B753C /* Pods-druidshape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-druidshape.debug.xcconfig"; sourceTree = "<group>"; };
 		C40247CB877BCE9FCCA647F8952C50F3 /* RCTScrollViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTScrollViewManager.m; sourceTree = "<group>"; };
 		C4C218214573641E604CD25A652F0205 /* RCTRootView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTRootView.m; sourceTree = "<group>"; };
 		C5128C05D1A409D39AA238130723B94B /* RCTImageViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageViewManager.h; path = Libraries/Image/RCTImageViewManager.h; sourceTree = "<group>"; };
@@ -699,7 +699,7 @@
 		D58EFE4FE4389052006FD4C2308BD16D /* YGEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YGEnums.h; path = yoga/YGEnums.h; sourceTree = "<group>"; };
 		D730F23D1B5550B89A0E7F86AA652C19 /* RCTExceptionsManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTExceptionsManager.m; sourceTree = "<group>"; };
 		D7F2B0EB4C7AB4229E398DAE2A35019F /* RCTImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCTImageCache.m; path = Libraries/Image/RCTImageCache.m; sourceTree = "<group>"; };
-		D88997C567F1717F2EEEAE41FC1922D2 /* Pods-wildshapecompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-wildshapecompanion.release.xcconfig"; sourceTree = "<group>"; };
+		D88997C567F1717F2EEEAE41FC1922D2 /* Pods-druidshape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-druidshape.release.xcconfig"; sourceTree = "<group>"; };
 		D98C01C6D1EF8DA187149F285D769478 /* YGMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YGMacros.h; path = yoga/YGMacros.h; sourceTree = "<group>"; };
 		DAE80CD866975858300B9352F6FA62C0 /* RCTBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTBridge.h; sourceTree = "<group>"; };
 		DB7767F50FBA52A5C112DBC93609660C /* RCTImageEditingManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageEditingManager.h; path = Libraries/Image/RCTImageEditingManager.h; sourceTree = "<group>"; };
@@ -734,7 +734,7 @@
 		EFB222132D22125FB1B39D34AD59D86A /* RCTWebViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTWebViewManager.h; sourceTree = "<group>"; };
 		EFF52CFADD5DCEC6829231E7063669F0 /* RCTResizeMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCTResizeMode.m; path = Libraries/Image/RCTResizeMode.m; sourceTree = "<group>"; };
 		F0D38B7F019340C3EB0AC4B615ED0F67 /* RCTNetworkTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCTNetworkTask.m; path = Libraries/Network/RCTNetworkTask.m; sourceTree = "<group>"; };
-		F149FB4B2F413A897215D6906B43447E /* Pods-wildshapecompanion-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-wildshapecompanion-resources.sh"; sourceTree = "<group>"; };
+		F149FB4B2F413A897215D6906B43447E /* Pods-druidshape-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-druidshape-resources.sh"; sourceTree = "<group>"; };
 		F1B38D082FAD7292D42367B92A7B3201 /* RCTCxxConvert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTCxxConvert.m; sourceTree = "<group>"; };
 		F1D357A31AE3E05139B0CC667DFE4418 /* Yoga-internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Yoga-internal.h"; path = "yoga/Yoga-internal.h"; sourceTree = "<group>"; };
 		F1D74F6BEB8B8E0C0D72D76A1B414325 /* RCTMultipartDataTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTMultipartDataTask.m; sourceTree = "<group>"; };
@@ -744,10 +744,10 @@
 		F4A8BE54CEEF58B1DC07C130069E2D5C /* RCTRedBoxExtraDataViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTRedBoxExtraDataViewController.h; sourceTree = "<group>"; };
 		F4CD31F47F9A6214EC68BDB8554774BD /* RCTImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageView.h; path = Libraries/Image/RCTImageView.h; sourceTree = "<group>"; };
 		F4D203E79DEAD1330960FF4C7F7A6C5D /* RCTDevSettings.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTDevSettings.mm; sourceTree = "<group>"; };
-		F4F12E6A8D702195FBF7104DD3239304 /* Pods-wildshapecompanion-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-wildshapecompanion-frameworks.sh"; sourceTree = "<group>"; };
+		F4F12E6A8D702195FBF7104DD3239304 /* Pods-druidshape-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-druidshape-frameworks.sh"; sourceTree = "<group>"; };
 		F5426C105604C101ABBC8FA2FEE90F4B /* RCTImageStoreManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageStoreManager.h; path = Libraries/Image/RCTImageStoreManager.h; sourceTree = "<group>"; };
 		F73D78E2D23E78651BB6B350ABAE6FCA /* RCTView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTView.h; sourceTree = "<group>"; };
-		F858C7DE5BB0BB91C7715062EE3961F3 /* Pods-wildshapecompanion-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-wildshapecompanion-acknowledgements.plist"; sourceTree = "<group>"; };
+		F858C7DE5BB0BB91C7715062EE3961F3 /* Pods-druidshape-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-druidshape-acknowledgements.plist"; sourceTree = "<group>"; };
 		F8B97C3B4B699E4B867B11F868E737F2 /* Yoga.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = Yoga.cpp; path = yoga/Yoga.cpp; sourceTree = "<group>"; };
 		FAD1412DD3653D525A9DC644CDDFEDA2 /* RCTPerfMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTPerfMonitor.m; sourceTree = "<group>"; };
 		FC027E0C12075F2F00CA336E9E55F138 /* yoga-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "yoga-prefix.pch"; sourceTree = "<group>"; };
@@ -903,7 +903,7 @@
 		2C8E2B195226A688B36128B57201ACD0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CFBB5178A4BAF169F8A0A476CDE50BD /* libPods-wildshapecompanion.a */,
+				0CFBB5178A4BAF169F8A0A476CDE50BD /* libPods-druidshape.a */,
 				3D684D18788ACD83DFF68ABCDCC84A40 /* libReact.a */,
 				DC0DC82BAEE97074277ACAA514FBA63D /* libreact-native-document-picker.a */,
 				EDCF5620D2AB616980FD9664411005B9 /* libRNFS.a */,
@@ -942,19 +942,19 @@
 			name = RCTNetwork;
 			sourceTree = "<group>";
 		};
-		3884FDC86FF72EAA40E7C63388F20BEE /* Pods-wildshapecompanion */ = {
+		3884FDC86FF72EAA40E7C63388F20BEE /* Pods-druidshape */ = {
 			isa = PBXGroup;
 			children = (
-				97F78572B8DAF3A92500C21359A5E4CD /* Pods-wildshapecompanion-acknowledgements.markdown */,
-				F858C7DE5BB0BB91C7715062EE3961F3 /* Pods-wildshapecompanion-acknowledgements.plist */,
-				40E2F18ECCE0B481C508DDCD09ED1FB8 /* Pods-wildshapecompanion-dummy.m */,
-				F4F12E6A8D702195FBF7104DD3239304 /* Pods-wildshapecompanion-frameworks.sh */,
-				F149FB4B2F413A897215D6906B43447E /* Pods-wildshapecompanion-resources.sh */,
-				C28402B513CA3E753B22C862D24B753C /* Pods-wildshapecompanion.debug.xcconfig */,
-				D88997C567F1717F2EEEAE41FC1922D2 /* Pods-wildshapecompanion.release.xcconfig */,
+				97F78572B8DAF3A92500C21359A5E4CD /* Pods-druidshape-acknowledgements.markdown */,
+				F858C7DE5BB0BB91C7715062EE3961F3 /* Pods-druidshape-acknowledgements.plist */,
+				40E2F18ECCE0B481C508DDCD09ED1FB8 /* Pods-druidshape-dummy.m */,
+				F4F12E6A8D702195FBF7104DD3239304 /* Pods-druidshape-frameworks.sh */,
+				F149FB4B2F413A897215D6906B43447E /* Pods-druidshape-resources.sh */,
+				C28402B513CA3E753B22C862D24B753C /* Pods-druidshape.debug.xcconfig */,
+				D88997C567F1717F2EEEAE41FC1922D2 /* Pods-druidshape.release.xcconfig */,
 			);
-			name = "Pods-wildshapecompanion";
-			path = "Target Support Files/Pods-wildshapecompanion";
+			name = "Pods-druidshape";
+			path = "Target Support Files/Pods-druidshape";
 			sourceTree = "<group>";
 		};
 		4A5117C61805A7715B97AA322CCAB55E /* ScrollView */ = {
@@ -1442,7 +1442,7 @@
 		F6ADED4131FDCDBBA8B4FB3095C2A131 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3884FDC86FF72EAA40E7C63388F20BEE /* Pods-wildshapecompanion */,
+				3884FDC86FF72EAA40E7C63388F20BEE /* Pods-druidshape */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -1679,9 +1679,9 @@
 			productReference = DC0DC82BAEE97074277ACAA514FBA63D /* libreact-native-document-picker.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		5D880BFEE7C14A268E99B8F4449448BF /* Pods-wildshapecompanion */ = {
+		5D880BFEE7C14A268E99B8F4449448BF /* Pods-druidshape */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E254D972AEED410F8088C7FCD6D3FEA8 /* Build configuration list for PBXNativeTarget "Pods-wildshapecompanion" */;
+			buildConfigurationList = E254D972AEED410F8088C7FCD6D3FEA8 /* Build configuration list for PBXNativeTarget "Pods-druidshape" */;
 			buildPhases = (
 				80F8A1895B0C0AC897741C2CE6E4F88C /* Headers */,
 				C9A1D8E959C93E7B52C5BB1182606B63 /* Sources */,
@@ -1695,9 +1695,9 @@
 				5C46D70FE572F4245FFAD772D1B39B3D /* PBXTargetDependency */,
 				B9D47FC984686E3B7837E482CDE2F13A /* PBXTargetDependency */,
 			);
-			name = "Pods-wildshapecompanion";
-			productName = "Pods-wildshapecompanion";
-			productReference = 0CFBB5178A4BAF169F8A0A476CDE50BD /* libPods-wildshapecompanion.a */;
+			name = "Pods-druidshape";
+			productName = "Pods-druidshape";
+			productReference = 0CFBB5178A4BAF169F8A0A476CDE50BD /* libPods-druidshape.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		A7C6FAE6117D4C512C02C0F6D9C27F34 /* RNFS */ = {
@@ -1774,7 +1774,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5D880BFEE7C14A268E99B8F4449448BF /* Pods-wildshapecompanion */,
+				5D880BFEE7C14A268E99B8F4449448BF /* Pods-druidshape */,
 				AD892A5CC709610EAC758F876ACE9CEF /* React */,
 				2C69EA147885AB84C637FBFF0F2D8598 /* react-native-document-picker */,
 				A7C6FAE6117D4C512C02C0F6D9C27F34 /* RNFS */,
@@ -1971,7 +1971,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FB7B79C40AA94EC4EA6FD2C510EDC29 /* Pods-wildshapecompanion-dummy.m in Sources */,
+				7FB7B79C40AA94EC4EA6FD2C510EDC29 /* Pods-druidshape-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2072,7 +2072,7 @@
 		};
 		25F10BFC3AD709C9C01245A954B6D023 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C28402B513CA3E753B22C862D24B753C /* Pods-wildshapecompanion.debug.xcconfig */;
+			baseConfigurationReference = C28402B513CA3E753B22C862D24B753C /* Pods-druidshape.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2155,7 +2155,7 @@
 		};
 		44DA42E4F2F3CF9B7B7B99915A040F55 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D88997C567F1717F2EEEAE41FC1922D2 /* Pods-wildshapecompanion.release.xcconfig */;
+			baseConfigurationReference = D88997C567F1717F2EEEAE41FC1922D2 /* Pods-druidshape.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2421,7 +2421,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E254D972AEED410F8088C7FCD6D3FEA8 /* Build configuration list for PBXNativeTarget "Pods-wildshapecompanion" */ = {
+		E254D972AEED410F8088C7FCD6D3FEA8 /* Build configuration list for PBXNativeTarget "Pods-druidshape" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25F10BFC3AD709C9C01245A954B6D023 /* Debug */,

@@ -1,4 +1,4 @@
-package com.adpyke.wildshapecompanion;
+package com.adpyke.druidshape;
 
 import android.app.Application;
 
