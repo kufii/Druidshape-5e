@@ -19,6 +19,7 @@ export default class App extends React.Component {
 	componentDidMount() {
 		states.map(state => this.setState(state));
 		actions.loadPrefs();
+		actions.loadPurchases();
 	}
 
 	render() {

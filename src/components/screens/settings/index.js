@@ -5,7 +5,9 @@ import { ListItem, Divider } from 'react-native-elements';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
 import Toast from 'react-native-root-toast';
+import * as RNIap from 'react-native-iap';
 import listStyles from '../../../styles/list';
+import { iconSizeLarge } from '../../../api/constants';
 
 export default class SettingsScreen extends React.Component {
 	static propTypes = {
@@ -43,7 +45,8 @@ export default class SettingsScreen extends React.Component {
 	}
 
 	render() {
-		const { state, actions } = this.props.screenProps;
+		const { screenProps, navigation } = this.props;
+		const { state, actions } = screenProps;
 		const theme = actions.getCurrentTheme();
 		const styles = this.styles;
 		const listTheme = listStyles(theme);
@@ -90,7 +93,6 @@ export default class SettingsScreen extends React.Component {
 										if (err) return Toast.show('Failed to import homebrew.');
 										if (res) {
 											RNFS.readFile(res.uri)
-												.then(doc => console.warn(doc))
 												.then(doc => doc && JSON.parse(doc))
 												.then(beasts => beasts && actions.importHomebrews(beasts))
 												.catch(() => Toast.show('Failed to import homebrew.'));
@@ -107,6 +109,26 @@ export default class SettingsScreen extends React.Component {
 							]
 						)}
 					/>
+					<Divider style={listTheme.divider} />
+					{state.showAds ? (
+						<ListItem
+							title='Remove Ads'
+							containerStyle={listTheme.item}
+							titleStyle={listTheme.itemText}
+							onPress={() => RNIap.buyProduct('com.adpyke.druidshape.removeads').then(() => {
+								actions.removeAds();
+								Toast.show('Thank for you supporting Druidshape!');
+							})}
+						/>
+					) : (
+						<ListItem
+							title='Tip Jar'
+							containerStyle={listTheme.item}
+							titleStyle={listTheme.itemText}
+							chevron={{ size: iconSizeLarge }}
+							onPress={() => navigation.navigate('TipJar')}
+						/>
+					)}
 				</ScrollView>
 			</View>
 		);

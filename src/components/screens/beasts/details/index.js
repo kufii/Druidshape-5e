@@ -26,7 +26,11 @@ export default class BeastDetailsScreen extends React.Component {
 	});
 
 	static propTypes = {
-		navigation: PropTypes.object.isRequired
+		navigation: PropTypes.object.isRequired,
+		screenProps: PropTypes.shape({
+			state: PropTypes.object.isRequired,
+			actions: PropTypes.object.isRequired
+		}).isRequired
 	};
 
 	get beastName() {
@@ -34,7 +38,7 @@ export default class BeastDetailsScreen extends React.Component {
 	}
 
 	get styles() {
-		const actions = this.props.navigation.getParam('actions');
+		const { actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
 		return StyleSheet.create({
 			container: {
@@ -86,8 +90,7 @@ export default class BeastDetailsScreen extends React.Component {
 	}
 
 	render() {
-		const actions = this.props.navigation.getParam('actions');
-		const state = this.props.navigation.getParam('state');
+		const { state, actions } = this.props.screenProps;
 		const beast = actions.getBeast(this.beastName);
 		const styles = this.styles;
 		return beast ? (

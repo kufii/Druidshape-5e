@@ -1,16 +1,19 @@
 import { Platform, Alert } from 'react-native';
 import Toast from 'react-native-root-toast';
 import { getPref, setPref } from './user-prefs';
-import beasts from '../data/beasts.json';
 import { toDict } from './util';
 import { lightTheme, darkTheme } from './constants';
 import { getStruct } from '../components/screens/homebrew/details/form';
 import t from 'tcomb-validation';
+import * as RNIap from 'react-native-iap';
+import beasts from '../data/beasts.json';
+import iap from '../data/iap.json';
 
 const homebrewStruct = getStruct();
 
 export const initialState = {
 	isLoading: true,
+	iaps: [],
 	showAds: Platform.OS === 'ios',
 	darkMode: false,
 	level: 0,
@@ -74,14 +77,35 @@ export const actions = (update, states) => {
 	};
 	const actions = {
 		loadPrefs: () => Promise.all([
+			getPref('showAds', true),
 			getPref('darkMode', false),
 			getPref('level', 0),
 			getPref('isMoon', false),
 			getPref('favs', {}),
 			getPref('homebrew', [])
 		]).then(
-			([darkMode, level, isMoon, favs, homebrew]) => update({ darkMode, level, isMoon, favs, homebrew, isLoading: false })
+			([showAds, darkMode, level, isMoon, favs, homebrew]) => update({
+				showAds: Platform.OS === 'ios' && showAds,
+				darkMode,
+				level,
+				isMoon,
+				favs,
+				homebrew,
+				isLoading: false
+			})
 		),
+		loadPurchases: () => Promise.all([
+			RNIap.getProducts(Platform.select(iap)),
+			RNIap.getPurchaseHistory()
+		]).then(([iaps, purchases]) => {
+			const showAds = Platform.OS === 'ios' && purchases.length === 0;
+			update({ iaps, showAds });
+			setPref('showAds', showAds);
+		}),
+		removeAds: () => {
+			update({ showAds: false });
+			setPref('showAds', false);
+		},
 		setDarkMode: darkMode => {
 			update({ darkMode });
 			setPref('darkMode', darkMode);

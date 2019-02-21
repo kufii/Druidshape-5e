@@ -68,7 +68,7 @@ export default class HomebrewListScreen extends React.Component {
 							}]}
 						>
 							<ListItem
-								onPress={() => navigation.navigate('HomebrewDetails', { state, actions, edit: item })}
+								onPress={() => navigation.navigate('HomebrewDetails', { edit: item })}
 								title={item}
 								titleStyle={listTheme.itemText}
 								containerStyle={listTheme.item}
@@ -80,7 +80,7 @@ export default class HomebrewListScreen extends React.Component {
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 				/>
 				<ActionButton
-					onPress={() => navigation.navigate('HomebrewDetails', { state, actions })}
+					onPress={() => navigation.navigate('HomebrewDetails')}
 					degrees={0}
 					buttonColor={theme.fabColor}
 				>

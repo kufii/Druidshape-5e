@@ -14,10 +14,14 @@ import { Form, getStruct, getOptions } from './form';
 
 export default class HomebrewDetailsScreen extends React.Component {
 	static propTypes = {
-		navigation: PropTypes.object.isRequired
+		navigation: PropTypes.object.isRequired,
+		screenProps: PropTypes.shape({
+			state: PropTypes.object.isRequired,
+			actions: PropTypes.object.isRequired
+		}).isRequired
 	};
 
-	static navigationOptions = ({ navigation }) => ({
+	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: navigation.getParam('edit') ? 'Edit Beast' : 'Add New Beast',
 		headerRight: navigation.getParam('edit') ? (
 			<Button
@@ -26,7 +30,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 				icon={<Icon name={icon('trash')} color={lightTheme.headerTextColor} size={iconSizeLarge} />}
 				onPress={() => AlertDelete(
 					navigation.getParam('edit'),
-					navigation.getParam('actions'),
+					screenProps.actions,
 					() => navigation.dismiss()
 				)}
 			/>
@@ -38,8 +42,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const actions = props.navigation.getParam('actions');
-		const state = props.navigation.getParam('state');
+		const { state, actions } = props.screenProps;
 		const beasts = actions.getAllBeasts().filter(b => b.name !== this.edit);
 
 		const struct = getStruct(beasts);
@@ -53,7 +56,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 	}
 
 	get theme() {
-		const actions = this.props.navigation.getParam('actions');
+		const { actions } = this.props.screenProps;
 		return actions.getCurrentTheme();
 	}
 
@@ -105,7 +108,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 	submit() {
 		const beast = this.form.getValue();
 		if (beast) {
-			const actions = this.props.navigation.getParam('actions');
+			const { actions } = this.props.screenProps;
 			if (this.edit) {
 				actions.editHomebrew(this.edit, beast);
 			} else {
