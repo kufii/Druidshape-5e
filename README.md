@@ -1,4 +1,4 @@
-# Wild Shape Companion 5e
+# Druidshape 5e
 
 With this app you can enter your Druid level and see all the beasts you can shape into, as well as all their stats and abilities.
 
@@ -16,6 +16,8 @@ Features:
 
 ### Android
 
-![Beast List](./store-images/screenshots/android/phone/with-device/list.png | width=100)
-![Beast Details](./store-images/screenshots/android/phone/with-device/details.png)
-![Homebrew](./store-images/screenshots/android/phone/with-device/homebrew.png)
+<div style="display: flex; flex-direction: 'row';">
+	<img src="./store-images/screenshots/android/phone/with-device/list.png" width="250" />
+	<img src="./store-images/screenshots/android/phone/with-device/details.png" width="250" />
+	<img src="./store-images/screenshots/android/phone/with-device/homebrew.png" width="250" />
+</div>
