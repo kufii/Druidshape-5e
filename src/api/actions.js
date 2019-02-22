@@ -94,17 +94,43 @@ export const actions = (update, states) => {
 				isLoading: false
 			})
 		),
-		loadPurchases: () => Promise.all([
-			RNIap.getProducts(Platform.select(iap)),
-			RNIap.getPurchaseHistory()
-		]).then(([iaps, purchases]) => {
-			const showAds = Platform.OS === 'ios' && purchases.length === 0;
-			update({ iaps, showAds });
-			setPref('showAds', showAds);
-		}),
-		removeAds: () => {
-			update({ showAds: false });
-			setPref('showAds', false);
+		async loadPurchases() {
+			try {
+				await RNIap.initConnection();
+				const [iaps, purchases] = await Promise.all([
+					RNIap.getProducts(Platform.select(iap)),
+					RNIap.getPurchaseHistory()
+				]);
+				const showAds = Platform.OS === 'ios' && purchases.length === 0;
+				update({ iaps, showAds });
+				setPref('showAds', showAds);
+			} catch (e) {
+				console.log(e);
+			} finally {
+				try {
+					await RNIap.endConnection();
+				} catch (e) {
+					console.log(e);
+				}
+			}
+		},
+		async buyProduct(productId) {
+			try {
+				await RNIap.initConnection();
+				const purchase = await RNIap.buyProduct(productId);
+				await RNIap.consumePurchase(purchase.purchaseToken);
+				Toast.show('Thank you for supporting Druidshape 5e!');
+				update({ showAds: false });
+				setPref('showAds', false);
+			} catch (e) {
+				console.log(e);
+			} finally {
+				try {
+					await RNIap.endConnection();
+				} catch (e) {
+					console.log(e);
+				}
+			}
 		},
 		setDarkMode: darkMode => {
 			update({ darkMode });

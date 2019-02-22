@@ -1,6 +1,8 @@
-import { Platform, Dimensions } from 'react-native';
+import { Platform } from 'react-native';
 import { withCollapsible as _withCollapsible } from 'react-navigation-collapsible';
 import { isString } from './types';
+
+export const titlecase = str => str.replace(/[a-z0-9]+/gi, word => word.slice(0, 1).toUpperCase() + word.slice(1));
 
 export const distinct = (value, index, self) => self.indexOf(value) === index;
 

@@ -5,7 +5,6 @@ import { ListItem, Divider } from 'react-native-elements';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
 import Toast from 'react-native-root-toast';
-import * as RNIap from 'react-native-iap';
 import listStyles from '../../../styles/list';
 import { iconSizeLarge } from '../../../api/constants';
 
@@ -115,10 +114,7 @@ export default class SettingsScreen extends React.Component {
 							title='Remove Ads'
 							containerStyle={listTheme.item}
 							titleStyle={listTheme.itemText}
-							onPress={() => RNIap.buyProduct('com.adpyke.druidshape.removeads').then(() => {
-								actions.removeAds();
-								Toast.show('Thank for you supporting Druidshape!');
-							})}
+							onPress={() => actions.buyProduct('com.adpyke.druidshape.removeads')}
 						/>
 					) : (
 						<ListItem

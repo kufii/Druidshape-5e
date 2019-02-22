@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
-import Toast from 'react-native-root-toast';
-import * as RNIap from 'react-native-iap';
 import { ListItem, Divider } from 'react-native-elements';
+import { titlecase, sortBy } from '../../../../api/util';
 import { fontSizeMedium } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
 
@@ -45,6 +44,14 @@ export default class SettingsScreen extends React.Component {
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
 		const styles = this.styles;
+		const getTitle = productId => {
+			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.tip\.(.+)/);
+			return `${titlecase(type)} Tip`;
+		};
+		const extractNumber = price => {
+			const [_, num] = price.match(/([\d.]+)/);
+			return parseFloat(num);
+		};
 
 		return (
 			<View style={styles.container}>
@@ -52,14 +59,19 @@ export default class SettingsScreen extends React.Component {
 					{"If you've been enjoying Druidshape, and would like to show your support, please consider leaving a tip. This is obviously not mandatory and just the fact that you're using my app is extremely appreciated. Thanks! :)"}
 				</Text>
 				<FlatList
-					data={state.iaps.filter(p => p.productId.match(/^com\.adpyke\.druidshape\.tip\./))}
-					renderItem={({ item: { productId, title, localizedPrice } }) => (
+					data={
+						state.iaps
+							.filter(p => p.productId.match(/^com\.adpyke\.druidshape\.tip\./))
+							.sort(
+								sortBy(({ localizedPrice }) => extractNumber(localizedPrice))
+							)}
+					renderItem={({ item: { productId, localizedPrice } }) => (
 						<ListItem
-							title={title}
+							title={getTitle(productId)}
 							badge={{ value: localizedPrice, badgeStyle: styles.badge }}
 							titleStyle={listTheme.itemText}
 							containerStyle={listTheme.item}
-							onPress={() => RNIap.buyProduct(productId).then(() => Toast.show('Thank for you supporting Druidshape!'))}
+							onPress={() => actions.buyProduct(productId)}
 						/>
 					)}
 					keyExtractor={item => item.productId}
