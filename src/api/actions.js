@@ -94,15 +94,28 @@ export const actions = (update, states) => {
 				isLoading: false
 			})
 		),
-		async loadPurchases() {
+		async loadProducts() {
 			try {
 				await RNIap.initConnection();
-				const [iaps, purchases] = await Promise.all([
-					RNIap.getProducts(products),
-					RNIap.getPurchaseHistory()
-				]);
+				const iaps = await RNIap.getProducts(products);
+				update({ iaps });
+			} catch (e) {
+				console.log(e);
+			} finally {
+				try {
+					await RNIap.endConnection();
+				} catch (e) {
+					console.log(e);
+				}
+			}
+		},
+		async restorePurchases() {
+			try {
+				await RNIap.initConnection();
+				const purchases = await RNIap.getPurchaseHistory();
 				const showAds = Platform.OS === 'ios' && purchases.length === 0;
-				update({ iaps, showAds });
+				Toast.show(showAds ? 'No purchases found to restore.' : 'Thank you for supporting Druidshape 5e!');
+				update({ showAds });
 				setPref('showAds', showAds);
 			} catch (e) {
 				console.log(e);

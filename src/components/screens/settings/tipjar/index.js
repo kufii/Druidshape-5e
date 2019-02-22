@@ -40,6 +40,10 @@ export default class SettingsScreen extends React.Component {
 		});
 	}
 
+	componentDidMount() {
+		this.props.screenProps.actions.loadProducts();
+	}
+
 	render() {
 		const { state, actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
