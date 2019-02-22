@@ -7,7 +7,7 @@ import { getStruct } from '../components/screens/homebrew/details/form';
 import t from 'tcomb-validation';
 import * as RNIap from 'react-native-iap';
 import beasts from '../data/beasts.json';
-import iap from '../data/iap.json';
+import products from '../data/iap.json';
 
 const homebrewStruct = getStruct();
 
@@ -98,7 +98,7 @@ export const actions = (update, states) => {
 			try {
 				await RNIap.initConnection();
 				const [iaps, purchases] = await Promise.all([
-					RNIap.getProducts(Platform.select(iap)),
+					RNIap.getProducts(products),
 					RNIap.getPurchaseHistory()
 				]);
 				const showAds = Platform.OS === 'ios' && purchases.length === 0;

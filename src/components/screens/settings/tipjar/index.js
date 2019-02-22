@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
+import { B } from '../../../shared/helper';
 import { titlecase, sortBy } from '../../../../api/util';
 import { fontSizeMedium } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
@@ -58,6 +59,11 @@ export default class SettingsScreen extends React.Component {
 				<Text style={styles.disclaimer}>
 					{"If you've been enjoying Druidshape, and would like to show your support, please consider leaving a tip. This is obviously not mandatory and just the fact that you're using my app is extremely appreciated. Thanks! :)"}
 				</Text>
+				{state.showAds && (
+					<Text style={styles.disclaimer}>
+						<B>Making a tip of any amount will remove all ads from the application.</B>
+					</Text>
+				)}
 				<FlatList
 					data={
 						state.iaps

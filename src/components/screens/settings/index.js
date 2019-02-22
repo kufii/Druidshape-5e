@@ -109,22 +109,13 @@ export default class SettingsScreen extends React.Component {
 						)}
 					/>
 					<Divider style={listTheme.divider} />
-					{state.showAds ? (
-						<ListItem
-							title='Remove Ads'
-							containerStyle={listTheme.item}
-							titleStyle={listTheme.itemText}
-							onPress={() => actions.buyProduct('com.adpyke.druidshape.removeads')}
-						/>
-					) : (
-						<ListItem
-							title='Tip Jar'
-							containerStyle={listTheme.item}
-							titleStyle={listTheme.itemText}
-							chevron={{ size: iconSizeLarge }}
-							onPress={() => navigation.navigate('TipJar')}
-						/>
-					)}
+					<ListItem
+						title={state.showAds ? 'Remove Ads' : 'Tip Jar'}
+						containerStyle={listTheme.item}
+						titleStyle={listTheme.itemText}
+						chevron={{ size: iconSizeLarge }}
+						onPress={() => navigation.navigate('TipJar')}
+					/>
 				</ScrollView>
 			</View>
 		);
