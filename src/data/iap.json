@@ -1,7 +1,21 @@
-[
-  "com.adpyke.druidshape.tip.nice",
-  "com.adpyke.druidshape.tip.kind",
-  "com.adpyke.druidshape.tip.generous",
-  "com.adpyke.druidshape.tip.amazing",
-  "com.adpyke.druidshape.tip.godzilla"
-]
+{
+  "android": [
+    "com.adpyke.druidshape.tip.nice",
+    "com.adpyke.druidshape.tip.kind",
+    "com.adpyke.druidshape.tip.generous",
+    "com.adpyke.druidshape.tip.amazing",
+    "com.adpyke.druidshape.tip.godzilla"
+  ],
+  "ios": [
+    "com.adpyke.druidshape.tip.nice",
+    "com.adpyke.druidshape.tip.kind",
+    "com.adpyke.druidshape.tip.generous",
+    "com.adpyke.druidshape.tip.amazing",
+    "com.adpyke.druidshape.tip.godzilla",
+    "com.adpyke.druidshape.removeads.nice",
+    "com.adpyke.druidshape.removeads.kind",
+    "com.adpyke.druidshape.removeads.generous",
+    "com.adpyke.druidshape.removeads.amazing",
+    "com.adpyke.druidshape.removeads.godzilla"
+  ]
+}

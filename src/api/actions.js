@@ -97,7 +97,7 @@ export const actions = (update, states) => {
 		async loadProducts() {
 			try {
 				await RNIap.initConnection();
-				const iaps = await RNIap.getProducts(products);
+				const iaps = await RNIap.getProducts(Platform.select(products));
 				update({ iaps });
 			} catch (e) {
 				console.log(e);
@@ -112,7 +112,7 @@ export const actions = (update, states) => {
 		async restorePurchases() {
 			try {
 				await RNIap.initConnection();
-				const purchases = await RNIap.getPurchaseHistory();
+				const purchases = await RNIap.getAvailablePurchases();
 				const showAds = Platform.OS === 'ios' && purchases.length === 0;
 				Toast.show(showAds ? 'No purchases found to restore.' : 'Thank you for supporting Druidshape 5e!');
 				update({ showAds });
@@ -130,8 +130,9 @@ export const actions = (update, states) => {
 		async buyProduct(productId) {
 			try {
 				await RNIap.initConnection();
-				const purchase = await RNIap.buyProduct(productId);
-				await RNIap.consumePurchase(purchase.purchaseToken);
+				await RNIap.clearTransaction();
+				await RNIap.buyProduct(productId);
+				await RNIap.finishTransaction();
 				Toast.show('Thank you for supporting Druidshape 5e!');
 				update({ showAds: false });
 				setPref('showAds', false);

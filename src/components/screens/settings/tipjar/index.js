@@ -50,7 +50,7 @@ export default class SettingsScreen extends React.Component {
 		const listTheme = listStyles(theme);
 		const styles = this.styles;
 		const getTitle = productId => {
-			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.tip\.(.+)/);
+			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.(?:tip|removeads)\.(.+)/);
 			return `${titlecase(type)} Tip`;
 		};
 		const extractNumber = price => {
@@ -71,7 +71,7 @@ export default class SettingsScreen extends React.Component {
 				<FlatList
 					data={
 						state.iaps
-							.filter(p => p.productId.match(/^com\.adpyke\.druidshape\.tip\./))
+							.filter(p => p.productId.match(state.showAds ? /^com\.adpyke\.druidshape\.removeads\./ : /^com\.adpyke\.druidshape\.tip\./))
 							.sort(
 								sortBy(({ localizedPrice }) => extractNumber(localizedPrice))
 							)}
