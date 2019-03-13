@@ -25,6 +25,8 @@ target 'druidshape' do
   # Pods for druidshape
   pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
   pod 'RNFS', :path => '../node_modules/react-native-fs'
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 end
 
 # Fixes Archive issue by removing duplicate "React" from the project
