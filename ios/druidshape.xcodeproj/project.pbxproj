@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -27,7 +28,7 @@
 		4BB93D11AC094463B76E0E6C /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139289423785466A9216B668 /* FontAwesome5_Brands.ttf */; };
 		57122A484AEC45E58534CA55 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F49663999D9496A81CFBD86 /* SimpleLineIcons.ttf */; };
 		76E0DA7F5AA54F1588F2F154 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 537BB186775C41A59D17469E /* EvilIcons.ttf */; };
-		7A514CF52221B8A700268424 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A514CF42221B8A700268424 /* libReact.a */; };
+		7A070E6522396E9600B14E17 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		7ABDF2FB221E3341004CD8D7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABDF2FA221E3341004CD8D7 /* StoreKit.framework */; };
 		7ABDF33A221E345F004CD8D7 /* libRNIap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABDF337221E341D004CD8D7 /* libRNIap.a */; };
 		7FE20DD9214C4CBBA191C184 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 507B4E7FEF1D47EC8EF6A91A /* AntDesign.ttf */; };
@@ -393,7 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A514CF52221B8A700268424 /* libReact.a in Frameworks */,
+				7A070E6522396E9600B14E17 /* libReact.a in Frameworks */,
 				7ABDF33A221E345F004CD8D7 /* libRNIap.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -584,7 +585,6 @@
 				7C77CEBB5157480398CF4CA9 /* libRNGestureHandler.a */,
 				AA8F8B86B1D74C2B8D14CF3F /* libRNVectorIcons.a */,
 				474BC2703F6148ECA1CE5035 /* libRNVectorIcons-tvOS.a */,
-				8762C193FE7C4168B6516417 /* libRNAdMobManager.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
