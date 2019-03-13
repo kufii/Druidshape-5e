@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import flyd from 'flyd';
 import Root from './src/navigators/root';
@@ -23,8 +23,22 @@ export default class App extends React.Component {
 
 	render() {
 		const state = this.state;
-		const theme = actions.getCurrentTheme();
-		if (Platform.OS === 'android') StatusBar.setBackgroundColor(theme.headerColorDark);
-		return state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />;
+		if (Platform.OS === 'android') {
+			const theme = actions.getCurrentTheme();
+			StatusBar.setTranslucent(true);
+			StatusBar.setBackgroundColor(theme.headerColorDark);
+		}
+		return (
+			<View style={styles.container}>
+				{state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />}
+			</View>
+		);
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		marginTop: StatusBar.currentHeight
+	}
+});

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { B, I, BI } from '../../../shared/helper';
-import BannerAd from '../../../shared/ads';
 
 import { fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
 
@@ -90,7 +89,7 @@ export default class BeastDetailsScreen extends React.Component {
 	}
 
 	render() {
-		const { state, actions } = this.props.screenProps;
+		const { actions } = this.props.screenProps;
 		const beast = actions.getBeast(this.beastName);
 		const styles = this.styles;
 		return beast ? (
@@ -159,7 +158,6 @@ export default class BeastDetailsScreen extends React.Component {
 						</>
 					)}
 				</ScrollView>
-				{state.showAds && <BannerAd />}
 			</View>
 		) : <View style={styles.container} />;
 	}

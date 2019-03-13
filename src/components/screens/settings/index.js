@@ -110,23 +110,12 @@ export default class SettingsScreen extends React.Component {
 					/>
 					<Divider style={listTheme.divider} />
 					<ListItem
-						title={state.showAds ? 'Remove Ads' : 'Tip Jar'}
+						title='Tip Jar'
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
 						chevron={{ size: iconSizeLarge }}
 						onPress={() => navigation.navigate('TipJar')}
 					/>
-					{state.showAds && (
-						<>
-							<Divider style={listTheme.divider} />
-							<ListItem
-								title='Restore Purchases'
-								containerStyle={listTheme.item}
-								titleStyle={listTheme.itemText}
-								onPress={() => actions.restorePurchases()}
-							/>
-						</>
-					)}
 				</ScrollView>
 			</View>
 		);

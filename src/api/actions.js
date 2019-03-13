@@ -1,7 +1,7 @@
-import { Platform, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import Toast from 'react-native-root-toast';
 import { getPref, setPref } from './user-prefs';
-import { toDict } from './util';
+import { toDict, iterate } from './util';
 import { lightTheme, darkTheme } from './constants';
 import { getStruct } from '../components/screens/homebrew/details/form';
 import t from 'tcomb-validation';
@@ -14,7 +14,6 @@ const homebrewStruct = getStruct();
 export const initialState = {
 	isLoading: true,
 	iaps: [],
-	showAds: Platform.OS === 'ios',
 	darkMode: false,
 	level: 0,
 	isMoon: false,
@@ -25,19 +24,34 @@ export const initialState = {
 
 export const actions = (update, states) => {
 	const privateActions = {
+		async iapConnection(cb) {
+			try {
+				await RNIap.initConnection();
+				await Promise.resolve(cb());
+			} catch (e) {
+				console.log(e);
+			} finally {
+				try {
+					await RNIap.endConnection();
+				} catch (e) {
+					console.log(e);
+				}
+			}
+		},
+		iapTransaction: cb => privateActions.iapConnection(async() => {
+			await RNIap.clearTransaction();
+			await Promise.resolve(cb());
+			await RNIap.finishTransaction();
+		}),
 		cleanupFavs: favs => Object.entries(favs)
 			.filter(([_, value]) => value)
 			.reduce(toDict(([key]) => key, () => true), {}),
 		getHomebrewImportMergeList: beasts => new Promise((resolve, reject) => {
 			const toImport = [];
+			const iterator = iterate(beasts);
 
-			const iterate = (function*() {
-				for (const beast of beasts) {
-					yield beast;
-				}
-			}());
 			const next = () => {
-				const { value, done } = iterate.next();
+				const { value, done } = iterator.next();
 				if (done) {
 					resolve(toImport);
 				} else if (!t.validate(value, homebrewStruct).isValid()) {
@@ -77,15 +91,13 @@ export const actions = (update, states) => {
 	};
 	const actions = {
 		loadPrefs: () => Promise.all([
-			getPref('showAds', true),
 			getPref('darkMode', false),
 			getPref('level', 0),
 			getPref('isMoon', false),
 			getPref('favs', {}),
 			getPref('homebrew', [])
 		]).then(
-			([showAds, darkMode, level, isMoon, favs, homebrew]) => update({
-				showAds: Platform.OS === 'ios' && showAds,
+			([darkMode, level, isMoon, favs, homebrew]) => update({
 				darkMode,
 				level,
 				isMoon,
@@ -94,58 +106,14 @@ export const actions = (update, states) => {
 				isLoading: false
 			})
 		),
-		async loadProducts() {
-			try {
-				await RNIap.initConnection();
-				const iaps = await RNIap.getProducts(Platform.select(products));
-				update({ iaps });
-			} catch (e) {
-				console.log(e);
-			} finally {
-				try {
-					await RNIap.endConnection();
-				} catch (e) {
-					console.log(e);
-				}
-			}
-		},
-		async restorePurchases() {
-			try {
-				await RNIap.initConnection();
-				const purchases = await RNIap.getAvailablePurchases();
-				const showAds = Platform.OS === 'ios' && purchases.length === 0;
-				Toast.show(showAds ? 'No purchases found to restore.' : 'Thank you for supporting Druidshape 5e!');
-				update({ showAds });
-				setPref('showAds', showAds);
-			} catch (e) {
-				console.log(e);
-			} finally {
-				try {
-					await RNIap.endConnection();
-				} catch (e) {
-					console.log(e);
-				}
-			}
-		},
-		async buyProduct(productId) {
-			try {
-				await RNIap.initConnection();
-				await RNIap.clearTransaction();
-				await RNIap.buyProduct(productId);
-				await RNIap.finishTransaction();
-				Toast.show('Thank you for supporting Druidshape 5e!');
-				update({ showAds: false });
-				setPref('showAds', false);
-			} catch (e) {
-				console.log(e);
-			} finally {
-				try {
-					await RNIap.endConnection();
-				} catch (e) {
-					console.log(e);
-				}
-			}
-		},
+		loadProducts: () => privateActions.iapConnection(async() => {
+			const iaps = await RNIap.getProducts(products);
+			update({ iaps });
+		}),
+		buyProduct: productId => privateActions.iapTransaction(async() => {
+			await RNIap.buyProduct(productId);
+			Toast.show('Thank you for supporting Druidshape 5e!');
+		}),
 		setDarkMode: darkMode => {
 			update({ darkMode });
 			setPref('darkMode', darkMode);

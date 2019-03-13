@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
-import { B } from '../../../shared/helper';
 import { titlecase, sortBy } from '../../../../api/util';
 import { fontSizeMedium } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
@@ -50,7 +49,7 @@ export default class SettingsScreen extends React.Component {
 		const listTheme = listStyles(theme);
 		const styles = this.styles;
 		const getTitle = productId => {
-			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.(?:tip|removeads)\.(.+)/);
+			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.tip\.(.+)/);
 			return `${titlecase(type)} Tip`;
 		};
 		const extractNumber = price => {
@@ -63,15 +62,10 @@ export default class SettingsScreen extends React.Component {
 				<Text style={styles.disclaimer}>
 					{"If you've been enjoying Druidshape, and would like to show your support, please consider leaving a tip. This is obviously not mandatory and just the fact that you're using my app is extremely appreciated. Thanks! :)"}
 				</Text>
-				{state.showAds && (
-					<Text style={styles.disclaimer}>
-						<B>Making a tip of any amount will remove all ads from the application.</B>
-					</Text>
-				)}
 				<FlatList
 					data={
 						state.iaps
-							.filter(p => p.productId.match(state.showAds ? /^com\.adpyke\.druidshape\.removeads\./ : /^com\.adpyke\.druidshape\.tip\./))
+							.filter(p => p.productId.match(/^com\.adpyke\.druidshape\.tip\./))
 							.sort(
 								sortBy(({ localizedPrice }) => extractNumber(localizedPrice))
 							)}
