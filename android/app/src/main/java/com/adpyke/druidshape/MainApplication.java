@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.dooboolab.RNIap.RNIapPackage;
 import com.rnfs.RNFSPackage;
 import com.reactnativedocumentpicker.ReactNativeDocumentPicker;
-import com.sbugert.rnadmob.RNAdMobPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
@@ -32,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNIapPackage(),
             new RNFSPackage(),
             new ReactNativeDocumentPicker(),
-            new RNAdMobPackage(),
             new VectorIconsPackage(),
             new RNGestureHandlerPackage()
       );
