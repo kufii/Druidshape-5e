@@ -10,7 +10,7 @@
     "lodash": "^4.17.11",
     "prop-types": "^15.7.1",
     "react": "^16.8.2",
-    "react-native": "^0.58.5",
+    "react-native": "^0.58.4",
     "react-native-action-button": "^2.8.5",
     "react-native-admob": "^2.0.0-beta.5",
     "react-native-document-picker": "^2.2.0",
