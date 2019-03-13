@@ -11,7 +11,7 @@ target 'druidshape' do
     'DevSupport', # Needed for In-App Devmenu
     'RCTWebSocket', # Needed for debugging
     'RCTAnimation', # Needed for FlatList and animations running on native UI thread
-    'RCTImage'
+    'RCTImage' # Needed for react-native-fs
   ]
 
   # Explicitly include Yoga
