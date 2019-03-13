@@ -4,25 +4,30 @@ platform :ios, '9.0'
 target 'druidshape' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
-  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
-  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
-  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-
-  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
-  pod 'React', :path => '../node_modules/react-native'
 
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
     'Core',
-    'DevSupport',
     'CxxBridge',
+    'DevSupport', # Needed for In-App Devmenu
+    'RCTWebSocket', # Needed for debugging
+    'RCTAnimation', # Needed for FlatList and animations running on native UI thread
     'RCTImage'
   ]
+
+  # Explicitly include Yoga
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+
+  # Third party deps podspec link
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   # Pods for druidshape
   pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 end
 
+# Fixes Archive issue by removing duplicate "React" from the project
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == 'React'
