@@ -31,9 +31,5 @@ end
 
 # Fixes Archive issue by removing duplicate "React" from the project
 post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    if target.name == 'React'
-      target.remove_from_project
-    end
-  end
+  installer.pods_project.targets.select{ |t| t.name == 'React' }.each{ |t| t.remove_from_project }
 end

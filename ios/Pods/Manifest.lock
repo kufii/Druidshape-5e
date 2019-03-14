@@ -32,6 +32,8 @@ PODS:
     - React/cxxreact
     - React/jsi
   - React/jsinspector (0.58.4)
+  - React/RCTAnimation (0.58.4):
+    - React/Core
   - React/RCTBlob (0.58.4):
     - React/Core
   - React/RCTImage (0.58.4):
@@ -45,19 +47,26 @@ PODS:
     - React/RCTBlob
   - RNFS (2.13.3):
     - React
+  - RNGestureHandler (1.0.16):
+    - React
+  - RNVectorIcons (6.3.0):
+    - React
   - yoga (0.58.4.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - React (from `../node_modules/react-native`)
   - react-native-document-picker (from `../node_modules/react-native-document-picker`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
+  - React/RCTAnimation (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
   - RNFS (from `../node_modules/react-native-fs`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -77,6 +86,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-document-picker"
   RNFS:
     :path: "../node_modules/react-native-fs"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -88,8 +101,10 @@ SPEC CHECKSUMS:
   React: 6b36b9732ee830d06b470dc4ecdd6837718abe63
   react-native-document-picker: 8508bfda34be6c24a2cbecbe515b15108658c183
   RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
+  RNGestureHandler: 0438a761e8f29be3b809f9e7e43014f3aba4d7a6
+  RNVectorIcons: cb42a5653c046f12ca16c9480c571b52620559e8
   yoga: a767b95565bc4e939c7bf241a872cc29bad2f984
 
-PODFILE CHECKSUM: 68eb39d7079cad77203543db4da9fff32dbc3135
+PODFILE CHECKSUM: dc85b17df38f16d740a7604501eb87433f246aca
 
 COCOAPODS: 1.6.1
