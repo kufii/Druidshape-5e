@@ -54,18 +54,18 @@ const getLegacyPrefs = () => Promise.all([
 );
 
 export const loadPrefs = async() => {
-	let [version, prefs] = await Promise.all([getPref('version', 1), getPref('prefs', initialPrefs)]);
+	let [version, prefs] = await Promise.all([getPref('version', 1), getPref('prefs', {})]);
 	for (let v = version; v < CURRENT_VERSION; v++) {
 		if (v === 1) {
 			const { level, isMoon, favs, ...otherPrefs } = await getLegacyPrefs();
 			prefs = {
-				...prefs,
-				characters: [{ key: 0, name: 'Default', level, isMoon, favs }],
+				characters: [{ ...initialPrefs.characters[0], level, isMoon, favs }],
 				...otherPrefs
 			};
 			['darkMode', 'level', 'isMoon', 'favs', 'homebrew'].forEach(pref => removePref(pref));
 		}
 	}
+	prefs = { ...initialPrefs, ...prefs };
 	if (version !== CURRENT_VERSION) {
 		setPref('version', CURRENT_VERSION);
 		setPref('prefs', prefs);
