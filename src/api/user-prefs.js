@@ -63,16 +63,12 @@ export const loadPrefs = async() => {
 				characters: [{ key: 0, name: 'Default', level, isMoon, favs }],
 				...otherPrefs
 			};
-			await Promise.all([
-				setPref('prefs', prefs),
-				removePref('darkMode'),
-				removePref('level'),
-				removePref('isMoon'),
-				removePref('favs'),
-				removePref('homebrew')
-			]);
+			['darkMode', 'level', 'isMoon', 'favs', 'homebrew'].forEach(pref => removePref(pref))
 		}
 	}
-	if (version !== CURRENT_VERSION) await setPref('version', CURRENT_VERSION);
+	if (version !== CURRENT_VERSION) {
+		setPref('version', CURRENT_VERSION);
+		setPref('prefs', prefs)
+	}
 	return prefs;
 };
