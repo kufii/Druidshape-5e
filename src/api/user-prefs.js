@@ -63,12 +63,12 @@ export const loadPrefs = async() => {
 				characters: [{ key: 0, name: 'Default', level, isMoon, favs }],
 				...otherPrefs
 			};
-            ['darkMode', 'level', 'isMoon', 'favs', 'homebrew'].forEach(pref => removePref(pref))
+			['darkMode', 'level', 'isMoon', 'favs', 'homebrew'].forEach(pref => removePref(pref))
 		}
 	}
 	if (version !== CURRENT_VERSION) {
-        setPref('version', CURRENT_VERSION);
-        setPref('prefs', prefs)
-    }
+		setPref('version', CURRENT_VERSION);
+		setPref('prefs', prefs)
+	}
 	return prefs;
 };
