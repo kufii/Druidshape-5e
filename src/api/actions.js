@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
 import Toast from 'react-native-root-toast';
-import { getPref, setPref } from './user-prefs';
+import { setPref, loadPrefs, initialPrefs } from './user-prefs';
 import { toDict, iterate } from './util';
 import { lightTheme, darkTheme } from './constants';
 import { getStruct } from '../components/screens/homebrew/details/form';
@@ -11,16 +11,18 @@ import products from '../data/iap.json';
 
 const homebrewStruct = getStruct();
 
-export const initialState = {
+export const transientState = {
 	isLoading: true,
 	iaps: [],
-	darkMode: false,
-	level: 0,
-	isMoon: false,
-	favs: {},
-	homebrew: [],
 	beasts
 };
+
+export const initialState = {
+	...initialPrefs,
+	...transientState
+};
+
+export const syncPrefs = state => setPref('prefs', Object.keys(initialPrefs).reduce((obj, key) => Object.assign(obj, { [key]: state[key] }), {}));
 
 export const actions = (update, states) => {
 	const privateActions = {
@@ -90,22 +92,13 @@ export const actions = (update, states) => {
 		})
 	};
 	const actions = {
-		loadPrefs: () => Promise.all([
-			getPref('darkMode', false),
-			getPref('level', 0),
-			getPref('isMoon', false),
-			getPref('favs', {}),
-			getPref('homebrew', [])
-		]).then(
-			([darkMode, level, isMoon, favs, homebrew]) => update({
-				darkMode,
-				level,
-				isMoon,
-				favs,
-				homebrew,
+		loadPrefs: async() => {
+			const prefs = await loadPrefs();
+			update({
+				...prefs,
 				isLoading: false
-			})
-		),
+			});
+		},
 		loadProducts: () => privateActions.iapConnection(async() => {
 			const iaps = await RNIap.getProducts(products);
 			update({ iaps });
@@ -116,50 +109,62 @@ export const actions = (update, states) => {
 		}),
 		setDarkMode: darkMode => {
 			update({ darkMode });
-			setPref('darkMode', darkMode);
+			syncPrefs(states());
 		},
 		getCurrentTheme: () => states().darkMode ? darkTheme : lightTheme,
+		getCurrentCharacter: () => states().characters.find(c => c.key === states().selectedCharacter),
 		toggleMoon: () => {
-			const isMoon = !states().isMoon;
-			update({ isMoon });
-			setPref('isMoon', isMoon);
+			const characters = states().characters;
+			const char = characters.find(c => c.key === states().selectedCharacter);
+			char.isMoon = !char.isMoon;
+			update({ characters });
+			syncPrefs(states());
 		},
 		setLevel: level => {
+			const characters = states().characters;
+			const char = characters.find(c => c.key === states().selectedCharacter);
 			level = parseInt(level);
-			update({ level });
-			setPref('level', level);
+			char.level = level;
+			update({ characters });
+			syncPrefs(states());
 		},
 		toggleFav: name => {
-			const favs = states().favs;
+			const characters = states().characters;
+			const char = characters.find(c => c.key === states().selectedCharacter);
+			const favs = char.favs;
 			favs[name] = !favs[name];
-			update({ favs });
-			setPref('favs', favs);
+			update({ characters });
+			syncPrefs(states());
 		},
 		addHomebrew: beast => {
 			const homebrew = [...states().homebrew, beast];
 			update({ homebrew });
-			setPref('homebrew', homebrew);
+			syncPrefs(states());
 		},
 		editHomebrew: (name, beast) => {
 			const homebrew = [...states().homebrew.filter(h => h.name !== name), beast];
-			let favs = states().favs;
+			const characters = states().characters;
 			if (name !== beast.name) {
-				favs[beast.name] = favs[name];
-				favs[name] = false;
-				favs = privateActions.cleanupFavs(favs);
-				setPref('favs', favs);
+				characters.forEach(char => {
+					const favs = char.favs;
+					favs[beast.name] = favs[name];
+					favs[name] = false;
+					char.favs = privateActions.cleanupFavs(favs);
+				});
 			}
-			update({ homebrew, favs });
-			setPref('homebrew', homebrew);
+			update({ homebrew, characters });
+			syncPrefs(states());
 		},
 		deleteHomebrew: name => {
 			const homebrew = states().homebrew.filter(h => h.name !== name);
-			let favs = states().favs;
-			favs[name] = false;
-			favs = privateActions.cleanupFavs(favs);
-			update({ homebrew, favs });
-			setPref('homebrew', homebrew);
-			setPref('favs', favs);
+			const characters = states().characters;
+			characters.forEach(char => {
+				const favs = char.favs;
+				favs[name] = false;
+				char.favs = privateActions.cleanupFavs(favs);
+			});
+			update({ homebrew, characters });
+			syncPrefs(states());
 		},
 		importHomebrews: beasts => privateActions
 			.getHomebrewImportMergeList(beasts)
@@ -171,13 +176,13 @@ export const actions = (update, states) => {
 						homebrew.push(b);
 					});
 					update({ homebrew });
-					setPref('homebrew', homebrew);
+					syncPrefs(states());
 					Toast.show('Import complete.');
 				}
 			}),
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
 		getBeast: name => actions.getAllBeasts().find(b => b.name === name),
-		getFavorites: () => Object.entries(states().favs)
+		getFavorites: () => Object.entries(actions.getCurrentCharacter().favs)
 			.filter(([_, isFav]) => isFav)
 			.map(([key]) => actions.getBeast(key))
 			.filter(b => b)

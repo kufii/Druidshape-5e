@@ -15,6 +15,7 @@ const options = [
 export const Header = ({ screenProps }) => {
 	const { state, actions } = screenProps;
 	const theme = actions.getCurrentTheme();
+	const character = actions.getCurrentCharacter();
 	return {
 		headerTitle: (
 			<ModalDropdown
@@ -22,7 +23,7 @@ export const Header = ({ screenProps }) => {
 				actions={actions}
 				style={globalStyles.marginLarge}
 				items={options}
-				selected={state.level.toString()}
+				selected={character.level.toString()}
 				onSelect={actions.setLevel}
 			/>
 		),
@@ -30,7 +31,7 @@ export const Header = ({ screenProps }) => {
 			<View style={globalStyles.margin}>
 				<ToggleIconButton
 					icon={icon('moon')}
-					active={state.isMoon}
+					active={character.isMoon}
 					onToggle={isMoon => {
 						actions.toggleMoon();
 						Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
