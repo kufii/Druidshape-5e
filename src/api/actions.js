@@ -11,20 +11,16 @@ import products from '../data/iap.json';
 
 const homebrewStruct = getStruct();
 
-export const transientState = {
+export const initialState = {
+	...initialPrefs,
 	isLoading: true,
 	iaps: [],
 	beasts
 };
 
-export const initialState = {
-	...initialPrefs,
-	...transientState
-};
-
-export const syncPrefs = state => setPref('prefs', Object.keys(initialPrefs).reduce((obj, key) => Object.assign(obj, { [key]: state[key] }), {}));
-
 export const actions = (update, states) => {
+	const syncPrefs = () => setPref('prefs', Object.keys(initialPrefs).reduce((obj, key) => Object.assign(obj, { [key]: states()[key] }), {}));
+
 	const privateActions = {
 		async iapConnection(cb) {
 			try {
@@ -109,7 +105,7 @@ export const actions = (update, states) => {
 		}),
 		setDarkMode: darkMode => {
 			update({ darkMode });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		getCurrentTheme: () => states().darkMode ? darkTheme : lightTheme,
 		getCurrentCharacter: () => states().characters.find(c => c.key === states().selectedCharacter),
@@ -118,7 +114,7 @@ export const actions = (update, states) => {
 			const char = characters.find(c => c.key === states().selectedCharacter);
 			char.isMoon = !char.isMoon;
 			update({ characters });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		setLevel: level => {
 			const characters = states().characters;
@@ -126,7 +122,7 @@ export const actions = (update, states) => {
 			level = parseInt(level);
 			char.level = level;
 			update({ characters });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		toggleFav: name => {
 			const characters = states().characters;
@@ -134,12 +130,12 @@ export const actions = (update, states) => {
 			const favs = char.favs;
 			favs[name] = !favs[name];
 			update({ characters });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		addHomebrew: beast => {
 			const homebrew = [...states().homebrew, beast];
 			update({ homebrew });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		editHomebrew: (name, beast) => {
 			const homebrew = [...states().homebrew.filter(h => h.name !== name), beast];
@@ -153,7 +149,7 @@ export const actions = (update, states) => {
 				});
 			}
 			update({ homebrew, characters });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		deleteHomebrew: name => {
 			const homebrew = states().homebrew.filter(h => h.name !== name);
@@ -164,7 +160,7 @@ export const actions = (update, states) => {
 				char.favs = privateActions.cleanupFavs(favs);
 			});
 			update({ homebrew, characters });
-			syncPrefs(states());
+			syncPrefs();
 		},
 		importHomebrews: beasts => privateActions
 			.getHomebrewImportMergeList(beasts)
@@ -176,7 +172,7 @@ export const actions = (update, states) => {
 						homebrew.push(b);
 					});
 					update({ homebrew });
-					syncPrefs(states());
+					syncPrefs();
 					Toast.show('Import complete.');
 				}
 			}),
