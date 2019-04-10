@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, LayoutAnimation } from 'react-native';
 import { withCollapsible as _withCollapsible } from 'react-navigation-collapsible';
 import { isString } from './types';
 
@@ -48,6 +48,12 @@ export const nTimes = (cb, n) => {
 	}
 };
 
+export const iterate = function*(iter) {
+	for (const x of iter) {
+		yield x;
+	}
+};
+
 export const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
 
 export const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {
@@ -57,3 +63,29 @@ export const withCollapsible = (main, collapse, height=60) => _withCollapsible(m
 		disableFadeoutInnerComponent: true
 	}
 });
+
+export const fabOnScroll = (cbGetFabVisible, cbSetFabVisible) => {
+	let listViewOffset = 0;
+	return event => {
+		// Simple fade-in / fade-out animation
+		const CustomLayoutLinear = {
+			duration: 100,
+			create: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity },
+			update: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity },
+			delete: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity }
+		};
+		// Check if the user is scrolling up or down by confronting the new scroll position with your own one
+		const currentOffset = event.nativeEvent.contentOffset.y;
+		const direction = (currentOffset > 0 && currentOffset > listViewOffset)
+			? 'down'
+			: 'up';
+		// If the user is scrolling down (and the action-button is still visible) hide it
+		const isFabVisible = direction === 'up';
+		if (isFabVisible !== cbGetFabVisible()) {
+			LayoutAnimation.configureNext(CustomLayoutLinear);
+			cbSetFabVisible(isFabVisible);
+		}
+		// Update your scroll position
+		listViewOffset = currentOffset;
+	};
+};

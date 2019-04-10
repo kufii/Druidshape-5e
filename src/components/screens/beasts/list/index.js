@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Animated, StyleSheet, View, Text, SectionList } from 'react-native';
 import { Divider } from 'react-native-elements';
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import listStyles from '../../../../styles/list';
 
-import { withCollapsible, groupBy, sortBy } from '../../../../api/util';
+import { iconSizeMedium } from '../../../../api/constants';
+import { withCollapsible, groupBy, sortBy, icon, fabOnScroll } from '../../../../api/util';
 import { filterBeasts, crToNum } from '../../../../api/beasts';
 
 import { Header, ExtendedHeader } from './header';
@@ -14,6 +17,8 @@ import BeastListItem from './list-item';
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export default withCollapsible(class BeastListScreen extends React.Component {
+	state = { isFabVisible: true };
+
 	static propTypes = {
 		screenProps: PropTypes.shape({
 			state: PropTypes.object.isRequired,
@@ -54,12 +59,13 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		this.props.navigation.setParams({
 			scrollToTop: this.scrollToTop.bind(this)
 		});
+		this.onScroll = fabOnScroll(() => this.state.isFabVisible, isFabVisible => this.setState({ isFabVisible }));
 	}
 
 	render() {
 		const { screenProps, navigation, collapsible } = this.props;
 		const { state, actions } = screenProps;
-		const { paddingHeight, animatedY, onScroll } = collapsible;
+		const { paddingHeight, animatedY } = collapsible;
 
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
@@ -116,9 +122,26 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 					contentContainerStyle={{ paddingTop: paddingHeight }}
 					scrollIndicatorInsets={{ top: paddingHeight }}
-					onScroll={onScroll}
+					onScroll={Animated.event(
+						[{
+							nativeEvent: {
+								contentOffset: { y: animatedY }
+							}
+						}],
+						{
+							useNativeDriver: true,
+							listener: this.onScroll
+						}
+					)}
 					_mustAddThis={animatedY}
 				/>
+				{this.state.isFabVisible && (
+					<ActionButton
+						degrees={0}
+						buttonColor={theme.fabColor}
+						renderIcon={() => <Icon name={icon('person')} size={iconSizeMedium} color={theme.fabIconColor} />}
+					/>
+				)}
 			</View>
 		);
 	}

@@ -6,11 +6,13 @@ import Swipeout from 'react-native-swipeout';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AlertDelete from '../details/alert-delete';
-import { icon } from '../../../../api/util';
+import { icon, fabOnScroll } from '../../../../api/util';
 import listStyles from '../../../../styles/list';
 import { iconSizeMedium, iconSizeLarge } from '../../../../api/constants';
 
 export default class HomebrewListScreen extends React.Component {
+	state = { isFabVisible: true };
+
 	static propTypes = {
 		screenProps: PropTypes.shape({
 			state: PropTypes.object.isRequired,
@@ -31,6 +33,7 @@ export default class HomebrewListScreen extends React.Component {
 		this.props.navigation.setParams({
 			scrollToTop: this.scrollToTop.bind(this)
 		});
+		this.onScroll = fabOnScroll(() => this.state.isFabVisible, isFabVisible => this.setState({ isFabVisible }));
 	}
 
 	get styles() {
@@ -78,14 +81,16 @@ export default class HomebrewListScreen extends React.Component {
 					)}
 					keyExtractor={item => item}
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+					onScroll={this.onScroll}
 				/>
-				<ActionButton
-					onPress={() => navigation.navigate('HomebrewDetails')}
-					degrees={0}
-					buttonColor={theme.fabColor}
-				>
-					<Icon name={icon('add')} size={iconSizeMedium} color={theme.textColorHeader} />
-				</ActionButton>
+				{this.state.isFabVisible && (
+					<ActionButton
+						onPress={() => navigation.navigate('HomebrewDetails')}
+						degrees={0}
+						buttonColor={theme.fabColor}
+						renderIcon={() => <Icon name={icon('add')} size={iconSizeMedium} color={theme.fabIconColor} />}
+					/>
+				)}
 			</View>
 		);
 	}
