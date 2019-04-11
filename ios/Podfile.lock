@@ -6,52 +6,52 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - React (0.58.4):
-    - React/Core (= 0.58.4)
+  - React (0.58.6):
+    - React/Core (= 0.58.6)
   - react-native-document-picker (2.3.0):
     - React
-  - React/Core (0.58.4):
-    - yoga (= 0.58.4.React)
-  - React/CxxBridge (0.58.4):
+  - React/Core (0.58.6):
+    - yoga (= 0.58.6.React)
+  - React/CxxBridge (0.58.6):
     - Folly (= 2018.10.22.00)
     - React/Core
     - React/cxxreact
     - React/jsiexecutor
-  - React/cxxreact (0.58.4):
+  - React/cxxreact (0.58.6):
     - boost-for-react-native (= 1.63.0)
     - Folly (= 2018.10.22.00)
     - React/jsinspector
-  - React/DevSupport (0.58.4):
+  - React/DevSupport (0.58.6):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.58.4)
-  - React/jsi (0.58.4):
+  - React/fishhook (0.58.6)
+  - React/jsi (0.58.6):
     - Folly (= 2018.10.22.00)
-  - React/jsiexecutor (0.58.4):
+  - React/jsiexecutor (0.58.6):
     - Folly (= 2018.10.22.00)
     - React/cxxreact
     - React/jsi
-  - React/jsinspector (0.58.4)
-  - React/RCTAnimation (0.58.4):
+  - React/jsinspector (0.58.6)
+  - React/RCTAnimation (0.58.6):
     - React/Core
-  - React/RCTBlob (0.58.4):
+  - React/RCTBlob (0.58.6):
     - React/Core
-  - React/RCTImage (0.58.4):
+  - React/RCTImage (0.58.6):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.58.4):
+  - React/RCTNetwork (0.58.6):
     - React/Core
-  - React/RCTWebSocket (0.58.4):
+  - React/RCTWebSocket (0.58.6):
     - React/Core
     - React/fishhook
     - React/RCTBlob
   - RNFS (2.13.3):
     - React
-  - RNGestureHandler (1.0.16):
+  - RNGestureHandler (1.1.0):
     - React
-  - RNVectorIcons (6.3.0):
+  - RNVectorIcons (6.4.2):
     - React
-  - yoga (0.58.4.React)
+  - yoga (0.58.6.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -98,12 +98,12 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  React: 6b36b9732ee830d06b470dc4ecdd6837718abe63
+  React: 130b87b2d5e2baac646954282cab87be986d98fc
   react-native-document-picker: 8508bfda34be6c24a2cbecbe515b15108658c183
   RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
-  RNGestureHandler: 0438a761e8f29be3b809f9e7e43014f3aba4d7a6
-  RNVectorIcons: cb42a5653c046f12ca16c9480c571b52620559e8
-  yoga: a767b95565bc4e939c7bf241a872cc29bad2f984
+  RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
+  RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
+  yoga: 32d7ef1081951e9a35a4c72a7be797598b138a48
 
 PODFILE CHECKSUM: dc85b17df38f16d740a7604501eb87433f246aca
 

@@ -16,15 +16,15 @@
     "react-native-elements": "^1.1.0",
     "react-native-fs": "^2.13.3",
     "react-native-gesture-handler": "^1.1.0",
-    "react-native-iap": "^2.4.1",
+    "react-native-iap": "^2.4.7",
     "react-native-iphone-x-helper": "^1.2.0",
     "react-native-modal": "^7.0.2",
     "react-native-root-toast": "^3.0.2",
     "react-native-swipeout": "^2.3.6",
     "react-native-vector-icons": "^6.4.1",
-    "react-navigation": "^3.2.1",
+    "react-navigation": "^3.7.1",
     "react-navigation-collapsible": "^3.0.3",
-    "react-navigation-transitions": "^1.0.8",
+    "react-navigation-transitions": "^1.0.10",
     "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
