@@ -13,11 +13,12 @@ import { filterBeasts, crToNum } from '../../../../api/beasts';
 
 import { Header, ExtendedHeader } from './header';
 import BeastListItem from './list-item';
+import CharacterPicker from './character-picker';
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export default withCollapsible(class BeastListScreen extends React.Component {
-	state = { isFabVisible: true };
+	state = { isFabVisible: true, isCharacterPickerVisible: false };
 
 	static propTypes = {
 		screenProps: PropTypes.shape({
@@ -137,11 +138,18 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 				/>
 				{this.state.isFabVisible && (
 					<ActionButton
+						onPress={() => this.setState({ isCharacterPickerVisible: true })}
 						degrees={0}
 						buttonColor={theme.fabColor}
 						renderIcon={() => <Icon name={icon('person')} size={iconSizeMedium} color={theme.fabIconColor} />}
 					/>
 				)}
+				<CharacterPicker
+					state={state}
+					actions={actions}
+					isVisible={this.state.isCharacterPickerVisible}
+					onDismiss={() => this.setState({ isCharacterPickerVisible: false })}
+				/>
 			</View>
 		);
 	}
