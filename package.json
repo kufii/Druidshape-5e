@@ -18,6 +18,7 @@
     "react-native-fs": "^2.13.3",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-iap": "^2.4.7",
+    "react-native-input-scroll-view": "^1.9.1",
     "react-native-iphone-x-helper": "^1.2.0",
     "react-native-modal": "^7.0.2",
     "react-native-popup-menu": "^0.15.5",

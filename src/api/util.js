@@ -68,11 +68,12 @@ export const fabOnScroll = (cbGetFabVisible, cbSetFabVisible, cbGetListHeight, c
 	let listViewOffset = 0;
 	return event => {
 		// Simple fade-in / fade-out animation
+		const animProp = { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity };
 		const CustomLayoutLinear = {
 			duration: 100,
-			create: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity },
-			update: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity },
-			delete: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity }
+			create: animProp,
+			update: animProp,
+			delete: animProp
 		};
 		// Check if the user is scrolling up or down by confronting the new scroll position with your own one
 		const limit = cbGetListContentHeight() - cbGetListHeight();

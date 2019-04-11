@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
+import InputScrollView from 'react-native-input-scroll-view';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-import { KeyboardAvoidingScrollView } from '../../../shared/helper';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge, bottomButtonHeight, lightTheme } from '../../../../api/constants';
@@ -129,7 +129,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 		const styles = this.styles;
 		return (
 			<View style={styles.container}>
-				<KeyboardAvoidingScrollView contentContainerStyle={styles.form}>
+				<InputScrollView contentContainerStyle={styles.form}>
 					<Form
 						ref={form => this.form = form}
 						type={this.state.struct}
@@ -140,7 +140,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 							this.setState({ model });
 						}}
 					/>
-				</KeyboardAvoidingScrollView>
+				</InputScrollView>
 				<View style={styles.buttons}>
 					<Button
 						title='Cancel'
