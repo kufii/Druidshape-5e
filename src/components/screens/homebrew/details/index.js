@@ -129,7 +129,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 		const styles = this.styles;
 		return (
 			<View style={styles.container}>
-				<InputScrollView contentContainerStyle={styles.form}>
+				<InputScrollView contentContainerStyle={styles.form} behavior='padding'>
 					<Form
 						ref={form => this.form = form}
 						type={this.state.struct}
