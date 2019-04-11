@@ -64,7 +64,7 @@ export const withCollapsible = (main, collapse, height=60) => _withCollapsible(m
 	}
 });
 
-export const fabOnScroll = (cbGetFabVisible, cbSetFabVisible) => {
+export const fabOnScroll = (cbGetFabVisible, cbSetFabVisible, cbGetListHeight, cbGetListContentHeight) => {
 	let listViewOffset = 0;
 	return event => {
 		// Simple fade-in / fade-out animation
@@ -75,8 +75,10 @@ export const fabOnScroll = (cbGetFabVisible, cbSetFabVisible) => {
 			delete: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity }
 		};
 		// Check if the user is scrolling up or down by confronting the new scroll position with your own one
-		const currentOffset = event.nativeEvent.contentOffset.y;
-		const direction = (currentOffset > 0 && currentOffset > listViewOffset)
+		const limit = cbGetListContentHeight() - cbGetListHeight();
+		const offset = event.nativeEvent.contentOffset.y;
+		const currentOffset = (offset > limit) ? limit : offset;
+		const direction = (currentOffset > 0 && currentOffset >= listViewOffset)
 			? 'down'
 			: 'up';
 		// If the user is scrolling down (and the action-button is still visible) hide it

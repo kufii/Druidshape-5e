@@ -20,6 +20,9 @@ const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 export default withCollapsible(class BeastListScreen extends React.Component {
 	state = { isFabVisible: true, isCharacterPickerVisible: false };
 
+	_listViewHeight = 0;
+	_listViewContentHeight = 0;
+
 	static propTypes = {
 		screenProps: PropTypes.shape({
 			state: PropTypes.object.isRequired,
@@ -60,7 +63,12 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		this.props.navigation.setParams({
 			scrollToTop: this.scrollToTop.bind(this)
 		});
-		this.onScroll = fabOnScroll(() => this.state.isFabVisible, isFabVisible => this.setState({ isFabVisible }));
+		this.onScroll = fabOnScroll(
+			() => this.state.isFabVisible,
+			isFabVisible => this.setState({ isFabVisible }),
+			() => this._listViewHeight,
+			() => this._listViewContentHeight
+		);
 	}
 
 	render() {
@@ -134,6 +142,8 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 							listener: this.onScroll
 						}
 					)}
+					onLayout={e => this._listViewHeight = e.nativeEvent.layout.height}
+					onContentSizeChange={(_, height) => this._listViewContentHeight = height}
 					_mustAddThis={animatedY}
 				/>
 				{this.state.isFabVisible && (
