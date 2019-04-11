@@ -27,6 +27,7 @@ target 'druidshape' do
   pod 'RNFS', :path => '../node_modules/react-native-fs'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'
 end
 
 # Fixes Archive issue by removing duplicate "React" from the project

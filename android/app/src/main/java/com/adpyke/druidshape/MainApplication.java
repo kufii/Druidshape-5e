@@ -3,6 +3,7 @@ package com.adpyke.druidshape;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.dooboolab.RNIap.RNIapPackage;
 import com.rnfs.RNFSPackage;
 import com.reactnativedocumentpicker.ReactNativeDocumentPicker;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new AsyncStoragePackage(),
             new RNIapPackage(),
             new RNFSPackage(),
             new ReactNativeDocumentPicker(),
