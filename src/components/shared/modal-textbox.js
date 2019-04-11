@@ -13,6 +13,9 @@ export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSu
 		container: {
 			backgroundColor: theme.contentBackgroundColor
 		},
+		textbox: {
+			color: theme.textColor
+		},
 		buttons: {
 			marginTop: 5,
 			flexDirection: 'row',
@@ -46,6 +49,7 @@ export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSu
 					selectTextOnFocus
 					value={text}
 					onChangeText={onChangeText}
+					inputStyle={styles.textbox}
 				/>
 				<View style={styles.buttons}>
 					<Button
