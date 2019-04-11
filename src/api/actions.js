@@ -143,10 +143,11 @@ export const actions = (update, states) => {
 		removeCharacter: key => {
 			const characters = states().characters.filter(c => c.key !== key);
 			if (characters.length) {
-				Toast.show('You must have at least one character.');
-			} else {
-				update({ characters });
+				const selectedCharacter = states().selectCharacter === key ? states().selectCharacter : characters[0].key;
+				update({ characters, selectedCharacter });
 				syncPrefs();
+			} else {
+				Toast.show('You must have at least one character.');
 			}
 		},
 		renameCharacter: (key, name) => {

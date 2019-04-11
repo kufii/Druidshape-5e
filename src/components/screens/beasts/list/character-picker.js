@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { ListItem, Divider, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
+import Swipeout from 'react-native-swipeout';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import ModalTextbox from '../../../shared/modal-textbox';
@@ -58,22 +59,44 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 				<FlatList
 					data={state.characters}
 					renderItem={({ item }) => (
-						<ListItem
-							onPress={() => {
-								actions.selectCharacter(item.key);
-								onDismiss && onDismiss();
-							}}
-							title={item.name}
-							titleStyle={listTheme.itemText}
-							containerStyle={listTheme.item}
-							rightIcon={(
-								<Icon
-									size={iconSizeLarge}
-									color={item.key === state.selectedCharacter ? theme.formButtonColor : theme.textColorDisabled}
-									name={icon(item.key === state.selectedCharacter ? 'radio-button-on' : 'radio-button-off')}
-								/>
-							)}
-						/>
+						<Swipeout
+							autoClose
+							backgroundColor={theme.contentBackgroundColorDark}
+							buttonWidth={100}
+							right={[
+								{
+									text: 'Rename',
+									type: 'primary',
+									onPress: () => {
+										setTextboxText(item.name);
+										setCharacterEditing(item.key);
+										setTextboxVisible(true);
+									}
+								},
+								...(state.characters.length > 1 ? [{
+									text: 'Delete',
+									type: 'delete',
+									onPress: () => actions.removeCharacter(item.key)
+								}] : [])
+							]}
+						>
+							<ListItem
+								onPress={() => {
+									actions.selectCharacter(item.key);
+									onDismiss && onDismiss();
+								}}
+								title={item.name}
+								titleStyle={listTheme.itemText}
+								containerStyle={listTheme.item}
+								rightIcon={(
+									<Icon
+										size={iconSizeLarge}
+										color={item.key === state.selectedCharacter ? theme.formButtonColor : theme.textColorDisabled}
+										name={icon(item.key === state.selectedCharacter ? 'radio-button-on' : 'radio-button-off')}
+									/>
+								)}
+							/>
+						</Swipeout>
 					)}
 					keyExtractor={c => c.key.toString()}
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
