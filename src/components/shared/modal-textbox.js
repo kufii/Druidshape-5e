@@ -14,6 +14,7 @@ export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSu
 			backgroundColor: theme.contentBackgroundColor
 		},
 		buttons: {
+			marginTop: 5,
 			flexDirection: 'row',
 			justifyContent: 'space-between',
 			borderTopColor: theme.formButtonColor,

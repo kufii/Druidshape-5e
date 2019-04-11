@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { ListItem, Divider, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ModalTextbox from '../../../shared/modal-textbox';
 
 import listStyles from '../../../../styles/list';
-import { iconSizeLarge } from '../../../../api/constants';
+import { iconSizeLarge, fontSizeLarge } from '../../../../api/constants';
 import { icon } from '../../../../api/util';
 
 export default function CharacterPicker({ isVisible, state, actions, onDismiss }) {
@@ -30,9 +30,16 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 		},
 		header: {
 			flexDirection: 'row',
-			justifyContent: 'flex-end',
+			justifyContent: 'space-between',
+			alignItems: 'center',
 			backgroundColor: theme.contentBackgroundColor,
-			paddingRight: 10
+			paddingRight: 10,
+			paddingLeft: 10
+		},
+		headerText: {
+			color: theme.textColor,
+			fontWeight: 'bold',
+			fontSize: fontSizeLarge
 		}
 	});
 	const listTheme = listStyles(theme);
@@ -46,6 +53,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 		>
 			<View style={styles.container}>
 				<View style={styles.header}>
+					<Text style={styles.headerText}>Characters</Text>
 					<Button
 						onPress={() => {
 							setTextboxText('');
@@ -56,6 +64,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 						icon={<Icon size={iconSizeLarge} color={theme.formButtonColor} name={icon('add')} />}
 					/>
 				</View>
+				<Divider style={listTheme.divider} />
 				<FlatList
 					data={state.characters}
 					renderItem={({ item }) => (
@@ -100,7 +109,6 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 					)}
 					keyExtractor={c => c.key.toString()}
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
-					ListHeaderComponent={() => <Divider style={listTheme.divider} />}
 				/>
 			</View>
 			<ModalTextbox
