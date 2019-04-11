@@ -132,6 +132,33 @@ export const actions = (update, states) => {
 			update({ characters });
 			syncPrefs();
 		},
+		addCharacter: name => {
+			const characters = states().characters;
+			const key = Math.max(...characters.map(c => c.key)) + 1;
+			characters.push({ ...initialPrefs.characters[0], name, key });
+			update({ characters });
+			syncPrefs();
+			return key;
+		},
+		removeCharacter: key => {
+			const characters = states().characters.filter(c => c.key !== key);
+			if (characters.length) {
+				Toast.show('You must have at least one character.');
+			} else {
+				update({ characters });
+				syncPrefs();
+			}
+		},
+		renameCharacter: (key, name) => {
+			const characters = states().characters;
+			characters.find(c => c.key === key).name = name;
+			update({ characters });
+			syncPrefs();
+		},
+		selectCharacter: key => {
+			update({ selectedCharacter: key });
+			syncPrefs();
+		},
 		addHomebrew: beast => {
 			const homebrew = [...states().homebrew, beast];
 			update({ homebrew });
