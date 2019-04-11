@@ -143,7 +143,7 @@ export const actions = (update, states) => {
 		removeCharacter: key => {
 			const characters = states().characters.filter(c => c.key !== key);
 			if (characters.length) {
-				const selectedCharacter = states().selectCharacter === key ? states().selectCharacter : characters[0].key;
+				const selectedCharacter = states().selectedCharacter === key ? states().selectedCharacter : characters[0].key;
 				update({ characters, selectedCharacter });
 				syncPrefs();
 			} else {
