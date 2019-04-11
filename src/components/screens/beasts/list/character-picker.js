@@ -9,8 +9,7 @@ import listStyles from '../../../../styles/list';
 import { iconSizeLarge } from '../../../../api/constants';
 import { icon } from '../../../../api/util';
 
-export default function CharacterPicker(props) {
-	const { isVisible, state, actions, onDismiss } = props;
+export default function CharacterPicker({ isVisible, state, actions, onDismiss }) {
 	const theme = actions.getCurrentTheme();
 
 	const styles = StyleSheet.create({
