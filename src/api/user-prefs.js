@@ -4,8 +4,8 @@ const CURRENT_VERSION = 2;
 
 export const initialPrefs = {
 	darkMode: false,
-	characters: [{ key: 0, name: 'Default', level: 0, isMoon: false, favs: {} }],
-	selectedCharacter: 0,
+	characters: [{ key: 1, name: 'Default', level: 0, isMoon: false, favs: {} }],
+	selectedCharacter: 1,
 	homebrew: []
 };
 
