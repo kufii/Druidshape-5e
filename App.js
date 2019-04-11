@@ -1,5 +1,6 @@
 import React from 'react';
 import { UIManager, Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { MenuProvider } from 'react-native-popup-menu';
 import { createAppContainer } from 'react-navigation';
 import flyd from 'flyd';
 import Root from './src/navigators/root';
@@ -31,9 +32,11 @@ export default class App extends React.Component {
 			StatusBar.setBackgroundColor(theme.headerColorDark);
 		}
 		return (
-			<View style={styles.container}>
-				{state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />}
-			</View>
+			<MenuProvider>
+				<View style={styles.container}>
+					{state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />}
+				</View>
+			</MenuProvider>
 		);
 	}
 }

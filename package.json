@@ -20,6 +20,7 @@
     "react-native-iap": "^2.4.7",
     "react-native-iphone-x-helper": "^1.2.0",
     "react-native-modal": "^7.0.2",
+    "react-native-popup-menu": "^0.15.5",
     "react-native-root-toast": "^3.0.2",
     "react-native-swipeout": "^2.3.6",
     "react-native-vector-icons": "^6.4.1",

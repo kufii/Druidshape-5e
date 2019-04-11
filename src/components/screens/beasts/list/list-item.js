@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
-import { ListItem, Tooltip } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
+import { Menu, MenuTrigger, MenuOptions, MenuOption, renderers as MenuRenderers } from 'react-native-popup-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import listStyles from '../../../../styles/list';
@@ -37,14 +38,19 @@ export default class BeastListItem extends React.Component {
 					<View style={styles.row}>
 						<Text style={listTheme.itemText}>{item}</Text>
 						{showTooltip && (
-							<Tooltip width={200} popover={<Text style={styles.tooltip}>Your Druid level is too low</Text>}>
-								<Icon
-									name={icon('alert')}
-									size={iconSizeLarge}
-									style={styles.margin}
-									color={theme.alertColor}
-								/>
-							</Tooltip>
+							<Menu renderer={MenuRenderers.Popover}>
+								<MenuTrigger>
+									<Icon
+										name={icon('alert')}
+										size={iconSizeLarge}
+										style={styles.margin}
+										color={theme.alertColor}
+									/>
+								</MenuTrigger>
+								<MenuOptions>
+									<MenuOption text='Your Druid level is too low' />
+								</MenuOptions>
+							</Menu>
 						)}
 					</View>
 				)}
@@ -69,9 +75,6 @@ const styles = StyleSheet.create({
 	row: {
 		flexDirection: 'row',
 		alignItems: 'center'
-	},
-	tooltip: {
-		color: '#fff'
 	},
 	item: {
 		paddingRight: 10
