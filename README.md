@@ -9,13 +9,10 @@ Features:
 * Homebrew beast creator
 
 ## Links
-* [Google Play Store](https://play.google.com/store/apps/details?id=com.adpyke.druidshape)
-* iOS app coming soon
+* [Android](https://play.google.com/store/apps/details?id=com.adpyke.druidshape)
+* [iOS](https://itunes.apple.com/us/app/druidshape-5e/id1453786938)
 
 ## Screenshots
-
-### Android
-
 <div style="display: flex; flex-direction: 'row';">
 	<img src="./store-images/screenshots/android/phone/with-device/list.png" width="250" />
 	<img src="./store-images/screenshots/android/phone/with-device/details.png" width="250" />
