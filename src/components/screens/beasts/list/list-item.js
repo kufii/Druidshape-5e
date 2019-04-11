@@ -6,6 +6,7 @@ import { Menu, MenuTrigger, MenuOptions, MenuOption, renderers as MenuRenderers 
 import Icon from 'react-native-vector-icons/Ionicons';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import listStyles from '../../../../styles/list';
+import menuStyles from '../../../../styles/menu';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge } from '../../../../api/constants';
 
@@ -30,6 +31,7 @@ export default class BeastListItem extends React.Component {
 		const { actions, item, showTooltip, isFav, onPress, onFav } = this.props;
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
+		const menuTheme = menuStyles(theme);
 
 		return (
 			<ListItem
@@ -38,7 +40,7 @@ export default class BeastListItem extends React.Component {
 					<View style={styles.row}>
 						<Text style={listTheme.itemText}>{item}</Text>
 						{showTooltip && (
-							<Menu renderer={MenuRenderers.Popover}>
+							<Menu renderer={MenuRenderers.Popover} rendererProps={menuTheme.rendererProps}>
 								<MenuTrigger>
 									<Icon
 										name={icon('alert')}
@@ -47,7 +49,7 @@ export default class BeastListItem extends React.Component {
 										color={theme.alertColor}
 									/>
 								</MenuTrigger>
-								<MenuOptions>
+								<MenuOptions customStyles={menuTheme.menuOptions}>
 									<MenuOption text='Your Druid level is too low' />
 								</MenuOptions>
 							</Menu>
