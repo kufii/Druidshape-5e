@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { ViewPropTypes, Platform, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Divider } from 'react-native-elements';
+import { Divider, ListItem } from 'react-native-elements';
 
 import listStyles from '../../styles/list';
 
-import { fontSizeMedium, fontSizeLarge } from '../../api/constants';
+import { icon } from '../../api/util';
+import { fontSizeMedium, fontSizeLarge, iconSizeLarge } from '../../api/constants';
 
 export default function ModalDropdown({ actions, items, selected, onSelect, style }) {
 	const [isVisible, setVisible] = useState(false);
@@ -48,16 +49,22 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 					<FlatList
 						data={items}
 						renderItem={({ item }) => (
-							<TouchableOpacity
+							<ListItem
 								onPress={() => {
 									onSelect && onSelect(item.key);
 									setVisible(false);
 								}}
-							>
-								<View style={listTheme.itemCompact}>
-									<Text style={listTheme.itemText}>{item.text}</Text>
-								</View>
-							</TouchableOpacity>
+								title={item.text}
+								titleStyle={listTheme.itemText}
+								containerStyle={listTheme.item}
+								rightIcon={(
+									<Icon
+										size={iconSizeLarge}
+										color={item.key === selected ? theme.formButtonColor : theme.textColorDisabled}
+										name={icon(item.key === selected ? 'radio-button-on' : 'radio-button-off')}
+									/>
+								)}
+							/>
 						)}
 						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 					/>
