@@ -71,13 +71,13 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 
 	return (
 		<Modal
-			onBackdropPress={() => dismiss()}
-			onBackButtonPress={() => dismiss()}
+			onBackdropPress={dismiss}
+			onBackButtonPress={dismiss}
 			isVisible={isVisible}
 			style={styles.modal}
 		>
 			<MenuProvider skipInstanceCheck>
-				<TouchableWithoutFeedback onPress={() => dismiss()}>
+				<TouchableWithoutFeedback onPress={dismiss}>
 					<View style={styles.backdrop} />
 				</TouchableWithoutFeedback>
 				<View style={styles.container}>
