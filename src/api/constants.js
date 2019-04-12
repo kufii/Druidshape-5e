@@ -47,7 +47,6 @@ export const darkTheme = {
 	cardColor: '#26292b'
 };
 export const listItemHeight = 60;
-export const listItemHeightCompact = 44;
 export const bottomButtonHeight = 49;
 export const fontSizeStandard = 14;
 export const fontSizeMedium = 16;

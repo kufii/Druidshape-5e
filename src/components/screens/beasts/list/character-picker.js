@@ -58,7 +58,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 			justifyContent: 'space-between',
 			alignItems: 'center',
 			backgroundColor: theme.contentBackgroundColor,
-			paddingRight: 10,
+			paddingRight: 5,
 			paddingLeft: 10
 		},
 		headerText: {
