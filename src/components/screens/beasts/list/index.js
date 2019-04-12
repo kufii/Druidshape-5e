@@ -148,7 +148,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 				/>
 				{this.state.isFabVisible && (
 					<ActionButton
-						fixNativeFeedbackRadius
 						onPress={() => this.setState({ isCharacterPickerVisible: true })}
 						degrees={0}
 						buttonColor={theme.fabColor}
