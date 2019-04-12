@@ -11,6 +11,7 @@ import ModalTextbox from '../../../shared/modal-textbox';
 
 import listStyles from '../../../../styles/list';
 import menuStyles from '../../../../styles/menu';
+import buttonStyles from '../../../../styles/buttons';
 import { iconSizeLarge, fontSizeLarge } from '../../../../api/constants';
 import { icon } from '../../../../api/util';
 
@@ -84,6 +85,8 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 					<View style={styles.header}>
 						<Text style={styles.headerText}>Characters</Text>
 						<Button
+							buttonStyle={buttonStyles.icon.buttonStyle}
+							containerStyle={buttonStyles.icon.containerStyle}
 							onPress={() => triggerAdd()}
 							type='clear'
 							icon={<Icon size={iconSizeLarge} color={theme.formButtonColor} name={icon('add')} />}

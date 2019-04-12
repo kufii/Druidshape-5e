@@ -1,5 +1,7 @@
+import { StyleSheet } from 'react-native';
+
 export default theme => ({
-	menuOptions: {
+	menuOptions: StyleSheet.create({
 		optionsWrapper: {
 			backgroundColor: theme.cardColor
 		},
@@ -7,10 +9,10 @@ export default theme => ({
 			color: theme.textColor,
 			margin: 10
 		}
-	},
-	rendererProps: {
+	}),
+	rendererProps: StyleSheet.create({
 		anchorStyle: {
 			backgroundColor: theme.cardColor
 		}
-	}
+	})
 });

@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import listStyles from '../../../../styles/list';
 import menuStyles from '../../../../styles/menu';
+import buttonStyles from '../../../../styles/buttons.js';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge } from '../../../../api/constants';
 
@@ -41,11 +42,14 @@ export default class BeastListItem extends React.Component {
 						<Text style={listTheme.itemText}>{item}</Text>
 						{showTooltip && (
 							<Menu renderer={MenuRenderers.Popover} rendererProps={menuTheme.rendererProps}>
-								<MenuTrigger>
+								<MenuTrigger
+									customStyles={{
+										triggerOuterWrapper: [styles.margin, buttonStyles.icon.buttonStyle, buttonStyles.icon.containerStyle]
+									}}
+								>
 									<Icon
 										name={icon('alert')}
 										size={iconSizeLarge}
-										style={styles.margin}
 										color={theme.alertColor}
 									/>
 								</MenuTrigger>

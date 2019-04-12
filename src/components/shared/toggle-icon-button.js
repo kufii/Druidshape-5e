@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { lightTheme, iconSizeLarge } from '../../api/constants';
+import buttonStyles from '../../styles/buttons';
 
 export default function ToggleIconButton(props) {
 	return (
 		<Button
+			buttonStyle={buttonStyles.icon.buttonStyle}
+			containerStyle={buttonStyles.icon.containerStyle}
 			type='clear'
 			icon={
 				<Icon

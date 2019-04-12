@@ -5,6 +5,7 @@ import { Button, Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { iconSizeLarge, lightTheme } from '../../api/constants';
 import { icon } from '../../api/util';
+import buttonStyles from '../buttons';
 
 const renderRowWithoutButtons = item => <View key={item.key}>{item.input}</View>;
 
@@ -26,7 +27,8 @@ const renderRowButton = ({ type, click }) => (
 	<Button
 		key={type}
 		type='clear'
-		buttonStyle={styles.iconButton}
+		buttonStyle={buttonStyles.icon.buttonStyle}
+		containerStyle={buttonStyles.icon.containerStyle}
 		onPress={click}
 		icon={
 			<Icon
@@ -110,11 +112,6 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		borderColor: 'transparent',
 		elevation: 4
-	},
-	iconButton: {
-		marginLeft: 2,
-		marginRight: 2,
-		borderRadius: 100
 	},
 	addButton: {
 		borderColor: lightTheme.formButtonColor
