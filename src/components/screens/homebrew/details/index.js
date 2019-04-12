@@ -9,6 +9,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge, bottomButtonHeight, lightTheme } from '../../../../api/constants';
+import buttonStyles from '../../../../styles/buttons';
 
 import { Form, getStruct, getOptions } from './form';
 
@@ -26,7 +27,8 @@ export default class HomebrewDetailsScreen extends React.Component {
 		headerRight: navigation.getParam('edit') ? (
 			<Button
 				type='clear'
-				buttonStyle={globalStyles.deleteButton}
+				buttonStyle={buttonStyles.icon.buttonStyle}
+				containerStyle={buttonStyles.icon.containerStyle}
 				icon={<Icon name={icon('trash')} color={lightTheme.headerTextColor} size={iconSizeLarge} />}
 				onPress={() => AlertDelete(
 					navigation.getParam('edit'),
@@ -174,10 +176,3 @@ export default class HomebrewDetailsScreen extends React.Component {
 		);
 	}
 }
-
-const globalStyles = StyleSheet.create({
-	deleteButton: {
-		marginRight: 10,
-		borderRadius: 100
-	}
-});
