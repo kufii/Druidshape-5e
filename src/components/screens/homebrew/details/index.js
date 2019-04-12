@@ -66,9 +66,14 @@ export default class HomebrewDetailsScreen extends React.Component {
 		return StyleSheet.create({
 			container: {
 				flex: 1,
+				flexDirection: 'column',
+				justifyContent: 'center',
 				backgroundColor: theme.contentBackgroundColor
 			},
 			form: {
+				flex: 1
+			},
+			formContent: {
 				padding: 10
 			},
 			buttons: {
@@ -129,18 +134,24 @@ export default class HomebrewDetailsScreen extends React.Component {
 		const styles = this.styles;
 		return (
 			<View style={styles.container}>
-				<InputScrollView contentContainerStyle={styles.form} behavior='padding'>
-					<Form
-						ref={form => this.form = form}
-						type={this.state.struct}
-						options={getOptions(this.theme)}
-						value={this.state.model}
-						onChange={(model, key) => {
-							this.validate(key);
-							this.setState({ model });
-						}}
-					/>
-				</InputScrollView>
+				<View style={styles.form}>
+					<InputScrollView
+						contentContainerStyle={styles.formContent}
+						keyboardOffset={40 + bottomButtonHeight}
+						behavior='padding'
+					>
+						<Form
+							ref={form => this.form = form}
+							type={this.state.struct}
+							options={getOptions(this.theme)}
+							value={this.state.model}
+							onChange={(model, key) => {
+								this.validate(key);
+								this.setState({ model });
+							}}
+						/>
+					</InputScrollView>
+				</View>
 				<View style={styles.buttons}>
 					<Button
 						title='Cancel'
