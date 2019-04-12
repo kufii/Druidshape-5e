@@ -95,6 +95,7 @@ export default class HomebrewListScreen extends React.Component {
 				/>
 				{this.state.isFabVisible && (
 					<ActionButton
+						fixNativeFeedbackRadius
 						onPress={() => navigation.navigate('HomebrewDetails')}
 						degrees={0}
 						buttonColor={theme.fabColor}
