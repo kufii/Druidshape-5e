@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import InputScrollView from 'react-native-input-scroll-view';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -139,7 +139,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 				<View style={styles.form}>
 					<InputScrollView
 						contentContainerStyle={styles.formContent}
-						keyboardOffset={40 + bottomButtonHeight}
+						keyboardOffset={40 + (Platform.OS === 'android' ? bottomButtonHeight : 0)}
 						behavior='padding'
 					>
 						<Form
