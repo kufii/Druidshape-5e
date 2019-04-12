@@ -28,7 +28,6 @@ export default class App extends React.Component {
 		const state = this.state;
 		if (Platform.OS === 'android') {
 			const theme = actions.getCurrentTheme();
-			StatusBar.setTranslucent(true);
 			StatusBar.setBackgroundColor(theme.headerColorDark);
 		}
 		return (
@@ -43,7 +42,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		marginTop: StatusBar.currentHeight
+		flex: 1
 	}
 });
