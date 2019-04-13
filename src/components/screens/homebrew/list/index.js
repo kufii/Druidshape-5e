@@ -4,11 +4,10 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
 import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
 import AlertDelete from '../details/alert-delete';
-import { icon, fabOnScroll } from '../../../../api/util';
+import { fabOnScroll } from '../../../../api/util';
 import listStyles from '../../../../styles/list';
-import { iconSizeMedium, iconSizeLarge } from '../../../../api/constants';
+import { iconSizeLarge } from '../../../../api/constants';
 
 export default class HomebrewListScreen extends React.Component {
 	state = { isFabVisible: true };
@@ -98,7 +97,6 @@ export default class HomebrewListScreen extends React.Component {
 						onPress={() => navigation.navigate('HomebrewDetails')}
 						degrees={0}
 						buttonColor={theme.fabColor}
-						renderIcon={() => <Icon name={icon('add')} size={iconSizeMedium} color={theme.fabIconColor} />}
 					/>
 				)}
 			</View>

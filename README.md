@@ -7,6 +7,7 @@ Features:
 * Auto filter beasts based on Druid level and Circle
 * Favorite beasts for quick access
 * Homebrew beast creator
+* Track multiple characters
 
 ## Links
 * [Android](https://play.google.com/store/apps/details?id=com.adpyke.druidshape)

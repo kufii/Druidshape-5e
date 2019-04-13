@@ -77,16 +77,18 @@ export const getOptions = theme => {
 		}
 	};
 
+	const dropdownConfig = {
+		style: { color: theme.textColor },
+		textStyle: { color: theme.textColor },
+		itemTextStyle: { color: theme.textColor },
+		itemStyle: { color: theme.textColor },
+		placeholderTextColor: theme.textColor
+	};
+
 	return {
 		stylesheet,
 		fields: {
-			size: {
-				style: { color: theme.textColor },
-				textStyle: { color: theme.textColor },
-				itemTextStyle: { color: theme.textColor },
-				itemStyle: { color: theme.textColor },
-				placeholderTextColor: theme.textColor
-			},
+			size: dropdownConfig,
 			ac: { label: 'Armor Class' },
 			hp: { label: 'HP' },
 			roll: {
@@ -116,7 +118,8 @@ export const getOptions = theme => {
 				autoCapitalize: 'none'
 			},
 			cr: {
-				label: 'Challenge Rating'
+				label: 'Challenge Rating',
+				...dropdownConfig
 			},
 			traits: attributeListConfig,
 			actions: attributeListConfig
