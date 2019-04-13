@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
-import ActionButton from 'react-native-action-button';
+import FloatingActionButton from '../../../shared/fab';
 import AlertDelete from '../details/alert-delete';
 import { fabOnScroll } from '../../../../api/util';
 import listStyles from '../../../../styles/list';
@@ -92,13 +92,12 @@ export default class HomebrewListScreen extends React.Component {
 					onLayout={e => this._listViewHeight = e.nativeEvent.layout.height}
 					onContentSizeChange={(_, height) => this._listViewContentHeight = height}
 				/>
-				{this.state.isFabVisible && (
-					<ActionButton
-						onPress={() => navigation.navigate('HomebrewDetails')}
-						degrees={0}
-						buttonColor={theme.fabColor}
-					/>
-				)}
+				<FloatingActionButton
+					hidden={!this.state.isFabVisible}
+					onPress={() => navigation.navigate('HomebrewDetails')}
+					degrees={0}
+					buttonColor={theme.fabColor}
+				/>
 			</View>
 		);
 	}

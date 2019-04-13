@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Animated, StyleSheet, View, Text, SectionList } from 'react-native';
 import { Divider } from 'react-native-elements';
-import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FloatingActionButton from '../../../shared/fab';
 
 import listStyles from '../../../../styles/list';
 
@@ -146,14 +146,13 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 					onContentSizeChange={(_, height) => this._listViewContentHeight = height}
 					_mustAddThis={animatedY}
 				/>
-				{this.state.isFabVisible && (
-					<ActionButton
-						onPress={() => this.setState({ isCharacterPickerVisible: true })}
-						degrees={0}
-						buttonColor={theme.fabColor}
-						renderIcon={() => <Icon name={icon('person')} size={iconSizeMedium} color={theme.fabIconColor} />}
-					/>
-				)}
+				<FloatingActionButton
+					hidden={!this.state.isFabVisible}
+					onPress={() => this.setState({ isCharacterPickerVisible: true })}
+					degrees={0}
+					buttonColor={theme.fabColor}
+					renderIcon={() => <Icon name={icon('person')} size={iconSizeMedium} color={theme.fabIconColor} />}
+				/>
 				<CharacterPicker
 					state={state}
 					actions={actions}
