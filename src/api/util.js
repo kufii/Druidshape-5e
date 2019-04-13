@@ -73,16 +73,18 @@ export const fabOnScroll = (cbGetFabVisible, cbSetFabVisible, cbGetListHeight, c
 		const limit = cbGetListContentHeight() - cbGetListHeight();
 		const offset = event.nativeEvent.contentOffset.y;
 		const currentOffset = (offset > limit) ? limit : offset;
-		const direction = (currentOffset > 0 && currentOffset >= listViewOffset)
-			? 'down'
-			: 'up';
-		// If the user is scrolling down (and the action-button is still visible) hide it
-		const isFabVisible = direction === 'up';
-		if (isFabVisible !== cbGetFabVisible()) {
-			LayoutAnimation.configureNext(CustomLayoutLinear);
-			cbSetFabVisible(isFabVisible);
+		if (currentOffset !== listViewOffset) {
+			const direction = (currentOffset > 0 && currentOffset >= listViewOffset)
+				? 'down'
+				: 'up';
+			// If the user is scrolling down (and the action-button is still visible) hide it
+			const isFabVisible = direction === 'up';
+			if (isFabVisible !== cbGetFabVisible()) {
+				LayoutAnimation.configureNext(CustomLayoutLinear);
+				cbSetFabVisible(isFabVisible);
+			}
+			// Update your scroll position
+			listViewOffset = currentOffset;
 		}
-		// Update your scroll position
-		listViewOffset = currentOffset;
 	};
 };
