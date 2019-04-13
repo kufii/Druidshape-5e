@@ -153,6 +153,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 				</View>
 			</MenuProvider>
 			<ModalTextbox
+				isRequired
 				actions={actions}
 				isVisible={textboxVisible}
 				text={textboxText}

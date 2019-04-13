@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Input, Button } from 'react-native-elements';
 
-export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSubmit, onChangeText }) {
+export default function ModalTextbox({ actions, isVisible, isRequired, text='', onDismiss, onSubmit, onChangeText }) {
 	const theme = actions.getCurrentTheme();
 	const styles = StyleSheet.create({
 		modal: {
@@ -46,7 +46,7 @@ export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSu
 			<View style={styles.container}>
 				<Input
 					autoFocus
-					selectTextOnFocus
+					selectTextOnFocus={Platform.OS === 'android'}
 					value={text}
 					onChangeText={onChangeText}
 					inputStyle={styles.textbox}
@@ -67,6 +67,7 @@ export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSu
 						buttonStyle={styles.btn}
 						titleStyle={styles.okButtonTitle}
 						onPress={() => {
+							if (!text.trim() && isRequired) return;
 							onSubmit && onSubmit(text);
 							onDismiss && onDismiss();
 						}}
@@ -79,6 +80,7 @@ export default function ModalTextbox({ actions, isVisible, text, onDismiss, onSu
 ModalTextbox.propTypes = {
 	actions: PropTypes.object.isRequired,
 	isVisible: PropTypes.bool,
+	isRequired: PropTypes.bool,
 	text: PropTypes.string,
 	onDismiss: PropTypes.func,
 	onSubmit: PropTypes.func,
