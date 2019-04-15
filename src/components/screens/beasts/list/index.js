@@ -111,6 +111,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 				<AnimatedSectionList
 					ref={list => this.list = list}
 					keyboardShouldPersistTaps='always'
+					maintainVisibleContentPosition={{ minIndexForVisible: 0 }}
 					sections={sections}
 					renderSectionHeader={
 						this.filter ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
