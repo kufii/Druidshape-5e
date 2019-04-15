@@ -1,0 +1,465 @@
+[
+  {
+    "name": "Aurochs",
+    "size": "Large",
+    "ac": 11,
+    "hp": 38,
+    "roll": "4d10+16",
+    "speed": 50,
+    "str": 20,
+    "dex": 10,
+    "con": 19,
+    "int": 2,
+    "wis": 12,
+    "cha": 5,
+    "passive": 11,
+    "cr": "2 ",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the aurochs moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 (2d8) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+      }
+    ],
+    "action": [
+      {
+        "name": "Gore",
+        "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8+5) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Brontosaurus",
+    "size": "Gargantuan",
+    "ac": 15,
+    "hp": 121,
+    "roll": "9d20+27",
+    "speed": 30,
+    "str": 21,
+    "dex": 9,
+    "con": 17,
+    "int": 2,
+    "wis": 10,
+    "cha": 7,
+    "passive": 10,
+    "cr": "5 ",
+    "action": [
+      {
+        "name": "Stomp",
+        "text": "Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 27 (5d8+5) bludgeoning damage, and the target must succed on a DC 14 Strength saving throw or be knocked prone."
+      },
+      {
+        "name": "Tail",
+        "text": "Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 32 (6d8+5) bludgeoning damage."
+      }
+    ]
+  },
+  {
+    "name": "Cow",
+    "size": "Large",
+    "ac": 10,
+    "hp": 15,
+    "roll": "2d10+4",
+    "speed": 30,
+    "str": 18,
+    "dex": 10,
+    "con": 14,
+    "int": 2,
+    "wis": 10,
+    "cha": 4,
+    "passive": 10,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the cow moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 (2d6) piercing damage."
+      }
+    ],
+    "action": [
+      {
+        "name": "Gore",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Cranium Rat",
+    "size": "Tiny",
+    "ac": 12,
+    "hp": 2,
+    "roll": "1d4",
+    "speed": 30,
+    "str": 2,
+    "dex": 14,
+    "con": 10,
+    "int": 4,
+    "wis": 11,
+    "cha": 8,
+    "senses": "Darkvision 30 ft.",
+    "passive": 10,
+    "languages": "Telepathy 30 ft.",
+    "cr": "0 ",
+    "traits": [
+      {
+        "name": "Illumination",
+        "text": "As a bonus action, the cranium rat can shed dim light from its brain in a 5-foot radius or extinguish the light."
+      },
+      {
+        "name": "Telepathic Shroud",
+        "text": "The cranium rat is immune to any effect that would sense its emotions or read its thoughts, as well as i to all divination spells."
+      }
+    ],
+    "action": [
+      {
+        "name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Deep Rothé",
+    "size": "M",
+    "ac": 10,
+    "hp": 13,
+    "roll": "2d8+4",
+    "speed": 30,
+    "str": 18,
+    "dex": 10,
+    "con": 14,
+    "int": 2,
+    "wis": 10,
+    "cha": 4,
+    "senses": "Darkvision 60 ft.",
+    "passive": 10,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the rothé moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 (2d6) piercing damage."
+      },
+      {
+        "name": "Innate Spellcasting",
+        "text": "The deep rothé's spellcasting ability is Charisma. It can innately cast dancing lights at will, requiring no components."
+      }
+    ],
+    "action": [
+      {
+        "name": "Gore",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+      }
+    ],
+    "spells": "dancing lights"
+  },
+  {
+    "name": "Deinonychus",
+    "size": "M",
+    "ac": 13,
+    "hp": 26,
+    "roll": "4d8+8",
+    "speed": 40,
+    "str": 15,
+    "dex": 15,
+    "con": 14,
+    "int": 4,
+    "wis": 12,
+    "cha": 6,
+    "skills": "Perception +3",
+    "passive": 13,
+    "cr": "1 ",
+    "traits": [
+      {
+        "name": "Pounce",
+        "text": "If the deinonychus moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the deinonychus can make one bite attack against it as a bonus action."
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "text": "The deinonychus makes three attacks: one with its bite and two with its claws."
+      },
+      {
+        "name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+      },
+      {
+        "name": "Claw",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage."
+      }
+    ]
+  },
+  {
+    "name": "Dimetrodon",
+    "size": "M",
+    "ac": 12,
+    "hp": 19,
+    "roll": "3d8+6",
+    "speed": 30,
+    "swim": 20,
+    "str": 14,
+    "dex": 10,
+    "con": 15,
+    "int": 2,
+    "wis": 10,
+    "cha": 5,
+    "skills": "Perception +2",
+    "passive": 12,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Source",
+        "text": "Volo's Guide to Monsters, p. 139"
+      }
+    ],
+    "action": [
+      {
+        "name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Dolphin",
+    "size": "M",
+    "ac": 12,
+    "hp": 11,
+    "roll": "2d8+2",
+    "speed": 0,
+    "swim": 60,
+    "str": 14,
+    "dex": 13,
+    "con": 13,
+    "int": 6,
+    "wis": 12,
+    "cha": 7,
+    "skills": "Perception +3",
+    "senses": "Blindsight 60 ft.",
+    "passive": 13,
+    "cr": "1/8",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the dolphin moves at least 30 feet straight toward a target and then hits it with a slam attack on the same turn, the target takes an extra 3 (1d6) bludgeoning damage."
+      },
+      {
+        "name": "Hold Breath",
+        "text": "The dolphin can hold its breath for 20 minutes."
+      }
+    ],
+    "action": [
+      {
+        "name": "Slam",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage."
+      }
+    ]
+  },
+  {
+    "name": "Hadrosaurus",
+    "size": "Large",
+    "ac": 11,
+    "hp": 19,
+    "roll": "3d10+3",
+    "speed": 40,
+    "str": 15,
+    "dex": 10,
+    "con": 13,
+    "int": 2,
+    "wis": 10,
+    "cha": 5,
+    "skills": "Perception +2",
+    "passive": 12,
+    "cr": "1/4",
+    "action": [
+      {
+        "name": "Tail",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage."
+      }
+    ]
+  },
+  {
+    "name": "Ox",
+    "size": "Large",
+    "ac": 10,
+    "hp": 15,
+    "roll": "2d10+4",
+    "speed": 30,
+    "str": 18,
+    "dex": 10,
+    "con": 14,
+    "int": 2,
+    "wis": 10,
+    "cha": 4,
+    "passive": 10,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the ox moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 (2d6) piercing damage."
+      },
+      {
+        "name": "Beast of Burden",
+        "text": "The oxen is considered to be a Huge animal for the purposes of determining its carrying capacity."
+      }
+    ],
+    "action": [
+      {
+        "name": "Gore",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Quetzalcoatlus",
+    "size": "Huge",
+    "ac": 13,
+    "hp": 30,
+    "roll": "4d12+4",
+    "speed": 10,
+    "fly": 80,
+    "str": 15,
+    "dex": 13,
+    "con": 13,
+    "int": 2,
+    "wis": 10,
+    "cha": 5,
+    "skills": "Perception +2",
+    "passive": 12,
+    "cr": "2 ",
+    "traits": [
+      {
+        "name": "Dive Attack",
+        "text": "If the quetzalcoatlus is flying and dives at least 30 feet toward a target and then hits with a bite attack, the attack deals an extra 10 (3d6) damage to the target."
+      },
+      {
+        "name": "Flyby",
+        "text": "The quetzalcoatlus doesn’t provoke an opportunity attack when it flies out of an enemy’s reach."
+      }
+    ],
+    "action": [
+      {
+        "name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 10 ft., one creature. Hit: 12 (3d6+2) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Rothé",
+    "size": "Large",
+    "ac": 10,
+    "hp": 15,
+    "roll": "2d10+4",
+    "speed": 30,
+    "str": 18,
+    "dex": 10,
+    "con": 14,
+    "int": 2,
+    "wis": 10,
+    "cha": 4,
+    "senses": "Darkvision 30 ft.",
+    "passive": 10,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the rothé moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 (2d6) piercing damage."
+      }
+    ],
+    "action": [
+      {
+        "name": "Gore",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Stegosaurus",
+    "size": "Huge",
+    "ac": 13,
+    "hp": 76,
+    "roll": "8d12+24",
+    "speed": 40,
+    "str": 20,
+    "dex": 9,
+    "con": 17,
+    "int": 2,
+    "wis": 11,
+    "cha": 5,
+    "passive": 10,
+    "cr": "4 ",
+    "action": [
+      {
+        "name": "Tail",
+        "text": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 26 (6d6+5) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Stench Kow",
+    "size": "Large",
+    "ac": 10,
+    "hp": 15,
+    "roll": "2d10+4",
+    "speed": 30,
+    "str": 18,
+    "dex": 10,
+    "con": 14,
+    "int": 2,
+    "wis": 10,
+    "cha": 4,
+    "resistances": "cold, fire, poison",
+    "senses": "Darkvision 60 ft.",
+    "passive": 10,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Charge",
+        "text": "If the kow moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 (2d6) piercing damage."
+      },
+      {
+        "name": "Stench",
+        "text": "Any creature other than a stench kow that starts its turn within 5 feet of the stench kow must succeed on a DC 26 Constitution saving throw or be poisoned until the start of the creature’s next turn. On a successful saving throw, the creature is immune to the stench of all stench kows for 1 hour."
+      }
+    ],
+    "action": [
+      {
+        "name": "Gore",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+      }
+    ]
+  },
+  {
+    "name": "Velociraptor",
+    "size": "Tiny",
+    "ac": 13,
+    "hp": 10,
+    "roll": "3d4+3",
+    "speed": 30,
+    "str": 6,
+    "dex": 14,
+    "con": 13,
+    "int": 4,
+    "wis": 12,
+    "cha": 6,
+    "skills": "Perception +3",
+    "passive": 13,
+    "cr": "1/4",
+    "traits": [
+      {
+        "name": "Pack Tactics",
+        "text": "The velociraptor has advantage on an attack roll against a creature if at least one of the velociraptor’s allies is within 5 feet of the creature and the ally isn’t incapacitated."
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "text": "The velociraptor makes two attacks: one with its bite and one with its claws."
+      },
+      {
+        "name": "Bite",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6+2) piercing damage."
+      },
+      {
+        "name": "Claws",
+        "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage."
+      }
+    ]
+  }
+]
