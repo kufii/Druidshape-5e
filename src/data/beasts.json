@@ -1567,7 +1567,7 @@
     "wis": 11,
     "cha": 4,
     "skills": "Stealth +7",
-    "senses": "Blindsight 10 ft., darkvision 60 ft.",
+    "senses": "Blindsight 10 ft., Darkvision 60 ft.",
     "passive": 10,
     "cr": 1,
     "traits": [
