@@ -117,7 +117,7 @@
   },
   {
     "name": "Deep Rothé",
-    "size": "M",
+    "size": "Medium",
     "ac": 10,
     "hp": 13,
     "roll": "2d8+4",
@@ -151,7 +151,7 @@
   },
   {
     "name": "Deinonychus",
-    "size": "M",
+    "size": "Medium",
     "ac": 13,
     "hp": 26,
     "roll": "4d8+8",
@@ -188,7 +188,7 @@
   },
   {
     "name": "Dimetrodon",
-    "size": "M",
+    "size": "Medium",
     "ac": 12,
     "hp": 19,
     "roll": "3d8+6",
@@ -218,7 +218,7 @@
   },
   {
     "name": "Dolphin",
-    "size": "M",
+    "size": "Medium",
     "ac": 12,
     "hp": 11,
     "roll": "2d8+2",
