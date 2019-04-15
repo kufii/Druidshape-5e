@@ -10,10 +10,10 @@ import { getModifier } from '../../../../api/beasts';
 
 const getSpeedString = beast => {
 	let out = `${beast.speed} ft.`;
-	if (beast.climb) out += `, climb ${beast.climb} ft.`;
-	if (beast.swim) out += `, swim ${beast.swim} ft.`;
-	if (beast.fly) out += `, fly ${beast.fly} ft.`;
-	if (beast.burrow) out += `, burrow ${beast.burrow} ft.`;
+	if (beast.climb) out += `, climb ${beast.climb} ft.${beast.climbDetails ? ` (${beast.climbDetails})` : ''}`;
+	if (beast.swim) out += `, swim ${beast.swim} ft.${beast.swimDetails ? ` (${beast.swimDetails})` : ''}`;
+	if (beast.fly) out += `, fly ${beast.fly} ft.${beast.flyDetails ? ` (${beast.flyDetails})` : ''}`;
+	if (beast.burrow) out += `, burrow ${beast.burrow} ft.${beast.burrowDetails ? ` (${beast.burrowDetails})` : ''}`;
 	return out;
 };
 
@@ -96,7 +96,7 @@ export default class BeastDetailsScreen extends React.Component {
 			<View style={styles.container}>
 				<ScrollView style={styles.scrollView} contentContainerStyle={styles.containerContent}>
 					<Text style={styles.header1}>{beast.name}</Text>
-					<Text style={styles.text}><I>{beast.size} beast</I></Text>
+					<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
 					<Divider style={styles.divider} />
 					<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
 					<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
@@ -135,8 +135,23 @@ export default class BeastDetailsScreen extends React.Component {
 					{beast.skills && (
 						<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
 					)}
+					{beast.vulnerabilities && (
+						<Text style={styles.attribute}><B>Damage Vulnerabilities</B> {beast.vulnerabilities}</Text>
+					)}
+					{beast.resistances && (
+						<Text style={styles.attribute}><B>Damage Resistances</B> {beast.resistances}</Text>
+					)}
+					{beast.immunities && (
+						<Text style={styles.attribute}><B>Damage Immunities</B> {beast.immunities}</Text>
+					)}
+					{beast.conditionImmunities && (
+						<Text style={styles.attribute}><B>Condition Immunities</B> {beast.conditionImmunities}</Text>
+					)}
 					{beast.senses && (
 						<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
+					)}
+					{beast.languages && (
+						<Text style={styles.attribute}><B>Languages</B> {beast.languages}</Text>
 					)}
 					<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
 					{beast.traits && (

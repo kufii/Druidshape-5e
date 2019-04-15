@@ -35,7 +35,12 @@ export const getStruct = beasts => {
 		cha: t.Number,
 		passive: t.Number,
 		skills: t.maybe(t.String),
+		vulnerabilities: t.maybe(t.String),
+		resistances: t.maybe(t.String),
+		immunities: t.maybe(t.String),
+		conditionImmunities: t.maybe(t.String),
 		senses: t.maybe(t.String),
+		languages: t.maybe(t.String),
 		cr: ChallengeRating,
 		traits: t.maybe(t.list(Attribute)),
 		actions: t.maybe(t.list(Attribute))
@@ -112,10 +117,33 @@ export const getOptions = theme => {
 				placeholder: 'e.g. +5 Perception',
 				placeholderTextColor
 			},
+			vulnerabilities: {
+				label: 'Damage Vulnerabilities',
+				placeholder: 'e.g. Acid; Lightning',
+				placeholderTextColor
+			},
+			resistances: {
+				label: 'Damage Resistances',
+				placeholder: 'e.g. Acid; Lightning',
+				placeholderTextColor
+			},
+			immunities: {
+				label: 'Damage Immunities',
+				placeholder: 'e.g. Fire, Poison',
+				placeholderTextColor
+			},
+			conditionImmunities: {
+				label: 'Condition Immunities',
+				placeholder: 'e.g. Exhaustion, Grappled',
+				placeholderTextColor
+			},
 			senses: {
-				placeholder: 'e.g. blindsight 60 ft.',
-				placeholderTextColor,
-				autoCapitalize: 'none'
+				placeholder: 'e.g. Blindsight 60 ft.',
+				placeholderTextColor
+			},
+			languages: {
+				placeholder: 'e.g. Infernal, Sylvan',
+				placeholderTextColor
 			},
 			cr: {
 				label: 'Challenge Rating',

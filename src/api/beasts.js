@@ -12,8 +12,10 @@ export const filterBeasts = (beasts, level=0, circleOfTheMoon=false, search) => 
 				: (level < 8 ? (1 / 2) : 1));
 		const canSwim = level >= 4;
 		const canFly = level >= 8;
+		const canElementalShape = circleOfTheMoon && level >= 10;
 
-		filtered = filtered.filter(({ cr }) => crToNum(cr) <= maxCr);
+		if (!canElementalShape) filtered = filtered.filter(({ type }) => type !== 'elemental');
+		filtered = filtered.filter(({ cr, type }) => type === 'elemental' || crToNum(cr) <= maxCr);
 		if (!canSwim) filtered = filtered.filter(b => !b.swim);
 		if (!canFly) filtered = filtered.filter(b => !b.fly);
 	}
