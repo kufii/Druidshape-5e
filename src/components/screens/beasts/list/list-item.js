@@ -18,18 +18,21 @@ export default class BeastListItem extends React.Component {
 		item: PropTypes.string.isRequired,
 		showTooltip: PropTypes.bool,
 		isFav: PropTypes.bool,
+		isSeen: PropTypes.bool,
 		onPress: PropTypes.func,
-		onFav: PropTypes.func
+		onFav: PropTypes.func,
+		onSeen: PropTypes.func
 	};
 
 	shouldComponentUpdate(nextProps) {
 		return nextProps.isFav !== this.props.isFav
+			|| nextProps.isSeen !== this.props.isSeen
 			|| nextProps.showTooltip !== this.props.showTooltip
 			|| nextProps.state.darkMode !== this.props.state.darkMode;
 	}
 
 	render() {
-		const { actions, item, showTooltip, isFav, onPress, onFav } = this.props;
+		const { actions, item, showTooltip, isFav, isSeen, onPress, onFav, onSeen } = this.props;
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
 		const menuTheme = menuStyles(theme);
@@ -63,12 +66,13 @@ export default class BeastListItem extends React.Component {
 				containerStyle={[listTheme.item, styles.item]}
 				leftIcon={(
 					<ToggleIconButton
-						active={isFav}
+						active={isSeen}
 						size={iconSizeLarge}
 						activeIcon={icon('eye')}
 						inactiveIcon={icon('eye-off')}
 						activeColor={theme.formButtonColor}
 						inactiveColor={theme.textColorDisabled}
+						onToggle={onSeen}
 					/>
 				)}
 				rightIcon={(

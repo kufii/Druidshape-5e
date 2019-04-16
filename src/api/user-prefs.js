@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
-const CURRENT_VERSION = 2;
+const CURRENT_VERSION = 3;
 
 export const initialPrefs = {
 	darkMode: false,
-	characters: [{ key: 1, name: 'Default', level: 0, isMoon: false, favs: {} }],
+	characters: [{ key: 1, name: 'Default', level: 0, isMoon: false, favs: {}, seen: {} }],
 	selectedCharacter: 1,
 	homebrew: []
 };
@@ -63,6 +63,8 @@ export const loadPrefs = async() => {
 				...otherPrefs
 			};
 			['darkMode', 'level', 'isMoon', 'favs', 'homebrew'].forEach(pref => removePref(pref));
+		} else if (v === 2) {
+			prefs.characters.forEach(c => c.seen = {});
 		}
 	}
 	prefs = { ...initialPrefs, ...prefs };

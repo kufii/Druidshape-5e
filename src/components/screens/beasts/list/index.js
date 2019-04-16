@@ -122,9 +122,11 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 								state={state}
 								item={item.name}
 								showTooltip={!beasts.find(b => b.name === item.name)}
-								isFav={character.favs[item.name]}
 								onPress={() => navigation.navigate('BeastDetails', { beast: item.name })}
+								isFav={character.favs[item.name]}
+								isSeen={character.seen[item.name]}
 								onFav={() => actions.toggleFav(item.name)}
+								onSeen={() => actions.toggleSeen(item.name)}
 							/>
 						)
 					}

@@ -41,7 +41,7 @@ export const actions = (update, states) => {
 			await Promise.resolve(cb());
 			await RNIap.finishTransaction();
 		}),
-		cleanupFavs: favs => Object.entries(favs)
+		removeFalse: obj => Object.entries(obj)
 			.filter(([_, value]) => value)
 			.reduce(toDict(([key]) => key, () => true), {}),
 		getHomebrewImportMergeList: beasts => new Promise((resolve, reject) => {
@@ -134,6 +134,14 @@ export const actions = (update, states) => {
 			update({ characters });
 			syncPrefs();
 		},
+		toggleSeen: name => {
+			const characters = states().characters;
+			const char = characters.find(c => c.key === states().selectedCharacter);
+			const seen = char.seen;
+			seen[name] = !seen[name];
+			update({ characters });
+			syncPrefs();
+		},
 		addCharacter: name => {
 			const characters = states().characters;
 			const key = Math.max(...characters.map(c => c.key)) + 1;
@@ -172,10 +180,15 @@ export const actions = (update, states) => {
 			const characters = states().characters;
 			if (name !== beast.name) {
 				characters.forEach(char => {
-					const favs = char.favs;
+					const { favs, seen } = char;
+
 					favs[beast.name] = favs[name];
 					favs[name] = false;
-					char.favs = privateActions.cleanupFavs(favs);
+					char.favs = privateActions.removeFalse(favs);
+
+					seen[beast.name] = favs[name];
+					seen[beast.name] = false;
+					char.seen = privateActions.removeFalse(seen);
 				});
 			}
 			update({ homebrew, characters });
@@ -185,9 +198,13 @@ export const actions = (update, states) => {
 			const homebrew = states().homebrew.filter(h => h.name !== name);
 			const characters = states().characters;
 			characters.forEach(char => {
-				const favs = char.favs;
+				const { favs, seen } = char;
+
 				favs[name] = false;
-				char.favs = privateActions.cleanupFavs(favs);
+				char.favs = privateActions.removeFalse(favs);
+
+				seen[name] = false;
+				char.seen = privateActions.removeFalse(seen);
 			});
 			update({ homebrew, characters });
 			syncPrefs();
