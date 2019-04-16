@@ -74,6 +74,14 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 			color: theme.textColor,
 			fontWeight: 'bold'
 		},
+		textExtraMargin: {
+			marginLeft: 11,
+			marginRight: 11
+		},
+		pickerExtraMargin: {
+			marginLeft: 4,
+			marginRight: 4
+		},
 		picker: {
 			color: theme.textColor,
 			borderColor: theme.textColorSecondary
@@ -145,11 +153,11 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 						/>
 					</MenuOption>
 					<MenuOption disabled>
-						<Text style={styles.menuItemText}>Movement</Text>
+						<Text style={[styles.menuItemText, styles.textExtraMargin]}>Movement</Text>
 					</MenuOption>
 					<MenuOption disabled>
 						<Picker
-							containerStyle={styles.picker}
+							containerStyle={[styles.picker, Platform.OS === 'ios' ? styles.textExtraMargin : styles.pickerExtraMargin]}
 							itemStyle={styles.picker}
 							value={filters.movement || ''}
 							onChange={value => {

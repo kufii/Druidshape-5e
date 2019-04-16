@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 
 export default function PickerAndroid(props) {
 	const options = props.options.map(({ value, text }) => (
@@ -31,6 +31,6 @@ PickerAndroid.propTypes = {
 	disabled: PropTypes.bool,
 	mode: PropTypes.string,
 	prompt: PropTypes.string,
-	itemStyle: PropTypes.object,
-	containerStyle: PropTypes.object
+	itemStyle: Text.propTypes.style,
+	containerStyle: Text.propTypes.style
 };

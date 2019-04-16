@@ -100,8 +100,8 @@ CollapsiblePickerIOS.propTypes = {
 	disabled: PropTypes.bool,
 	mode: PropTypes.string,
 	prompt: PropTypes.string,
-	itemStyle: PropTypes.object,
-	containerStyle: PropTypes.object
+	itemStyle: Text.propTypes.style,
+	containerStyle: Text.propTypes.style
 };
 
 const styles = StyleSheet.create({
@@ -115,6 +115,6 @@ const styles = StyleSheet.create({
 		fontSize: 17
 	},
 	animatedView: {
-				overflow: 'hidden'
-			}
+		overflow: 'hidden'
+	}
 });
