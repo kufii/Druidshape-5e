@@ -52,11 +52,17 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const filters = navigation.getParam('filters', []);
 
 	const styles = StyleSheet.create({
+		container: {
+			flexDirection: 'row',
+			paddingRight: 5,
+			backgroundColor: theme.headerColor
+		},
 		filterContainer: {
+			flex: 1,
 			paddingTop: 10,
 			paddingBottom: 10,
 			paddingLeft: Platform.OS === 'android' ? 10 : 0,
-			paddingRight: Platform.OS === 'android' ? 10 : 0,
+			paddingRight: 0,
 			backgroundColor: theme.headerColor
 		},
 		filter: {
@@ -69,7 +75,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 	});
 
 	return (
-		<>
+		<View style={styles.container}>
 			<SearchBar
 				platform={Platform.OS}
 				containerStyle={styles.filterContainer}
@@ -89,7 +95,13 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 				onChangeText={search => navigation.setParams({ search })}
 				value={search}
 			/>
-		</>
+			<ToggleIconButton
+				icon={icon('options')}
+				active={filters.length > 0}
+				activeColor={theme.headerTextColor}
+				inactiveColor={theme.headerColorLight}
+			/>
+		</View>
 	);
 };
 ExtendedHeader.propTypes = {
