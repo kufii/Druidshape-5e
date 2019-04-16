@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.adpyke.druidshape">
 
+    <uses-permission android:name="android.permission.INTERNET" tools:remove="${isRelease}" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" tools:remove="${isRelease}" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
 

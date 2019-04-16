@@ -61,12 +61,21 @@ export default class BeastListItem extends React.Component {
 					</View>
 				)}
 				containerStyle={[listTheme.item, styles.item]}
-				titleStyle={listTheme.itemText}
+				leftIcon={(
+					<ToggleIconButton
+						active={isFav}
+						size={iconSizeLarge}
+						activeIcon={icon('eye')}
+						inactiveIcon={icon('eye-off')}
+						activeColor={theme.formButtonColor}
+						inactiveColor={theme.textColorDisabled}
+					/>
+				)}
 				rightIcon={(
 					<ToggleIconButton
 						active={isFav}
-						icon={icon('star')}
 						size={iconSizeLarge}
+						icon={icon('star')}
 						activeColor={theme.starColor}
 						inactiveColor={theme.textColorDisabled}
 						onToggle={onFav}
@@ -78,12 +87,13 @@ export default class BeastListItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
+	item: {
+		paddingLeft: 5,
+		paddingRight: 5
+	},
 	row: {
 		flexDirection: 'row',
 		alignItems: 'center'
-	},
-	item: {
-		paddingRight: 10
 	},
 	margin: {
 		marginLeft: 10,

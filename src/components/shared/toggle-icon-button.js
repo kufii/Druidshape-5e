@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { lightTheme, iconSizeLarge } from '../../api/constants';
 import buttonStyles from '../../styles/buttons';
 
-export default function ToggleIconButton(props) {
+export default function ToggleIconButton({ icon, activeIcon, inactiveIcon, size, activeColor, inactiveColor, onToggle, active }) {
 	return (
 		<Button
 			buttonStyle={buttonStyles.icon.buttonStyle}
@@ -13,20 +13,22 @@ export default function ToggleIconButton(props) {
 			type='clear'
 			icon={
 				<Icon
-					name={props.icon}
-					size={props.size || iconSizeLarge}
+					name={active ? (activeIcon || icon) : (inactiveIcon || icon)}
+					size={size || iconSizeLarge}
 					color={
-						props.active
-							? (props.activeColor || lightTheme.textColor)
-							: (props.inactiveColor || lightTheme.textColorSecondary)}
+						active
+							? (activeColor || lightTheme.textColor)
+							: (inactiveColor || lightTheme.textColorSecondary)}
 				/>
 			}
-			onPress={() => props.onToggle && props.onToggle(!props.active)}
+			onPress={() => onToggle && onToggle(!active)}
 		/>
 	);
 }
 ToggleIconButton.propTypes = {
-	icon: PropTypes.string.isRequired,
+	icon: PropTypes.string,
+	activeIcon: PropTypes.string,
+	inactiveIcon: PropTypes.string,
 	onToggle: PropTypes.func,
 	active: PropTypes.bool,
 	size: PropTypes.number,
