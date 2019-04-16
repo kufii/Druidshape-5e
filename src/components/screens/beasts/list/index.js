@@ -38,6 +38,10 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		return this.props.navigation.getParam('search', '');
 	}
 
+	get filters() {
+		return this.props.navigation.getParam('filters', {});
+	}
+
 	get styles() {
 		const { actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
@@ -81,10 +85,16 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		const styles = this.styles;
 
 		const character = actions.getCurrentCharacter();
-		const allBeasts = actions.getAllBeasts();
-		const beasts = filterBeasts(allBeasts, character.level, character.isMoon, this.search);
+
+		const filter = beasts => {
+			const { filters } = this;
+			if (filters.seen) beasts = beasts.filter(({ name }) => character.seen[name]);
+			return beasts;
+		};
+
+		const beasts = filter(filterBeasts(actions.getAllBeasts(), character.level, character.isMoon, this.search));
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
-		const favorites = actions.getFavorites();
+		const favorites = filter(actions.getFavorites());
 
 		const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
 		const sections = this.search ? [{

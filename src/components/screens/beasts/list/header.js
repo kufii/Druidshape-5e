@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, StyleSheet, View } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, CheckBox, Button } from 'react-native-elements';
 import Toast from 'react-native-root-toast';
+import { Menu, MenuTrigger, MenuOptions, MenuOption } from 'react-native-popup-menu';
 import ModalDropdown from '../../../shared/modal-dropdown';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import { icon } from '../../../../api/util';
+import menuStyles from '../../../../styles/menu';
 
 const options = [
 	{ text: 'All', key: '0' },
@@ -47,15 +49,28 @@ export const Header = ({ screenProps }) => {
 export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const { actions } = screenProps;
 	const theme = actions.getCurrentTheme();
+	const menuTheme = menuStyles(theme);
 
 	const search = navigation.getParam('search', '');
-	const filters = navigation.getParam('filters', []);
+	const filters = navigation.getParam('filters', {});
+	const isFiltering = navigation.getParam('isFiltering', false);
 
 	const styles = StyleSheet.create({
 		container: {
+			flex: 1,
 			flexDirection: 'row',
+			alignItems: 'center',
 			paddingRight: 5,
 			backgroundColor: theme.headerColor
+		},
+		checkbox: {
+			backgroundColor: theme.backgroundColor,
+			borderColor: 'transparent',
+			margin: 0,
+			padding: 0
+		},
+		menuItemText: {
+			color: theme.textColor
 		},
 		filterContainer: {
 			flex: 1,
@@ -95,12 +110,44 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 				onChangeText={search => navigation.setParams({ search })}
 				value={search}
 			/>
-			<ToggleIconButton
-				icon={icon('options')}
-				active={filters.length > 0}
-				activeColor={theme.headerTextColor}
-				inactiveColor={theme.headerColorLight}
-			/>
+			<Menu
+				opened={isFiltering}
+				onBackdropPress={() => navigation.setParams({ isFiltering: false })}
+			>
+				<MenuTrigger>
+					<ToggleIconButton
+						icon={icon('options')}
+						active={Object.values(filters).filter(v => v).length > 0}
+						activeColor={theme.headerTextColor}
+						inactiveColor={theme.headerColorLight}
+						onToggle={() => navigation.setParams({ isFiltering: !isFiltering })}
+					/>
+				</MenuTrigger>
+				<MenuOptions customStyles={menuTheme.menuOptions}>
+					<MenuOption>
+						<CheckBox
+							containerStyle={styles.checkbox}
+							textStyle={styles.menuItemText}
+							uncheckedColor={theme.textColorDisabled}
+							checkedColor={theme.formButtonColor}
+							checked={filters && filters.seen}
+							onPress={() => {
+								filters.seen = !filters.seen;
+								navigation.setParams({ filters });
+							}}
+							title='Seen'
+						/>
+					</MenuOption>
+					<MenuOption>
+						<Button
+							type='clear'
+							titleStyle={styles.menuItemText}
+							title='Reset'
+							onPress={() => navigation.setParams({ filters: {}, isFiltering: false })}
+						/>
+					</MenuOption>
+				</MenuOptions>
+			</Menu>
 		</View>
 	);
 };
