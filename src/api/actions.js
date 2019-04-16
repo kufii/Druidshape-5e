@@ -97,10 +97,12 @@ export const actions = (update, states) => {
 		},
 		loadProducts: () => privateActions.iapConnection(async() => {
 			const iaps = await RNIap.getProducts(products);
+			await RNIap.consumeAllItems();
 			update({ iaps });
 		}),
 		buyProduct: productId => privateActions.iapTransaction(async() => {
-			await RNIap.buyProduct(productId);
+			const { purchaseToken } = await RNIap.buyProduct(productId);
+			await RNIap.consumePurchase(purchaseToken);
 			Toast.show('Thank you for supporting Druidshape 5e!');
 		}),
 		setDarkMode: darkMode => {

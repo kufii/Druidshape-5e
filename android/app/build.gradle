@@ -102,8 +102,8 @@ android {
         applicationId "com.adpyke.druidshape"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 15
-        versionName "1.1.2"
+        versionCode 16
+        versionName "1.1.3"
     }
     signingConfigs {
         release {
