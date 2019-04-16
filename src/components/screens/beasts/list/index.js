@@ -34,8 +34,8 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 	static navigationOptions = Header;
 
-	get filter() {
-		return this.props.navigation.getParam('filter', '');
+	get search() {
+		return this.props.navigation.getParam('search', '');
 	}
 
 	get styles() {
@@ -82,12 +82,12 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const character = actions.getCurrentCharacter();
 		const allBeasts = actions.getAllBeasts();
-		const beasts = filterBeasts(allBeasts, character.level, character.isMoon, this.filter);
+		const beasts = filterBeasts(allBeasts, character.level, character.isMoon, this.search);
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
 		const favorites = actions.getFavorites();
 
 		const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
-		const sections = this.filter ? [{
+		const sections = this.search ? [{
 			data: getData(beasts)
 		}] : [
 			...(favorites.length ? [{

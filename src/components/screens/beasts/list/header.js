@@ -48,6 +48,9 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const { actions } = screenProps;
 	const theme = actions.getCurrentTheme();
 
+	const search = navigation.getParam('search', '');
+	const filters = navigation.getParam('filters', []);
+
 	const styles = StyleSheet.create({
 		filterContainer: {
 			paddingTop: 10,
@@ -66,25 +69,27 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 	});
 
 	return (
-		<SearchBar
-			platform={Platform.OS}
-			containerStyle={styles.filterContainer}
-			inputContainerStyle={styles.filter}
-			placeholderTextColor={theme.headerTextColorFaded}
-			color={theme.headerTextColor}
-			clearIcon={styles.filterText}
-			searchIcon={styles.filterText}
-			cancelIcon={styles.filterText}
-			inputStyle={styles.filterText}
-			placeholder='Filter Beasts'
-			cancelButtonTitle='Cancel'
-			cancelButtonProps={{
-				buttonStyle: 'clear',
-				color: theme.headerTextColor
-			}}
-			onChangeText={filter => navigation.setParams({ filter })}
-			value={navigation.getParam('filter', '')}
-		/>
+		<>
+			<SearchBar
+				platform={Platform.OS}
+				containerStyle={styles.filterContainer}
+				inputContainerStyle={styles.filter}
+				placeholderTextColor={theme.headerTextColorFaded}
+				color={theme.headerTextColor}
+				clearIcon={styles.filterText}
+				searchIcon={styles.filterText}
+				cancelIcon={styles.filterText}
+				inputStyle={styles.filterText}
+				placeholder='Filter Beasts'
+				cancelButtonTitle='Cancel'
+				cancelButtonProps={{
+					buttonStyle: 'clear',
+					color: theme.headerTextColor
+				}}
+				onChangeText={search => navigation.setParams({ search })}
+				value={search}
+			/>
+		</>
 	);
 };
 ExtendedHeader.propTypes = {
