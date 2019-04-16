@@ -8,7 +8,7 @@ import FloatingActionButton from '../../../shared/fab';
 import listStyles from '../../../../styles/list';
 
 import { iconSizeMedium } from '../../../../api/constants';
-import { withCollapsible, groupBy, sortBy, icon, fabOnScroll } from '../../../../api/util';
+import { withCollapsible, groupBy, sortBy, desc, icon, fabOnScroll } from '../../../../api/util';
 import { filterBeasts, crToNum } from '../../../../api/beasts';
 
 import { Header, ExtendedHeader } from './header';
@@ -89,6 +89,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		const filter = beasts => {
 			const { filters } = this;
 			if (filters.seen) beasts = beasts.filter(({ name }) => character.seen[name]);
+			if (filters.movement) beasts = beasts.filter(beast => beast[filters.movement]);
 			return beasts;
 		};
 
@@ -107,7 +108,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 			}] : []),
 			...Object.entries(beastsByCr)
 				.sort(sortBy(
-					([cr]) => crToNum(cr)
+					this.filters.desc ? desc(([cr]) => crToNum(cr)) : ([cr]) => crToNum(cr)
 				))
 				.map(([cr, list]) => ({
 					key: cr.toString(),

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View, Text } from 'react-native';
 import { SearchBar, CheckBox, Button } from 'react-native-elements';
 import Toast from 'react-native-root-toast';
 import { Menu, MenuTrigger, MenuOptions, MenuOption } from 'react-native-popup-menu';
 import ModalDropdown from '../../../shared/modal-dropdown';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
+import Picker from '../../../shared/picker';
 import { icon } from '../../../../api/util';
 import menuStyles from '../../../../styles/menu';
 
@@ -70,7 +71,12 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 			padding: 0
 		},
 		menuItemText: {
-			color: theme.textColor
+			color: theme.textColor,
+			fontWeight: 'bold'
+		},
+		picker: {
+			color: theme.textColor,
+			borderColor: theme.textColorSecondary
 		},
 		filterContainer: {
 			flex: 1,
@@ -124,13 +130,13 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 					/>
 				</MenuTrigger>
 				<MenuOptions customStyles={menuTheme.menuOptions}>
-					<MenuOption>
+					<MenuOption disabled>
 						<CheckBox
 							containerStyle={styles.checkbox}
 							textStyle={styles.menuItemText}
 							uncheckedColor={theme.textColorDisabled}
 							checkedColor={theme.formButtonColor}
-							checked={filters && filters.seen}
+							checked={filters.seen}
 							onPress={() => {
 								filters.seen = !filters.seen;
 								navigation.setParams({ filters });
@@ -138,7 +144,43 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 							title='Seen'
 						/>
 					</MenuOption>
-					<MenuOption>
+					<MenuOption disabled>
+						<Text style={styles.menuItemText}>Movement</Text>
+					</MenuOption>
+					<MenuOption disabled>
+						<Picker
+							containerStyle={styles.picker}
+							itemStyle={styles.picker}
+							value={filters.movement || ''}
+							onChange={value => {
+								filters.movement = value;
+								navigation.setParams({ filters });
+							}}
+							options={[
+								{ text: '-', value: '' },
+								{ text: 'Fly', value: 'fly' },
+								{ text: 'Swim', value: 'swim' },
+								{ text: 'Climb', value: 'climb' },
+								{ text: 'Burrow', value: 'burrow' }
+							]}
+							mode='dropdown'
+						/>
+					</MenuOption>
+					<MenuOption disabled>
+						<CheckBox
+							containerStyle={styles.checkbox}
+							textStyle={styles.menuItemText}
+							uncheckedColor={theme.textColorDisabled}
+							checkedColor={theme.formButtonColor}
+							checked={filters.desc}
+							onPress={() => {
+								filters.desc = !filters.desc;
+								navigation.setParams({ filters });
+							}}
+							title='Sort Descending'
+						/>
+					</MenuOption>
+					<MenuOption disabled>
 						<Button
 							type='clear'
 							titleStyle={styles.menuItemText}

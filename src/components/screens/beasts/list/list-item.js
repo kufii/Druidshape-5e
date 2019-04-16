@@ -56,7 +56,7 @@ export default class BeastListItem extends React.Component {
 										color={theme.alertColor}
 									/>
 								</MenuTrigger>
-								<MenuOptions customStyles={menuTheme.menuOptions}>
+								<MenuOptions customStyles={menuTheme.menuOptions} disabled>
 									<MenuOption text='Your Druid level is too low' />
 								</MenuOptions>
 							</Menu>
