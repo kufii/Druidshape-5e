@@ -38,10 +38,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		return this.props.navigation.getParam('search', '');
 	}
 
-	get filters() {
-		return this.props.navigation.getParam('filters', {});
-	}
-
 	get styles() {
 		const { actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
@@ -87,7 +83,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		const character = actions.getCurrentCharacter();
 
 		const filter = beasts => {
-			const { filters } = this;
+			const { filters } = state;
 			if (filters.seen) beasts = beasts.filter(({ name }) => character.seen[name]);
 			if (filters.movement) beasts = beasts.filter(beast => beast[filters.movement]);
 			return beasts;
@@ -108,7 +104,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 			}] : []),
 			...Object.entries(beastsByCr)
 				.sort(sortBy(
-					this.filters.desc ? desc(([cr]) => crToNum(cr)) : ([cr]) => crToNum(cr)
+					state.filters.desc ? desc(([cr]) => crToNum(cr)) : ([cr]) => crToNum(cr)
 				))
 				.map(([cr, list]) => ({
 					key: cr.toString(),
@@ -124,7 +120,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 					keyboardShouldPersistTaps='always'
 					sections={sections}
 					renderSectionHeader={
-						this.filter ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
+						this.search ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
 					}
 					renderItem={
 						({ item }) => (

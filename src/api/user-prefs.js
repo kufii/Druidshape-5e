@@ -6,7 +6,8 @@ export const initialPrefs = {
 	darkMode: false,
 	characters: [{ key: 1, name: 'Default', level: 0, isMoon: false, favs: {}, seen: {} }],
 	selectedCharacter: 1,
-	homebrew: []
+	homebrew: [],
+	filters: {}
 };
 
 export const getPref = async(key, def) => {

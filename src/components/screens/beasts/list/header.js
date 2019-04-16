@@ -48,13 +48,14 @@ export const Header = ({ screenProps }) => {
 };
 
 export const ExtendedHeader = ({ navigation, screenProps }) => {
-	const { actions } = screenProps;
+	const { state, actions } = screenProps;
 	const theme = actions.getCurrentTheme();
 	const menuTheme = menuStyles(theme);
 
 	const search = navigation.getParam('search', '');
-	const filters = navigation.getParam('filters', {});
 	const isFiltering = navigation.getParam('isFiltering', false);
+
+	const { filters } = state;
 
 	const styles = StyleSheet.create({
 		container: {
@@ -147,7 +148,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 							checked={filters.seen}
 							onPress={() => {
 								filters.seen = !filters.seen;
-								navigation.setParams({ filters });
+								actions.setFilters(filters);
 							}}
 							title='Seen'
 						/>
@@ -162,7 +163,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 							value={filters.movement || ''}
 							onChange={value => {
 								filters.movement = value;
-								navigation.setParams({ filters });
+								actions.setFilters(filters);
 							}}
 							options={[
 								{ text: '-', value: '' },
@@ -183,7 +184,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 							checked={filters.desc}
 							onPress={() => {
 								filters.desc = !filters.desc;
-								navigation.setParams({ filters });
+								actions.setFilters(filters);
 							}}
 							title='Sort Descending'
 						/>
@@ -193,7 +194,10 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 							type='clear'
 							titleStyle={styles.menuItemText}
 							title='Reset'
-							onPress={() => navigation.setParams({ filters: {}, isFiltering: false })}
+							onPress={() => {
+								actions.setFilters({});
+								navigation.setParams({ isFiltering: false });
+							}}
 						/>
 					</MenuOption>
 				</MenuOptions>

@@ -126,6 +126,10 @@ export const actions = (update, states) => {
 			update({ characters });
 			syncPrefs();
 		},
+		setFilters: filters => {
+			update({ filters });
+			syncPrefs();
+		},
 		toggleFav: name => {
 			const characters = states().characters;
 			const char = characters.find(c => c.key === states().selectedCharacter);
