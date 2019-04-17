@@ -6,6 +6,7 @@ import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
+import BeastPicker from './beast-picker';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge, bottomButtonHeight, lightTheme } from '../../../../api/constants';
@@ -50,7 +51,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 		const struct = getStruct(beasts);
 		const model = (this.edit && state.homebrew.find(h => h.name === this.edit)) || {};
 
-		this.state = { struct, model };
+		this.state = { struct, model, beastPickerOpen: false };
 	}
 
 	get edit() {
@@ -81,8 +82,14 @@ export default class HomebrewDetailsScreen extends React.Component {
 			bottomButton: {
 				height: bottomButtonHeight + getBottomSpace()
 			},
-			button: {
-				backgroundColor: theme.formButtonColor
+			copyButton: {
+				borderColor: theme.formButtonColor
+			},
+			copyButtonTitle: {
+				color: theme.formButtonColor
+			},
+			copyButtonContainer: {
+				marginBottom: 5
 			},
 			buttonIcon: {
 				marginRight: 5
@@ -116,7 +123,8 @@ export default class HomebrewDetailsScreen extends React.Component {
 
 	render() {
 		const styles = this.styles;
-		const buttonTheme = buttonStyles.bottom(this.theme);
+		const theme = this.theme;
+		const buttonTheme = buttonStyles.bottom(theme);
 		return (
 			<View style={styles.container}>
 				<View style={styles.form}>
@@ -127,9 +135,12 @@ export default class HomebrewDetailsScreen extends React.Component {
 					>
 						<Button
 							title='Copy Beast'
-							type='solid'
-							buttonStyle={styles.button}
-							icon={<Icon size={iconSizeLarge} name={icon('copy')} color='#fff' style={styles.buttonIcon} />}
+							type='outline'
+							buttonStyle={styles.copyButton}
+							titleStyle={styles.copyButtonTitle}
+							containerStyle={styles.copyButtonContainer}
+							icon={<Icon size={iconSizeLarge} name={icon('copy')} color={theme.formButtonColor} style={styles.buttonIcon} />}
+							onPress={() => this.setState({ beastPickerOpen: true })}
 						/>
 						<Form
 							ref={form => this.form = form}
@@ -161,6 +172,12 @@ export default class HomebrewDetailsScreen extends React.Component {
 						onPress={() => this.submit()}
 					/>
 				</View>
+				<BeastPicker
+					actions={this.props.screenProps.actions}
+					isVisible={this.state.beastPickerOpen}
+					onDismiss={() => this.setState({ beastPickerOpen: false })}
+					onSelect={name => this.setState({ model: this.props.screenProps.actions.getBeast(name) })}
+				/>
 			</View>
 		);
 	}
