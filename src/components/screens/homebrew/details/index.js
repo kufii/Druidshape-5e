@@ -6,10 +6,11 @@ import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
+import IconButton from '../../../shared/icon-button';
 import BeastPicker from './beast-picker';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
-import { iconSizeLarge, bottomButtonHeight, lightTheme } from '../../../../api/constants';
+import { iconSizeLarge, bottomButtonHeight } from '../../../../api/constants';
 import buttonStyles from '../../../../styles/buttons';
 
 import { Form, getStruct, getOptions } from './form';
@@ -26,11 +27,10 @@ export default class HomebrewDetailsScreen extends React.Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: navigation.getParam('edit') ? 'Edit Beast' : 'Add New Beast',
 		headerRight: navigation.getParam('edit') ? (
-			<Button
-				type='clear'
-				buttonStyle={buttonStyles.icon.buttonStyle}
-				containerStyle={buttonStyles.icon.containerStyle}
-				icon={<Icon name={icon('trash')} color={lightTheme.headerTextColor} size={iconSizeLarge} />}
+			<IconButton
+				icon={icon('trash')}
+				color={screenProps.actions.getCurrentTheme().headerTextColor}
+				size={iconSizeLarge}
 				onPress={() => AlertDelete(
 					navigation.getParam('edit'),
 					screenProps.actions,
@@ -93,10 +93,6 @@ export default class HomebrewDetailsScreen extends React.Component {
 			},
 			buttonIcon: {
 				marginRight: 5
-			},
-			deleteButton: {
-				marginRight: 10,
-				borderRadius: 100
 			}
 		});
 	}

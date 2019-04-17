@@ -218,8 +218,8 @@ ExtendedHeader.propTypes = {
 
 const globalStyles = StyleSheet.create({
 	margin: {
-		marginLeft: 10,
-		marginRight: 10
+		marginLeft: 5,
+		marginRight: 5
 	},
 	marginLarge: {
 		marginLeft: 20,
