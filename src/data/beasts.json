@@ -14,7 +14,7 @@
     "cha": 5,
     "skills": "Perception +5",
     "passive": 15,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Pounce",
@@ -48,7 +48,7 @@
     "wis": 12,
     "cha": 5,
     "passive": 11,
-    "cr": 3,
+    "cr": "3 ",
     "actions": [
       {
         "name": "Tail",
@@ -128,7 +128,7 @@
     "wis": 12,
     "cha": 6,
     "passive": 11,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Pack Tactics",
@@ -159,7 +159,7 @@
     "cha": 5,
     "senses": "Darkvision 30 ft.",
     "passive": 11,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -190,7 +190,7 @@
     "cha": 4,
     "senses": "Blindsight 60 ft.",
     "passive": 11,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Echolocation",
@@ -333,7 +333,7 @@
     "cha": 7,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -396,7 +396,7 @@
     "cha": 7,
     "skills": "Perception +3, Stealth +4",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -428,7 +428,7 @@
     "skills": "Perception +3",
     "senses": "Darkvision 60 ft.",
     "passive": 13,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -499,7 +499,7 @@
     "skills": "Stealth +2",
     "senses": "Blindsight 30 ft.",
     "passive": 9,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Amphibious",
@@ -559,7 +559,7 @@
     "wis": 14,
     "cha": 5,
     "passive": 12,
-    "cr": 0,
+    "cr": "0 ",
     "actions": [
       {
         "name": "Bite",
@@ -583,7 +583,7 @@
     "cha": 7,
     "skills": "Perception +3, Stealth +4",
     "passive": 13,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Keen Hearing and Smell",
@@ -641,7 +641,7 @@
     "cha": 7,
     "skills": "Perception +4",
     "passive": 14,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Sight",
@@ -670,7 +670,7 @@
     "wis": 11,
     "cha": 6,
     "passive": 10,
-    "cr": 4,
+    "cr": "4 ",
     "traits": [
       {
         "name": "Trampling Charge",
@@ -772,7 +772,7 @@
     "skills": "Perception +1, Stealth +3",
     "senses": "Darkvision 30 ft.",
     "passive": 11,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Amphibious",
@@ -873,7 +873,7 @@
     "wis": 7,
     "cha": 5,
     "passive": 8,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Charge",
@@ -935,7 +935,7 @@
     "skills": "Perception +2",
     "senses": "Blindsight 10 ft.",
     "passive": 12,
-    "cr": 2,
+    "cr": "2 ",
     "actions": [
       {
         "name": "Bite",
@@ -997,7 +997,7 @@
     "cha": 7,
     "skills": "Stealth +5",
     "passive": 10,
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Hold Breath",
@@ -1037,7 +1037,7 @@
     "cha": 10,
     "skills": "Perception +4",
     "passive": 14,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Keen Sight",
@@ -1076,7 +1076,7 @@
     "cha": 10,
     "skills": "Perception +4",
     "passive": 14,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Charge",
@@ -1112,7 +1112,7 @@
     "cha": 3,
     "senses": "Blindsight 30 ft.",
     "passive": 8,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Illumination",
@@ -1143,7 +1143,7 @@
     "cha": 3,
     "senses": "Darkvision 60 ft.",
     "passive": 10,
-    "cr": 0
+    "cr": "0 "
   },
   {
     "name": "Giant Frog",
@@ -1234,7 +1234,7 @@
     "cha": 7,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Rampage",
@@ -1301,7 +1301,7 @@
     "skills": "Perception +4, Stealth +5",
     "senses": "Darkvision 60 ft.",
     "passive": 14,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Hold Breath",
@@ -1463,7 +1463,7 @@
     "cha": 3,
     "senses": "Blindsight 60 ft.",
     "passive": 9,
-    "cr": 3,
+    "cr": "3 ",
     "actions": [
       {
         "name": "Claw",
@@ -1533,7 +1533,7 @@
     "skills": "Perception +3",
     "senses": "Blindsight 60 ft.",
     "passive": 13,
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Blood Frenzy",
@@ -1569,7 +1569,7 @@
     "skills": "Stealth +7",
     "senses": "Blindsight 10 ft., Darkvision 60 ft.",
     "passive": 10,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Spider Climb",
@@ -1613,7 +1613,7 @@
     "cha": 3,
     "senses": "Darkvision 30 ft.",
     "passive": 10,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Amphibious",
@@ -1652,7 +1652,7 @@
     "cha": 7,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Keen Sight and Smell",
@@ -1790,7 +1790,7 @@
     "wis": 10,
     "cha": 5,
     "passive": 10,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Charge",
@@ -1826,7 +1826,7 @@
     "cha": 6,
     "skills": "Perception +4",
     "passive": 14,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Sight",
@@ -1857,7 +1857,7 @@
     "skills": "Perception +2",
     "senses": "Darkvision 30 ft.",
     "passive": 12,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Blood Frenzy",
@@ -1891,7 +1891,7 @@
     "cha": 5,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Pack Tactics",
@@ -1921,7 +1921,7 @@
     "cha": 6,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Hearing and Smell",
@@ -1956,7 +1956,7 @@
     "skills": "Perception +3",
     "senses": "Blindsight 120 ft.",
     "passive": 13,
-    "cr": 3,
+    "cr": "3 ",
     "traits": [
       {
         "name": "Echolocation",
@@ -1993,7 +1993,7 @@
     "cha": 8,
     "skills": "Perception +3, Stealth +6",
     "passive": 13,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -2041,7 +2041,7 @@
     "cha": 3,
     "senses": "Darkvision 30 ft.",
     "passive": 9,
-    "cr": 0,
+    "cr": "0 ",
     "actions": [
       {
         "name": "Bite",
@@ -2064,7 +2064,7 @@
     "wis": 11,
     "cha": 6,
     "passive": 10,
-    "cr": 6,
+    "cr": "6 ",
     "traits": [
       {
         "name": "Trampling Charge",
@@ -2164,7 +2164,7 @@
     "skills": "Perception +2, Stealth +4",
     "senses": "Darkvision 30 ft.",
     "passive": 12,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Hold Breath",
@@ -2208,7 +2208,7 @@
     "skills": "Perception +3, Stealth +3",
     "senses": "Darkvision 120 ft.",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Flyby",
@@ -2283,7 +2283,7 @@
     "cha": 5,
     "skills": "Perception +3, Stealth +4",
     "passive": 13,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Hold Breath",
@@ -2339,7 +2339,7 @@
     "cha": 7,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -2431,7 +2431,7 @@
     "cha": 2,
     "senses": "Darkvision 60 ft.",
     "passive": 8,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Blood Frenzy",
@@ -2465,7 +2465,7 @@
     "cha": 4,
     "senses": "Darkvision 30 ft.",
     "passive": 10,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -2496,7 +2496,7 @@
     "cha": 6,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Mimicry",
@@ -2559,7 +2559,7 @@
     "wis": 12,
     "cha": 6,
     "passive": 11,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Charge",
@@ -2613,7 +2613,7 @@
     "cha": 8,
     "skills": "Perception +3, Stealth +6",
     "passive": 13,
-    "cr": 2,
+    "cr": "2 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -2652,7 +2652,7 @@
     "cha": 2,
     "senses": "Blindsight 10 ft.",
     "passive": 9,
-    "cr": 0,
+    "cr": "0 ",
     "actions": [
       {
         "name": "Sting",
@@ -2675,7 +2675,7 @@
     "wis": 10,
     "cha": 2,
     "passive": 10,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Water Breathing",
@@ -2700,7 +2700,7 @@
     "skills": "Stealth +4",
     "senses": "Darkvision 30 ft.",
     "passive": 12,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Spider Climb",
@@ -2764,7 +2764,7 @@
     "skills": "Perception +3, Stealth +6",
     "senses": "Darkvision 60 ft.",
     "passive": 13,
-    "cr": 1,
+    "cr": "1 ",
     "traits": [
       {
         "name": "Keen Smell",
@@ -2801,7 +2801,7 @@
     "wis": 11,
     "cha": 5,
     "passive": 10,
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Trampling Charge",
@@ -2837,7 +2837,7 @@
     "cha": 4,
     "skills": "Perception +3",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Sight and Smell",
@@ -2900,7 +2900,7 @@
     "cha": 3,
     "skills": "Perception +3, Stealth +5",
     "passive": 13,
-    "cr": 0,
+    "cr": "0 ",
     "traits": [
       {
         "name": "Keen Hearing and Smell",
@@ -2971,7 +2971,7 @@
     "senses": "Darkvision 60ft.",
     "passive": 10,
     "languages": "Auran",
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Air Form",
@@ -3014,7 +3014,7 @@
     "senses": "Darkvision 60 ft., Tremorsense 60 ft",
     "passive": 10,
     "languages": "Terran",
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Earth Glide",
@@ -3055,7 +3055,7 @@
     "senses": "Darkvision 60 ft.",
     "passive": 10,
     "languages": "Ignan",
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Fire Form",
@@ -3101,7 +3101,7 @@
     "senses": "Darkvision 60 ft.",
     "passive": 10,
     "languages": "Aquan",
-    "cr": 5,
+    "cr": "5 ",
     "traits": [
       {
         "name": "Water Form",

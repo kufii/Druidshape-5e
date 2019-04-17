@@ -11,5 +11,30 @@ export default {
 			alignItems: 'center',
 			overflow: 'hidden'
 		}
+	}),
+	bottom: theme => ({
+		container: {
+			marginTop: 5,
+			flexDirection: 'row',
+			justifyContent: 'space-between',
+			borderTopColor: theme.formButtonColor,
+			borderTopWidth: StyleSheet.hairlineWidth
+		},
+		button: {
+			width: '50%',
+			borderRadius: 0
+		},
+		cancelButton: {
+			backgroundColor: theme.formButtonColorSecondary
+		},
+		cancelButtonTitle: {
+			color: theme.formButtonColor
+		},
+		saveButton: {
+			backgroundColor: theme.formButtonColor
+		},
+		saveButtonTitle: {
+			color: '#fff'
+		}
 	})
 };

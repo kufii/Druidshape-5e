@@ -78,32 +78,14 @@ export default class HomebrewDetailsScreen extends React.Component {
 			formContent: {
 				padding: 10
 			},
-			buttons: {
-				flexDirection: 'row',
-				justifyContent: 'space-between',
-				borderTopColor: theme.formButtonColor,
-				borderTopWidth: StyleSheet.hairlineWidth
-			},
-			button: {
-				width: '50%',
-				borderRadius: 0
-			},
-			btn: {
+			bottomButton: {
 				height: bottomButtonHeight + getBottomSpace()
 			},
-			cancelButton: {
-				backgroundColor: theme.formButtonColorSecondary
-			},
-			cancelButtonTitle: {
-				color: theme.formButtonColor,
-				paddingBottom: getBottomSpace()
-			},
-			saveButton: {
+			button: {
 				backgroundColor: theme.formButtonColor
 			},
-			saveButtonTitle: {
-				color: '#fff',
-				paddingBottom: getBottomSpace()
+			buttonIcon: {
+				marginRight: 5
 			},
 			deleteButton: {
 				marginRight: 10,
@@ -134,6 +116,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 
 	render() {
 		const styles = this.styles;
+		const buttonTheme = buttonStyles.bottom(this.theme);
 		return (
 			<View style={styles.container}>
 				<View style={styles.form}>
@@ -142,6 +125,12 @@ export default class HomebrewDetailsScreen extends React.Component {
 						keyboardOffset={40 + (Platform.OS === 'android' ? bottomButtonHeight : 0)}
 						behavior='padding'
 					>
+						<Button
+							title='Copy Beast'
+							type='solid'
+							buttonStyle={styles.button}
+							icon={<Icon size={iconSizeLarge} name={icon('copy')} color='#fff' style={styles.buttonIcon} />}
+						/>
 						<Form
 							ref={form => this.form = form}
 							type={this.state.struct}
@@ -154,21 +143,21 @@ export default class HomebrewDetailsScreen extends React.Component {
 						/>
 					</InputScrollView>
 				</View>
-				<View style={styles.buttons}>
+				<View style={buttonTheme.container}>
 					<Button
 						title='Cancel'
 						type='clear'
-						containerStyle={[styles.button, styles.cancelButton]}
-						buttonStyle={styles.btn}
-						titleStyle={styles.cancelButtonTitle}
+						containerStyle={[buttonTheme.button, buttonTheme.cancelButton]}
+						buttonStyle={styles.bottomButton}
+						titleStyle={buttonTheme.cancelButtonTitle}
 						onPress={() => this.props.navigation.dismiss()}
 					/>
 					<Button
 						title='Save'
 						type='clear'
-						containerStyle={[styles.button, styles.saveButton]}
-						buttonStyle={styles.btn}
-						titleStyle={styles.saveButtonTitle}
+						containerStyle={[buttonTheme.button, buttonTheme.saveButton]}
+						buttonStyle={styles.bottomButton}
+						titleStyle={buttonTheme.saveButtonTitle}
 						onPress={() => this.submit()}
 					/>
 				</View>
