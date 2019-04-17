@@ -14,7 +14,6 @@ export default {
 	}),
 	bottom: theme => ({
 		container: {
-			marginTop: 5,
 			flexDirection: 'row',
 			justifyContent: 'space-between',
 			borderTopColor: theme.formButtonColor,
