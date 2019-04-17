@@ -122,6 +122,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 	}
 
 	render() {
+		const { actions } = this.props.screenProps;
 		const styles = this.styles;
 		const theme = this.theme;
 		const buttonTheme = buttonStyles.bottom(theme);
@@ -173,10 +174,10 @@ export default class HomebrewDetailsScreen extends React.Component {
 					/>
 				</View>
 				<BeastPicker
-					actions={this.props.screenProps.actions}
+					actions={actions}
 					isVisible={this.state.beastPickerOpen}
 					onDismiss={() => this.setState({ beastPickerOpen: false })}
-					onSelect={name => this.setState({ model: this.props.screenProps.actions.getBeast(name) })}
+					onSelect={name => this.setState({ model: actions.getBeast(name) })}
 				/>
 			</View>
 		);
