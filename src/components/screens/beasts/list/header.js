@@ -87,6 +87,9 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 			color: theme.textColor,
 			borderColor: theme.textColorSecondary
 		},
+		pickerLabel: {
+			paddingBottom: 0
+		},
 		filterContainer: {
 			flex: 1,
 			paddingTop: 10,
@@ -153,7 +156,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 							title='Seen'
 						/>
 					</MenuOption>
-					<MenuOption disabled>
+					<MenuOption customStyles={{ optionWrapper: styles.pickerLabel }} disabled>
 						<Text style={[styles.menuItemText, styles.textExtraMargin]}>Movement</Text>
 					</MenuOption>
 					<MenuOption disabled>
