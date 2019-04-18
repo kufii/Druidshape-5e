@@ -54,3 +54,4 @@ export const fontSizeLarge = 18;
 export const fontSizeXLarge = 24;
 export const iconSizeMedium = 20;
 export const iconSizeLarge = 28;
+export const modalMargin = 40;

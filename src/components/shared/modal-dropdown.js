@@ -8,7 +8,7 @@ import { Divider, ListItem } from 'react-native-elements';
 import listStyles from '../../styles/list';
 
 import { icon } from '../../api/util';
-import { fontSizeMedium, fontSizeLarge, iconSizeLarge } from '../../api/constants';
+import { fontSizeMedium, fontSizeLarge, iconSizeLarge, modalMargin } from '../../api/constants';
 
 export default function ModalDropdown({ actions, items, selected, onSelect, style }) {
 	const [isVisible, setVisible] = useState(false);
@@ -18,6 +18,9 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 	const theme = actions.getCurrentTheme();
 
 	const styles = StyleSheet.create({
+		modal: {
+			margin: modalMargin
+		},
 		container: {
 			flex: 1,
 			backgroundColor: theme.contentBackgroundColor
@@ -44,7 +47,12 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 					<Icon name='ios-arrow-down' size={fontSizeMedium} color={theme.headerTextColor} />
 				</View>
 			</TouchableOpacity>
-			<Modal isVisible={isVisible} onBackdropPress={() => setVisible(false)} onBackButtonPress={() => setVisible(false)}>
+			<Modal
+				isVisible={isVisible}
+				style={styles.modal}
+				onBackdropPress={() => setVisible(false)}
+				onBackButtonPress={() => setVisible(false)}
+			>
 				<View style={styles.container}>
 					<FlatList
 						data={items}
