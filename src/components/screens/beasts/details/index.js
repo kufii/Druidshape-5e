@@ -9,7 +9,7 @@ import { fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
 import { getModifier } from '../../../../api/beasts';
 
 const getSpeedString = beast => {
-	let out = `${beast.speed} ft.`;
+	let out = `${beast.speed || 0} ft.`;
 	if (beast.climb) out += `, climb ${beast.climb} ft.${beast.climbDetails ? ` (${beast.climbDetails})` : ''}`;
 	if (beast.swim) out += `, swim ${beast.swim} ft.${beast.swimDetails ? ` (${beast.swimDetails})` : ''}`;
 	if (beast.fly) out += `, fly ${beast.fly} ft.${beast.flyDetails ? ` (${beast.flyDetails})` : ''}`;
