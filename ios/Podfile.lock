@@ -6,48 +6,48 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - React (0.59.4):
-    - React/Core (= 0.59.4)
+  - React (0.59.5):
+    - React/Core (= 0.59.5)
   - react-native-document-picker (2.3.0):
     - React
-  - React/Core (0.59.4):
-    - yoga (= 0.59.4.React)
-  - React/CxxBridge (0.59.4):
+  - React/Core (0.59.5):
+    - yoga (= 0.59.5.React)
+  - React/CxxBridge (0.59.5):
     - Folly (= 2018.10.22.00)
     - React/Core
     - React/cxxreact
     - React/jsiexecutor
-  - React/cxxreact (0.59.4):
+  - React/cxxreact (0.59.5):
     - boost-for-react-native (= 1.63.0)
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
     - React/jsinspector
-  - React/DevSupport (0.59.4):
+  - React/DevSupport (0.59.5):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.59.4)
-  - React/jsi (0.59.4):
+  - React/fishhook (0.59.5)
+  - React/jsi (0.59.5):
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
-  - React/jsiexecutor (0.59.4):
+  - React/jsiexecutor (0.59.5):
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
     - React/cxxreact
     - React/jsi
-  - React/jsinspector (0.59.4)
-  - React/RCTAnimation (0.59.4):
+  - React/jsinspector (0.59.5)
+  - React/RCTAnimation (0.59.5):
     - React/Core
-  - React/RCTBlob (0.59.4):
+  - React/RCTBlob (0.59.5):
     - React/Core
-  - React/RCTImage (0.59.4):
+  - React/RCTImage (0.59.5):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.59.4):
+  - React/RCTNetwork (0.59.5):
     - React/Core
-  - React/RCTWebSocket (0.59.4):
+  - React/RCTWebSocket (0.59.5):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -59,7 +59,7 @@ PODS:
     - React
   - RNVectorIcons (6.4.2):
     - React
-  - yoga (0.59.4.React)
+  - yoga (0.59.5.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -109,13 +109,13 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  React: 5cb71fb1a15b5ce04794ab49e24b48ebe4c94e65
+  React: 90adac468c7b72bf1fa6c64bf230650f851a8388
   react-native-document-picker: 8508bfda34be6c24a2cbecbe515b15108658c183
   RNCAsyncStorage: e71d854855f99b1fc46d468858265608b917bbb8
   RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
   RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
-  yoga: 596e61c9b57751d08a22b07aba310dbd3e65ab75
+  yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
 
 PODFILE CHECKSUM: 3b7ff6f41bb511b628602b618da366be2f6ef5ec
 
