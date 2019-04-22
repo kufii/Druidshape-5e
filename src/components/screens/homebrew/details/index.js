@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, View } from 'react-native';
+import r from 'rnss';
 import InputScrollView from 'react-native-input-scroll-view';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -66,34 +67,20 @@ export default class HomebrewDetailsScreen extends React.Component {
 	get styles() {
 		const theme = this.theme;
 
-		return StyleSheet.create({
-			container: {
-				flex: 1,
-				flexDirection: 'column',
-				justifyContent: 'center',
-				backgroundColor: theme.contentBackgroundColor
-			},
-			form: {
-				flex: 1
-			},
-			formContent: {
-				padding: 10
-			},
-			bottomButton: {
-				height: bottomButtonHeight + getBottomSpace()
-			},
-			copyButton: {
-				borderColor: theme.formButtonColor
-			},
-			copyButtonTitle: {
-				color: theme.formButtonColor
-			},
-			copyButtonContainer: {
-				marginBottom: 5
-			},
-			buttonIcon: {
-				marginRight: 5
-			}
+		return r({
+			container: `
+				f 1
+				fd column
+				jc center
+				bc ${theme.contentBackgroundColor}
+			`,
+			form: 'f 1',
+			formContent: 'p 10',
+			bottomButton: `h ${bottomButtonHeight + getBottomSpace()}`,
+			copyButton: `border-color ${theme.formButtonColor}`,
+			copyButtonTitle: `c ${theme.formButtonColor}`,
+			copyButtonContainer: 'mb 5',
+			buttonIcon: 'mr 5'
 		});
 	}
 

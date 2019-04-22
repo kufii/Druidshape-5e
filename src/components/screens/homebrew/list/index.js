@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
 import FloatingActionButton from '../../../shared/fab';
@@ -43,27 +44,15 @@ export default class HomebrewListScreen extends React.Component {
 		);
 	}
 
-	get styles() {
-		const { actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
-		return StyleSheet.create({
-			container: {
-				flex: 1,
-				backgroundColor: theme.contentBackgroundColorDark
-			}
-		});
-	}
-
 	render() {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
 
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
-		const styles = this.styles;
 
 		return (
-			<View style={styles.container}>
+			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<FlatList
 					ref={list => this.list = list}
 					data={state.homebrew.map(({ name }) => name).sort()}

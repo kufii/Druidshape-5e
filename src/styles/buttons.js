@@ -1,39 +1,26 @@
-import { StyleSheet } from 'react-native';
+import r from 'rnss';
 
 export default {
-	icon: StyleSheet.create({
-		buttonStyle: {
-			aspectRatio: 1
-		},
-		containerStyle: {
-			borderRadius: 999999,
-			justifyContent: 'center',
-			alignItems: 'center',
-			overflow: 'hidden'
-		}
+	icon: r({
+		buttonStyle: 'ar 1',
+		containerStyle: `
+			br 999999
+			jc center
+			ai center
+			o hidden
+		`
 	}),
-	bottom: theme => ({
-		container: {
-			flexDirection: 'row',
-			justifyContent: 'space-between',
-			borderTopColor: theme.formButtonColor,
-			borderTopWidth: StyleSheet.hairlineWidth
-		},
-		button: {
-			width: '50%',
-			borderRadius: 0
-		},
-		cancelButton: {
-			backgroundColor: theme.formButtonColorSecondary
-		},
-		cancelButtonTitle: {
-			color: theme.formButtonColor
-		},
-		saveButton: {
-			backgroundColor: theme.formButtonColor
-		},
-		saveButtonTitle: {
-			color: '#fff'
-		}
+	bottom: theme => r({
+		container: `
+			fd row
+			jc space-between
+			btc ${theme.formButtonColor}
+			btw hw
+		`,
+		button: 'w 50%; br 0',
+		cancelButton: `bc ${theme.formButtonColorSecondary}`,
+		cancelButtonTitle: `c ${theme.formButtonColor}`,
+		saveButton: `bc ${theme.formButtonColor}`,
+		saveButtonTitle: 'c #fff'
 	})
 };

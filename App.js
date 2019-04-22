@@ -1,5 +1,6 @@
 import React from 'react';
-import { UIManager, Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { UIManager, Platform, StatusBar, View } from 'react-native';
+import r from 'rnss';
 import { MenuProvider } from 'react-native-popup-menu';
 import { createAppContainer } from 'react-navigation';
 import flyd from 'flyd';
@@ -32,16 +33,10 @@ export default class App extends React.Component {
 		}
 		return (
 			<MenuProvider>
-				<View style={styles.container}>
+				<View style={r`f 1`}>
 					{state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />}
 				</View>
 			</MenuProvider>
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	}
-});

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import r from 'rnss';
 import { ListItem } from 'react-native-elements';
 import { Menu, MenuTrigger, MenuOptions, MenuOption, renderers as MenuRenderers } from 'react-native-popup-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -90,17 +91,8 @@ export default class BeastListItem extends React.Component {
 	}
 }
 
-const styles = StyleSheet.create({
-	item: {
-		paddingLeft: 5,
-		paddingRight: 5
-	},
-	row: {
-		flexDirection: 'row',
-		alignItems: 'center'
-	},
-	margin: {
-		marginLeft: 10,
-		marginRight: 10
-	}
+const styles = r({
+	item: 'p 0 5',
+	row: 'fd row; ai center',
+	margin: 'm 0 10'
 });

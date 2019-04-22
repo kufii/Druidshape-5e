@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, View } from 'react-native';
+import r from 'rnss';
 import Modal from 'react-native-modal';
 import { Input, Button } from 'react-native-elements';
 import buttonStyles from '../../styles/buttons';
@@ -8,19 +9,11 @@ import buttonStyles from '../../styles/buttons';
 export default function ModalTextbox({ actions, isVisible, isRequired, text='', onDismiss, onSubmit, onChangeText }) {
 	const theme = actions.getCurrentTheme();
 	const buttonTheme = buttonStyles.bottom(theme);
-	const styles = StyleSheet.create({
-		modal: {
-			height: 'auto'
-		},
-		container: {
-			backgroundColor: theme.contentBackgroundColor
-		},
-		textbox: {
-			color: theme.textColor
-		},
-		textboxContainer: {
-			marginBottom: 5
-		}
+	const styles = r({
+		modal: 'h auto',
+		container: `bc ${theme.contentBackgroundColor}`,
+		textbox: `c ${theme.textColor}`,
+		textboxContainer: 'mb 5'
 	});
 
 	return (

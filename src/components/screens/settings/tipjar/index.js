@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
+import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import { titlecase, sortBy } from '../../../../api/util';
 import { fontSizeMedium } from '../../../../api/constants';
@@ -21,21 +22,15 @@ export default class SettingsScreen extends React.Component {
 	get styles() {
 		const { actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
-		return StyleSheet.create({
-			container: {
-				flex: 1,
-				backgroundColor: theme.contentBackgroundColor
-			},
-			disclaimer: {
-				color: theme.textColor,
-				fontSize: fontSizeMedium,
-				padding: 10,
-				flexWrap: 'wrap'
-			},
-			badge: {
-				backgroundColor: theme.formButtonColor,
-				borderColor: 'transparent'
-			}
+		return r({
+			container: `f 1; bc ${theme.contentBackgroundColor}`,
+			disclaimer: `
+				c ${theme.textColor}
+				fs ${fontSizeMedium}
+				p 10
+				flex-wrap wrap
+			`,
+			badge: `bc ${theme.formButtonColor}; border-color transparent`
 		});
 	}
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ViewPropTypes, Platform, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { ViewPropTypes, Platform, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import r from 'rnss';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Divider, ListItem } from 'react-native-elements';
@@ -17,25 +18,16 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 
 	const theme = actions.getCurrentTheme();
 
-	const styles = StyleSheet.create({
-		modal: {
-			margin: modalMargin
-		},
-		container: {
-			flex: 1,
-			backgroundColor: theme.contentBackgroundColor
-		},
-		dropdown: {
-			flex: 1,
-			flexDirection: 'row',
-			alignItems: 'center'
-		},
-		text: {
-			fontWeight: 'bold',
-			marginRight: 4,
-			fontSize: Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge,
-			color: theme.headerTextColor
-		}
+	const styles = r({
+		modal: `margin ${modalMargin}`,
+		container: `f 1; bc ${theme.contentBackgroundColor}`,
+		dropdown: 'f 1; fd row; ai center',
+		text: `
+			fw bold
+			mr 4
+			fs ${Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge}
+			color ${theme.headerTextColor}
+		`
 	});
 	const listTheme = listStyles(theme);
 

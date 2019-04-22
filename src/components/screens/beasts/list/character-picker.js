@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, Text, TouchableWithoutFeedback } from 'react-native';
+import { View, FlatList, Text, TouchableWithoutFeedback } from 'react-native';
+import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
@@ -41,31 +42,22 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 
 	const theme = actions.getCurrentTheme();
 
-	const styles = StyleSheet.create({
-		backdrop: {
-			flex: 0.5
-		},
-		container: {
-			flex: 0.5,
-			backgroundColor: theme.contentBackgroundColorDark
-		},
-		modal: {
-			margin: 0,
-			justifyContent: 'flex-end'
-		},
-		header: {
-			flexDirection: 'row',
-			justifyContent: 'space-between',
-			alignItems: 'center',
-			backgroundColor: theme.contentBackgroundColor,
-			paddingRight: 5,
-			paddingLeft: 10
-		},
-		headerText: {
-			color: theme.textColor,
-			fontWeight: 'bold',
-			fontSize: fontSizeLarge
-		}
+	const styles = r({
+		backdrop: 'f 0.5',
+		container: `f 0.5; bc ${theme.contentBackgroundColorDark}`,
+		modal: 'm 0; jc flex-end',
+		header: `
+			fd row
+			jc space-between
+			ai center
+			bc ${theme.contentBackgroundColor}
+			pr 5; pl 10
+		`,
+		headerText: `
+			c ${theme.textColor}
+			fw bold
+			fs ${fontSizeLarge}
+		`
 	});
 	const listTheme = listStyles(theme);
 	const menuTheme = menuStyles(theme);

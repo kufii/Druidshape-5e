@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Animated, View, TouchableOpacity, Text, Picker } from 'react-native';
+import { Animated, View, TouchableOpacity, Text, Picker } from 'react-native';
+import r from 'rnss';
 
 const UIPICKER_HEIGHT = 216;
 
@@ -104,17 +105,8 @@ CollapsiblePickerIOS.propTypes = {
 	containerStyle: Text.propTypes.style
 };
 
-const styles = StyleSheet.create({
-	pickerContainer: {
-		marginBottom: 4,
-		borderRadius: 4,
-		borderWidth: 1,
-		padding: 5
-	},
-	pickerValue: {
-		fontSize: 17
-	},
-	animatedView: {
-		overflow: 'hidden'
-	}
+const styles = r({
+	pickerContainer: 'mb 4; br 4; bw 1; p 5',
+	pickerValue: 'fs 17',
+	animatedView: 'o hidden'
 });

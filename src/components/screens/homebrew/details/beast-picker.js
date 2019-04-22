@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
+import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import { iconSizeLarge, modalMargin } from '../../../../api/constants';
@@ -14,7 +15,7 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 	const dismiss = () => onDismiss && onDismiss();
 
 	return (
-		<Modal style={{ margin: modalMargin }} isVisible={isVisible} onBackdropPress={dismiss} onBackButtonPress={dismiss}>
+		<Modal style={r`m ${modalMargin}`} isVisible={isVisible} onBackdropPress={dismiss} onBackButtonPress={dismiss}>
 			<FlatList
 				data={beasts}
 				renderItem={({ item }) => (

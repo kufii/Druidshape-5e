@@ -1,18 +1,11 @@
-import { StyleSheet } from 'react-native';
+import r from 'rnss';
 
 export default theme => ({
-	menuOptions: StyleSheet.create({
-		optionsWrapper: {
-			backgroundColor: theme.cardColor
-		},
-		optionText: {
-			color: theme.textColor,
-			margin: 10
-		}
+	menuOptions: r({
+		optionsWrapper: `bc ${theme.cardColor}`,
+		optionText: `c ${theme.textColor}; m 10`
 	}),
-	rendererProps: StyleSheet.create({
-		anchorStyle: {
-			backgroundColor: theme.cardColor
-		}
+	rendererProps: r({
+		anchorStyle: `bc ${theme.cardColor}`
 	})
 });

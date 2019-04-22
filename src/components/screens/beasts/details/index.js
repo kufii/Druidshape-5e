@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
+import r from 'rnss';
 import { Divider } from 'react-native-elements';
 import { B, I, BI } from '../../../shared/helper';
 
@@ -39,52 +40,35 @@ export default class BeastDetailsScreen extends React.Component {
 	get styles() {
 		const { actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
-		return StyleSheet.create({
-			container: {
-				flex: 1,
-				flexDirection: 'column',
-				backgroundColor: theme.contentBackgroundColor,
-				alignItems: 'center'
-			},
-			scrollView: {
-				alignSelf: 'stretch'
-			},
-			containerContent: {
-				padding: 10
-			},
-			divider: {
-				marginTop: 10,
-				marginBottom: 10,
-				backgroundColor: theme.dividerColor
-			},
-			row: {
-				flexDirection: 'row'
-			},
-			attribute: {
-				marginTop: 2,
-				marginBottom: 2,
-				color: theme.textColor
-			},
-			header1: {
-				fontWeight: 'bold',
-				fontSize: fontSizeXLarge,
-				color: theme.textColorAccent
-			},
-			header2: {
-				fontWeight: 'bold',
-				fontSize: fontSizeLarge,
-				color: theme.textColorAccent
-			},
-			stat: {
-				flex: 1,
-				flexDirection: 'column',
-				alignItems: 'center',
-				marginTop: 5,
-				marginBottom: 5
-			},
-			text: {
-				color: theme.textColor
-			}
+		return r({
+			container: `
+				f 1
+				fd column
+				bc ${theme.contentBackgroundColor}
+				ai center
+			`,
+			scrollView: 'as stretch',
+			containerContent: 'p 10',
+			divider: `m 10 0; bc${theme.dividerColor}`,
+			row: 'fd row',
+			attribute: `m 2 0; c ${theme.textColor}`,
+			header1: `
+				fw bold
+				fs ${fontSizeXLarge}
+				c ${theme.textColorAccent}
+			`,
+			header2: `
+				fw bold
+				fs ${fontSizeLarge}
+				c ${theme.textColorAccent}
+			`,
+			stat: `
+				f 1
+				fd column
+				ai center
+				m 5 0
+			`,
+			text: `c ${theme.textColor}`
 		});
 	}
 

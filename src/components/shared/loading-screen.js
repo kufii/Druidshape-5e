@@ -1,19 +1,12 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import r from 'rnss';
 import { Button } from 'react-native-elements';
 
 export default function LoadingScreen() {
 	return (
-		<View style={styles.container}>
+		<View style={r`f 1; ai center; jc center`}>
 			<Button loading type='clear' loadingProps={{ size: 'large' }} />
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-});

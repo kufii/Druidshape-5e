@@ -1,34 +1,19 @@
-import { StyleSheet } from 'react-native';
-
+import r from 'rnss';
 import { listItemHeight, fontSizeStandard, fontSizeMedium } from '../api/constants';
 
-export default theme => StyleSheet.create({
-	sectionHeader: {
-		paddingTop: 2,
-		paddingLeft: 10,
-		paddingRight: 10,
-		paddingBottom: 2,
-		fontSize: fontSizeStandard,
-		fontWeight: 'bold',
-		backgroundColor: theme.contentBackgroundColorDark,
-		color: theme.textColorSecondary
-	},
-	item: {
-		paddingTop: 0,
-		paddingBottom: 0,
-		height: listItemHeight,
-		backgroundColor: theme.contentBackgroundColor
-	},
-	itemText: {
-		fontSize: fontSizeMedium,
-		color: theme.textColor
-	},
-	dividerCompact: {
-		marginLeft: 10,
-		marginRight: 10,
-		backgroundColor: theme.dividerColor
-	},
-	divider: {
-		backgroundColor: theme.dividerColor
-	}
+export default theme => r({
+	sectionHeader: `
+		p 2 10
+		fs ${fontSizeStandard}
+		fw bold
+		bc ${theme.contentBackgroundColorDark}
+		c ${theme.textColorSecondary}
+	`,
+	item: `
+		pt 0; pb 0
+		h ${listItemHeight}
+		bc ${theme.contentBackgroundColor}
+	`,
+	itemText: `fs ${fontSizeMedium}; c ${theme.textColor}`,
+	divider: `bc ${theme.dividerColor}`
 });

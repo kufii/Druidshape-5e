@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View, ScrollView, Alert, Share, Clipboard } from 'react-native';
+import { Platform, View, ScrollView, Alert, Share, Clipboard } from 'react-native';
+import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
@@ -21,18 +22,6 @@ export default class SettingsScreen extends React.Component {
 		title: 'Settings'
 	};
 
-	get styles() {
-		const { actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
-
-		return StyleSheet.create({
-			container: {
-				flex: 1,
-				backgroundColor: theme.contentBackgroundColorDark
-			}
-		});
-	}
-
 	scrollToTop() {
 		this.list && this.list.scrollTo({ x: 0, y: 0, animated: true });
 	}
@@ -47,11 +36,10 @@ export default class SettingsScreen extends React.Component {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
 		const theme = actions.getCurrentTheme();
-		const styles = this.styles;
 		const listTheme = listStyles(theme);
 
 		return (
-			<View style={styles.container}>
+			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<ScrollView ref={list => this.list = list}>
 					<ListItem
 						title='Dark Mode'

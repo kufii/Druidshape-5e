@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import r from 'rnss';
 import ActionButton from 'react-native-action-button';
 
 export default function FloatingActionButton({ hidden, ...props }) {
@@ -14,15 +15,10 @@ FloatingActionButton.propTypes = {
 	hidden: PropTypes.bool
 };
 
-const styles = StyleSheet.create({
-	container: {
-		position: 'absolute',
-		top: 0,
-		right: 0,
-		bottom: 0,
-		left: 0
-	},
-	hidden: {
-		bottom: -90
-	}
+const styles = r({
+	container: `
+		position absolute
+		top 0; right 0; bottom 0; left 0
+	`,
+	hidden: 'bottom -90'
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import r from 'rnss';
 import { Button, Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { iconSizeLarge, lightTheme } from '../../api/constants';
@@ -102,21 +103,15 @@ export default function ListTemplate(locals) {
 	);
 }
 
-const styles = StyleSheet.create({
-	flex: { flex: 1 },
-	row: { flexDirection: 'row' },
-	marginBottom: {
-		marginBottom: 10
-	},
-	card: {
-		marginBottom: 10,
-		borderColor: 'transparent',
-		elevation: 4
-	},
-	addButton: {
-		borderColor: lightTheme.formButtonColor
-	},
-	button: {
-		color: lightTheme.formButtonColor
-	}
+const styles = r({
+	flex: 'f 1',
+	row: 'fd row',
+	marginBottom: 'mb 10',
+	card: `
+		mb 10
+		border-color transparent
+		elevation 4
+	`,
+	addButton: `border-color ${lightTheme.formButtonColor}`,
+	button: `c ${lightTheme.formButtonColor}`
 });

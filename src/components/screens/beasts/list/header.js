@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, View, Text } from 'react-native';
+import { Platform, View, Text } from 'react-native';
+import r from 'rnss';
 import { SearchBar, CheckBox, Button } from 'react-native-elements';
 import Toast from 'react-native-root-toast';
 import { Menu, MenuTrigger, MenuOptions, MenuOption } from 'react-native-popup-menu';
@@ -57,54 +58,31 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 
 	const { filters } = state;
 
-	const styles = StyleSheet.create({
-		container: {
-			flex: 1,
-			flexDirection: 'row',
-			alignItems: 'center',
-			paddingRight: 5,
-			backgroundColor: theme.headerColor
-		},
-		checkbox: {
-			backgroundColor: theme.backgroundColor,
-			borderColor: 'transparent',
-			margin: 0,
-			padding: 0
-		},
-		menuItemText: {
-			color: theme.textColor,
-			fontWeight: 'bold'
-		},
-		textExtraMargin: {
-			marginLeft: 11,
-			marginRight: 11
-		},
-		pickerExtraMargin: {
-			marginLeft: 4,
-			marginRight: 4
-		},
-		picker: {
-			color: theme.textColor,
-			borderColor: theme.textColorSecondary
-		},
-		pickerLabel: {
-			paddingBottom: 0
-		},
-		filterContainer: {
-			flex: 1,
-			paddingTop: 10,
-			paddingBottom: 10,
-			paddingLeft: Platform.OS === 'android' ? 10 : 0,
-			paddingRight: 0,
-			backgroundColor: theme.headerColor
-		},
-		filter: {
-			backgroundColor: theme.headerColorLight,
-			borderRadius: 20
-		},
-		filterText: {
-			color: theme.headerTextColor
-		}
+	const styles = r({
+		container: `
+			f 1
+			fd row
+			ai center
+			pr 5
+			bc ${theme.headerColor}
+		`,
+		checkbox: `
+			bc ${theme.cardColor}
+			border-color transparent
+			m 0; p 0
+		`,
+		menuItemText: `c ${theme.textColor}; fw bold`,
+		textExtraMargin: 'm 0 11',
+		pickerExtraMargin: 'm 0 4',
+		picker: `c ${theme.textColor}; border-color ${theme.textColorSecondary}`,
+		pickerLabel: 'pb 0',
+		filterContainer: `
+			f 1
+			p 10 0 10 ${Platform.OS === 'android' ? 10 : 0}
+			bc ${theme.headerColor}
+		`,
+		filter: `bc ${theme.headerColorLight}; br 20`,
+		filterText: `c ${theme.headerTextColor}`
 	});
 
 	return (
@@ -216,13 +194,7 @@ ExtendedHeader.propTypes = {
 	}).isRequired
 };
 
-const globalStyles = StyleSheet.create({
-	margin: {
-		marginLeft: 5,
-		marginRight: 5
-	},
-	marginLarge: {
-		marginLeft: 20,
-		marginRight: 20
-	}
+const globalStyles = r({
+	margin: 'm 0 5',
+	marginLarge: 'm 0 20'
 });

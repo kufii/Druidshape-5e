@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Animated, StyleSheet, View, Text, SectionList } from 'react-native';
+import { Animated, View, Text, SectionList } from 'react-native';
+import r from 'rnss';
 import { Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FloatingActionButton from '../../../shared/fab';
@@ -38,18 +39,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		return this.props.navigation.getParam('search', '');
 	}
 
-	get styles() {
-		const { actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
-
-		return StyleSheet.create({
-			container: {
-				flex: 1,
-				backgroundColor: theme.contentBackgroundColorDark
-			}
-		});
-	}
-
 	scrollToTop() {
 		this.list && this.list.getNode().scrollToLocation({
 			itemIndex: 0,
@@ -78,7 +67,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
-		const styles = this.styles;
 
 		const character = actions.getCurrentCharacter();
 
@@ -114,7 +102,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 		];
 
 		return (
-			<View style={styles.container}>
+			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<AnimatedSectionList
 					ref={list => this.list = list}
 					keyboardShouldPersistTaps='always'
