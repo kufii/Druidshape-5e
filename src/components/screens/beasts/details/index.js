@@ -49,7 +49,7 @@ export default class BeastDetailsScreen extends React.Component {
 			`,
 			scrollView: 'as stretch',
 			containerContent: 'p 10',
-			divider: `m 10 0; bc${theme.dividerColor}`,
+			divider: `m 10 0; bc ${theme.dividerColor}`,
 			row: 'fd row',
 			attribute: `m 2 0; c ${theme.textColor}`,
 			header1: `
