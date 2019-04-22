@@ -347,12 +347,12 @@
       },
       {
         "name": "Bite",
-        "text": "Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage.",
+        "text": "Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage.",
         "attack": "Bite|5|1d8+4"
       },
       {
         "name": "Claws",
-        "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage.",
+        "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage.",
         "attack": "Claws|5|2d6+4"
       }
     ]
