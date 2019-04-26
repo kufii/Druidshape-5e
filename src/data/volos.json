@@ -25,6 +25,11 @@
         "name": "Gore",
         "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8+5) piercing damage."
       }
+    ],
+    "environments": [
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -51,6 +56,10 @@
         "name": "Tail",
         "text": "Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 32 (6d8+5) bludgeoning damage."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland"
     ]
   },
   {
@@ -79,6 +88,9 @@
         "name": "Gore",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -113,6 +125,10 @@
         "name": "Bite",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
       }
+    ],
+    "environments": [
+      "Underdark",
+      "Urban"
     ]
   },
   {
@@ -147,7 +163,10 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
     ],
-    "spells": "dancing lights"
+    "spells": "dancing lights",
+    "environments": [
+      "Underdark"
+    ]
   },
   {
     "name": "Deinonychus",
@@ -184,6 +203,11 @@
         "name": "Claw",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -214,6 +238,10 @@
         "name": "Bite",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) piercing damage."
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Swamp"
     ]
   },
   {
@@ -249,6 +277,10 @@
         "name": "Slam",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage."
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Underwater"
     ]
   },
   {
@@ -272,6 +304,10 @@
         "name": "Tail",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage."
       }
+    ],
+    "environments": [
+      "Grassland",
+      "Swamp"
     ]
   },
   {
@@ -304,6 +340,9 @@
         "name": "Gore",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -338,6 +377,11 @@
         "name": "Bite",
         "text": "Melee Weapon Attack: +4 to hit, reach 10 ft., one creature. Hit: 12 (3d6+2) piercing damage."
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -367,7 +411,8 @@
         "name": "Gore",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Stegosaurus",
@@ -389,6 +434,10 @@
         "name": "Tail",
         "text": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 26 (6d6+5) piercing damage."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland"
     ]
   },
   {
@@ -423,7 +472,8 @@
         "name": "Gore",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Velociraptor",
@@ -460,6 +510,10 @@
         "name": "Claws",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland"
     ]
   }
 ]
