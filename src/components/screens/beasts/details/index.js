@@ -5,7 +5,7 @@ import r from 'rnss';
 import { Divider } from 'react-native-elements';
 import { B, I, BI } from '../../../shared/helper';
 
-import { fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
+import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
 
 import { getModifier } from '../../../../api/beasts';
 
@@ -68,7 +68,16 @@ export default class BeastDetailsScreen extends React.Component {
 				ai center
 				m 5 0
 			`,
-			text: `c ${theme.textColor}`
+			text: `c ${theme.textColor}`,
+			environments: 'f 1; fd row; flex-wrap wrap',
+			environment: `
+				fs ${fontSizeMedium}
+				bc ${theme.formButtonColor}
+				c #fff
+				border-radius 1000
+				p 5 10
+				m 0 5 5 0
+			`
 		});
 	}
 
@@ -154,6 +163,17 @@ export default class BeastDetailsScreen extends React.Component {
 							{beast.actions.map(({ name, text }) => (
 								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
 							))}
+						</>
+					)}
+					{beast.environments && beast.environments.length > 0 && (
+						<>
+							<Divider style={styles.divider} />
+							<Text style={styles.header2}>Environments</Text>
+							<View style={styles.environments}>
+								{beast.environments.map(env => (
+									<Text key={env} style={styles.environment}>{env}</Text>
+								))}
+							</View>
 						</>
 					)}
 				</ScrollView>

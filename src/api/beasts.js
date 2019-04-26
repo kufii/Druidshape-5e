@@ -23,3 +23,5 @@ export const filterBeasts = (beasts, level=0, circleOfTheMoon=false, search) => 
 
 	return filtered;
 };
+
+export const environments = ['Arctic', 'Coastal', 'Desert', 'Forest', 'Grassland', 'Hill', 'Mountain', 'Swamp', 'Underdark', 'Underwater', 'Urban'];

@@ -2,6 +2,7 @@ import t from 'tcomb-form-native';
 import _ from 'lodash';
 import listTemplate from '../../../../styles/tcomb/list';
 import multiselectTempate from '../../../../styles/tcomb/multiselect';
+import { environments } from '../../../../api/beasts';
 
 export const Form = t.form.Form;
 Form.templates.list = listTemplate;
@@ -97,7 +98,7 @@ export const getOptions = theme => {
 		placeholderTextColor: theme.textColor
 	};
 
-	const environments = ['Arctic', 'Coastal', 'Desert', 'Forest', 'Grassland', 'Hill', 'Mountain', 'Swamp', 'Underdark', 'Underwater', 'Urban'].map(str => ({
+	const envs = environments.map(str => ({
 		value: str,
 		text: str
 	}));
@@ -165,7 +166,7 @@ export const getOptions = theme => {
 			actions: attributeListConfig,
 			environments: {
 				factory: multiselectTempate,
-				options: environments
+				options: envs
 			}
 		}
 	};

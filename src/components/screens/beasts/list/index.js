@@ -74,6 +74,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 			const { filters } = state;
 			if (filters.seen) beasts = beasts.filter(({ name }) => character.seen[name]);
 			if (filters.movement) beasts = beasts.filter(beast => beast[filters.movement]);
+			if (filters.environment) beasts = beasts.filter(({ environments }) => environments.includes(filters.environment));
 			return beasts;
 		};
 

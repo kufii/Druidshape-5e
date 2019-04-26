@@ -10,6 +10,7 @@ import ToggleIconButton from '../../../shared/toggle-icon-button';
 import Picker from '../../../shared/picker';
 import { icon } from '../../../../api/util';
 import menuStyles from '../../../../styles/menu';
+import { environments } from '../../../../api/beasts';
 
 const options = [
 	{ text: 'All', key: '0' },
@@ -73,7 +74,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 		`,
 		menuItemText: `c ${theme.textColor}; fw bold`,
 		textExtraMargin: 'm 0 11',
-		pickerExtraMargin: 'm 0 4',
+		pickerExtraMargin: Platform.OS === 'android' ? 'm 0 4' : 'm 0 11',
 		picker: `c ${theme.textColor}; border-color ${theme.textColorSecondary}`,
 		pickerLabel: 'pb 0',
 		filterContainer: `
@@ -139,7 +140,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 					</MenuOption>
 					<MenuOption disabled>
 						<Picker
-							containerStyle={[styles.picker, Platform.OS === 'ios' ? styles.textExtraMargin : styles.pickerExtraMargin]}
+							containerStyle={[styles.picker, styles.pickerExtraMargin]}
 							itemStyle={styles.picker}
 							value={filters.movement || ''}
 							onChange={value => {
@@ -152,6 +153,25 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 								{ text: 'Swim', value: 'swim' },
 								{ text: 'Climb', value: 'climb' },
 								{ text: 'Burrow', value: 'burrow' }
+							]}
+							mode='dropdown'
+						/>
+					</MenuOption>
+					<MenuOption customStyles={{ optionWrapper: styles.pickerLabel }} disabled>
+						<Text style={[styles.menuItemText, styles.textExtraMargin]}>Environment</Text>
+					</MenuOption>
+					<MenuOption disabled>
+						<Picker
+							containerStyle={[styles.picker, styles.pickerExtraMargin]}
+							itemStyle={styles.picker}
+							value={filters.environment || ''}
+							onChange={value => {
+								filters.environment = value;
+								actions.setFilters(filters);
+							}}
+							options={[
+								{ text: '-', value: '' },
+								...environments.map(str => ({ text: str, value: str }))
 							]}
 							mode='dropdown'
 						/>
