@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Picker, Text } from 'react-native';
+import { View, Picker, Text } from 'react-native';
 
 export default function PickerAndroid(props) {
 	const options = props.options.map(({ value, text }) => (
@@ -8,17 +8,19 @@ export default function PickerAndroid(props) {
 	));
 
 	return (
-		<Picker
-			selectedValue={props.value}
-			onValueChange={props.onChange}
-			enabled={!props.disabled}
-			mode={props.mode}
-			prompt={props.prompt}
-			itemStyle={props.itemStyle}
-			style={props.containerStyle}
-		>
-			{options}
-		</Picker>
+		<View style={props.containerStyle}>
+			<Picker
+				selectedValue={props.value}
+				onValueChange={props.onChange}
+				enabled={!props.disabled}
+				mode={props.mode}
+				prompt={props.prompt}
+				itemStyle={props.itemStyle}
+				style={props.containerStyle}
+			>
+				{options}
+			</Picker>
+		</View>
 	);
 }
 PickerAndroid.propTypes = {

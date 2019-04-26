@@ -73,9 +73,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 			m 0; p 0
 		`,
 		menuItemText: `c ${theme.textColor}; fw bold`,
-		textExtraMargin: 'm 0 11',
-		pickerExtraMargin: Platform.OS === 'android' ? 'm 0 4' : 'm 0 11',
-		picker: `c ${theme.textColor}; border-color ${theme.textColorSecondary}`,
+		extraMargin: 'm 0 11',
+		picker: `c ${theme.textColor}; b 1 solid ${theme.textColorSecondary}; br 4;`,
 		pickerLabel: 'pb 0',
 		filterContainer: `
 			f 1
@@ -136,11 +135,11 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 						/>
 					</MenuOption>
 					<MenuOption customStyles={{ optionWrapper: styles.pickerLabel }} disabled>
-						<Text style={[styles.menuItemText, styles.textExtraMargin]}>Movement</Text>
+						<Text style={[styles.menuItemText, styles.extraMargin]}>Movement</Text>
 					</MenuOption>
 					<MenuOption disabled>
 						<Picker
-							containerStyle={[styles.picker, styles.pickerExtraMargin]}
+							containerStyle={[styles.picker, styles.extraMargin]}
 							itemStyle={styles.picker}
 							value={filters.movement || ''}
 							onChange={value => {
@@ -158,11 +157,11 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 						/>
 					</MenuOption>
 					<MenuOption customStyles={{ optionWrapper: styles.pickerLabel }} disabled>
-						<Text style={[styles.menuItemText, styles.textExtraMargin]}>Environment</Text>
+						<Text style={[styles.menuItemText, styles.extraMargin]}>Environment</Text>
 					</MenuOption>
 					<MenuOption disabled>
 						<Picker
-							containerStyle={[styles.picker, styles.pickerExtraMargin]}
+							containerStyle={[styles.picker, styles.extraMargin]}
 							itemStyle={styles.picker}
 							value={filters.environment || ''}
 							onChange={value => {

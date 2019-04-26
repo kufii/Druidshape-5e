@@ -28,7 +28,7 @@
     "react-navigation": "^3.8.1",
     "react-navigation-collapsible": "^3.0.3",
     "react-navigation-transitions": "^1.0.10",
-    "rnss": "^1.0.3",
+    "rnss": "^1.0.5",
     "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
