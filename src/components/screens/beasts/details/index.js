@@ -76,7 +76,7 @@ export default class BeastDetailsScreen extends React.Component {
 				c #fff
 				border-radius 1000
 				p 5 10
-				m 0 5 5 0
+				m 5 5 5 0
 			`
 		});
 	}
