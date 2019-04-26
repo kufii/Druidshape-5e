@@ -32,6 +32,9 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage.",
         "attack": "Claw|6|1d8+4"
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -54,6 +57,9 @@
         "name": "Tail",
         "text": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 18 (4d6 + 4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -88,6 +94,9 @@
         "text": "Ranged Weapon Attack: +5 to hit, range 25/50 ft., one target. Hit: 6 (1d6 + 3) bludgeoning damage.",
         "attack": "Rock|5|1d6+3"
       }
+    ],
+    "environments": [
+      "Forest"
     ]
   },
   {
@@ -111,6 +120,10 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) slashing damage.",
         "attack": "Beak|4|1d8+2"
       }
+    ],
+    "environments": [
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -141,6 +154,10 @@
         "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) piercing damage.",
         "attack": "Bite|1|1d4-1"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Hill"
     ]
   },
   {
@@ -172,6 +189,9 @@
         "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
         "attack": "Bite|2|1"
       }
+    ],
+    "environments": [
+      "Forest"
     ]
   },
   {
@@ -207,7 +227,8 @@
         "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.",
         "attack": "Bite||1"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Black Bear",
@@ -246,6 +267,9 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) slashing damage.",
         "attack": "Claws|3|2d4+2"
       }
+    ],
+    "environments": [
+      "Forest"
     ]
   },
   {
@@ -281,6 +305,14 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
         "attack": "Beak|4|1d4+2"
       }
+    ],
+    "environments": [
+      "Arctic",
+      "Coastal",
+      "Forest",
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -315,6 +347,11 @@
         "text": "Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) slashing damage.",
         "attack": "Tusk|3|1d6+1"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -355,6 +392,11 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage.",
         "attack": "Claws|5|2d6+4"
       }
+    ],
+    "environments": [
+      "Arctic",
+      "Forest",
+      "Hill"
     ]
   },
   {
@@ -378,6 +420,9 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage.",
         "attack": "Bite|5|1d4"
       }
+    ],
+    "environments": [
+      "Desert"
     ]
   },
   {
@@ -409,6 +454,12 @@
         "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
         "attack": "Claws||1"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Urban"
     ]
   },
   {
@@ -450,7 +501,8 @@
         "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage.",
         "attack": "Claws|7|2d6+5"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Constrictor Snake",
@@ -480,6 +532,12 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 6 (1d8 + 2) bludgeoning damage, and the target is grappled (escape DC 14). Until this grapple ends, the creature is restrained, and the snake can't constrict another target.",
         "attack": "Constrict|4|1d8+2"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Swamp",
+      "Underwater"
     ]
   },
   {
@@ -512,6 +570,9 @@
         "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 bludgeoning damage.",
         "attack": "Claw||1"
       }
+    ],
+    "environments": [
+      "Coastal"
     ]
   },
   {
@@ -543,6 +604,10 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target is grappled (escape DC 12). Until this grapple ends, the target is restrained, and the crocodile can't bite another target",
         "attack": "Bite|4|1d10+2"
       }
+    ],
+    "environments": [
+      "Swamp",
+      "Urban"
     ]
   },
   {
@@ -566,6 +631,10 @@
         "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.",
         "attack": "Bite|2|1d4"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland"
     ]
   },
   {
@@ -600,6 +669,10 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.",
         "attack": "Bite|5|2d6+3"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Hill"
     ]
   },
   {
@@ -623,6 +696,9 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (2d4 + 4) bludgeoning damage.",
         "attack": "Hooves|6|2d4+4"
       }
+    ],
+    "environments": [
+      "Urban"
     ]
   },
   {
@@ -654,6 +730,12 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage.",
         "attack": "Talons|4|1d4+2"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -688,6 +770,9 @@
         "text": "Melee Weapon Attack: +8 to hit, reach 5 ft., one prone creature. Hit: 21 (3d10 + 5) bludgeoning damage.",
         "attack": "Stomp|8|3d10+5"
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -721,6 +806,11 @@
         "name": "Hooves",
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one prone creature. Hit: 8 (2d4 + 3) bludgeoning damage."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -753,6 +843,12 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 1 piercing damage plus 7 (3d4) poison damage.",
         "attack": "Bite|6|1"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Urban"
     ]
   },
   {
@@ -782,7 +878,8 @@
         "name": "Standing Leap",
         "text": "The frog's long jump is up to 10 ft. and its high jump is up to 5 ft., with or without a running start."
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Giant Badger",
@@ -822,6 +919,9 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) slashing damage.",
         "attack": "Claws|3|2d4+1"
       }
+    ],
+    "environments": [
+      "Forest"
     ]
   },
   {
@@ -857,6 +957,10 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage.",
         "attack": "Bite|4|1d6+2"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Underdark"
     ]
   },
   {
@@ -891,6 +995,11 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.",
         "attack": "Tusk|5|2d6+3"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -916,6 +1025,10 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 4 (1d4 + 2) piercing damage, and the target must succeed on a DC 11 Constitution saving throw or take 10 (3d6) poison damage. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
         "attack": "Bite|4|1d4+2"
       }
+    ],
+    "environments": [
+      "Underdark",
+      "Urban"
     ]
   },
   {
@@ -947,6 +1060,13 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 13 (2d8 + 4) bludgeoning damage, and the target is grappled (escape DC 16). Until this grapple ends, the creature is restrained, and the snake can't constrict another target.",
         "attack": "Constrict|6|2d8+4"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Swamp",
+      "Underdark",
+      "Underwater"
     ]
   },
   {
@@ -979,6 +1099,9 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage, and the target is grappled (escape DC 11). The crab has two claws, each of which can grapple only one target.",
         "attack": "Claw|3|1d6+1"
       }
+    ],
+    "environments": [
+      "Coastal"
     ]
   },
   {
@@ -1019,6 +1142,9 @@
         "text": "Melee Weapon Attack: +8 to hit, reach 10 ft., one target not grappled by the crocodile. Hit: 14 (2d8 + 5) bludgeoning damage. If the target is a creature, it must succeed on a DC 16 Strength saving throw or be knocked prone.",
         "attack": "Tail|8|2d8+5"
       }
+    ],
+    "environments": [
+      "Swamp"
     ]
   },
   {
@@ -1059,6 +1185,12 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.",
         "attack": "Talons|5|2d6+3"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -1095,6 +1227,12 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one prone creature. Hit: 22 (4d8 + 4) bludgeoning damage.",
         "attack": "Hooves|6|4d8+4"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -1125,6 +1263,9 @@
         "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6 - 1) slashing damage.",
         "attack": "Bite|1|1d6-1"
       }
+    ],
+    "environments": [
+      "Underdark"
     ]
   },
   {
@@ -1143,7 +1284,8 @@
     "cha": 3,
     "senses": "Darkvision 60 ft.",
     "passive": 10,
-    "cr": "0 "
+    "cr": "0 ",
+    "environments": []
   },
   {
     "name": "Giant Frog",
@@ -1183,6 +1325,10 @@
         "name": "Swallow",
         "text": "The frog makes one bite attack against a Small or smaller target it is grappling. If the attack hits, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the frog, and it takes 5 (2d4) acid damage at the start of each of the frog's turns. The frog can have only one target swallowed at a time. If the frog dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 ft. of movement, exiting prone."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Swamp"
     ]
   },
   {
@@ -1217,6 +1363,11 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) bludgeoning damage.",
         "attack": "Ram|5|2d4+3"
       }
+    ],
+    "environments": [
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -1247,6 +1398,12 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage.",
         "attack": "Bite|5|1d6+3"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -1282,6 +1439,13 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
         "attack": "Bite|4|1d8+2"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Desert",
+      "Forest",
+      "Swamp",
+      "Underdark"
     ]
   },
   {
@@ -1326,6 +1490,9 @@
         "name": "Ink Cloud (Recharges after a Short or Long Rest)",
         "text": "A 20-foot-radius cloud of ink extends all around the octopus if it is underwater. The area is heavily obscured for 1 minute, although a significant current can disperse the ink. After releasing the ink, the octopus can use the Dash action as a bonus action."
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -1362,6 +1529,11 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 8 (2d6 + 1) slashing damage.",
         "attack": "Talons|3|2d6+1"
       }
+    ],
+    "environments": [
+      "Arctic",
+      "Forest",
+      "Hill"
     ]
   },
   {
@@ -1388,6 +1560,14 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 6 (1d4 + 4) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one.",
         "attack": "Bite|6|1d4+4"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Swamp",
+      "Underdark",
+      "Urban"
     ]
   },
   {
@@ -1422,6 +1602,12 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
         "attack": "Bite|4|1d4+2"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Swamp",
+      "Underdark",
+      "Urban"
     ]
   },
   {
@@ -1446,7 +1632,8 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage. If the target is a creature, it must succeed on a DC 10 Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 (1d6) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies.",
         "attack": "Bite|3|1d4+1"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Giant Scorpion",
@@ -1479,6 +1666,9 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 22 (4d10) poison damage on a failed save, or half as much damage on a successful one.",
         "attack": "Sting|4|1d10+2"
       }
+    ],
+    "environments": [
+      "Desert"
     ]
   },
   {
@@ -1514,6 +1704,9 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage.",
         "attack": "|3|1d6+1"
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -1550,6 +1743,9 @@
         "text": "Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 22 (3d10 + 6) piercing damage.",
         "attack": "Bite|9|3d10+6"
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -1595,6 +1791,13 @@
         "text": "Ranged Weapon Attack: +5 to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage).",
         "attack": "Web|5|0"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Swamp",
+      "Underdark",
+      "Urban"
     ]
   },
   {
@@ -1634,6 +1837,13 @@
         "name": "Swallow",
         "text": "The toad makes one bite attack against a Medium or smaller target it is grappling. If the attack hits, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the toad, and it takes 10 (3d6) acid damage at the start of each of the toad's turns. The toad can have only one target swallowed at a time.\nIf the toad dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 feet of movement, exiting prone."
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Desert",
+      "Forest",
+      "Swamp",
+      "Underdark"
     ]
   },
   {
@@ -1678,6 +1888,10 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6 + 2) slashing damage.",
         "attack": "Talons|4|2d6+2"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Grassland"
     ]
   },
   {
@@ -1702,6 +1916,11 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
         "attack": "Sting|4|1d6+2"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Urban"
     ]
   },
   {
@@ -1733,6 +1952,11 @@
         "text": "Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) piercing damage.",
         "attack": "Bite|5|1d4+3"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -1773,6 +1997,13 @@
         "text": "Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 4 (1d6 + 1) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 7 (2d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.",
         "attack": "Bite|3|1d6+1"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -1807,6 +2038,12 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage.",
         "attack": "Ram|3|1d4+1"
       }
+    ],
+    "environments": [
+      "Grassland",
+      "Hill",
+      "Mountain",
+      "Urban"
     ]
   },
   {
@@ -1838,7 +2075,8 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
         "attack": "Talons|5|1"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Hunter Shark",
@@ -1873,6 +2111,9 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) piercing damage.",
         "attack": "Bite|6|2d8+4"
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -1903,6 +2144,12 @@
         "text": "Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) piercing damage.",
         "attack": "Bite|2|1d6"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -1937,6 +2184,10 @@
         "text": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) piercing damage.",
         "attack": "Bite|1|1d4-1"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Grassland"
     ]
   },
   {
@@ -1975,6 +2226,9 @@
         "name": "Bite",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 21 (5d6 + 4) piercing damage."
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -2022,6 +2276,12 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage.",
         "attack": "Claw|5|1d6+3"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Grassland",
+      "Hill",
+      "Mountain"
     ]
   },
   {
@@ -2047,7 +2307,8 @@
         "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
         "attack": "Bite||1"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Mammoth",
@@ -2081,6 +2342,9 @@
         "text": "Melee Weapon Attack: +10 to hit, reach 5 ft., one prone creature. Hit: 29 (4d10 + 7) bludgeoning damage.",
         "attack": "Stomp|10|4d10+7"
       }
+    ],
+    "environments": [
+      "Arctic"
     ]
   },
   {
@@ -2111,6 +2375,11 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
         "attack": "Bite|3|1d6+1"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Hill",
+      "Urban"
     ]
   },
   {
@@ -2144,6 +2413,11 @@
         "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage.",
         "attack": "Hooves|4|1d4+2"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Hill",
+      "Urban"
     ]
   },
   {
@@ -2188,6 +2462,9 @@
         "name": "Ink Cloud (Recharges after a Short or Long Rest)",
         "text": "A 5-foot-radius cloud of ink extends all around the octopus if it is underwater. The area is heavily obscured for 1 minute, although a significant current can disperse the ink. After releasing the ink, the octopus can use the Dash action as a bonus action."
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -2224,6 +2501,10 @@
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 1 slashing damage.",
         "attack": "Talons|3|1"
       }
+    ],
+    "environments": [
+      "Arctic",
+      "Forest"
     ]
   },
   {
@@ -2264,6 +2545,11 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage.",
         "attack": "Claw|4|1d4+2"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -2295,6 +2581,10 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (3d6 + 4) piercing damage.",
         "attack": "Bite|6|3d6+4"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Underwater"
     ]
   },
   {
@@ -2320,6 +2610,14 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage, and the target must make a DC 10 Constitution saving throw, taking 5 (2d4) poison damage on a failed save, or half as much damage on a successful one.",
         "attack": "Bite|5|1"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Hill",
+      "Swamp"
     ]
   },
   {
@@ -2360,6 +2658,10 @@
         "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage.",
         "attack": "Claws|7|2d6+5"
       }
+    ],
+    "environments": [
+      "Arctic",
+      "Underdark"
     ]
   },
   {
@@ -2383,6 +2685,9 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) bludgeoning damage.",
         "attack": "Hooves|4|2d4+2"
       }
+    ],
+    "environments": [
+      "Urban"
     ]
   },
   {
@@ -2413,6 +2718,11 @@
         "name": "Bite",
         "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) piercing damage"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Grassland",
+      "Mountain"
     ]
   },
   {
@@ -2447,6 +2757,9 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
         "attack": "Bite|5|1"
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -2477,6 +2790,10 @@
         "text": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.",
         "attack": "Bite||1"
       }
+    ],
+    "environments": [
+      "Swamp",
+      "Urban"
     ]
   },
   {
@@ -2507,6 +2824,11 @@
         "name": "Beak",
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
       }
+    ],
+    "environments": [
+      "Hill",
+      "Swamp",
+      "Urban"
     ]
   },
   {
@@ -2542,6 +2864,9 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
         "attack": "Bite|4|1d8+2"
       }
+    ],
+    "environments": [
+      "Underwater"
     ]
   },
   {
@@ -2572,6 +2897,9 @@
         "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.",
         "attack": "Gore|7|2d8+5"
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -2595,6 +2923,10 @@
         "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) bludgeoning damage.",
         "attack": "Hooves|2|2d4+3"
       }
+    ],
+    "environments": [
+      "Grassland",
+      "Urban"
     ]
   },
   {
@@ -2634,6 +2966,10 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage.",
         "attack": "Claw|6|2d6+5"
       }
+    ],
+    "environments": [
+      "Arctic",
+      "Mountain"
     ]
   },
   {
@@ -2658,6 +2994,9 @@
         "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 (1d8) poison damage on a failed save, or half as much damage on a successful one.",
         "attack": "Sting|2|1"
       }
+    ],
+    "environments": [
+      "Desert"
     ]
   },
   {
@@ -2680,7 +3019,8 @@
         "name": "Water Breathing",
         "text": "The sea horse can breathe only underwater."
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Spider",
@@ -2720,7 +3060,8 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 1 piercing damage, and the target must succeed on a DC 9 Constitution saving throw or take 2 (1d4) poison damage.",
         "attack": "Bite|4|1"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Stirge",
@@ -2745,6 +3086,17 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage, and the stirge attaches to the target. While attached, the stirge doesn't attack. Instead, at the start of each of the stirge's turns, the target loses 5 (1d4 + 3) hit points due to blood loss.\nThe stirge can detach itself by spending 5 feet of its movement. It does so after it drains 10 hit points of blood from the target or the target dies. A creature, including the target, can use its action to detach the stirge.",
         "attack": "Blood Drain|5|1d4+3"
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Desert",
+      "Forest",
+      "Grassland",
+      "Hill",
+      "Mountain",
+      "Swamp",
+      "Underdark",
+      "Urban"
     ]
   },
   {
@@ -2784,6 +3136,10 @@
         "name": "Claw",
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage."
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland"
     ]
   },
   {
@@ -2818,6 +3174,9 @@
         "text": "Melee Weapon Attack: +9 to hit, reach 5 ft., one prone creature. Hit: 22 (3d10 + 6) bludgeoning damage",
         "attack": "Stomp|9|3d10+6"
       }
+    ],
+    "environments": [
+      "Grassland"
     ]
   },
   {
@@ -2853,6 +3212,11 @@
         "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.",
         "attack": "Beak|2|1d4"
       }
+    ],
+    "environments": [
+      "Desert",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -2882,6 +3246,9 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage.",
         "attack": "|4|2d6+4"
       }
+    ],
+    "environments": [
+      "Urban"
     ]
   },
   {
@@ -2912,7 +3279,8 @@
         "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.",
         "attack": "Bite|5|1"
       }
-    ]
+    ],
+    "environments": []
   },
   {
     "name": "Wolf",
@@ -2946,6 +3314,11 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
         "attack": "Bite|4|2d4+2"
       }
+    ],
+    "environments": [
+      "Forest",
+      "Grassland",
+      "Hill"
     ]
   },
   {
@@ -2990,8 +3363,13 @@
         "name": "Whirlwind (Recharge 4-6)",
         "text": "Each creature in the elemental's space must make a DC 13 Strength saving throw. On a failure, a target takes 15 (3d8 + 2) bludgeoning damage and is flung up 20 feet away from the elemental in a random direction and knocked prone. If a thrown target strikes an object, such as a wall or floor, the target takes 3 (1d6) bludgeoning damage for every 10 feet it was thrown. If the target is thrown at another creature, that creature must succeed on a DC 13 Dexterity saving throw or take the same damage and be knocked prone.\n\nIf the saving throw is successful, the target takes half the bludgeoning damage and isn't flung away or knocked prone."
       }
+    ],
+    "environments": [
+      "Desert",
+      "Mountain"
     ]
-  }, {
+  },
+  {
     "name": "Earth Elemental",
     "type": "elemental",
     "size": "Large",
@@ -3033,8 +3411,12 @@
         "name": "Slam",
         "text": "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage."
       }
+    ],
+    "environments": [
+      "Underdark"
     ]
-  }, {
+  },
+  {
     "name": "Fire Elemental",
     "type": "elemental",
     "size": "Large",
@@ -3078,8 +3460,12 @@
         "name": "Touch",
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) fire damage. If the target is a creature or a flammable object, it ignites. Until a creature takes an action to douse the fire, the target takes 5 (1d10) fire damage at the start of each of its turns."
       }
+    ],
+    "environments": [
+      "Desert"
     ]
-  }, {
+  },
+  {
     "name": "Water Elemental",
     "type": "elemental",
     "size": "Large",
@@ -3124,6 +3510,11 @@
         "name": "Whelm (Recharge 4–6)",
         "text": "Each creature in the elemental's space must make a DC 15 Strength saving throw. On a failure, a target takes 13 (2d8 + 4) bludgeoning damage. If it is Large or smaller, it is also grappled (escape DC 14). Until this grapple ends, the target is restrained and unable to breathe unless it can breathe water. If the saving throw is successful, the target is pushed out of the elemental's space.\n\nThe elemental can grapple one Large creature or up to two Medium or smaller creatures at one time. At the start of each of the elemental's turns, each target grappled by it takes 13 (2d8 + 4) bludgeoning damage. A creature within 5 feet of the elemental can pull a creature or object out of it by taking an action to make a DC 14 Strength and succeeding."
       }
+    ],
+    "environments": [
+      "Coastal",
+      "Swamp",
+      "Underwater"
     ]
   }
 ]
