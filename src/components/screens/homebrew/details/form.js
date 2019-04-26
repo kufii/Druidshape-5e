@@ -1,6 +1,7 @@
 import t from 'tcomb-form-native';
 import _ from 'lodash';
 import listTemplate from '../../../../styles/tcomb/list';
+import multiselectTempate from '../../../../styles/tcomb/multiselect';
 
 export const Form = t.form.Form;
 Form.templates.list = listTemplate;
@@ -43,7 +44,8 @@ export const getStruct = beasts => {
 		languages: t.maybe(t.String),
 		cr: ChallengeRating,
 		traits: t.maybe(t.list(Attribute)),
-		actions: t.maybe(t.list(Attribute))
+		actions: t.maybe(t.list(Attribute)),
+		environments: t.maybe(t.list(t.String))
 	});
 };
 
@@ -58,7 +60,12 @@ export const getOptions = theme => {
 	stylesheet.pickerContainer.normal.color = theme.textColor;
 	stylesheet.pickerContainer.normal.borderColor = theme.textColorSecondary;
 	stylesheet.pickerValue.normal.color = stylesheet.pickerValue.error.color = theme.textColor;
-	stylesheet.formGroup.normal.cardColor = theme.cardColor;
+	stylesheet.formGroup.normal.cardColor = stylesheet.formGroup.error.cardColor = theme.cardColor;
+	stylesheet.checkbox.normal.checkedColor = stylesheet.checkbox.error.checkedColor = theme.formButtonColor;
+	stylesheet.checkbox.normal.uncheckedColor = stylesheet.checkbox.error.uncheckedColor = theme.textColorDisabled;
+	stylesheet.checkbox.normal.backgroundColor = stylesheet.checkbox.error.backgroundColor = theme.contentBackgroundColorDark;
+	stylesheet.checkbox.normal.borderColor = stylesheet.checkbox.error.borderColor = theme.textColorSecondary;
+	stylesheet.checkbox.normal.textColor = stylesheet.checkbox.error.textColor = theme.textColor;
 
 	const multilineStylesheet = _.cloneDeep(stylesheet);
 	multilineStylesheet.textbox.normal.height = multilineStylesheet.textbox.error.height = 100;
@@ -89,6 +96,11 @@ export const getOptions = theme => {
 		itemStyle: { color: theme.textColor },
 		placeholderTextColor: theme.textColor
 	};
+
+	const environments = ['Arctic', 'Coastal', 'Desert', 'Forest', 'Grassland', 'Hill', 'Mountain', 'Swamp', 'Underdark', 'Underwater', 'Urban'].map(str => ({
+		value: str,
+		text: str
+	}));
 
 	return {
 		stylesheet,
@@ -150,7 +162,11 @@ export const getOptions = theme => {
 				...dropdownConfig
 			},
 			traits: attributeListConfig,
-			actions: attributeListConfig
+			actions: attributeListConfig,
+			environments: {
+				factory: multiselectTempate,
+				options: environments
+			}
 		}
 	};
 };
