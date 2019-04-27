@@ -9,7 +9,7 @@ Features:
 * Favorite beasts for quick access
 * Homebrew beast creator
 * Track multiple characters
-* Filter beast list based on if you've seen them, or their movement types
+* Filter beast list based on if you've seen them, their movement types, or their environment
 
 ## Links
 * [Android](https://play.google.com/store/apps/details?id=com.adpyke.druidshape)

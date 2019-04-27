@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView, Text } from 'react-native';
 import r from 'rnss';
-import { Divider } from 'react-native-elements';
+import { Divider, Badge } from 'react-native-elements';
 import { B, I, BI } from '../../../shared/helper';
 
 import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
@@ -70,14 +70,9 @@ export default class BeastDetailsScreen extends React.Component {
 			`,
 			text: `c ${theme.textColor}`,
 			environments: 'f 1; fd row; flex-wrap wrap',
-			environment: `
-				fs ${fontSizeMedium}
-				bc ${theme.formButtonColor}
-				c #fff
-				border-radius 1000
-				p 5 10
-				m 5 5 5 0
-			`
+			environmentContainer: 'm 5 5 5 0',
+			environment: `bc ${theme.formButtonColor}; h auto; br 1000`,
+			environmentText: `fs ${fontSizeMedium}; p 5 10`
 		});
 	}
 
@@ -171,7 +166,13 @@ export default class BeastDetailsScreen extends React.Component {
 							<Text style={styles.header2}>Environments</Text>
 							<View style={styles.environments}>
 								{beast.environments.map(env => (
-									<Text key={env} style={styles.environment}>{env}</Text>
+									<Badge
+										key={env}
+										containerStyle={styles.environmentContainer}
+										badgeStyle={styles.environment}
+										value={env}
+										textStyle={styles.environmentText}
+									/>
 								))}
 							</View>
 						</>

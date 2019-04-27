@@ -74,7 +74,10 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 		`,
 		menuItemText: `c ${theme.textColor}; fw bold`,
 		extraMargin: 'm 0 11',
-		picker: `c ${theme.textColor}; b 1 solid ${theme.textColorSecondary}; br 4;`,
+		picker: `
+			c ${theme.textColor}
+			${Platform.OS === 'ios' ? `border-color ${theme.textColorSecondary}` : `b 1 solid ${theme.textColorSecondary}; br 4;`}
+		`,
 		pickerLabel: 'pb 0',
 		filterContainer: `
 			f 1
