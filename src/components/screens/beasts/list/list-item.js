@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
 import r from 'rnss';
 import { ListItem } from 'react-native-elements';
-import { Menu, MenuTrigger, MenuOptions, MenuOption, renderers as MenuRenderers } from 'react-native-popup-menu';
-import Icon from 'react-native-vector-icons/Ionicons';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import listStyles from '../../../../styles/list';
-import menuStyles from '../../../../styles/menu';
-import buttonStyles from '../../../../styles/buttons.js';
 import { icon } from '../../../../api/util';
 import { iconSizeLarge } from '../../../../api/constants';
 
@@ -17,7 +12,6 @@ export default class BeastListItem extends React.Component {
 		actions: PropTypes.object.isRequired,
 		state: PropTypes.object.isRequired,
 		item: PropTypes.string.isRequired,
-		showTooltip: PropTypes.bool,
 		isFav: PropTypes.bool,
 		isSeen: PropTypes.bool,
 		onPress: PropTypes.func,
@@ -28,43 +22,20 @@ export default class BeastListItem extends React.Component {
 	shouldComponentUpdate(nextProps) {
 		return nextProps.isFav !== this.props.isFav
 			|| nextProps.isSeen !== this.props.isSeen
-			|| nextProps.showTooltip !== this.props.showTooltip
 			|| nextProps.state.darkMode !== this.props.state.darkMode;
 	}
 
 	render() {
-		const { actions, item, showTooltip, isFav, isSeen, onPress, onFav, onSeen } = this.props;
+		const { actions, item, isFav, isSeen, onPress, onFav, onSeen } = this.props;
 		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles(theme);
-		const menuTheme = menuStyles(theme);
 
 		return (
 			<ListItem
 				onPress={onPress}
-				title={(
-					<View style={styles.row}>
-						<Text style={listTheme.itemText}>{item}</Text>
-						{showTooltip && (
-							<Menu renderer={MenuRenderers.Popover} rendererProps={menuTheme.rendererProps}>
-								<MenuTrigger
-									customStyles={{
-										triggerOuterWrapper: [styles.margin, buttonStyles.icon.buttonStyle, buttonStyles.icon.containerStyle]
-									}}
-								>
-									<Icon
-										name={icon('alert')}
-										size={iconSizeLarge}
-										color={theme.alertColor}
-									/>
-								</MenuTrigger>
-								<MenuOptions customStyles={menuTheme.menuOptions} disabled>
-									<MenuOption text='Your Druid level is too low' />
-								</MenuOptions>
-							</Menu>
-						)}
-					</View>
-				)}
+				title={item}
 				containerStyle={[listTheme.item, styles.item]}
+				titleStyle={listTheme.itemText}
 				leftIcon={(
 					<ToggleIconButton
 						active={isSeen}

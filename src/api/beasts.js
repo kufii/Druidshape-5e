@@ -2,11 +2,11 @@ export const getModifier = num => Math.floor((num - 10) / 2);
 
 export const crToNum = cr => cr.toString().includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
 
-export const filterBeasts = (beasts, character, search, filters={}, ignoreLevel) => {
+export const filterBeasts = (beasts, character, search, filters={}) => {
 	const { level, circleOfTheMoon, seen } = character;
 
 	let filtered = beasts.slice();
-	if (!ignoreLevel && level >= 2) {
+	if (level >= 2) {
 		const maxCr = circleOfTheMoon
 			? (level < 6 ? 1 : Math.floor(level / 3))
 			: (level < 4

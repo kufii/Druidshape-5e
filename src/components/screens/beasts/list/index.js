@@ -9,8 +9,7 @@ import FloatingActionButton from '../../../shared/fab';
 import listStyles from '../../../../styles/list';
 
 import { iconSizeMedium } from '../../../../api/constants';
-import { withCollapsible, groupBy, sortBy, desc, icon, fabOnScroll } from '../../../../api/util';
-import { crToNum } from '../../../../api/beasts';
+import { withCollapsible, icon, fabOnScroll } from '../../../../api/util';
 
 import { Header, ExtendedHeader } from './header';
 import BeastListItem from './list-item';
@@ -66,36 +65,12 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const character = actions.getCurrentCharacter();
 
-		const beasts = actions.getFilteredBeasts();
-		const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
-		const favorites = actions.getFilteredFavorites();
-
-		const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
-		const sections = state.search ? [{
-			data: getData(beasts)
-		}] : [
-			...(favorites.length ? [{
-				key: 'favs',
-				title: 'FAVORITES',
-				data: getData(favorites, 'fav')
-			}] : []),
-			...Object.entries(beastsByCr)
-				.sort(sortBy(
-					state.filters.desc ? desc(([cr]) => crToNum(cr)) : ([cr]) => crToNum(cr)
-				))
-				.map(([cr, list]) => ({
-					key: cr.toString(),
-					title: `CR ${cr}`,
-					data: getData(list)
-				}))
-		];
-
 		return (
 			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<AnimatedSectionList
 					ref={list => this.list = list}
 					keyboardShouldPersistTaps='always'
-					sections={sections}
+					sections={actions.getBeastList()}
 					renderSectionHeader={
 						state.search ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
 					}
@@ -105,7 +80,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 								actions={actions}
 								state={state}
 								item={item.name}
-								showTooltip={!beasts.find(b => b.name === item.name)}
 								onPress={() => navigation.navigate('BeastDetails', { beast: item.name })}
 								isFav={character.favs[item.name]}
 								isSeen={character.seen[item.name]}

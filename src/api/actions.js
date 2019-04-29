@@ -8,7 +8,8 @@ import t from 'tcomb-validation';
 import * as RNIap from 'react-native-iap';
 import beasts from '../data/beasts.json';
 import products from '../data/iap.json';
-import { filterBeasts } from './beasts';
+import { filterBeasts, crToNum } from './beasts';
+import { groupBy, sortBy, desc } from './util';
 
 const homebrewStruct = getStruct();
 
@@ -237,7 +238,33 @@ export const actions = (update, states) => {
 			.map(([key]) => actions.getBeast(key))
 			.filter(b => b),
 		getFilteredBeasts: () => filterBeasts(actions.getAllBeasts(), actions.getCurrentCharacter(), states().search, states().filters),
-		getFilteredFavorites: () => filterBeasts(actions.getFavorites(), actions.getCurrentCharacter(), states().search, states().filters, true)
+		getFilteredFavorites: () => filterBeasts(actions.getFavorites(), actions.getCurrentCharacter(), states().search, states().filters),
+		getBeastList: () => {
+			const beasts = actions.getFilteredBeasts();
+			const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
+			const favorites = actions.getFilteredFavorites();
+
+			const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
+
+			return states().search ? [{
+				data: getData(beasts)
+			}] : [
+				...(favorites.length ? [{
+					key: 'favs',
+					title: 'FAVORITES',
+					data: getData(favorites, 'fav')
+				}] : []),
+				...Object.entries(beastsByCr)
+					.sort(sortBy(
+						states().filters.desc ? desc(([cr]) => crToNum(cr)) : ([cr]) => crToNum(cr)
+					))
+					.map(([cr, list]) => ({
+						key: cr.toString(),
+						title: `CR ${cr}`,
+						data: getData(list)
+					}))
+			];
+		}
 	};
 	return actions;
 };
