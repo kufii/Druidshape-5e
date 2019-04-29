@@ -54,7 +54,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const theme = actions.getCurrentTheme();
 	const menuTheme = menuStyles(theme);
 
-	const search = navigation.getParam('search', '');
+	const search = state.search;
 	const isFiltering = navigation.getParam('isFiltering', false);
 
 	const { filters } = state;
@@ -106,7 +106,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 					buttonStyle: 'clear',
 					color: theme.headerTextColor
 				}}
-				onChangeText={search => navigation.setParams({ search })}
+				onChangeText={search => actions.setSearch(search)}
 				value={search}
 			/>
 			<Menu

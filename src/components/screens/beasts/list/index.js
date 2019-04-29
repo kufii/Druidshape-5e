@@ -10,7 +10,7 @@ import listStyles from '../../../../styles/list';
 
 import { iconSizeMedium } from '../../../../api/constants';
 import { withCollapsible, groupBy, sortBy, desc, icon, fabOnScroll } from '../../../../api/util';
-import { filterBeasts, crToNum } from '../../../../api/beasts';
+import { crToNum } from '../../../../api/beasts';
 
 import { Header, ExtendedHeader } from './header';
 import BeastListItem from './list-item';
@@ -34,10 +34,6 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 	};
 
 	static navigationOptions = Header;
-
-	get search() {
-		return this.props.navigation.getParam('search', '');
-	}
 
 	scrollToTop() {
 		this.list && this.list.getNode().scrollToLocation({
@@ -70,20 +66,12 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const character = actions.getCurrentCharacter();
 
-		const filter = beasts => {
-			const { filters } = state;
-			if (filters.seen) beasts = beasts.filter(({ name }) => character.seen[name]);
-			if (filters.movement) beasts = beasts.filter(beast => beast[filters.movement]);
-			if (filters.environment) beasts = beasts.filter(({ environments }) => environments.includes(filters.environment));
-			return beasts;
-		};
-
-		const beasts = filter(filterBeasts(actions.getAllBeasts(), character.level, character.isMoon, this.search));
+		const beasts = actions.getFilteredBeasts();
 		const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
-		const favorites = filter(actions.getFavorites());
+		const favorites = actions.getFilteredFavorites();
 
 		const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
-		const sections = this.search ? [{
+		const sections = state.search ? [{
 			data: getData(beasts)
 		}] : [
 			...(favorites.length ? [{
@@ -109,7 +97,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 					keyboardShouldPersistTaps='always'
 					sections={sections}
 					renderSectionHeader={
-						this.search ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
+						state.search ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
 					}
 					renderItem={
 						({ item }) => (

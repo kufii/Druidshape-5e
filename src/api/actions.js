@@ -8,6 +8,7 @@ import t from 'tcomb-validation';
 import * as RNIap from 'react-native-iap';
 import beasts from '../data/beasts.json';
 import products from '../data/iap.json';
+import { filterBeasts } from './beasts';
 
 const homebrewStruct = getStruct();
 
@@ -15,7 +16,8 @@ export const initialState = {
 	...initialPrefs,
 	isLoading: true,
 	iaps: [],
-	beasts
+	beasts,
+	search: ''
 };
 
 export const actions = (update, states) => {
@@ -130,6 +132,7 @@ export const actions = (update, states) => {
 			update({ filters });
 			syncPrefs();
 		},
+		setSearch: search => update({ search }),
 		toggleFav: name => {
 			const characters = states().characters;
 			const char = characters.find(c => c.key === states().selectedCharacter);
@@ -232,7 +235,9 @@ export const actions = (update, states) => {
 		getFavorites: () => Object.entries(actions.getCurrentCharacter().favs)
 			.filter(([_, isFav]) => isFav)
 			.map(([key]) => actions.getBeast(key))
-			.filter(b => b)
+			.filter(b => b),
+		getFilteredBeasts: () => filterBeasts(actions.getAllBeasts(), actions.getCurrentCharacter(), states().search, states().filters),
+		getFilteredFavorites: () => filterBeasts(actions.getFavorites(), actions.getCurrentCharacter(), states().search, states().filters, true)
 	};
 	return actions;
 };

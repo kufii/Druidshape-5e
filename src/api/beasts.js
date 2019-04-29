@@ -2,9 +2,11 @@ export const getModifier = num => Math.floor((num - 10) / 2);
 
 export const crToNum = cr => cr.toString().includes('/') ? 1 / parseInt(cr.split('/')[1]) : parseInt(cr);
 
-export const filterBeasts = (beasts, level=0, circleOfTheMoon=false, search) => {
+export const filterBeasts = (beasts, character, search, filters={}, ignoreLevel) => {
+	const { level, circleOfTheMoon, seen } = character;
+
 	let filtered = beasts.slice();
-	if (level >= 2) {
+	if (!ignoreLevel && level >= 2) {
 		const maxCr = circleOfTheMoon
 			? (level < 6 ? 1 : Math.floor(level / 3))
 			: (level < 4
@@ -19,6 +21,10 @@ export const filterBeasts = (beasts, level=0, circleOfTheMoon=false, search) => 
 		if (!canSwim) filtered = filtered.filter(b => !b.swim);
 		if (!canFly) filtered = filtered.filter(b => !b.fly);
 	}
+
+	if (filters.seen) filtered = filtered.filter(({ name }) => seen[name]);
+	if (filters.movement) filtered = filtered.filter(beast => beast[filters.movement]);
+	if (filters.environment) filtered = filtered.filter(({ environments }) => environments.includes(filters.environment));
 	if (search) filtered = filtered.filter(b => b.name.toLowerCase().includes(search.toLowerCase()));
 
 	return filtered;
