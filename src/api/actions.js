@@ -1,7 +1,7 @@
 import { Alert } from 'react-native';
 import Toast from 'react-native-root-toast';
 import { setPref, loadPrefs, initialPrefs } from './user-prefs';
-import { toDict, iterate } from './util';
+import { toDict, iterate, groupBy, sortBy, desc, flatten } from './util';
 import { lightTheme, darkTheme } from './constants';
 import { getStruct } from '../components/screens/homebrew/details/form';
 import t from 'tcomb-validation';
@@ -9,7 +9,6 @@ import * as RNIap from 'react-native-iap';
 import beasts from '../data/beasts.json';
 import products from '../data/iap.json';
 import { filterBeasts, crToNum } from './beasts';
-import { groupBy, sortBy, desc } from './util';
 
 const homebrewStruct = getStruct();
 
@@ -264,7 +263,8 @@ export const actions = (update, states) => {
 						data: getData(list)
 					}))
 			];
-		}
+		},
+		getBeastListFlattened: () => actions.getBeastList().map(({ data }) => data).reduce(flatten, [])
 	};
 	return actions;
 };
