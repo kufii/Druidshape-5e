@@ -22,7 +22,7 @@ const hasNaturalArmor = beast => beast.ac !== 10 + getModifier(beast.dex);
 
 export default class BeastDetailsScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => ({
-		title: navigation.getParam('beast')
+		title: navigation.getParam('title')
 	});
 
 	static propTypes = {
@@ -33,12 +33,14 @@ export default class BeastDetailsScreen extends React.Component {
 		}).isRequired
 	};
 
-	get beastName() {
-		return this.props.navigation.getParam('beast');
+	constructor(props) {
+		super(props);
+		this.list = props.screenProps.actions.getBeastListFlattened();
 	}
 
 	get styles() {
 		const { actions } = this.props.screenProps;
+
 		const theme = actions.getCurrentTheme();
 		return r({
 			container: `
@@ -77,72 +79,83 @@ export default class BeastDetailsScreen extends React.Component {
 	}
 
 	render() {
-		const { actions } = this.props.screenProps;
-		const beast = actions.getBeast(this.beastName);
+		const { navigation } = this.props;
+
+		const key = navigation.getParam('key');
+		const index = this.list.findIndex(b => b.key === key) || 0;
+
 		const styles = this.styles;
-		return beast ? (
-			<View style={styles.container}>
-				<ScrollView style={styles.scrollView} contentContainerStyle={styles.containerContent}>
-					<Text style={styles.header1}>{beast.name}</Text>
-					<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
-					<Divider style={styles.divider} />
-					<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
-					<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
-					<Text style={styles.attribute}><B>Speed</B> {getSpeedString(beast)}</Text>
-					<Divider style={styles.divider} />
-					<View style={styles.row}>
-						<View style={styles.stat}>
-							<Text style={styles.header2}>STR</Text>
-							<Text style={styles.text}>{beast.str} ({getModifier(beast.str)})</Text>
+		return (
+			<Swiper
+				loop={false}
+				showsPagination={false}
+				loadMinimal
+				index={index}
+				onIndexChanged={index => navigation.setParams({ key: this.list[index].key, title: this.list[index].name })}
+				style={styles.container}
+			>
+				{this.list.map((beast, i) => Math.abs(index - i) <= 1 ? (
+					<ScrollView key={beast.key} style={styles.scrollView} contentContainerStyle={styles.containerContent}>
+						<Text style={styles.header1}>{beast.name}</Text>
+						<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
+						<Divider style={styles.divider} />
+						<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
+						<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
+						<Text style={styles.attribute}><B>Speed</B> {getSpeedString(beast)}</Text>
+						<Divider style={styles.divider} />
+						<View style={styles.row}>
+							<View style={styles.stat}>
+								<Text style={styles.header2}>STR</Text>
+								<Text style={styles.text}>{beast.str} ({getModifier(beast.str)})</Text>
+							</View>
+							<View style={styles.stat}>
+								<Text style={styles.header2}>DEX</Text>
+								<Text style={styles.text}>{beast.dex} ({getModifier(beast.dex)})</Text>
+							</View>
+							<View style={styles.stat}>
+								<Text style={styles.header2}>CON</Text>
+								<Text style={styles.text}>{beast.con} ({getModifier(beast.con)})</Text>
+							</View>
 						</View>
-						<View style={styles.stat}>
-							<Text style={styles.header2}>DEX</Text>
-							<Text style={styles.text}>{beast.dex} ({getModifier(beast.dex)})</Text>
+						<View style={styles.row}>
+							<View style={styles.stat}>
+								<Text style={styles.header2}>INT</Text>
+								<Text style={styles.text}>{beast.int} ({getModifier(beast.int)})</Text>
+							</View>
+							<View style={styles.stat}>
+								<Text style={styles.header2}>WIS</Text>
+								<Text style={styles.text}>{beast.wis} ({getModifier(beast.wis)})</Text>
+							</View>
+							<View style={styles.stat}>
+								<Text style={styles.header2}>CHA</Text>
+								<Text style={styles.text}>{beast.cha} ({getModifier(beast.cha)})</Text>
+							</View>
 						</View>
-						<View style={styles.stat}>
-							<Text style={styles.header2}>CON</Text>
-							<Text style={styles.text}>{beast.con} ({getModifier(beast.con)})</Text>
-						</View>
-					</View>
-					<View style={styles.row}>
-						<View style={styles.stat}>
-							<Text style={styles.header2}>INT</Text>
-							<Text style={styles.text}>{beast.int} ({getModifier(beast.int)})</Text>
-						</View>
-						<View style={styles.stat}>
-							<Text style={styles.header2}>WIS</Text>
-							<Text style={styles.text}>{beast.wis} ({getModifier(beast.wis)})</Text>
-						</View>
-						<View style={styles.stat}>
-							<Text style={styles.header2}>CHA</Text>
-							<Text style={styles.text}>{beast.cha} ({getModifier(beast.cha)})</Text>
-						</View>
-					</View>
-					<Divider style={styles.divider} />
-					<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
-					{beast.skills && (
-						<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
-					)}
-					{beast.vulnerabilities && (
-						<Text style={styles.attribute}><B>Damage Vulnerabilities</B> {beast.vulnerabilities}</Text>
-					)}
-					{beast.resistances && (
-						<Text style={styles.attribute}><B>Damage Resistances</B> {beast.resistances}</Text>
-					)}
-					{beast.immunities && (
-						<Text style={styles.attribute}><B>Damage Immunities</B> {beast.immunities}</Text>
-					)}
-					{beast.conditionImmunities && (
-						<Text style={styles.attribute}><B>Condition Immunities</B> {beast.conditionImmunities}</Text>
-					)}
-					{beast.senses && (
-						<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
-					)}
-					{beast.languages && (
-						<Text style={styles.attribute}><B>Languages</B> {beast.languages}</Text>
-					)}
-					<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
-					{beast.traits && (
+						<Divider style={styles.divider} />
+						<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
+						{beast.skills && (
+							<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
+						)}
+						{beast.vulnerabilities && (
+							<Text style={styles.attribute}><B>Damage Vulnerabilities</B> {beast.vulnerabilities}</Text>
+						)}
+						{beast.resistances && (
+							<Text style={styles.attribute}><B>Damage Resistances</B> {beast.resistances}</Text>
+						)}
+						{beast.immunities && (
+							<Text style={styles.attribute}><B>Damage Immunities</B> {beast.immunities}</Text>
+						)}
+						{beast.conditionImmunities && (
+							<Text style={styles.attribute}><B>Condition Immunities</B> {beast.conditionImmunities}</Text>
+						)}
+						{beast.senses && (
+							<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
+						)}
+						{beast.languages && (
+							<Text style={styles.attribute}><B>Languages</B> {beast.languages}</Text>
+						)}
+						<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
+						{beast.traits && (
 						<>
 							<Divider style={styles.divider} />
 							<Text style={styles.header2}>Traits</Text>
@@ -150,8 +163,8 @@ export default class BeastDetailsScreen extends React.Component {
 								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
 							))}
 						</>
-					)}
-					{beast.actions && (
+						)}
+						{beast.actions && (
 						<>
 							<Divider style={styles.divider} />
 							<Text style={styles.header2}>Actions</Text>
@@ -159,8 +172,8 @@ export default class BeastDetailsScreen extends React.Component {
 								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
 							))}
 						</>
-					)}
-					{beast.environments && beast.environments.length > 0 && (
+						)}
+						{beast.environments && beast.environments.length > 0 && (
 						<>
 							<Divider style={styles.divider} />
 							<Text style={styles.header2}>Environments</Text>
@@ -176,9 +189,10 @@ export default class BeastDetailsScreen extends React.Component {
 								))}
 							</View>
 						</>
-					)}
-				</ScrollView>
-			</View>
-		) : <View style={styles.container} />;
+						)}
+					</ScrollView>
+				) : <View key={beast.key} />)}
+			</Swiper>
+		);
 	}
 }

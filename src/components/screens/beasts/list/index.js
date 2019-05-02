@@ -65,12 +65,14 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const character = actions.getCurrentCharacter();
 
+		const list = actions.getBeastList();
+
 		return (
 			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<AnimatedSectionList
 					ref={list => this.list = list}
 					keyboardShouldPersistTaps='always'
-					sections={actions.getBeastList()}
+					sections={list}
 					renderSectionHeader={
 						state.search ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
 					}
@@ -80,7 +82,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 								actions={actions}
 								state={state}
 								item={item.name}
-								onPress={() => navigation.navigate('BeastDetails', { beast: item.name })}
+								onPress={() => navigation.navigate('BeastDetails', { key: item.key, title: item.name })}
 								isFav={character.favs[item.name]}
 								isSeen={character.seen[item.name]}
 								onFav={() => actions.toggleFav(item.name)}
