@@ -34,6 +34,7 @@ export default class BeastDetailsScreen extends React.Component {
 		}).isRequired
 	};
 
+
 	constructor(props) {
 		super(props);
 		this.list = props.screenProps.actions.getBeastListFlattened();
@@ -96,7 +97,7 @@ export default class BeastDetailsScreen extends React.Component {
 				onIndexChanged={index => navigation.setParams({ key: list[index].key, title: list[index].name })}
 				style={styles.container}
 			>
-				{list.map(beast => (
+				{this.list.map((beast, i) => Math.abs(index - i) <= 1 ? (
 					<ScrollView key={beast.key} style={styles.scrollView} contentContainerStyle={styles.containerContent}>
 						<Text style={styles.header1}>{beast.name}</Text>
 						<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
@@ -193,7 +194,7 @@ export default class BeastDetailsScreen extends React.Component {
 						</>
 						)}
 					</ScrollView>
-				))}
+				) : <View key={beast.key} />)}
 			</Swiper>
 		);
 	}
