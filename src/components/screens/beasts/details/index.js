@@ -157,39 +157,39 @@ export default class BeastDetailsScreen extends React.Component {
 						)}
 						<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
 						{beast.traits && (
-						<>
-							<Divider style={styles.divider} />
-							<Text style={styles.header2}>Traits</Text>
-							{beast.traits.map(({ name, text }) => (
-								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
-							))}
-						</>
+							<>
+								<Divider style={styles.divider} />
+								<Text style={styles.header2}>Traits</Text>
+								{beast.traits.map(({ name, text }) => (
+									<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
+								))}
+							</>
 						)}
 						{beast.actions && (
-						<>
-							<Divider style={styles.divider} />
-							<Text style={styles.header2}>Actions</Text>
-							{beast.actions.map(({ name, text }) => (
-								<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
-							))}
-						</>
+							<>
+								<Divider style={styles.divider} />
+								<Text style={styles.header2}>Actions</Text>
+								{beast.actions.map(({ name, text }) => (
+									<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
+								))}
+							</>
 						)}
 						{beast.environments && beast.environments.length > 0 && (
-						<>
-							<Divider style={styles.divider} />
-							<Text style={styles.header2}>Environments</Text>
-							<View style={styles.environments}>
-								{beast.environments.map(env => (
-									<Badge
-										key={env}
-										containerStyle={styles.environmentContainer}
-										badgeStyle={styles.environment}
-										value={env}
-										textStyle={styles.environmentText}
-									/>
-								))}
-							</View>
-						</>
+							<>
+								<Divider style={styles.divider} />
+								<Text style={styles.header2}>Environments</Text>
+								<View style={styles.environments}>
+									{beast.environments.map(env => (
+										<Badge
+											key={env}
+											containerStyle={styles.environmentContainer}
+											badgeStyle={styles.environment}
+											value={env}
+											textStyle={styles.environmentText}
+										/>
+									))}
+								</View>
+							</>
 						)}
 					</ScrollView>
 				))}
