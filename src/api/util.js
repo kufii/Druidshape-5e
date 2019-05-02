@@ -54,6 +54,14 @@ export const iterate = function*(iter) {
 	}
 };
 
+export const range = (start, end) => {
+	const arr = [];
+	for (let i = start; i <= end; i++) {
+		arr.push(i);
+	}
+	return arr;
+};
+
 export const icon = name => (Platform.OS === 'ios' ? 'ios-' : 'md-') + name;
 
 export const withCollapsible = (main, collapse, height=60) => _withCollapsible(main, {

@@ -1,4 +1,5 @@
 import React from 'react';
+import r from 'rnss';
 import PropTypes from 'prop-types';
 import { View, Picker, Text } from 'react-native';
 
@@ -8,7 +9,7 @@ export default function PickerAndroid(props) {
 	));
 
 	return (
-		<View style={props.containerStyle}>
+		<View style={[containerStyle, props.containerStyle]}>
 			<Picker
 				selectedValue={props.value}
 				onValueChange={props.onChange}
@@ -36,3 +37,5 @@ PickerAndroid.propTypes = {
 	itemStyle: Text.propTypes.style,
 	containerStyle: Text.propTypes.style
 };
+
+const containerStyle = r`br 4; bw 1; p 0; m 0`;

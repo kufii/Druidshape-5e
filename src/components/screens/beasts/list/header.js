@@ -8,13 +8,13 @@ import { Menu, MenuTrigger, MenuOptions, MenuOption } from 'react-native-popup-m
 import ModalDropdown from '../../../shared/modal-dropdown';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import Picker from '../../../shared/picker';
-import { icon } from '../../../../api/util';
+import { icon, range } from '../../../../api/util';
 import menuStyles from '../../../../styles/menu';
 import { environments } from '../../../../api/beasts';
 
 const options = [
 	{ text: 'All', key: '0' },
-	...Array.from(new Array(19), (_, i) => ({ text: `Druid Level ${i + 2}`, key: (i + 2).toString() }))
+	...range(2, 20).map(n => ({ text: `Druid Level ${n}`, key: n.toString() }))
 ];
 
 export const Header = ({ screenProps }) => {
@@ -76,7 +76,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 		extraMargin: 'm 0 11',
 		picker: `
 			c ${theme.textColor}
-			${Platform.OS === 'ios' ? `border-color ${theme.textColorSecondary}` : `b 1 solid ${theme.textColorSecondary}; br 4;`}
+			border-color ${theme.textColorSecondary}
 		`,
 		pickerLabel: 'pb 0',
 		filterContainer: `

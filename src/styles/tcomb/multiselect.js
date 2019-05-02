@@ -12,6 +12,8 @@ export default class MultiSelect extends t.form.Select {
 
 	getTemplate() {
 		return locals => {
+			if (locals.hidden) return null;
+
 			const stylesheet = locals.stylesheet;
 			let formGroupStyle = stylesheet.formGroup.normal;
 			let controlLabelStyle = stylesheet.controlLabel.normal;

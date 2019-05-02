@@ -64,7 +64,7 @@ export default class CollapsiblePickerIOS extends React.Component {
 		);
 
 		return (
-			<View style={[styles.pickerContainer, this.props.containerStyle]}>
+			<View style={[styles.pickerContainer, this.props.containerStyle, !this.state.isCollapsed && this.props.containerStyleOpen]}>
 				<TouchableOpacity
 					disabled={this.props.disabled}
 					onPress={this.togglePicker}
@@ -102,7 +102,8 @@ CollapsiblePickerIOS.propTypes = {
 	mode: PropTypes.string,
 	prompt: PropTypes.string,
 	itemStyle: Text.propTypes.style,
-	containerStyle: Text.propTypes.style
+	containerStyle: Text.propTypes.style,
+	containerStyleOpen: Text.propTypes.style
 };
 
 const styles = r({
