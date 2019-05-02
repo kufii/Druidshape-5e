@@ -65,14 +65,12 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const character = actions.getCurrentCharacter();
 
-		const list = actions.getBeastList();
-
 		return (
 			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<AnimatedSectionList
 					ref={list => this.list = list}
 					keyboardShouldPersistTaps='always'
-					sections={list}
+					sections={actions.getBeastList()}
 					renderSectionHeader={
 						state.search ? null : ({ section }) => <Text style={listTheme.sectionHeader}>{section.title}</Text>
 					}
