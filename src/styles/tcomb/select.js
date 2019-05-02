@@ -9,6 +9,7 @@ export default function Select(locals) {
 
 	let formGroupStyle = stylesheet.formGroup.normal;
 	let controlLabelStyle = stylesheet.controlLabel.normal;
+	let selectStyle = stylesheet.select.normal;
 	let pickerContainer = stylesheet.pickerContainer.normal;
 	const pickerContainerOpen = stylesheet.pickerContainer.open;
 	let helpBlockStyle = stylesheet.helpBlock.normal;
@@ -17,6 +18,7 @@ export default function Select(locals) {
 	if (locals.hasError) {
 		formGroupStyle = stylesheet.formGroup.error;
 		controlLabelStyle = stylesheet.controlLabel.error;
+		selectStyle = stylesheet.select.error;
 		pickerContainer = stylesheet.pickerContainer.error;
 		helpBlockStyle = stylesheet.helpBlock.error;
 	}
@@ -27,7 +29,7 @@ export default function Select(locals) {
 	const help = locals.help ? (
 		<Text style={helpBlockStyle}>{locals.help}</Text>
 	) : null;
-	const error= locals.hasError && locals.error ? (
+	const error = locals.hasError && locals.error ? (
 		<Text accessibilityLiveRegion='polite' style={errorBlockStyle}>
 			{locals.error}
 		</Text>
@@ -45,6 +47,7 @@ export default function Select(locals) {
 				isDisabled={isDisabled}
 				mode={mode}
 				prompt={prompt}
+				style={selectStyle}
 				itemStyle={itemStyle}
 				containerStyle={pickerContainer}
 				containerStyleOpen={pickerContainerOpen}

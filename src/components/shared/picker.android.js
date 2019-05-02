@@ -17,7 +17,7 @@ export default function PickerAndroid(props) {
 				mode={props.mode}
 				prompt={props.prompt}
 				itemStyle={props.itemStyle}
-				style={props.containerStyle}
+				style={props.style}
 			>
 				{options}
 			</Picker>
@@ -34,6 +34,7 @@ PickerAndroid.propTypes = {
 	disabled: PropTypes.bool,
 	mode: PropTypes.string,
 	prompt: PropTypes.string,
+	style: Text.propTypes.style,
 	itemStyle: Text.propTypes.style,
 	containerStyle: Text.propTypes.style
 };

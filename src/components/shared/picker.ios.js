@@ -80,6 +80,7 @@ export default class CollapsiblePickerIOS extends React.Component {
 						enabled={!this.props.disabled}
 						mode={this.props.mode}
 						prompt={this.props.prompt}
+						style={this.props.style}
 						itemStyle={this.props.itemStyle}
 					>
 						{options}
@@ -101,6 +102,7 @@ CollapsiblePickerIOS.propTypes = {
 	disabled: PropTypes.bool,
 	mode: PropTypes.string,
 	prompt: PropTypes.string,
+	style: Text.propTypes.style,
 	itemStyle: Text.propTypes.style,
 	containerStyle: Text.propTypes.style,
 	containerStyleOpen: Text.propTypes.style
