@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { View, ScrollView, Text } from 'react-native';
 import r from 'rnss';
 import { Divider, Badge } from 'react-native-elements';
-import Swiper from 'react-native-swiper';
 import { B, I, BI } from '../../../shared/helper';
 
 import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
