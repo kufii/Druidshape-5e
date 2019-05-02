@@ -83,8 +83,7 @@ export default class BeastDetailsScreen extends React.Component {
 		const { navigation } = this.props;
 
 		const key = navigation.getParam('key');
-		const list = this.list;
-		const index = list.findIndex(b => b.key === key) || 0;
+		const index = this.list.findIndex(b => b.key === key) || 0;
 
 		const styles = this.styles;
 		return (
@@ -93,7 +92,7 @@ export default class BeastDetailsScreen extends React.Component {
 				showsPagination={false}
 				loadMinimal
 				index={index}
-				onIndexChanged={index => navigation.setParams({ key: list[index].key, title: list[index].name })}
+				onIndexChanged={index => navigation.setParams({ key: this.list[index].key, title: this.list[index].name })}
 				style={styles.container}
 			>
 				{this.list.map((beast, i) => Math.abs(index - i) <= 1 ? (

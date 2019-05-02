@@ -9,7 +9,7 @@ import FloatingActionButton from '../../../shared/fab';
 import listStyles from '../../../../styles/list';
 
 import { iconSizeMedium } from '../../../../api/constants';
-import { withCollapsible, icon, fabOnScroll, flatten } from '../../../../api/util';
+import { withCollapsible, icon, fabOnScroll } from '../../../../api/util';
 
 import { Header, ExtendedHeader } from './header';
 import BeastListItem from './list-item';
