@@ -34,7 +34,6 @@ export default class BeastDetailsScreen extends React.Component {
 		}).isRequired
 	};
 
-
 	constructor(props) {
 		super(props);
 		this.list = props.screenProps.actions.getBeastListFlattened();
