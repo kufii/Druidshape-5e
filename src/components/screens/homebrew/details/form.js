@@ -12,7 +12,7 @@ Form.templates.select = selectTemplate;
 
 export const getStruct = beasts => {
 	const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
-	const ChallengeRating = t.enums.of(['0 ', '1/8', ...range(1, 30).map(n => `${n} `)], 'ChallengeRating');
+	const ChallengeRating = t.enums.of(['0 ', '1/8', '1/4', '1/2', ...range(1, 30).map(n => `${n} `)], 'ChallengeRating');
 
 	const Attribute = t.struct({
 		name: t.String,
