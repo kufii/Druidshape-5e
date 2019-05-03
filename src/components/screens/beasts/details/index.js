@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, ScrollView, Text } from 'react-native';
 import r from 'rnss';
 import { Divider, Badge } from 'react-native-elements';
-import Swiper from 'react-native-swiper';
+import SwipePager from '../../../shared/swipe-pager';
 import { B, I, BI } from '../../../shared/helper';
 
 import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
@@ -83,16 +83,14 @@ export default class BeastDetailsScreen extends React.Component {
 
 		const styles = this.styles;
 		return (
-			<Swiper
-				loop={false}
-				showsPagination={false}
+			<SwipePager
 				loadMinimal
+				style={styles.container}
+				data={list}
 				index={index}
 				onIndexChanged={index => navigation.setParams({ key: list[index].key, title: list[index].name })}
-				style={styles.container}
-			>
-				{list.map((beast, i) => Math.abs(index - i) <= 1 && (
-					<ScrollView key={beast.key} style={styles.scrollView} contentContainerStyle={styles.containerContent}>
+				renderItem={beast => (
+					<ScrollView style={styles.scrollView} contentContainerStyle={styles.containerContent}>
 						<Text style={styles.header1}>{beast.name}</Text>
 						<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
 						<Divider style={styles.divider} />
@@ -188,8 +186,8 @@ export default class BeastDetailsScreen extends React.Component {
 							</>
 						)}
 					</ScrollView>
-				))}
-			</Swiper>
+				)}
+			/>
 		);
 	}
 }
