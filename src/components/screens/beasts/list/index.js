@@ -9,7 +9,7 @@ import FloatingActionButton from '../../../shared/fab';
 import listStyles from '../../../../styles/list';
 
 import { iconSizeMedium } from '../../../../api/constants';
-import { withCollapsible, icon, fabOnScroll } from '../../../../api/util';
+import { withCollapsible, icon, fabOnScroll, flatten } from '../../../../api/util';
 
 import { Header, ExtendedHeader } from './header';
 import BeastListItem from './list-item';
@@ -65,6 +65,9 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 
 		const character = actions.getCurrentCharacter();
 
+		const list = actions.getBeastList();
+		this.flattenedList = list.map(({ data }) => data).reduce(flatten, []);
+
 		return (
 			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<AnimatedSectionList
@@ -80,7 +83,7 @@ export default withCollapsible(class BeastListScreen extends React.Component {
 								actions={actions}
 								state={state}
 								item={item.name}
-								onPress={() => navigation.navigate('BeastDetails', { key: item.key, title: item.name })}
+								onPress={() => navigation.navigate('BeastDetails', { key: item.key, title: item.name, list: this.flattenedList })}
 								isFav={character.favs[item.name]}
 								isSeen={character.seen[item.name]}
 								onFav={() => actions.toggleFav(item.name)}

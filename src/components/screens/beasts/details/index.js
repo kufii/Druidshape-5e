@@ -34,11 +34,6 @@ export default class BeastDetailsScreen extends React.Component {
 		}).isRequired
 	};
 
-	constructor(props) {
-		super(props);
-		this.list = props.screenProps.actions.getBeastListFlattened();
-	}
-
 	get styles() {
 		const { actions } = this.props.screenProps;
 
@@ -83,7 +78,8 @@ export default class BeastDetailsScreen extends React.Component {
 		const { navigation } = this.props;
 
 		const key = navigation.getParam('key');
-		const index = this.list.findIndex(b => b.key === key) || 0;
+		const list = navigation.getParam('list');
+		const index = list.findIndex(b => b.key === key) || 0;
 
 		const styles = this.styles;
 		return (
@@ -92,10 +88,10 @@ export default class BeastDetailsScreen extends React.Component {
 				showsPagination={false}
 				loadMinimal
 				index={index}
-				onIndexChanged={index => navigation.setParams({ key: this.list[index].key, title: this.list[index].name })}
+				onIndexChanged={index => navigation.setParams({ key: list[index].key, title: list[index].name })}
 				style={styles.container}
 			>
-				{this.list.map((beast, i) => Math.abs(index - i) <= 1 && (
+				{list.map((beast, i) => Math.abs(index - i) <= 1 && (
 					<ScrollView key={beast.key} style={styles.scrollView} contentContainerStyle={styles.containerContent}>
 						<Text style={styles.header1}>{beast.name}</Text>
 						<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
