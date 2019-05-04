@@ -280,7 +280,6 @@ export default class SwipePager extends React.Component {
 				{...this.props}
 				{...this.scrollViewPropOverrides}
 				contentContainerStyle={[styles.wrapperIos, style]}
-				contentOffset={this.state.offset}
 				onScrollBeginDrag={this.onScrollBegin.bind(this)}
 				onMomentumScrollEnd={this.onScrollEnd.bind(this)}
 				onScrollEndDrag={this.onScrollEndDrag.bind(this)}

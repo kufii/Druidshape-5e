@@ -39,12 +39,6 @@ export default class BeastDetailsScreen extends React.Component {
 
 		const theme = actions.getCurrentTheme();
 		return r({
-			container: `
-				f 1
-				fd column
-				bc ${theme.contentBackgroundColor}
-				ai center
-			`,
 			scrollView: 'as stretch',
 			containerContent: 'p 10',
 			divider: `m 10 0; bc ${theme.dividerColor}`,
@@ -85,7 +79,6 @@ export default class BeastDetailsScreen extends React.Component {
 		return (
 			<SwipePager
 				loadMinimal
-				style={styles.container}
 				data={list}
 				index={index}
 				onIndexChanged={index => navigation.setParams({ key: list[index].key, title: list[index].name })}
