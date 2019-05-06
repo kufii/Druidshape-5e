@@ -5,26 +5,56 @@ import r from 'rnss';
 import { Divider, Badge } from 'react-native-elements';
 import SwipePager from '../../../shared/swipe-pager';
 import { B, I, BI } from '../../../shared/helper';
+import ToggleIconButton from '../../../shared/toggle-icon-button';
+
+import { icon } from '../../../../api/util';
 
 import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
 
 import { getModifier } from '../../../../api/beasts';
 
-const getSpeedString = beast => {
-	let out = `${beast.speed || 0} ft.`;
-	if (beast.climb) out += `, climb ${beast.climb} ft.${beast.climbDetails ? ` (${beast.climbDetails})` : ''}`;
-	if (beast.swim) out += `, swim ${beast.swim} ft.${beast.swimDetails ? ` (${beast.swimDetails})` : ''}`;
-	if (beast.fly) out += `, fly ${beast.fly} ft.${beast.flyDetails ? ` (${beast.flyDetails})` : ''}`;
-	if (beast.burrow) out += `, burrow ${beast.burrow} ft.${beast.burrowDetails ? ` (${beast.burrowDetails})` : ''}`;
+const getSpeedString = ({ speed, climb, climbDetails, swim, swimDetails, fly, flyDetails, burrow, burrowDetails }) => {
+	let out = `${speed || 0} ft.`;
+	if (climb) out += `, climb ${climb} ft.${climbDetails ? ` (${climbDetails})` : ''}`;
+	if (swim) out += `, swim ${swim} ft.${swimDetails ? ` (${swimDetails})` : ''}`;
+	if (fly) out += `, fly ${fly} ft.${flyDetails ? ` (${flyDetails})` : ''}`;
+	if (burrow) out += `, burrow ${burrow} ft.${burrowDetails ? ` (${burrowDetails})` : ''}`;
 	return out;
 };
 
-const hasNaturalArmor = beast => beast.ac !== 10 + getModifier(beast.dex);
+const hasNaturalArmor = ({ ac, dex }) => ac !== 10 + getModifier(dex);
 
 export default class BeastDetailsScreen extends React.Component {
-	static navigationOptions = ({ navigation }) => ({
-		title: navigation.getParam('title')
-	});
+	static navigationOptions = ({ navigation, screenProps }) => {
+		const { actions } = screenProps;
+
+		const name = navigation.getParam('title');
+		const theme = actions.getCurrentTheme();
+		const character = actions.getCurrentCharacter();
+
+		return {
+			title: name,
+			headerRight: (
+				<View style={r`fd row`}>
+					<ToggleIconButton
+						activeIcon={icon('eye')}
+						inactiveIcon={icon('eye-off')}
+						active={character.seen[name]}
+						onToggle={() => actions.toggleSeen(name)}
+						activeColor={theme.headerTextColor}
+						inactiveColor={theme.headerColorLight}
+					/>
+					<ToggleIconButton
+						icon={icon('star')}
+						active={character.favs[name]}
+						onToggle={() => actions.toggleFav(name)}
+						activeColor={theme.headerTextColor}
+						inactiveColor={theme.headerColorLight}
+					/>
+				</View>
+			)
+		};
+	};
 
 	static propTypes = {
 		navigation: PropTypes.object.isRequired,
