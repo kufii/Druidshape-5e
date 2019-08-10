@@ -69,7 +69,7 @@ export default class BeastDetailsScreen extends React.Component {
 
 		const theme = actions.getCurrentTheme();
 		return r({
-			scrollView: 'as stretch',
+			scrollView: `as stretch; bc ${theme.contentBackgroundColor}`,
 			containerContent: 'p 10',
 			divider: `m 10 0; bc ${theme.dividerColor}`,
 			row: 'fd row',
