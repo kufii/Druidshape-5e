@@ -32,11 +32,11 @@ export default class HomebrewDetailsScreen extends React.Component {
 				icon={icon('trash')}
 				color={screenProps.actions.getCurrentTheme().headerTextColor}
 				size={iconSizeLarge}
-				onPress={() => AlertDelete(
-					navigation.getParam('edit'),
-					screenProps.actions,
-					() => navigation.dismiss()
-				)}
+				onPress={() =>
+					AlertDelete(navigation.getParam('edit'), screenProps.actions, () =>
+						navigation.dismiss()
+					)
+				}
 			/>
 		) : null,
 		headerLeft: null,
@@ -115,19 +115,26 @@ export default class HomebrewDetailsScreen extends React.Component {
 					<InputScrollView
 						contentContainerStyle={styles.formContent}
 						keyboardOffset={40 + (Platform.OS === 'android' ? bottomButtonHeight : 0)}
-						behavior='padding'
+						behavior="padding"
 					>
 						<Button
-							title='Copy Beast'
-							type='outline'
+							title="Copy Beast"
+							type="outline"
 							buttonStyle={styles.copyButton}
 							titleStyle={styles.copyButtonTitle}
 							containerStyle={styles.copyButtonContainer}
-							icon={<Icon size={iconSizeLarge} name={icon('copy')} color={theme.formButtonColor} style={styles.buttonIcon} />}
+							icon={
+								<Icon
+									size={iconSizeLarge}
+									name={icon('copy')}
+									color={theme.formButtonColor}
+									style={styles.buttonIcon}
+								/>
+							}
 							onPress={() => this.setState({ beastPickerOpen: true })}
 						/>
 						<Form
-							ref={form => this.form = form}
+							ref={form => (this.form = form)}
 							type={this.state.struct}
 							options={getOptions(this.theme)}
 							value={this.state.model}
@@ -140,16 +147,16 @@ export default class HomebrewDetailsScreen extends React.Component {
 				</View>
 				<View style={buttonTheme.container}>
 					<Button
-						title='Cancel'
-						type='clear'
+						title="Cancel"
+						type="clear"
 						containerStyle={[buttonTheme.button, buttonTheme.cancelButton]}
 						buttonStyle={styles.bottomButton}
 						titleStyle={buttonTheme.cancelButtonTitle}
 						onPress={() => this.props.navigation.dismiss()}
 					/>
 					<Button
-						title='Save'
-						type='clear'
+						title="Save"
+						type="clear"
 						containerStyle={[buttonTheme.button, buttonTheme.saveButton]}
 						buttonStyle={styles.bottomButton}
 						titleStyle={buttonTheme.saveButtonTitle}

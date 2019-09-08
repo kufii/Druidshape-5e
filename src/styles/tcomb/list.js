@@ -12,11 +12,11 @@ const renderRowWithoutButtons = item => <View key={item.key}>{item.input}</View>
 
 const renderAddButton = ({ click }) => (
 	<Button
-		key='add'
-		type='outline'
+		key="add"
+		type="outline"
 		buttonStyle={[styles.marginBottom, styles.addButton]}
 		onPress={click}
-		title='Add'
+		title="Add"
 		titleStyle={styles.button}
 	/>
 );
@@ -27,17 +27,19 @@ renderAddButton.propTypes = {
 const renderRowButton = ({ type, click }) => (
 	<Button
 		key={type}
-		type='clear'
+		type="clear"
 		buttonStyle={buttonStyles.icon.buttonStyle}
 		containerStyle={buttonStyles.icon.containerStyle}
 		onPress={click}
 		icon={
 			<Icon
-				name={icon({
-					remove: 'trash',
-					'move-up': 'arrow-up',
-					'move-down': 'arrow-down'
-				}[type])}
+				name={icon(
+					{
+						remove: 'trash',
+						'move-up': 'arrow-up',
+						'move-down': 'arrow-down'
+					}[type]
+				)}
 				size={iconSizeLarge}
 				color={lightTheme.formButtonColor}
 			/>
@@ -50,18 +52,19 @@ renderRowButton.propTypes = {
 };
 
 const renderButtonGroup = buttons => (
-	<View style={styles.row}>
-		{buttons.map(button => renderRowButton(button))}
-	</View>
+	<View style={styles.row}>{buttons.map(button => renderRowButton(button))}</View>
 );
 
 const renderRow = (item, stylesheet) => (
 	<Card
 		key={item.key}
 		title={renderButtonGroup(item.buttons)}
-		containerStyle={[styles.card, {
-			backgroundColor: stylesheet.formGroup.normal.cardColor
-		}]}
+		containerStyle={[
+			styles.card,
+			{
+				backgroundColor: stylesheet.formGroup.normal.cardColor
+			}
+		]}
 	>
 		<View style={styles.flex}>{item.input}</View>
 	</Card>
@@ -78,18 +81,17 @@ export default function ListTemplate(locals) {
 		controlLabelStyle = stylesheet.controlLabel.error;
 	}
 
-	const label = locals.label ? (
-		<Text style={controlLabelStyle}>{locals.label}</Text>
-	) : null;
-	const error = locals.hasError && locals.error ? (
-		<Text accessibilityLiveRegion='polite' style={stylesheet.errorBlock}>
-			{locals.error}
-		</Text>
-	) : null;
+	const label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+	const error =
+		locals.hasError && locals.error ? (
+			<Text accessibilityLiveRegion="polite" style={stylesheet.errorBlock}>
+				{locals.error}
+			</Text>
+		) : null;
 
-	const rows = locals.items.map(item => item.buttons.length === 0
-		? renderRowWithoutButtons(item)
-		: renderRow(item, stylesheet));
+	const rows = locals.items.map(item =>
+		item.buttons.length === 0 ? renderRowWithoutButtons(item) : renderRow(item, stylesheet)
+	);
 
 	const addButton = locals.add ? renderAddButton(locals.add) : null;
 

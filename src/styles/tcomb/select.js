@@ -5,7 +5,18 @@ import Picker from '../../components/shared/picker';
 export default function Select(locals) {
 	if (locals.hidden) return null;
 
-	const { stylesheet, onCollapseChange, onChange, value, options, isCollapsed, isDisabled, mode, prompt, itemStyle } = locals;
+	const {
+		stylesheet,
+		onCollapseChange,
+		onChange,
+		value,
+		options,
+		isCollapsed,
+		isDisabled,
+		mode,
+		prompt,
+		itemStyle
+	} = locals;
 
 	let formGroupStyle = stylesheet.formGroup.normal;
 	let controlLabelStyle = stylesheet.controlLabel.normal;
@@ -23,17 +34,14 @@ export default function Select(locals) {
 		helpBlockStyle = stylesheet.helpBlock.error;
 	}
 
-	const label = locals.label ? (
-		<Text style={controlLabelStyle}>{locals.label}</Text>
-	) : null;
-	const help = locals.help ? (
-		<Text style={helpBlockStyle}>{locals.help}</Text>
-	) : null;
-	const error = locals.hasError && locals.error ? (
-		<Text accessibilityLiveRegion='polite' style={errorBlockStyle}>
-			{locals.error}
-		</Text>
-	) : null;
+	const label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+	const help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
+	const error =
+		locals.hasError && locals.error ? (
+			<Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+				{locals.error}
+			</Text>
+		) : null;
 
 	return (
 		<View style={formGroupStyle}>

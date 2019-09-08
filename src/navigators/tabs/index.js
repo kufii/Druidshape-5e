@@ -9,7 +9,9 @@ import Homebrew from './homebrew';
 import Settings from './settings';
 
 const createTabIcon = name => {
-	const TabIcon = ({ tintColor }) => <Icon name={icon(name)} size={iconSizeLarge} color={tintColor} />;
+	const TabIcon = ({ tintColor }) => (
+		<Icon name={icon(name)} size={iconSizeLarge} color={tintColor} />
+	);
 	TabIcon.propTypes = { tintColor: PropTypes.string };
 	return TabIcon;
 };
@@ -45,33 +47,38 @@ const TabBarComponent = props => {
 		/>
 	);
 };
-TabBarComponent.propTypes = { screenProps: PropTypes.shape({
-	state: PropTypes.object.isRequired,
-	actions: PropTypes.object.isRequired
-}).isRequired };
+TabBarComponent.propTypes = {
+	screenProps: PropTypes.shape({
+		state: PropTypes.object.isRequired,
+		actions: PropTypes.object.isRequired
+	}).isRequired
+};
 
-export default createBottomTabNavigator({
-	Beasts: {
-		screen: Beasts,
-		navigationOptions: {
-			tabBarIcon: createTabIcon('paw'),
-			tabBarOnPress
+export default createBottomTabNavigator(
+	{
+		Beasts: {
+			screen: Beasts,
+			navigationOptions: {
+				tabBarIcon: createTabIcon('paw'),
+				tabBarOnPress
+			}
+		},
+		Homebrew: {
+			screen: Homebrew,
+			navigationOptions: {
+				tabBarIcon: createTabIcon('construct'),
+				tabBarOnPress
+			}
+		},
+		Settings: {
+			screen: Settings,
+			navigationOptions: {
+				tabBarIcon: createTabIcon('settings'),
+				tabBarOnPress
+			}
 		}
 	},
-	Homebrew: {
-		screen: Homebrew,
-		navigationOptions: {
-			tabBarIcon: createTabIcon('construct'),
-			tabBarOnPress
-		}
-	},
-	Settings: {
-		screen: Settings,
-		navigationOptions: {
-			tabBarIcon: createTabIcon('settings'),
-			tabBarOnPress
-		}
+	{
+		tabBarComponent: TabBarComponent
 	}
-}, {
-	tabBarComponent: TabBarComponent
-});
+);

@@ -28,26 +28,37 @@ export default class MultiSelect extends t.form.Select {
 				checkboxStyle = stylesheet.checkbox.error;
 			}
 
-			const label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+			const label = locals.label ? (
+				<Text style={controlLabelStyle}>{locals.label}</Text>
+			) : null;
 			const help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
-			const error = locals.hasError && locals.error ? <Text style={errorBlockStyle}>{locals.error}</Text> : null;
+			const error =
+				locals.hasError && locals.error ? (
+					<Text style={errorBlockStyle}>{locals.error}</Text>
+				) : null;
 
-			const viewArr = locals.options.filter(({ value }) => value).map(item => (
-				<CheckBox
-					key={item.value}
-					title={item.text}
-					checked={locals.value.includes(item.value)}
-					checkedColor={checkboxStyle.checkedColor}
-					uncheckedColor={checkboxStyle.uncheckedColor}
-					containerStyle={r`bc ${checkboxStyle.backgroundColor}; border-color ${checkboxStyle.borderColor}`}
-					textStyle={r`c ${checkboxStyle.textColor}`}
-					onPress={() => {
-						const dict = locals.value.reduce(toDict(str => str, () => true), {});
-						dict[item.value] = !dict[item.value];
-						locals.onChange(Object.entries(dict).filter(([_, value]) => value).map(([key]) => key));
-					}}
-				/>
-			));
+			const viewArr = locals.options
+				.filter(({ value }) => value)
+				.map(item => (
+					<CheckBox
+						key={item.value}
+						title={item.text}
+						checked={locals.value.includes(item.value)}
+						checkedColor={checkboxStyle.checkedColor}
+						uncheckedColor={checkboxStyle.uncheckedColor}
+						containerStyle={r`bc ${checkboxStyle.backgroundColor}; border-color ${checkboxStyle.borderColor}`}
+						textStyle={r`c ${checkboxStyle.textColor}`}
+						onPress={() => {
+							const dict = locals.value.reduce(toDict(str => str, () => true), {});
+							dict[item.value] = !dict[item.value];
+							locals.onChange(
+								Object.entries(dict)
+									.filter(([_, value]) => value)
+									.map(([key]) => key)
+							);
+						}}
+					/>
+				));
 
 			return (
 				<View style={formGroupStyle}>
@@ -71,6 +82,6 @@ export default class MultiSelect extends t.form.Select {
 }
 
 MultiSelect.transformer = () => ({
-	format: value => Array.isArray(value) ? value : [],
-	parse: value => value ? value : []
+	format: value => (Array.isArray(value) ? value : []),
+	parse: value => (value ? value : [])
 });

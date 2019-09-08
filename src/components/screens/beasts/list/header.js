@@ -100,8 +100,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 				searchIcon={styles.filterText}
 				cancelIcon={styles.filterText}
 				inputStyle={styles.filterText}
-				placeholder='Filter Beasts'
-				cancelButtonTitle='Cancel'
+				placeholder="Filter Beasts"
+				cancelButtonTitle="Cancel"
 				cancelButtonProps={{
 					buttonStyle: 'clear',
 					color: theme.headerTextColor
@@ -134,7 +134,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 								filters.seen = !filters.seen;
 								actions.setFilters(filters);
 							}}
-							title='Seen'
+							title="Seen"
 						/>
 					</MenuOption>
 					<MenuOption customStyles={{ optionWrapper: styles.pickerLabel }} disabled>
@@ -156,7 +156,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 								{ text: 'Climb', value: 'climb' },
 								{ text: 'Burrow', value: 'burrow' }
 							]}
-							mode='dropdown'
+							mode="dropdown"
 						/>
 					</MenuOption>
 					<MenuOption customStyles={{ optionWrapper: styles.pickerLabel }} disabled>
@@ -175,7 +175,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 								{ text: '-', value: '' },
 								...environments.map(str => ({ text: str, value: str }))
 							]}
-							mode='dropdown'
+							mode="dropdown"
 						/>
 					</MenuOption>
 					<MenuOption disabled>
@@ -189,14 +189,14 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 								filters.desc = !filters.desc;
 								actions.setFilters(filters);
 							}}
-							title='Sort Descending'
+							title="Sort Descending"
 						/>
 					</MenuOption>
 					<MenuOption disabled>
 						<Button
-							type='clear'
+							type="clear"
 							titleStyle={styles.menuItemText}
-							title='Reset'
+							title="Reset"
 							onPress={() => {
 								actions.setFilters({});
 								navigation.setParams({ isFiltering: false });

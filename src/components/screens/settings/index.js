@@ -40,9 +40,9 @@ export default class SettingsScreen extends React.Component {
 
 		return (
 			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
-				<ScrollView ref={list => this.list = list}>
+				<ScrollView ref={list => (this.list = list)}>
 					<ListItem
-						title='Dark Mode'
+						title="Dark Mode"
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
 						switch={{
@@ -53,52 +53,68 @@ export default class SettingsScreen extends React.Component {
 					/>
 					<Divider style={listTheme.divider} />
 					<ListItem
-						title='Export Homebrew'
+						title="Export Homebrew"
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
-						onPress={() => Share.share({ message: JSON.stringify(state.homebrew, null, 2) })}
+						onPress={() =>
+							Share.share({ message: JSON.stringify(state.homebrew, null, 2) })
+						}
 					/>
 					<Divider style={listTheme.divider} />
 					<ListItem
-						title='Import Homebrew'
+						title="Import Homebrew"
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
-						onPress={({ nativeEvent }) => Alert.alert(
-							'Import Homebrew',
-							'How would you like to import?',
-							[
+						onPress={({ nativeEvent }) =>
+							Alert.alert('Import Homebrew', 'How would you like to import?', [
 								{
 									text: 'File',
-									onPress: () => DocumentPicker.show({
-										top: nativeEvent.pageY,
-										left: nativeEvent.pageX,
-										filetype: [
-											Platform.OS === 'android' ? 'application/json' : 'public.json',
-											DocumentPickerUtil.plainText()
-										]
-									}, (err, res) => {
-										if (err) return Toast.show('Failed to import homebrew.');
-										if (res) {
-											RNFS.readFile(res.uri)
-												.then(doc => doc && JSON.parse(doc))
-												.then(beasts => beasts && actions.importHomebrews(beasts))
-												.catch(() => Toast.show('Failed to import homebrew.'));
-										}
-									})
+									onPress: () =>
+										DocumentPicker.show(
+											{
+												top: nativeEvent.pageY,
+												left: nativeEvent.pageX,
+												filetype: [
+													Platform.OS === 'android'
+														? 'application/json'
+														: 'public.json',
+													DocumentPickerUtil.plainText()
+												]
+											},
+											(err, res) => {
+												if (err)
+													return Toast.show('Failed to import homebrew.');
+												if (res) {
+													RNFS.readFile(res.uri)
+														.then(doc => doc && JSON.parse(doc))
+														.then(
+															beasts =>
+																beasts &&
+																actions.importHomebrews(beasts)
+														)
+														.catch(() =>
+															Toast.show('Failed to import homebrew.')
+														);
+												}
+											}
+										)
 								},
 								{
 									text: 'Clipboard',
-									onPress: () => Clipboard.getString()
-										.then(data => data && JSON.parse(data))
-										.then(beasts => beasts && actions.importHomebrews(beasts))
-										.catch(() => Toast.show('Failed to import homebrew.'))
+									onPress: () =>
+										Clipboard.getString()
+											.then(data => data && JSON.parse(data))
+											.then(
+												beasts => beasts && actions.importHomebrews(beasts)
+											)
+											.catch(() => Toast.show('Failed to import homebrew.'))
 								}
-							]
-						)}
+							])
+						}
 					/>
 					<Divider style={listTheme.divider} />
 					<ListItem
-						title='Tip Jar'
+						title="Tip Jar"
 						containerStyle={listTheme.item}
 						titleStyle={listTheme.itemText}
 						chevron={{ size: iconSizeLarge }}

@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import r from 'rnss';
-import { Platform, ViewPropTypes, Dimensions, View, ScrollView, ActivityIndicator } from 'react-native';
+import {
+	Platform,
+	ViewPropTypes,
+	Dimensions,
+	View,
+	ScrollView,
+	ActivityIndicator
+} from 'react-native';
 import ViewPagerAndroid from '@react-native-community/viewpager';
 
 export default class SwipePager extends React.Component {
@@ -55,21 +62,24 @@ export default class SwipePager extends React.Component {
 	}
 
 	UNSAFE_componentWillUpdate(nextProps, nextState) {
-		this.props.onIndexChanged && this.state.index !== nextState.index && this.props.onIndexChanged(nextState.index);
+		this.props.onIndexChanged &&
+			this.state.index !== nextState.index &&
+			this.props.onIndexChanged(nextState.index);
 	}
 
-	initState(props, updateIndex=false) {
+	initState(props, updateIndex = false) {
 		const state = this.state || { width: 0, height: 0, offset: { x: 0, y: 0 } };
 		const initState = {
 			offset: {},
-			total: props.data
-				? props.data.length
-				: (props.children ? props.children.length || 1 : 0)
+			total: props.data ? props.data.length : props.children ? props.children.length || 1 : 0
 		};
 
-		initState.index = (!updateIndex && state.total === initState.total)
-			? state.index
-			: (initState.total > 1 ? Math.min(props.index, initState.total - 1) : 0);
+		initState.index =
+			!updateIndex && state.total === initState.total
+				? state.index
+				: initState.total > 1
+				? Math.min(props.index, initState.total - 1)
+				: 0;
 
 		const { width, height } = Dimensions.get('window');
 
@@ -110,10 +120,11 @@ export default class SwipePager extends React.Component {
 		const overrides = {};
 
 		for (const prop in props) {
-			if (typeof props[prop] === 'function'
-				&& prop !== 'onMomentumScrollEnd'
-				&& prop !== 'renderPagination'
-				&& prop !== 'onScrollBeginDrag'
+			if (
+				typeof props[prop] === 'function' &&
+				prop !== 'onMomentumScrollEnd' &&
+				prop !== 'renderPagination' &&
+				prop !== 'onScrollBeginDrag'
 			) {
 				const originResponder = props[prop];
 				overrides[prop] = e => originResponder(e, this.fullState, this);
@@ -125,7 +136,7 @@ export default class SwipePager extends React.Component {
 
 	onLayout(e) {
 		const { width, height } = e.nativeEvent.layout;
-		const offset = this.internals.offset = {};
+		const offset = (this.internals.offset = {});
 		const state = { width, height };
 
 		if (this.state.total > 1) {
@@ -165,7 +176,8 @@ export default class SwipePager extends React.Component {
 		}
 
 		this.updateIndex(e.nativeEvent.contentOffset, this.state.dir, () => {
-			this.props.onMomentumScrollEnd && this.props.onMomentumScrollEnd(e, this.fullState(), this);
+			this.props.onMomentumScrollEnd &&
+				this.props.onMomentumScrollEnd(e, this.fullState(), this);
 		});
 	}
 
@@ -212,7 +224,7 @@ export default class SwipePager extends React.Component {
 		this.setState(newState, cb);
 	}
 
-	scrollBy(index, animated=true) {
+	scrollBy(index, animated = true) {
 		if (this.internals.isScrolling || this.state.total <= 1) return;
 		const state = this.state;
 		const diff = index + this.state.index;
@@ -222,7 +234,8 @@ export default class SwipePager extends React.Component {
 		if (state.dir === 'y') y = diff * state.height;
 
 		if (Platform.OS !== 'ios') {
-			this.scrollView && this.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff);
+			this.scrollView &&
+				this.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff);
 		} else {
 			this.scrollView && this.scrollView.scrollTo({ x, y, animated });
 		}
@@ -243,7 +256,16 @@ export default class SwipePager extends React.Component {
 	}
 
 	renderScrollView() {
-		const { data, children, renderItem, keyExtractor, loadMinimal, loadMinimalSize, loadMinimalLoader, style } = this.props;
+		const {
+			data,
+			children,
+			renderItem,
+			keyExtractor,
+			loadMinimal,
+			loadMinimalSize,
+			loadMinimalLoader,
+			style
+		} = this.props;
 		const { index, total, width, height } = this.state;
 
 		let pages;
@@ -251,32 +273,40 @@ export default class SwipePager extends React.Component {
 		const pageStyleLoading = [{ width, height }, styles.slideLoading];
 
 		if (data) {
-			pages = data.map(
-				(item, i) => (!loadMinimal || Math.abs(i - index) <= loadMinimalSize)
-					? <View style={pageStyle} key={keyExtractor(item)}>{renderItem(item)}</View>
-					: (
-						<View style={pageStyleLoading} key={keyExtractor(item)}>
-							{loadMinimalLoader || <ActivityIndicator />}
-						</View>
-					)
+			pages = data.map((item, i) =>
+				!loadMinimal || Math.abs(i - index) <= loadMinimalSize ? (
+					<View style={pageStyle} key={keyExtractor(item)}>
+						{renderItem(item)}
+					</View>
+				) : (
+					<View style={pageStyleLoading} key={keyExtractor(item)}>
+						{loadMinimalLoader || <ActivityIndicator />}
+					</View>
+				)
 			);
 		} else if (total > 1) {
-			pages = Object.keys(children).map(
-				(page, i) => (!loadMinimal || Math.abs(i - index) <= loadMinimalSize)
-					? <View style={pageStyle} key={i}>{children[page]}</View>
-					: (
-						<View style={pageStyleLoading} key={i}>
-							{loadMinimalLoader || <ActivityIndicator />}
-						</View>
-					)
+			pages = Object.keys(children).map((page, i) =>
+				!loadMinimal || Math.abs(i - index) <= loadMinimalSize ? (
+					<View style={pageStyle} key={i}>
+						{children[page]}
+					</View>
+				) : (
+					<View style={pageStyleLoading} key={i}>
+						{loadMinimalLoader || <ActivityIndicator />}
+					</View>
+				)
 			);
 		} else {
-			pages = <View style={pageStyle} key={0}>{children}</View>;
+			pages = (
+				<View style={pageStyle} key={0}>
+					{children}
+				</View>
+			);
 		}
 
 		return Platform.OS === 'ios' ? (
 			<ScrollView
-				ref={view => this.scrollView = view}
+				ref={view => (this.scrollView = view)}
 				{...this.props}
 				{...this.scrollViewPropOverrides}
 				contentContainerStyle={[styles.wrapperIos, style]}
@@ -289,7 +319,7 @@ export default class SwipePager extends React.Component {
 			</ScrollView>
 		) : (
 			<ViewPagerAndroid
-				ref={view => this.scrollView = view}
+				ref={view => (this.scrollView = view)}
 				{...this.props}
 				initialPage={index}
 				onPageScrollStateChanged={this.onPageScrollStateChanged.bind(this)}

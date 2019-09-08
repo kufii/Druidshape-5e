@@ -9,7 +9,8 @@ import LoadingScreen from './src/components/shared/loading-screen';
 
 import { initialState, actions as actionsBuilder } from './src/api/actions';
 
-UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+UIManager.setLayoutAnimationEnabledExperimental &&
+	UIManager.setLayoutAnimationEnabledExperimental(true);
 
 const AppContainer = createAppContainer(Root);
 
@@ -34,7 +35,11 @@ export default class App extends React.Component {
 		return (
 			<MenuProvider>
 				<View style={r`f 1`}>
-					{state.isLoading ? <LoadingScreen /> : <AppContainer screenProps={{ state, actions }} />}
+					{state.isLoading ? (
+						<LoadingScreen />
+					) : (
+						<AppContainer screenProps={{ state, actions }} />
+					)}
 				</View>
 			</MenuProvider>
 		);

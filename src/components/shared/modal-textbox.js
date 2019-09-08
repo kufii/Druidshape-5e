@@ -6,7 +6,15 @@ import Modal from 'react-native-modal';
 import { Input, Button } from 'react-native-elements';
 import buttonStyles from '../../styles/buttons';
 
-export default function ModalTextbox({ actions, isVisible, isRequired, text='', onDismiss, onSubmit, onChangeText }) {
+export default function ModalTextbox({
+	actions,
+	isVisible,
+	isRequired,
+	text = '',
+	onDismiss,
+	onSubmit,
+	onChangeText
+}) {
 	const theme = actions.getCurrentTheme();
 	const buttonTheme = buttonStyles.bottom(theme);
 	const styles = r({
@@ -29,15 +37,15 @@ export default function ModalTextbox({ actions, isVisible, isRequired, text='', 
 				/>
 				<View style={buttonTheme.container}>
 					<Button
-						title='Cancel'
-						type='clear'
+						title="Cancel"
+						type="clear"
 						containerStyle={[buttonTheme.button, buttonTheme.cancelButton]}
 						titleStyle={buttonTheme.cancelButtonTitle}
 						onPress={() => onDismiss && onDismiss()}
 					/>
 					<Button
-						title='OK'
-						type='clear'
+						title="OK"
+						type="clear"
 						containerStyle={[buttonTheme.button, buttonTheme.saveButton]}
 						titleStyle={buttonTheme.saveButtonTitle}
 						onPress={() => {

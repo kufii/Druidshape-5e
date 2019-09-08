@@ -10,17 +10,18 @@ export default {
 			o hidden
 		`
 	}),
-	bottom: theme => r({
-		container: `
+	bottom: theme =>
+		r({
+			container: `
 			fd row
 			jc space-between
 			btc ${theme.formButtonColor}
 			btw hw
 		`,
-		button: 'w 50%; br 0',
-		cancelButton: `bc ${theme.formButtonColorSecondary}`,
-		cancelButtonTitle: `c ${theme.formButtonColor}`,
-		saveButton: `bc ${theme.formButtonColor}`,
-		saveButtonTitle: 'c #fff'
-	})
+			button: 'w 50%; br 0',
+			cancelButton: `bc ${theme.formButtonColorSecondary}`,
+			cancelButtonTitle: `c ${theme.formButtonColor}`,
+			saveButton: `bc ${theme.formButtonColor}`,
+			saveButtonTitle: 'c #fff'
+		})
 };

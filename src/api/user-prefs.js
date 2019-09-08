@@ -10,7 +10,7 @@ export const initialPrefs = {
 	filters: {}
 };
 
-export const getPref = async(key, def) => {
+export const getPref = async (key, def) => {
 	try {
 		const value = await AsyncStorage.getItem(key);
 		if (value == null || value === '') return def;
@@ -21,7 +21,7 @@ export const getPref = async(key, def) => {
 	return def;
 };
 
-export const setPref = async(key, value) => {
+export const setPref = async (key, value) => {
 	try {
 		if (value == null) value = '';
 		await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -38,23 +38,22 @@ export const removePref = async key => {
 	}
 };
 
-const getLegacyPrefs = () => Promise.all([
-	getPref('darkMode', false),
-	getPref('level', 0),
-	getPref('isMoon', false),
-	getPref('favs', {}),
-	getPref('homebrew', [])
-]).then(
-	([darkMode, level, isMoon, favs, homebrew]) => ({
+const getLegacyPrefs = () =>
+	Promise.all([
+		getPref('darkMode', false),
+		getPref('level', 0),
+		getPref('isMoon', false),
+		getPref('favs', {}),
+		getPref('homebrew', [])
+	]).then(([darkMode, level, isMoon, favs, homebrew]) => ({
 		darkMode,
 		level,
 		isMoon,
 		favs,
 		homebrew
-	})
-);
+	}));
 
-export const loadPrefs = async() => {
+export const loadPrefs = async () => {
 	let [version, prefs] = await Promise.all([getPref('version', 1), getPref('prefs', {})]);
 	for (let v = version; v < CURRENT_VERSION; v++) {
 		if (v === 1) {
@@ -65,7 +64,7 @@ export const loadPrefs = async() => {
 			};
 			['darkMode', 'level', 'isMoon', 'favs', 'homebrew'].forEach(pref => removePref(pref));
 		} else if (v === 2) {
-			prefs.characters.forEach(c => c.seen = {});
+			prefs.characters.forEach(c => (c.seen = {}));
 		}
 	}
 	prefs = { ...initialPrefs, ...prefs };

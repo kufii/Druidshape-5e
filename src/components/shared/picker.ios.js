@@ -8,10 +8,7 @@ const UIPICKER_HEIGHT = 216;
 export default class CollapsiblePickerIOS extends React.Component {
 	constructor(props) {
 		super(props);
-		const isCollapsed
-			= typeof props.isCollapsed === typeof true
-				? props.isCollapsed
-				: true;
+		const isCollapsed = typeof props.isCollapsed === typeof true ? props.isCollapsed : true;
 
 		this.state = {
 			isCollapsed,
@@ -39,12 +36,15 @@ export default class CollapsiblePickerIOS extends React.Component {
 	}
 
 	_togglePicker() {
-		this.setState(prev => ({ isCollapsed: !prev.isCollapsed }), () => {
-			this.animatePicker(this.state.isCollapsed);
-			if (typeof this.props.onCollapseChange === 'function') {
-				this.props.onCollapseChange(this.state.isCollapsed);
+		this.setState(
+			prev => ({ isCollapsed: !prev.isCollapsed }),
+			() => {
+				this.animatePicker(this.state.isCollapsed);
+				if (typeof this.props.onCollapseChange === 'function') {
+					this.props.onCollapseChange(this.state.isCollapsed);
+				}
 			}
-		});
+		);
 	}
 
 	_onValueChange(val) {
@@ -59,21 +59,22 @@ export default class CollapsiblePickerIOS extends React.Component {
 		const options = this.props.options.map(({ value, text }) => (
 			<Picker.Item key={value} value={value} label={text} />
 		));
-		const selectedOption = this.props.options.find(
-			option => option.value === this.props.value
-		);
+		const selectedOption = this.props.options.find(option => option.value === this.props.value);
 
 		return (
-			<View style={[styles.pickerContainer, this.props.containerStyle, !this.state.isCollapsed && this.props.containerStyleOpen]}>
-				<TouchableOpacity
-					disabled={this.props.disabled}
-					onPress={this.togglePicker}
-				>
-					<Text style={[styles.pickerValue, this.props.itemStyle]}>{selectedOption.text}</Text>
+			<View
+				style={[
+					styles.pickerContainer,
+					this.props.containerStyle,
+					!this.state.isCollapsed && this.props.containerStyleOpen
+				]}
+			>
+				<TouchableOpacity disabled={this.props.disabled} onPress={this.togglePicker}>
+					<Text style={[styles.pickerValue, this.props.itemStyle]}>
+						{selectedOption.text}
+					</Text>
 				</TouchableOpacity>
-				<Animated.View
-					style={[styles.animatedView, { height: this.state.height }]}
-				>
+				<Animated.View style={[styles.animatedView, { height: this.state.height }]}>
 					<Picker
 						selectedValue={this.props.value}
 						onValueChange={this.onValueChange}
@@ -94,10 +95,12 @@ CollapsiblePickerIOS.propTypes = {
 	onCollapseChange: PropTypes.func,
 	onChange: PropTypes.func,
 	value: PropTypes.string,
-	options: PropTypes.arrayOf(PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		text: PropTypes.string.isRequired
-	})).isRequired,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			value: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired
+		})
+	).isRequired,
 	isCollapsed: PropTypes.bool,
 	disabled: PropTypes.bool,
 	mode: PropTypes.string,

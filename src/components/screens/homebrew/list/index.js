@@ -54,20 +54,24 @@ export default class HomebrewListScreen extends React.Component {
 		return (
 			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
 				<FlatList
-					ref={list => this.list = list}
+					ref={list => (this.list = list)}
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<Swipeout
 							backgroundColor={theme.contentBackgroundColorDark}
 							buttonWidth={100}
-							right={[{
-								text: 'Delete',
-								type: 'delete',
-								onPress: () => AlertDelete(item, actions)
-							}]}
+							right={[
+								{
+									text: 'Delete',
+									type: 'delete',
+									onPress: () => AlertDelete(item, actions)
+								}
+							]}
 						>
 							<ListItem
-								onPress={() => navigation.navigate('HomebrewDetails', { edit: item })}
+								onPress={() =>
+									navigation.navigate('HomebrewDetails', { edit: item })
+								}
 								title={item}
 								titleStyle={listTheme.itemText}
 								containerStyle={listTheme.item}
@@ -78,8 +82,8 @@ export default class HomebrewListScreen extends React.Component {
 					keyExtractor={item => item}
 					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
 					onScroll={this.onScroll}
-					onLayout={e => this._listViewHeight = e.nativeEvent.layout.height}
-					onContentSizeChange={(_, height) => this._listViewContentHeight = height}
+					onLayout={e => (this._listViewHeight = e.nativeEvent.layout.height)}
+					onContentSizeChange={(_, height) => (this._listViewContentHeight = height)}
 				/>
 				<FloatingActionButton
 					hidden={!this.state.isFabVisible}

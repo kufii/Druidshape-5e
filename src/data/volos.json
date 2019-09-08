@@ -26,11 +26,7 @@
         "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8+5) piercing damage."
       }
     ],
-    "environments": [
-      "Grassland",
-      "Hill",
-      "Mountain"
-    ]
+    "environments": ["Grassland", "Hill", "Mountain"]
   },
   {
     "name": "Brontosaurus",
@@ -50,17 +46,14 @@
     "action": [
       {
         "name": "Stomp",
-        "text": "Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 27 (5d8+5) bludgeoning damage, and the target must succed on a DC 14 Strength saving throw or be knocked prone."
+        "text": "Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 27 (5d8+5) bludgeoning damage, and the target must succeed on a DC 14 Strength saving throw or be knocked prone."
       },
       {
         "name": "Tail",
         "text": "Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 32 (6d8+5) bludgeoning damage."
       }
     ],
-    "environments": [
-      "Forest",
-      "Grassland"
-    ]
+    "environments": ["Forest", "Grassland"]
   },
   {
     "name": "Cow",
@@ -89,9 +82,7 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
     ],
-    "environments": [
-      "Grassland"
-    ]
+    "environments": ["Grassland"]
   },
   {
     "name": "Cranium Rat",
@@ -126,10 +117,7 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
       }
     ],
-    "environments": [
-      "Underdark",
-      "Urban"
-    ]
+    "environments": ["Underdark", "Urban"]
   },
   {
     "name": "Deep Rothé",
@@ -164,9 +152,7 @@
       }
     ],
     "spells": "dancing lights",
-    "environments": [
-      "Underdark"
-    ]
+    "environments": ["Underdark"]
   },
   {
     "name": "Deinonychus",
@@ -204,11 +190,7 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage."
       }
     ],
-    "environments": [
-      "Forest",
-      "Grassland",
-      "Hill"
-    ]
+    "environments": ["Forest", "Grassland", "Hill"]
   },
   {
     "name": "Dimetrodon",
@@ -239,10 +221,7 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) piercing damage."
       }
     ],
-    "environments": [
-      "Coastal",
-      "Swamp"
-    ]
+    "environments": ["Coastal", "Swamp"]
   },
   {
     "name": "Dolphin",
@@ -278,10 +257,7 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage."
       }
     ],
-    "environments": [
-      "Coastal",
-      "Underwater"
-    ]
+    "environments": ["Coastal", "Underwater"]
   },
   {
     "name": "Hadrosaurus",
@@ -305,10 +281,7 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage."
       }
     ],
-    "environments": [
-      "Grassland",
-      "Swamp"
-    ]
+    "environments": ["Grassland", "Swamp"]
   },
   {
     "name": "Ox",
@@ -341,9 +314,7 @@
         "text": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
       }
     ],
-    "environments": [
-      "Grassland"
-    ]
+    "environments": ["Grassland"]
   },
   {
     "name": "Quetzalcoatlus",
@@ -378,11 +349,7 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 10 ft., one creature. Hit: 12 (3d6+2) piercing damage."
       }
     ],
-    "environments": [
-      "Coastal",
-      "Hill",
-      "Mountain"
-    ]
+    "environments": ["Coastal", "Hill", "Mountain"]
   },
   {
     "name": "Rothé",
@@ -435,10 +402,7 @@
         "text": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 26 (6d6+5) piercing damage."
       }
     ],
-    "environments": [
-      "Forest",
-      "Grassland"
-    ]
+    "environments": ["Forest", "Grassland"]
   },
   {
     "name": "Stench Kow",
@@ -511,9 +475,6 @@
         "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage."
       }
     ],
-    "environments": [
-      "Forest",
-      "Grassland"
-    ]
+    "environments": ["Forest", "Grassland"]
   }
 ]

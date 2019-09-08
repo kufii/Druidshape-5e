@@ -1,5 +1,5 @@
 {
-  "extends": "adpyke-react-native",
+  "extends": ["adpyke-react-native", "prettier"],
   "rules": {
     "react/jsx-pascal-case": [2, { "ignore": ["BI"] }]
   }

@@ -8,14 +8,22 @@ import { iconSizeLarge, modalMargin } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
 
 export default function BeastPicker({ actions, isVisible, onDismiss, onSelect }) {
-	const beasts = actions.getAllBeasts().map(({ name }) => name).sort();
+	const beasts = actions
+		.getAllBeasts()
+		.map(({ name }) => name)
+		.sort();
 	const theme = actions.getCurrentTheme();
 	const listTheme = listStyles(theme);
 
 	const dismiss = () => onDismiss && onDismiss();
 
 	return (
-		<Modal style={r`m ${modalMargin}`} isVisible={isVisible} onBackdropPress={dismiss} onBackButtonPress={dismiss}>
+		<Modal
+			style={r`m ${modalMargin}`}
+			isVisible={isVisible}
+			onBackdropPress={dismiss}
+			onBackButtonPress={dismiss}
+		>
 			<FlatList
 				data={beasts}
 				renderItem={({ item }) => (

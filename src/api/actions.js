@@ -21,7 +21,14 @@ export const initialState = {
 };
 
 export const actions = (update, states) => {
-	const syncPrefs = () => setPref('prefs', Object.keys(initialPrefs).reduce((obj, key) => Object.assign(obj, { [key]: states()[key] }), {}));
+	const syncPrefs = () =>
+		setPref(
+			'prefs',
+			Object.keys(initialPrefs).reduce(
+				(obj, key) => Object.assign(obj, { [key]: states()[key] }),
+				{}
+			)
+		);
 
 	const privateActions = {
 		async iapConnection(cb) {
@@ -38,81 +45,87 @@ export const actions = (update, states) => {
 				}
 			}
 		},
-		iapTransaction: cb => privateActions.iapConnection(async() => {
-			await RNIap.clearTransaction();
-			await Promise.resolve(cb());
-			await RNIap.finishTransaction();
-		}),
-		removeFalse: obj => Object.entries(obj)
-			.filter(([_, value]) => value)
-			.reduce(toDict(([key]) => key, () => true), {}),
-		getHomebrewImportMergeList: beasts => new Promise((resolve, reject) => {
-			const toImport = [];
-			const iterator = iterate(beasts);
+		iapTransaction: cb =>
+			privateActions.iapConnection(async () => {
+				await RNIap.clearTransaction();
+				await Promise.resolve(cb());
+				await RNIap.finishTransaction();
+			}),
+		removeFalse: obj =>
+			Object.entries(obj)
+				.filter(([_, value]) => value)
+				.reduce(toDict(([key]) => key, () => true), {}),
+		getHomebrewImportMergeList: beasts =>
+			new Promise((resolve, reject) => {
+				const toImport = [];
+				const iterator = iterate(beasts);
 
-			const next = () => {
-				const { value, done } = iterator.next();
-				if (done) {
-					resolve(toImport);
-				} else if (!t.validate(value, homebrewStruct).isValid()) {
-					reject(new Error('Invalid Data'));
-				} else if (states().beasts.find(b => b.name === value.name)) {
-					next();
-				} else if (states().homebrew.find(b => b.name === value.name)) {
-					Alert.alert(
-						`${value.name} Already Exists`,
-						`There is already an existing homebrew named ${value.name}.`,
-						[
-							{
-								text: 'Cancel',
-								style: 'cancel',
-								onPress: () => resolve([])
-							},
-							{
-								text: 'Skip',
-								onPress: () => next()
-							},
-							{
-								text: 'Replace',
-								onPress: () => {
-									toImport.push(value);
-									next();
+				const next = () => {
+					const { value, done } = iterator.next();
+					if (done) {
+						resolve(toImport);
+					} else if (!t.validate(value, homebrewStruct).isValid()) {
+						reject(new Error('Invalid Data'));
+					} else if (states().beasts.find(b => b.name === value.name)) {
+						next();
+					} else if (states().homebrew.find(b => b.name === value.name)) {
+						Alert.alert(
+							`${value.name} Already Exists`,
+							`There is already an existing homebrew named ${value.name}.`,
+							[
+								{
+									text: 'Cancel',
+									style: 'cancel',
+									onPress: () => resolve([])
+								},
+								{
+									text: 'Skip',
+									onPress: () => next()
+								},
+								{
+									text: 'Replace',
+									onPress: () => {
+										toImport.push(value);
+										next();
+									}
 								}
-							}
-						]
-					);
-				} else {
-					toImport.push(value);
-					next();
-				}
-			};
-			next();
-		})
+							]
+						);
+					} else {
+						toImport.push(value);
+						next();
+					}
+				};
+				next();
+			})
 	};
 	const actions = {
-		loadPrefs: async() => {
+		loadPrefs: async () => {
 			const prefs = await loadPrefs();
 			update({
 				...prefs,
 				isLoading: false
 			});
 		},
-		loadProducts: () => privateActions.iapConnection(async() => {
-			const iaps = await RNIap.getProducts(products);
-			await RNIap.consumeAllItems();
-			update({ iaps });
-		}),
-		buyProduct: productId => privateActions.iapTransaction(async() => {
-			const { purchaseToken } = await RNIap.buyProduct(productId);
-			await RNIap.consumePurchase(purchaseToken);
-			Toast.show('Thank you for supporting Druidshape 5e!');
-		}),
+		loadProducts: () =>
+			privateActions.iapConnection(async () => {
+				const iaps = await RNIap.getProducts(products);
+				await RNIap.consumeAllItems();
+				update({ iaps });
+			}),
+		buyProduct: productId =>
+			privateActions.iapTransaction(async () => {
+				const { purchaseToken } = await RNIap.buyProduct(productId);
+				await RNIap.consumePurchase(purchaseToken);
+				Toast.show('Thank you for supporting Druidshape 5e!');
+			}),
 		setDarkMode: darkMode => {
 			update({ darkMode });
 			syncPrefs();
 		},
-		getCurrentTheme: () => states().darkMode ? darkTheme : lightTheme,
-		getCurrentCharacter: () => states().characters.find(c => c.key === states().selectedCharacter),
+		getCurrentTheme: () => (states().darkMode ? darkTheme : lightTheme),
+		getCurrentCharacter: () =>
+			states().characters.find(c => c.key === states().selectedCharacter),
 		toggleMoon: () => {
 			const characters = states().characters;
 			const char = characters.find(c => c.key === states().selectedCharacter);
@@ -160,7 +173,10 @@ export const actions = (update, states) => {
 		removeCharacter: key => {
 			const characters = states().characters.filter(c => c.key !== key);
 			if (characters.length) {
-				const selectedCharacter = states().selectedCharacter === key ? characters[0].key : states().selectedCharacter;
+				const selectedCharacter =
+					states().selectedCharacter === key
+						? characters[0].key
+						: states().selectedCharacter;
 				update({ characters, selectedCharacter });
 				syncPrefs();
 			} else {
@@ -216,9 +232,8 @@ export const actions = (update, states) => {
 			update({ homebrew, characters });
 			syncPrefs();
 		},
-		importHomebrews: beasts => privateActions
-			.getHomebrewImportMergeList(beasts)
-			.then(beasts => {
+		importHomebrews: beasts =>
+			privateActions.getHomebrewImportMergeList(beasts).then(beasts => {
 				if (beasts.length > 0) {
 					let homebrew = states().homebrew;
 					beasts.forEach(b => {
@@ -232,37 +247,63 @@ export const actions = (update, states) => {
 			}),
 		getAllBeasts: () => [...states().beasts, ...states().homebrew],
 		getBeast: name => actions.getAllBeasts().find(b => b.name === name),
-		getFavorites: () => Object.entries(actions.getCurrentCharacter().favs)
-			.filter(([_, isFav]) => isFav)
-			.map(([key]) => actions.getBeast(key))
-			.filter(b => b),
-		getFilteredBeasts: () => filterBeasts(actions.getAllBeasts(), actions.getCurrentCharacter(), states().search, states().filters),
-		getFilteredFavorites: () => filterBeasts(actions.getFavorites(), actions.getCurrentCharacter(), states().search, states().filters),
+		getFavorites: () =>
+			Object.entries(actions.getCurrentCharacter().favs)
+				.filter(([_, isFav]) => isFav)
+				.map(([key]) => actions.getBeast(key))
+				.filter(b => b),
+		getFilteredBeasts: () =>
+			filterBeasts(
+				actions.getAllBeasts(),
+				actions.getCurrentCharacter(),
+				states().search,
+				states().filters
+			),
+		getFilteredFavorites: () =>
+			filterBeasts(
+				actions.getFavorites(),
+				actions.getCurrentCharacter(),
+				states().search,
+				states().filters
+			),
 		getBeastList: () => {
 			const beasts = actions.getFilteredBeasts();
 			const beastsByCr = beasts.reduce(groupBy(b => b.cr.toString().trim()), {});
 			const favorites = actions.getFilteredFavorites();
 
-			const getData = (beasts, prefix='item') => beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
+			const getData = (beasts, prefix = 'item') =>
+				beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
 
-			return states().search ? [{
-				data: getData(beasts)
-			}] : [
-				...(favorites.length ? [{
-					key: 'favs',
-					title: 'FAVORITES',
-					data: getData(favorites, 'fav')
-				}] : []),
-				...Object.entries(beastsByCr)
-					.sort(sortBy(
-						states().filters.desc ? desc(([cr]) => crToNum(cr)) : ([cr]) => crToNum(cr)
-					))
-					.map(([cr, list]) => ({
-						key: cr.toString(),
-						title: `CR ${cr}`,
-						data: getData(list)
-					}))
-			];
+			return states().search
+				? [
+						{
+							data: getData(beasts)
+						}
+				  ]
+				: [
+						...(favorites.length
+							? [
+									{
+										key: 'favs',
+										title: 'FAVORITES',
+										data: getData(favorites, 'fav')
+									}
+							  ]
+							: []),
+						...Object.entries(beastsByCr)
+							.sort(
+								sortBy(
+									states().filters.desc
+										? desc(([cr]) => crToNum(cr))
+										: ([cr]) => crToNum(cr)
+								)
+							)
+							.map(([cr, list]) => ({
+								key: cr.toString(),
+								title: `CR ${cr}`,
+								data: getData(list)
+							}))
+				  ];
 		}
 	};
 	return actions;

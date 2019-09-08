@@ -6,7 +6,7 @@ import ActionButton from 'react-native-action-button';
 
 export default function FloatingActionButton({ hidden, ...props }) {
 	return (
-		<View style={[styles.container, hidden && styles.hidden]} pointerEvents='box-none'>
+		<View style={[styles.container, hidden && styles.hidden]} pointerEvents="box-none">
 			<ActionButton fixNativeFeedbackRadius {...props} />
 		</View>
 	);

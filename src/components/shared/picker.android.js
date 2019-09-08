@@ -27,10 +27,12 @@ export default function PickerAndroid(props) {
 PickerAndroid.propTypes = {
 	onChange: PropTypes.func,
 	value: PropTypes.string,
-	options: PropTypes.arrayOf(PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		text: PropTypes.string.isRequired
-	})).isRequired,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			value: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired
+		})
+	).isRequired,
 	disabled: PropTypes.bool,
 	mode: PropTypes.string,
 	prompt: PropTypes.string,

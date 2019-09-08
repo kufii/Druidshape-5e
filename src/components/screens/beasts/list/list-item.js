@@ -20,9 +20,11 @@ export default class BeastListItem extends React.Component {
 	};
 
 	shouldComponentUpdate(nextProps) {
-		return nextProps.isFav !== this.props.isFav
-			|| nextProps.isSeen !== this.props.isSeen
-			|| nextProps.state.darkMode !== this.props.state.darkMode;
+		return (
+			nextProps.isFav !== this.props.isFav ||
+			nextProps.isSeen !== this.props.isSeen ||
+			nextProps.state.darkMode !== this.props.state.darkMode
+		);
 	}
 
 	render() {
@@ -36,7 +38,7 @@ export default class BeastListItem extends React.Component {
 				title={item}
 				containerStyle={[listTheme.item, styles.item]}
 				titleStyle={listTheme.itemText}
-				leftIcon={(
+				leftIcon={
 					<ToggleIconButton
 						active={isSeen}
 						size={iconSizeLarge}
@@ -46,8 +48,8 @@ export default class BeastListItem extends React.Component {
 						inactiveColor={theme.textColorDisabled}
 						onToggle={onSeen}
 					/>
-				)}
-				rightIcon={(
+				}
+				rightIcon={
 					<ToggleIconButton
 						active={isFav}
 						size={iconSizeLarge}
@@ -56,7 +58,7 @@ export default class BeastListItem extends React.Component {
 						inactiveColor={theme.textColorDisabled}
 						onToggle={onFav}
 					/>
-				)}
+				}
 			/>
 		);
 	}

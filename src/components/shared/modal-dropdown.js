@@ -36,7 +36,11 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 			<TouchableOpacity onPress={() => setVisible(true)}>
 				<View style={[styles.dropdown, style]}>
 					<Text style={styles.text}>{getOptionText(selected)}</Text>
-					<Icon name='ios-arrow-down' size={fontSizeMedium} color={theme.headerTextColor} />
+					<Icon
+						name="ios-arrow-down"
+						size={fontSizeMedium}
+						color={theme.headerTextColor}
+					/>
 				</View>
 			</TouchableOpacity>
 			<Modal
@@ -57,13 +61,21 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 								title={item.text}
 								titleStyle={listTheme.itemText}
 								containerStyle={listTheme.item}
-								rightIcon={(
+								rightIcon={
 									<Icon
 										size={iconSizeLarge}
-										color={item.key === selected ? theme.formButtonColor : theme.textColorDisabled}
-										name={icon(item.key === selected ? 'radio-button-on' : 'radio-button-off')}
+										color={
+											item.key === selected
+												? theme.formButtonColor
+												: theme.textColorDisabled
+										}
+										name={icon(
+											item.key === selected
+												? 'radio-button-on'
+												: 'radio-button-off'
+										)}
 									/>
-								)}
+								}
 							/>
 						)}
 						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
@@ -75,10 +87,12 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 }
 ModalDropdown.propTypes = {
 	actions: PropTypes.object.isRequired,
-	items: PropTypes.arrayOf(PropTypes.shape({
-		key: PropTypes.string.isRequired,
-		text: PropTypes.string.isRequired
-	})).isRequired,
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			key: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired
+		})
+	).isRequired,
 	selected: PropTypes.string,
 	onSelect: PropTypes.func,
 	style: ViewPropTypes.style

@@ -10,14 +10,8 @@ export default function IconButton({ icon, size, color, buttonStyle, containerSt
 		<Button
 			buttonStyle={[buttonStyles.icon.buttonStyle, buttonStyle]}
 			containerStyle={[buttonStyles.icon.containerStyle, containerStyle]}
-			type='clear'
-			icon={
-				<Icon
-					name={icon}
-					size={size}
-					color={color}
-				/>
-			}
+			type="clear"
+			icon={<Icon name={icon} size={size} color={color} />}
 			{...props}
 		/>
 	);

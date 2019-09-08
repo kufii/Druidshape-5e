@@ -97,18 +97,24 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 										type: 'primary',
 										onPress: () => triggerRename(item.key)
 									},
-									...(state.characters.length > 1 ? [{
-										text: 'Delete',
-										type: 'delete',
-										onPress: () => actions.removeCharacter(item.key)
-									}] : [])
+									...(state.characters.length > 1
+										? [
+												{
+													text: 'Delete',
+													type: 'delete',
+													onPress: () => actions.removeCharacter(item.key)
+												}
+										  ]
+										: [])
 								]}
 							>
 								<Menu
 									opened={contextMenuOpen === item.key}
 									onBackdropPress={() => setContextMenuOpen(null)}
 									onSelect={cmd => {
-										cmd === 'rename' ? triggerRename(item.key) : actions.removeCharacter(item.key);
+										cmd === 'rename'
+											? triggerRename(item.key)
+											: actions.removeCharacter(item.key);
 										setContextMenuOpen(null);
 									}}
 								>
@@ -122,18 +128,28 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 											title={item.name}
 											titleStyle={listTheme.itemText}
 											containerStyle={listTheme.item}
-											rightIcon={(
+											rightIcon={
 												<Icon
 													size={iconSizeLarge}
-													color={item.key === state.selectedCharacter ? theme.formButtonColor : theme.textColorDisabled}
-													name={icon(item.key === state.selectedCharacter ? 'radio-button-on' : 'radio-button-off')}
+													color={
+														item.key === state.selectedCharacter
+															? theme.formButtonColor
+															: theme.textColorDisabled
+													}
+													name={icon(
+														item.key === state.selectedCharacter
+															? 'radio-button-on'
+															: 'radio-button-off'
+													)}
 												/>
-											)}
+											}
 										/>
 									</MenuTrigger>
 									<MenuOptions customStyles={menuTheme.menuOptions}>
-										<MenuOption text='Rename' value='rename' />
-										{state.characters.length > 1 && <MenuOption text='Delete' value='delete' />}
+										<MenuOption text="Rename" value="rename" />
+										{state.characters.length > 1 && (
+											<MenuOption text="Delete" value="delete" />
+										)}
 									</MenuOptions>
 								</Menu>
 							</Swipeout>
@@ -150,7 +166,11 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 				text={textboxText}
 				onChangeText={text => setTextboxText(text)}
 				onDismiss={() => setTextboxVisible(false)}
-				onSubmit={name => characterEditing ? actions.renameCharacter(characterEditing, name) : actions.addCharacter(name)}
+				onSubmit={name =>
+					characterEditing
+						? actions.renameCharacter(characterEditing, name)
+						: actions.addCharacter(name)
+				}
 			/>
 		</Modal>
 	);

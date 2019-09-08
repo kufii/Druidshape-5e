@@ -13,7 +13,17 @@ import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/c
 
 import { getModifier } from '../../../../api/beasts';
 
-const getSpeedString = ({ speed, climb, climbDetails, swim, swimDetails, fly, flyDetails, burrow, burrowDetails }) => {
+const getSpeedString = ({
+	speed,
+	climb,
+	climbDetails,
+	swim,
+	swimDetails,
+	fly,
+	flyDetails,
+	burrow,
+	burrowDetails
+}) => {
 	let out = `${speed || 0} ft.`;
 	if (climb) out += `, climb ${climb} ft.${climbDetails ? ` (${climbDetails})` : ''}`;
 	if (swim) out += `, swim ${swim} ft.${swimDetails ? ` (${swimDetails})` : ''}`;
@@ -111,74 +121,122 @@ export default class BeastDetailsScreen extends React.Component {
 				loadMinimal
 				data={list}
 				index={index}
-				onIndexChanged={index => navigation.setParams({ key: list[index].key, title: list[index].name })}
+				onIndexChanged={index =>
+					navigation.setParams({ key: list[index].key, title: list[index].name })
+				}
 				renderItem={beast => (
-					<ScrollView style={styles.scrollView} contentContainerStyle={styles.containerContent}>
+					<ScrollView
+						style={styles.scrollView}
+						contentContainerStyle={styles.containerContent}
+					>
 						<Text style={styles.header1}>{beast.name}</Text>
-						<Text style={styles.text}><I>{beast.size} {beast.type || 'beast'}</I></Text>
+						<Text style={styles.text}>
+							<I>
+								{beast.size} {beast.type || 'beast'}
+							</I>
+						</Text>
 						<Divider style={styles.divider} />
-						<Text style={styles.attribute}><B>Armor Class</B> {beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}</Text>
-						<Text style={styles.attribute}><B>Hit Points</B> {beast.hp} ({beast.roll})</Text>
-						<Text style={styles.attribute}><B>Speed</B> {getSpeedString(beast)}</Text>
+						<Text style={styles.attribute}>
+							<B>Armor Class</B>{' '}
+							{beast.ac + (hasNaturalArmor(beast) ? ' (Natural Armor)' : '')}
+						</Text>
+						<Text style={styles.attribute}>
+							<B>Hit Points</B> {beast.hp} ({beast.roll})
+						</Text>
+						<Text style={styles.attribute}>
+							<B>Speed</B> {getSpeedString(beast)}
+						</Text>
 						<Divider style={styles.divider} />
 						<View style={styles.row}>
 							<View style={styles.stat}>
 								<Text style={styles.header2}>STR</Text>
-								<Text style={styles.text}>{beast.str} ({getModifier(beast.str)})</Text>
+								<Text style={styles.text}>
+									{beast.str} ({getModifier(beast.str)})
+								</Text>
 							</View>
 							<View style={styles.stat}>
 								<Text style={styles.header2}>DEX</Text>
-								<Text style={styles.text}>{beast.dex} ({getModifier(beast.dex)})</Text>
+								<Text style={styles.text}>
+									{beast.dex} ({getModifier(beast.dex)})
+								</Text>
 							</View>
 							<View style={styles.stat}>
 								<Text style={styles.header2}>CON</Text>
-								<Text style={styles.text}>{beast.con} ({getModifier(beast.con)})</Text>
+								<Text style={styles.text}>
+									{beast.con} ({getModifier(beast.con)})
+								</Text>
 							</View>
 						</View>
 						<View style={styles.row}>
 							<View style={styles.stat}>
 								<Text style={styles.header2}>INT</Text>
-								<Text style={styles.text}>{beast.int} ({getModifier(beast.int)})</Text>
+								<Text style={styles.text}>
+									{beast.int} ({getModifier(beast.int)})
+								</Text>
 							</View>
 							<View style={styles.stat}>
 								<Text style={styles.header2}>WIS</Text>
-								<Text style={styles.text}>{beast.wis} ({getModifier(beast.wis)})</Text>
+								<Text style={styles.text}>
+									{beast.wis} ({getModifier(beast.wis)})
+								</Text>
 							</View>
 							<View style={styles.stat}>
 								<Text style={styles.header2}>CHA</Text>
-								<Text style={styles.text}>{beast.cha} ({getModifier(beast.cha)})</Text>
+								<Text style={styles.text}>
+									{beast.cha} ({getModifier(beast.cha)})
+								</Text>
 							</View>
 						</View>
 						<Divider style={styles.divider} />
-						<Text style={styles.attribute}><B>Passive Perception</B> {beast.passive}</Text>
+						<Text style={styles.attribute}>
+							<B>Passive Perception</B> {beast.passive}
+						</Text>
 						{beast.skills && (
-							<Text style={styles.attribute}><B>Skills</B> {beast.skills}</Text>
+							<Text style={styles.attribute}>
+								<B>Skills</B> {beast.skills}
+							</Text>
 						)}
 						{beast.vulnerabilities && (
-							<Text style={styles.attribute}><B>Damage Vulnerabilities</B> {beast.vulnerabilities}</Text>
+							<Text style={styles.attribute}>
+								<B>Damage Vulnerabilities</B> {beast.vulnerabilities}
+							</Text>
 						)}
 						{beast.resistances && (
-							<Text style={styles.attribute}><B>Damage Resistances</B> {beast.resistances}</Text>
+							<Text style={styles.attribute}>
+								<B>Damage Resistances</B> {beast.resistances}
+							</Text>
 						)}
 						{beast.immunities && (
-							<Text style={styles.attribute}><B>Damage Immunities</B> {beast.immunities}</Text>
+							<Text style={styles.attribute}>
+								<B>Damage Immunities</B> {beast.immunities}
+							</Text>
 						)}
 						{beast.conditionImmunities && (
-							<Text style={styles.attribute}><B>Condition Immunities</B> {beast.conditionImmunities}</Text>
+							<Text style={styles.attribute}>
+								<B>Condition Immunities</B> {beast.conditionImmunities}
+							</Text>
 						)}
 						{beast.senses && (
-							<Text style={styles.attribute}><B>Senses</B> {beast.senses}</Text>
+							<Text style={styles.attribute}>
+								<B>Senses</B> {beast.senses}
+							</Text>
 						)}
 						{beast.languages && (
-							<Text style={styles.attribute}><B>Languages</B> {beast.languages}</Text>
+							<Text style={styles.attribute}>
+								<B>Languages</B> {beast.languages}
+							</Text>
 						)}
-						<Text style={styles.attribute}><B>Challenge</B> {beast.cr}</Text>
+						<Text style={styles.attribute}>
+							<B>Challenge</B> {beast.cr}
+						</Text>
 						{beast.traits && (
 							<>
 								<Divider style={styles.divider} />
 								<Text style={styles.header2}>Traits</Text>
 								{beast.traits.map(({ name, text }) => (
-									<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
+									<Text key={name} style={styles.attribute}>
+										<BI>{name}.</BI> {text}
+									</Text>
 								))}
 							</>
 						)}
@@ -187,7 +245,9 @@ export default class BeastDetailsScreen extends React.Component {
 								<Divider style={styles.divider} />
 								<Text style={styles.header2}>Actions</Text>
 								{beast.actions.map(({ name, text }) => (
-									<Text key={name} style={styles.attribute}><BI>{name}.</BI> {text}</Text>
+									<Text key={name} style={styles.attribute}>
+										<BI>{name}.</BI> {text}
+									</Text>
 								))}
 							</>
 						)}

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { range } from '../../../../api/util';
 import listTemplate from '../../../../styles/tcomb/list';
 import selectTemplate from '../../../../styles/tcomb/select';
-import multiselectTempate from '../../../../styles/tcomb/multiselect';
+import multiselectTemplate from '../../../../styles/tcomb/multiselect';
 import { environments } from '../../../../api/beasts';
 
 export const Form = t.form.Form;
@@ -12,14 +12,20 @@ Form.templates.select = selectTemplate;
 
 export const getStruct = beasts => {
 	const Size = t.enums.of(['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'], 'Size');
-	const ChallengeRating = t.enums.of(['0 ', '1/8', '1/4', '1/2', ...range(1, 30).map(n => `${n} `)], 'ChallengeRating');
+	const ChallengeRating = t.enums.of(
+		['0 ', '1/8', '1/4', '1/2', ...range(1, 30).map(n => `${n} `)],
+		'ChallengeRating'
+	);
 
-	const Attribute = t.struct({
-		name: t.String,
-		text: t.String
-	}, 'Attribute');
+	const Attribute = t.struct(
+		{
+			name: t.String,
+			text: t.String
+		},
+		'Attribute'
+	);
 
-	const Name = t.refinement(t.String, n => beasts ? !beasts.find(b => b.name === n) : true);
+	const Name = t.refinement(t.String, n => (beasts ? !beasts.find(b => b.name === n) : true));
 	Name.getValidationErrorMessage = value => value && 'A beast with that name already exists';
 
 	return t.struct({
@@ -65,15 +71,20 @@ export const getOptions = theme => {
 	stylesheet.pickerContainer.normal.borderColor = theme.textColorSecondary;
 	stylesheet.pickerValue.normal.color = stylesheet.pickerValue.error.color = theme.textColor;
 	stylesheet.formGroup.normal.cardColor = stylesheet.formGroup.error.cardColor = theme.cardColor;
-	stylesheet.checkbox.normal.checkedColor = stylesheet.checkbox.error.checkedColor = theme.formButtonColor;
-	stylesheet.checkbox.normal.uncheckedColor = stylesheet.checkbox.error.uncheckedColor = theme.textColorDisabled;
-	stylesheet.checkbox.normal.backgroundColor = stylesheet.checkbox.error.backgroundColor = theme.contentBackgroundColorDark;
-	stylesheet.checkbox.normal.borderColor = stylesheet.checkbox.error.borderColor = theme.textColorSecondary;
+	stylesheet.checkbox.normal.checkedColor = stylesheet.checkbox.error.checkedColor =
+		theme.formButtonColor;
+	stylesheet.checkbox.normal.uncheckedColor = stylesheet.checkbox.error.uncheckedColor =
+		theme.textColorDisabled;
+	stylesheet.checkbox.normal.backgroundColor = stylesheet.checkbox.error.backgroundColor =
+		theme.contentBackgroundColorDark;
+	stylesheet.checkbox.normal.borderColor = stylesheet.checkbox.error.borderColor =
+		theme.textColorSecondary;
 	stylesheet.checkbox.normal.textColor = stylesheet.checkbox.error.textColor = theme.textColor;
 
 	const multilineStylesheet = _.cloneDeep(stylesheet);
 	multilineStylesheet.textbox.normal.height = multilineStylesheet.textbox.error.height = 100;
-	multilineStylesheet.textbox.normal.textAlignVertical = multilineStylesheet.textbox.error.textAlignVertical = 'top';
+	multilineStylesheet.textbox.normal.textAlignVertical = multilineStylesheet.textbox.error.textAlignVertical =
+		'top';
 
 	const placeholderTextColor = theme.textColorSecondary;
 
@@ -168,7 +179,7 @@ export const getOptions = theme => {
 			traits: attributeListConfig,
 			actions: attributeListConfig,
 			environments: {
-				factory: multiselectTempate,
+				factory: multiselectTemplate,
 				options: envs
 			}
 		}

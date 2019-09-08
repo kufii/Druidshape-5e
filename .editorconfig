@@ -15,7 +15,7 @@ indent_size = 4
 indent_style = space
 indent_size = 3
 
-[{*.json,.eslintrc,Podfile,Podfile.lock,*.iml,.buckconfig,*.m}]
+[{*.json,.prettierrc,.eslintrc,Podfile,Podfile.lock,*.iml,.buckconfig,*.m}]
 indent_style = space
 indent_size = 2
 
