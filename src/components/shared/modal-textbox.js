@@ -17,12 +17,12 @@ export default function ModalTextbox({
 }) {
 	const theme = actions.getCurrentTheme();
 	const buttonTheme = buttonStyles.bottom(theme);
-	const styles = r({
-		modal: 'h auto',
-		container: `bc ${theme.contentBackgroundColor}`,
-		textbox: `c ${theme.textColor}`,
-		textboxContainer: 'mb 5'
-	});
+	const styles = {
+		modal: r`h auto`,
+		container: r`bc ${theme.contentBackgroundColor}`,
+		textbox: r`c ${theme.textColor}`,
+		textboxContainer: r`mb 5`
+	};
 
 	return (
 		<Modal isVisible={isVisible} style={styles.modal}>

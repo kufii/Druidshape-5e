@@ -67,21 +67,21 @@ export default class HomebrewDetailsScreen extends React.Component {
 	get styles() {
 		const theme = this.theme;
 
-		return r({
-			container: `
+		return {
+			container: r`
 				f 1
 				fd column
 				jc center
 				bc ${theme.contentBackgroundColor}
 			`,
-			form: 'f 1',
-			formContent: 'p 10',
-			bottomButton: `h ${bottomButtonHeight + getBottomSpace()}`,
-			copyButton: `border-color ${theme.formButtonColor}`,
-			copyButtonTitle: `c ${theme.formButtonColor}`,
-			copyButtonContainer: 'mb 5',
-			buttonIcon: 'mr 5'
-		});
+			form: r`f 1`,
+			formContent: r`p 10`,
+			bottomButton: r`h ${bottomButtonHeight + getBottomSpace()}`,
+			copyButton: r`border-color ${theme.formButtonColor}`,
+			copyButtonTitle: r`c ${theme.formButtonColor}`,
+			copyButtonContainer: r`mb 5`,
+			buttonIcon: r`mr 5`
+		};
 	}
 
 	submit() {

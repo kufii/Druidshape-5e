@@ -42,23 +42,23 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 
 	const theme = actions.getCurrentTheme();
 
-	const styles = r({
-		backdrop: 'f 0.5',
-		container: `f 0.5; bc ${theme.contentBackgroundColorDark}`,
-		modal: 'm 0; jc flex-end',
-		header: `
+	const styles = {
+		backdrop: r`f 0.5`,
+		container: r`f 0.5; bc ${theme.contentBackgroundColorDark}`,
+		modal: r`m 0; jc flex-end`,
+		header: r`
 			fd row
 			jc space-between
 			ai center
 			bc ${theme.contentBackgroundColor}
 			pr 5; pl 10
 		`,
-		headerText: `
+		headerText: r`
 			c ${theme.textColor}
 			fw bold
 			fs ${fontSizeLarge}
 		`
-	});
+	};
 	const listTheme = listStyles(theme);
 	const menuTheme = menuStyles(theme);
 

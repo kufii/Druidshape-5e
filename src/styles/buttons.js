@@ -1,27 +1,26 @@
 import r from 'rnss';
 
 export default {
-	icon: r({
-		buttonStyle: 'ar 1',
-		containerStyle: `
+	icon: {
+		buttonStyle: r`ar 1`,
+		containerStyle: r`
 			br 999999
 			jc center
 			ai center
 			o hidden
 		`
-	}),
-	bottom: theme =>
-		r({
-			container: `
+	},
+	bottom: theme => ({
+		container: r`
 			fd row
 			jc space-between
 			btc ${theme.formButtonColor}
 			btw hw
 		`,
-			button: 'w 50%; br 0',
-			cancelButton: `bc ${theme.formButtonColorSecondary}`,
-			cancelButtonTitle: `c ${theme.formButtonColor}`,
-			saveButton: `bc ${theme.formButtonColor}`,
-			saveButtonTitle: 'c #fff'
-		})
+		button: r`w 50%; br 0`,
+		cancelButton: r`bc ${theme.formButtonColorSecondary}`,
+		cancelButtonTitle: r`c ${theme.formButtonColor}`,
+		saveButton: r`bc ${theme.formButtonColor}`,
+		saveButtonTitle: r`c #fff`
+	})
 };

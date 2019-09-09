@@ -64,8 +64,8 @@ export default class BeastListItem extends React.Component {
 	}
 }
 
-const styles = r({
-	item: 'p 0 5',
-	row: 'fd row; ai center',
-	margin: 'm 0 10'
-});
+const styles = {
+	item: r`p 0 5`,
+	row: r`fd row; ai center`,
+	margin: r`m 0 10`
+};

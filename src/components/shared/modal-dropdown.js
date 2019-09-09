@@ -18,17 +18,17 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 
 	const theme = actions.getCurrentTheme();
 
-	const styles = r({
-		modal: `margin ${modalMargin}`,
-		container: `f 1; bc ${theme.contentBackgroundColor}`,
-		dropdown: 'f 1; fd row; ai center',
-		text: `
+	const styles = {
+		modal: r`margin ${modalMargin}`,
+		container: r`f 1; bc ${theme.contentBackgroundColor}`,
+		dropdown: r`f 1; fd row; ai center`,
+		text: r`
 			fw bold
 			mr 4
 			fs ${Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge}
 			color ${theme.headerTextColor}
 		`
-	});
+	};
 	const listTheme = listStyles(theme);
 
 	return (

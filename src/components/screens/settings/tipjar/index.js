@@ -22,16 +22,16 @@ export default class SettingsScreen extends React.Component {
 	get styles() {
 		const { actions } = this.props.screenProps;
 		const theme = actions.getCurrentTheme();
-		return r({
-			container: `f 1; bc ${theme.contentBackgroundColor}`,
-			disclaimer: `
+		return {
+			container: r`f 1; bc ${theme.contentBackgroundColor}`,
+			disclaimer: r`
 				c ${theme.textColor}
 				fs ${fontSizeMedium}
 				p 10
 				flex-wrap wrap
 			`,
-			badge: `bc ${theme.formButtonColor}; border-color transparent`
-		});
+			badge: r`bc ${theme.formButtonColor}; border-color transparent`
+		};
 	}
 
 	componentDidMount() {

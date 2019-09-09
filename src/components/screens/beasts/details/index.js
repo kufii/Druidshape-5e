@@ -78,34 +78,34 @@ export default class BeastDetailsScreen extends React.Component {
 		const { actions } = this.props.screenProps;
 
 		const theme = actions.getCurrentTheme();
-		return r({
-			scrollView: `as stretch; bc ${theme.contentBackgroundColor}`,
-			containerContent: 'p 10',
-			divider: `m 10 0; bc ${theme.dividerColor}`,
-			row: 'fd row',
-			attribute: `m 2 0; c ${theme.textColor}`,
-			header1: `
+		return {
+			scrollView: r`as stretch; bc ${theme.contentBackgroundColor}`,
+			containerContent: r`p 10`,
+			divider: r`m 10 0; bc ${theme.dividerColor}`,
+			row: r`fd row`,
+			attribute: r`m 2 0; c ${theme.textColor}`,
+			header1: r`
 				fw bold
 				fs ${fontSizeXLarge}
 				c ${theme.textColorAccent}
 			`,
-			header2: `
+			header2: r`
 				fw bold
 				fs ${fontSizeLarge}
 				c ${theme.textColorAccent}
 			`,
-			stat: `
+			stat: r`
 				f 1
 				fd column
 				ai center
 				m 5 0
 			`,
-			text: `c ${theme.textColor}`,
-			environments: 'f 1; fd row; flex-wrap wrap',
-			environmentContainer: 'm 5 5 5 0',
-			environment: `bc ${theme.formButtonColor}; h auto; br 1000`,
-			environmentText: `fs ${fontSizeMedium}; p 5 10`
-		});
+			text: r`c ${theme.textColor}`,
+			environments: r`f 1; fd row; flex-wrap wrap`,
+			environmentContainer: r`m 5 5 5 0`,
+			environment: r`bc ${theme.formButtonColor}; h auto; br 1000`,
+			environmentText: r`fs ${fontSizeMedium}; p 5 10`
+		};
 	}
 
 	render() {

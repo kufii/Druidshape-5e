@@ -59,34 +59,34 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 
 	const { filters } = state;
 
-	const styles = r({
-		container: `
+	const styles = {
+		container: r`
 			f 1
 			fd row
 			ai center
 			pr 5
 			bc ${theme.headerColor}
 		`,
-		checkbox: `
+		checkbox: r`
 			bc ${theme.cardColor}
 			border-color transparent
 			m 0; p 0
 		`,
-		menuItemText: `c ${theme.textColor}; fw bold`,
-		extraMargin: 'm 0 11',
-		picker: `
+		menuItemText: r`c ${theme.textColor}; fw bold`,
+		extraMargin: r`m 0 11`,
+		picker: r`
 			c ${theme.textColor}
 			border-color ${theme.textColorSecondary}
 		`,
-		pickerLabel: 'pb 0',
-		filterContainer: `
+		pickerLabel: r`pb 0`,
+		filterContainer: r`
 			f 1
 			p 10 0 10 ${Platform.OS === 'android' ? 10 : 0}
 			bc ${theme.headerColor}
 		`,
-		filter: `bc ${theme.headerColorLight}; br 20`,
-		filterText: `c ${theme.headerTextColor}`
-	});
+		filter: r`bc ${theme.headerColorLight}; br 20`,
+		filterText: r`c ${theme.headerTextColor}`
+	};
 
 	return (
 		<View style={styles.container}>
@@ -216,7 +216,7 @@ ExtendedHeader.propTypes = {
 	}).isRequired
 };
 
-const globalStyles = r({
-	margin: 'm 0 5',
-	marginLarge: 'm 0 20'
-});
+const globalStyles = {
+	margin: r`m 0 5`,
+	marginLarge: r`m 0 20`
+};

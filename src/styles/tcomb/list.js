@@ -105,15 +105,15 @@ export default function ListTemplate(locals) {
 	);
 }
 
-const styles = r({
-	flex: 'f 1',
-	row: 'fd row',
-	marginBottom: 'mb 10',
-	card: `
+const styles = {
+	flex: r`f 1`,
+	row: r`fd row`,
+	marginBottom: r`mb 10`,
+	card: r`
 		mb 10
 		border-color transparent
 		elevation 4
 	`,
-	addButton: `border-color ${lightTheme.formButtonColor}`,
-	button: `c ${lightTheme.formButtonColor}`
-});
+	addButton: r`border-color ${lightTheme.formButtonColor}`,
+	button: r`c ${lightTheme.formButtonColor}`
+};

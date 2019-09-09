@@ -111,8 +111,8 @@ CollapsiblePickerIOS.propTypes = {
 	containerStyleOpen: Text.propTypes.style
 };
 
-const styles = r({
-	pickerContainer: 'mb 4; br 4; bw 1; p 5',
-	pickerValue: 'fs 17',
-	animatedView: 'o hidden'
-});
+const styles = {
+	pickerContainer: r`mb 4; br 4; bw 1; p 5`,
+	pickerValue: r`fs 17`,
+	animatedView: r`o hidden`
+};

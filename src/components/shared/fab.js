@@ -15,10 +15,10 @@ FloatingActionButton.propTypes = {
 	hidden: PropTypes.bool
 };
 
-const styles = r({
-	container: `
+const styles = {
+	container: r`
 		position absolute
 		top 0; right 0; bottom 0; left 0
 	`,
-	hidden: 'bottom -90'
-});
+	hidden: r`bottom -90`
+};

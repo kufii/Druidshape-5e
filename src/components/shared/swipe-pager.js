@@ -343,14 +343,14 @@ export default class SwipePager extends React.Component {
 	}
 }
 
-const styles = r({
-	container: `
+const styles = {
+	container: r`
 		bc transparent
 		position relative
 		f 1
 	`,
-	wrapperIos: 'bc transparent',
-	wrapperAndroid: 'bc transparent; f 1',
-	slide: 'bc transparent',
-	slideLoading: 'f 1; jc center; ai center'
-});
+	wrapperIos: r`bc transparent`,
+	wrapperAndroid: r`bc transparent; f 1`,
+	slide: r`bc transparent`,
+	slideLoading: r`f 1; jc center; ai center`
+};

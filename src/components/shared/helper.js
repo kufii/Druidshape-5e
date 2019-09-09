@@ -13,7 +13,7 @@ B.propTypes = I.propTypes = BI.propTypes = {
 	style: Text.propTypes.style
 };
 
-const styles = r({
-	bold: 'fw bold',
-	italic: 'font-style italic'
-});
+const styles = {
+	bold: r`fw bold`,
+	italic: r`font-style italic`
+};
