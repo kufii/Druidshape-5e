@@ -20,7 +20,7 @@ Features:
 ## Screenshots
 
 <div>
-  <img src="./store-images/screenshots/android/phone/with-device/list.png" width="250" />
-  <img src="./store-images/screenshots/android/phone/with-device/details.png" width="250" />
-  <img src="./store-images/screenshots/android/phone/with-device/homebrew.png" width="250" />
+  <img src="./store-images/screenshots/android/phone/with-device/list.png" width="250">
+  <img src="./store-images/screenshots/android/phone/with-device/details.png" width="250">
+  <img src="./store-images/screenshots/android/phone/with-device/homebrew.png" width="250">
 </div>
