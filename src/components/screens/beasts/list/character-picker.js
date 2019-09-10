@@ -44,23 +44,23 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 
 	const styles = {
 		backdrop: r`f 0.5`,
-		container: r`f 0.5; bc ${theme.contentBackgroundColorDark}`,
+		container: r`f 0.5; bc $contentBackgroundColorDark`,
 		modal: r`m 0; jc flex-end`,
 		header: r`
 			fd row
 			jc space-between
 			ai center
-			bc ${theme.contentBackgroundColor}
+			bc $contentBackgroundColor
 			pr 5; pl 10
 		`,
 		headerText: r`
-			c ${theme.textColor}
+			c $textColor
 			fw bold
 			fs ${fontSizeLarge}
 		`
 	};
-	const listTheme = listStyles(theme);
-	const menuTheme = menuStyles(theme);
+	const listTheme = listStyles();
+	const menuTheme = menuStyles();
 
 	return (
 		<Modal
@@ -161,7 +161,6 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 			</MenuProvider>
 			<ModalTextbox
 				isRequired
-				actions={actions}
 				isVisible={textboxVisible}
 				text={textboxText}
 				onChangeText={text => setTextboxText(text)}

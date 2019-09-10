@@ -49,10 +49,10 @@ export default class HomebrewListScreen extends React.Component {
 		const { state, actions } = screenProps;
 
 		const theme = actions.getCurrentTheme();
-		const listTheme = listStyles(theme);
+		const listTheme = listStyles();
 
 		return (
-			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
+			<View style={r`f 1; bc $contentBackgroundColorDark`}>
 				<FlatList
 					ref={list => (this.list = list)}
 					data={state.homebrew.map(({ name }) => name).sort()}

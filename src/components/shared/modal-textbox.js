@@ -7,7 +7,6 @@ import { Input, Button } from 'react-native-elements';
 import buttonStyles from '../../styles/buttons';
 
 export default function ModalTextbox({
-	actions,
 	isVisible,
 	isRequired,
 	text = '',
@@ -15,12 +14,11 @@ export default function ModalTextbox({
 	onSubmit,
 	onChangeText
 }) {
-	const theme = actions.getCurrentTheme();
-	const buttonTheme = buttonStyles.bottom(theme);
+	const buttonTheme = buttonStyles.bottom();
 	const styles = {
 		modal: r`h auto`,
-		container: r`bc ${theme.contentBackgroundColor}`,
-		textbox: r`c ${theme.textColor}`,
+		container: r`bc $contentBackgroundColor`,
+		textbox: r`c $textColor`,
 		textboxContainer: r`mb 5`
 	};
 
@@ -60,7 +58,6 @@ export default function ModalTextbox({
 	);
 }
 ModalTextbox.propTypes = {
-	actions: PropTypes.object.isRequired,
 	isVisible: PropTypes.bool,
 	isRequired: PropTypes.bool,
 	text: PropTypes.string,

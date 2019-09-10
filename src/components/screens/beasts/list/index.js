@@ -63,7 +63,7 @@ export default withCollapsible(
 			const { paddingHeight, animatedY } = collapsible;
 
 			const theme = actions.getCurrentTheme();
-			const listTheme = listStyles(theme);
+			const listTheme = listStyles();
 
 			const character = actions.getCurrentCharacter();
 
@@ -71,7 +71,7 @@ export default withCollapsible(
 			this.flattenedList = list.map(({ data }) => data).reduce(flatten, []);
 
 			return (
-				<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
+				<View style={r`f 1; bc $contentBackgroundColorDark`}>
 					<AnimatedSectionList
 						ref={list => (this.list = list)}
 						keyboardShouldPersistTaps="always"

@@ -75,24 +75,21 @@ export default class BeastDetailsScreen extends React.Component {
 	};
 
 	get styles() {
-		const { actions } = this.props.screenProps;
-
-		const theme = actions.getCurrentTheme();
 		return {
-			scrollView: r`as stretch; bc ${theme.contentBackgroundColor}`,
+			scrollView: r`as stretch; bc $contentBackgroundColor`,
 			containerContent: r`p 10`,
-			divider: r`m 10 0; bc ${theme.dividerColor}`,
+			divider: r`m 10 0; bc $dividerColor`,
 			row: r`fd row`,
-			attribute: r`m 2 0; c ${theme.textColor}`,
+			attribute: r`m 2 0; c $textColor`,
 			header1: r`
 				fw bold
 				fs ${fontSizeXLarge}
-				c ${theme.textColorAccent}
+				c $textColorAccent
 			`,
 			header2: r`
 				fw bold
 				fs ${fontSizeLarge}
-				c ${theme.textColorAccent}
+				c $textColorAccent
 			`,
 			stat: r`
 				f 1
@@ -100,10 +97,10 @@ export default class BeastDetailsScreen extends React.Component {
 				ai center
 				m 5 0
 			`,
-			text: r`c ${theme.textColor}`,
+			text: r`c $textColor`,
 			environments: r`f 1; fd row; flex-wrap wrap`,
 			environmentContainer: r`m 5 5 5 0`,
-			environment: r`bc ${theme.formButtonColor}; h auto; br 1000`,
+			environment: r`bc $formButtonColor; h auto; br 1000`,
 			environmentText: r`fs ${fontSizeMedium}; p 5 10`
 		};
 	}

@@ -65,20 +65,18 @@ export default class HomebrewDetailsScreen extends React.Component {
 	}
 
 	get styles() {
-		const theme = this.theme;
-
 		return {
 			container: r`
 				f 1
 				fd column
 				jc center
-				bc ${theme.contentBackgroundColor}
+				bc $contentBackgroundColor
 			`,
 			form: r`f 1`,
 			formContent: r`p 10`,
 			bottomButton: r`h ${bottomButtonHeight + getBottomSpace()}`,
-			copyButton: r`border-color ${theme.formButtonColor}`,
-			copyButtonTitle: r`c ${theme.formButtonColor}`,
+			copyButton: r`border-color $formButtonColor`,
+			copyButtonTitle: r`c $formButtonColor`,
 			copyButtonContainer: r`mb 5`,
 			buttonIcon: r`mr 5`
 		};
@@ -108,7 +106,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 		const { actions } = this.props.screenProps;
 		const styles = this.styles;
 		const theme = this.theme;
-		const buttonTheme = buttonStyles.bottom(theme);
+		const buttonTheme = buttonStyles.bottom();
 		return (
 			<View style={styles.container}>
 				<View style={styles.form}>

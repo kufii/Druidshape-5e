@@ -30,7 +30,7 @@ export default class BeastListItem extends React.Component {
 	render() {
 		const { actions, item, isFav, isSeen, onPress, onFav, onSeen } = this.props;
 		const theme = actions.getCurrentTheme();
-		const listTheme = listStyles(theme);
+		const listTheme = listStyles();
 
 		return (
 			<ListItem

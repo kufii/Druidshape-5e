@@ -20,17 +20,15 @@ export default class SettingsScreen extends React.Component {
 	};
 
 	get styles() {
-		const { actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
 		return {
-			container: r`f 1; bc ${theme.contentBackgroundColor}`,
+			container: r`f 1; bc $contentBackgroundColor`,
 			disclaimer: r`
-				c ${theme.textColor}
+				c $textColor
 				fs ${fontSizeMedium}
 				p 10
 				flex-wrap wrap
 			`,
-			badge: r`bc ${theme.formButtonColor}; border-color transparent`
+			badge: r`bc $formButtonColor; border-color transparent`
 		};
 	}
 
@@ -40,8 +38,7 @@ export default class SettingsScreen extends React.Component {
 
 	render() {
 		const { state, actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
-		const listTheme = listStyles(theme);
+		const listTheme = listStyles();
 		const styles = this.styles;
 		const getTitle = productId => {
 			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.tip\.(.+)/);

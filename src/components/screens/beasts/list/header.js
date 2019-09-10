@@ -52,7 +52,7 @@ export const Header = ({ screenProps }) => {
 export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const { state, actions } = screenProps;
 	const theme = actions.getCurrentTheme();
-	const menuTheme = menuStyles(theme);
+	const menuTheme = menuStyles();
 
 	const search = state.search;
 	const isFiltering = navigation.getParam('isFiltering', false);
@@ -65,27 +65,27 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 			fd row
 			ai center
 			pr 5
-			bc ${theme.headerColor}
+			bc $headerColor
 		`,
 		checkbox: r`
-			bc ${theme.cardColor}
+			bc $cardColor
 			border-color transparent
 			m 0; p 0
 		`,
-		menuItemText: r`c ${theme.textColor}; fw bold`,
+		menuItemText: r`c $textColor; fw bold`,
 		extraMargin: r`m 0 11`,
 		picker: r`
-			c ${theme.textColor}
-			border-color ${theme.textColorSecondary}
+			c $textColor
+			border-color $textColorSecondary
 		`,
 		pickerLabel: r`pb 0`,
 		filterContainer: r`
 			f 1
 			p 10 0 10 ${Platform.OS === 'android' ? 10 : 0}
-			bc ${theme.headerColor}
+			bc $headerColor
 		`,
-		filter: r`bc ${theme.headerColorLight}; br 20`,
-		filterText: r`c ${theme.headerTextColor}`
+		filter: r`bc $headerColorLight; br 20`,
+		filterText: r`c $headerTextColor`
 	};
 
 	return (

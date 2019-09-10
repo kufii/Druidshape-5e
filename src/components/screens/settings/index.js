@@ -36,10 +36,10 @@ export default class SettingsScreen extends React.Component {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
 		const theme = actions.getCurrentTheme();
-		const listTheme = listStyles(theme);
+		const listTheme = listStyles();
 
 		return (
-			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
+			<View style={r`f 1; bc $contentBackgroundColorDark`}>
 				<ScrollView ref={list => (this.list = list)}>
 					<ListItem
 						title="Dark Mode"

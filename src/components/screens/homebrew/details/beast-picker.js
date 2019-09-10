@@ -12,8 +12,7 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 		.getAllBeasts()
 		.map(({ name }) => name)
 		.sort();
-	const theme = actions.getCurrentTheme();
-	const listTheme = listStyles(theme);
+	const listTheme = listStyles();
 
 	const dismiss = () => onDismiss && onDismiss();
 

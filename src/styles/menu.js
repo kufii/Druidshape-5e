@@ -1,11 +1,11 @@
 import r from 'rnss';
 
-export default theme => ({
+export default () => ({
 	menuOptions: {
-		optionsWrapper: r`bc ${theme.cardColor}`,
-		optionText: r`c ${theme.textColor}; m 10`
+		optionsWrapper: r`bc $cardColor`,
+		optionText: r`c $textColor; m 10`
 	},
 	rendererProps: {
-		anchorStyle: r`bc ${theme.cardColor}`
+		anchorStyle: r`bc $cardColor`
 	}
 });

@@ -20,16 +20,16 @@ export default function ModalDropdown({ actions, items, selected, onSelect, styl
 
 	const styles = {
 		modal: r`margin ${modalMargin}`,
-		container: r`f 1; bc ${theme.contentBackgroundColor}`,
+		container: r`f 1; bc $contentBackgroundColor`,
 		dropdown: r`f 1; fd row; ai center`,
 		text: r`
 			fw bold
 			mr 4
 			fs ${Platform.OS === 'ios' ? fontSizeMedium : fontSizeLarge}
-			color ${theme.headerTextColor}
+			color $headerTextColor
 		`
 	};
-	const listTheme = listStyles(theme);
+	const listTheme = listStyles();
 
 	return (
 		<>
