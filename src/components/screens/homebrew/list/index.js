@@ -47,8 +47,6 @@ export default class HomebrewListScreen extends React.Component {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
 
-		const listTheme = listStyles();
-
 		return (
 			<View style={r`f 1; bc $contentBackgroundColorDark`}>
 				<FlatList
@@ -71,14 +69,14 @@ export default class HomebrewListScreen extends React.Component {
 									navigation.navigate('HomebrewDetails', { edit: item })
 								}
 								title={item}
-								titleStyle={listTheme.itemText}
-								containerStyle={listTheme.item}
+								titleStyle={listStyles().itemText}
+								containerStyle={listStyles().item}
 								chevron={{ size: r.vars().iconSizeLarge }}
 							/>
 						</Swipeout>
 					)}
 					keyExtractor={item => item}
-					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+					ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 					onScroll={this.onScroll}
 					onLayout={e => (this._listViewHeight = e.nativeEvent.layout.height)}
 					onContentSizeChange={(_, height) => (this._listViewContentHeight = height)}

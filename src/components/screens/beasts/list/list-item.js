@@ -27,14 +27,13 @@ export default class BeastListItem extends React.Component {
 
 	render() {
 		const { item, isFav, isSeen, onPress, onFav, onSeen } = this.props;
-		const listTheme = listStyles();
 
 		return (
 			<ListItem
 				onPress={onPress}
 				title={item}
-				containerStyle={[listTheme.item, styles.item]}
-				titleStyle={listTheme.itemText}
+				containerStyle={[listStyles().item, styles.item]}
+				titleStyle={listStyles().itemText}
 				leftIcon={
 					<ToggleIconButton
 						active={isSeen}

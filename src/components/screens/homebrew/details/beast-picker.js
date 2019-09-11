@@ -11,7 +11,6 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 		.getAllBeasts()
 		.map(({ name }) => name)
 		.sort();
-	const listTheme = listStyles();
 
 	const dismiss = () => onDismiss && onDismiss();
 
@@ -32,12 +31,12 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 						}}
 						chevron={{ size: r.vars().iconSizeLarge }}
 						title={item}
-						titleStyle={listTheme.itemText}
-						containerStyle={listTheme.item}
+						titleStyle={listStyles().itemText}
+						containerStyle={listStyles().item}
 					/>
 				)}
 				keyExtractor={item => item}
-				ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+				ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 			/>
 		</Modal>
 	);

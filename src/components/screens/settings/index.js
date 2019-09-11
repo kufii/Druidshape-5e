@@ -34,35 +34,34 @@ export default class SettingsScreen extends React.Component {
 	render() {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
-		const listTheme = listStyles();
 
 		return (
 			<View style={r`f 1; bc $contentBackgroundColorDark`}>
 				<ScrollView ref={list => (this.list = list)}>
 					<ListItem
 						title="Dark Mode"
-						containerStyle={listTheme.item}
-						titleStyle={listTheme.itemText}
+						containerStyle={listStyles().item}
+						titleStyle={listStyles().itemText}
 						switch={{
 							value: state.darkMode,
 							thumbColor: r.vars().formButtonColor,
 							onValueChange: value => actions.setDarkMode(value)
 						}}
 					/>
-					<Divider style={listTheme.divider} />
+					<Divider style={listStyles().divider} />
 					<ListItem
 						title="Export Homebrew"
-						containerStyle={listTheme.item}
-						titleStyle={listTheme.itemText}
+						containerStyle={listStyles().item}
+						titleStyle={listStyles().itemText}
 						onPress={() =>
 							Share.share({ message: JSON.stringify(state.homebrew, null, 2) })
 						}
 					/>
-					<Divider style={listTheme.divider} />
+					<Divider style={listStyles().divider} />
 					<ListItem
 						title="Import Homebrew"
-						containerStyle={listTheme.item}
-						titleStyle={listTheme.itemText}
+						containerStyle={listStyles().item}
+						titleStyle={listStyles().itemText}
 						onPress={({ nativeEvent }) =>
 							Alert.alert(
 								'Import Homebrew',
@@ -122,11 +121,11 @@ export default class SettingsScreen extends React.Component {
 							)
 						}
 					/>
-					<Divider style={listTheme.divider} />
+					<Divider style={listStyles().divider} />
 					<ListItem
 						title="Tip Jar"
-						containerStyle={listTheme.item}
-						titleStyle={listTheme.itemText}
+						containerStyle={listStyles().item}
+						titleStyle={listStyles().itemText}
 						chevron={{ size: r.vars().iconSizeLarge }}
 						onPress={() => navigation.navigate('TipJar')}
 					/>

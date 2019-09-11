@@ -14,7 +14,7 @@ export default function ModalTextbox({
 	onSubmit,
 	onChangeText
 }) {
-	const buttonTheme = buttonStyles.bottom();
+	const buttonTheme = buttonStyles().bottom;
 	const styles = {
 		modal: r`h auto`,
 		container: r`bc $contentBackgroundColor`,

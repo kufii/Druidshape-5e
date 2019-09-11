@@ -49,7 +49,6 @@ export const Header = ({ screenProps }) => {
 
 export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const { state, actions } = screenProps;
-	const menuTheme = menuStyles();
 
 	const search = state.search;
 	const isFiltering = navigation.getParam('isFiltering', false);
@@ -119,7 +118,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 						onToggle={() => navigation.setParams({ isFiltering: !isFiltering })}
 					/>
 				</MenuTrigger>
-				<MenuOptions customStyles={menuTheme.menuOptions}>
+				<MenuOptions customStyles={menuStyles().menuOptions}>
 					<MenuOption disabled>
 						<CheckBox
 							containerStyle={styles.checkbox}

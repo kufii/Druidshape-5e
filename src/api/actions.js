@@ -10,6 +10,9 @@ import { filterBeasts, crToNum } from './beasts';
 import { setPref, loadPrefs, initialPrefs } from './user-prefs';
 import { toDict, iterate, groupBy, sortBy, desc } from './util';
 import { lightTheme, darkTheme } from './constants';
+import { rebuild as rebuildListStyles } from '../styles/list';
+import { rebuild as rebuildMenuStyles } from '../styles/menu';
+import { rebuild as rebuildButtonStyles } from '../styles/buttons';
 
 const homebrewStruct = getStruct();
 
@@ -32,6 +35,11 @@ export const actions = (update, states) => {
 		);
 
 	const privateActions = {
+		rebuildStyles: () => {
+			rebuildListStyles();
+			rebuildMenuStyles();
+			rebuildButtonStyles();
+		},
 		async iapConnection(cb) {
 			try {
 				await RNIap.initConnection();
@@ -104,6 +112,7 @@ export const actions = (update, states) => {
 		loadPrefs: async () => {
 			const prefs = await loadPrefs();
 			r.vars(prefs.darkMode ? darkTheme : lightTheme);
+			privateActions.rebuildStyles();
 			update({
 				...prefs,
 				isLoading: false
@@ -124,6 +133,7 @@ export const actions = (update, states) => {
 		setDarkMode: darkMode => {
 			update({ darkMode });
 			r.vars(darkMode ? darkTheme : lightTheme);
+			privateActions.rebuildStyles();
 			syncPrefs();
 		},
 		getCurrentCharacter: () =>

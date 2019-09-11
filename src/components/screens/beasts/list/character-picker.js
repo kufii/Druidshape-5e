@@ -56,8 +56,6 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 			fs $fontSizeLarge
 		`
 	};
-	const listTheme = listStyles();
-	const menuTheme = menuStyles();
 
 	return (
 		<Modal
@@ -80,7 +78,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 							onPress={() => triggerAdd()}
 						/>
 					</View>
-					<Divider style={listTheme.divider} />
+					<Divider style={listStyles().divider} />
 					<FlatList
 						data={state.characters}
 						renderItem={({ item }) => (
@@ -123,8 +121,8 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 											}}
 											onLongPress={() => setContextMenuOpen(item.key)}
 											title={item.name}
-											titleStyle={listTheme.itemText}
-											containerStyle={listTheme.item}
+											titleStyle={listStyles().itemText}
+											containerStyle={listStyles().item}
 											rightIcon={
 												<Icon
 													size={r.vars().iconSizeLarge}
@@ -142,7 +140,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 											}
 										/>
 									</MenuTrigger>
-									<MenuOptions customStyles={menuTheme.menuOptions}>
+									<MenuOptions customStyles={menuStyles().menuOptions}>
 										<MenuOption text="Rename" value="rename" />
 										{state.characters.length > 1 && (
 											<MenuOption text="Delete" value="delete" />
@@ -152,7 +150,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 							</Swipeout>
 						)}
 						keyExtractor={c => c.key.toString()}
-						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+						ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 					/>
 				</View>
 			</MenuProvider>

@@ -99,7 +99,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 	render() {
 		const { actions } = this.props.screenProps;
 		const styles = this.styles;
-		const buttonTheme = buttonStyles.bottom();
+		const buttonTheme = buttonStyles().bottom;
 		return (
 			<View style={styles.container}>
 				<View style={styles.form}>

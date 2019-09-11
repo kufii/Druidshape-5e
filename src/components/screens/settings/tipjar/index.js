@@ -37,7 +37,6 @@ export default class SettingsScreen extends React.Component {
 
 	render() {
 		const { state, actions } = this.props.screenProps;
-		const listTheme = listStyles();
 		const styles = this.styles;
 		const getTitle = productId => {
 			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.tip\.(.+)/);
@@ -63,15 +62,15 @@ export default class SettingsScreen extends React.Component {
 						<ListItem
 							title={getTitle(productId)}
 							badge={{ value: localizedPrice, badgeStyle: styles.badge }}
-							titleStyle={listTheme.itemText}
-							containerStyle={listTheme.item}
+							titleStyle={listStyles().itemText}
+							containerStyle={listStyles().item}
 							onPress={() => actions.buyProduct(productId)}
 						/>
 					)}
 					keyExtractor={item => item.productId}
-					ListHeaderComponent={() => <Divider style={listTheme.divider} />}
-					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
-					ListFooterComponent={() => <Divider style={listTheme.divider} />}
+					ListHeaderComponent={() => <Divider style={listStyles().divider} />}
+					ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
+					ListFooterComponent={() => <Divider style={listStyles().divider} />}
 				/>
 			</View>
 		);

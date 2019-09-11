@@ -27,8 +27,8 @@ const renderRowButton = ({ type, click }) => (
 	<Button
 		key={type}
 		type="clear"
-		buttonStyle={buttonStyles.icon.buttonStyle}
-		containerStyle={buttonStyles.icon.containerStyle}
+		buttonStyle={buttonStyles().icon.buttonStyle}
+		containerStyle={buttonStyles().icon.containerStyle}
 		onPress={click}
 		icon={
 			<Icon

@@ -26,7 +26,6 @@ export default function ModalDropdown({ items, selected, onSelect, style }) {
 			color $headerTextColor
 		`
 	};
-	const listTheme = listStyles();
 
 	return (
 		<>
@@ -56,8 +55,8 @@ export default function ModalDropdown({ items, selected, onSelect, style }) {
 									setVisible(false);
 								}}
 								title={item.text}
-								titleStyle={listTheme.itemText}
-								containerStyle={listTheme.item}
+								titleStyle={listStyles().itemText}
+								containerStyle={listStyles().item}
 								rightIcon={
 									<Icon
 										size={r.vars().iconSizeLarge}
@@ -75,7 +74,7 @@ export default function ModalDropdown({ items, selected, onSelect, style }) {
 								}
 							/>
 						)}
-						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+						ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 					/>
 				</View>
 			</Modal>

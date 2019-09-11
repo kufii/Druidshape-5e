@@ -61,8 +61,6 @@ export default withCollapsible(
 			const { state, actions } = screenProps;
 			const { paddingHeight, animatedY } = collapsible;
 
-			const listTheme = listStyles();
-
 			const character = actions.getCurrentCharacter();
 
 			const list = actions.getBeastList();
@@ -78,7 +76,9 @@ export default withCollapsible(
 							state.search
 								? null
 								: ({ section }) => (
-										<Text style={listTheme.sectionHeader}>{section.title}</Text>
+										<Text style={listStyles().sectionHeader}>
+											{section.title}
+										</Text>
 								  )
 						}
 						renderItem={({ item }) => (
@@ -98,7 +98,7 @@ export default withCollapsible(
 								onSeen={() => actions.toggleSeen(item.name)}
 							/>
 						)}
-						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+						ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 						contentContainerStyle={{ paddingTop: paddingHeight }}
 						scrollIndicatorInsets={{ top: paddingHeight }}
 						onScroll={Animated.event(
