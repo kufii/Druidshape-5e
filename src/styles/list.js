@@ -1,19 +1,21 @@
 import r from 'rnss';
-import { listItemHeight, fontSizeStandard, fontSizeMedium } from '../api/constants';
 
-export default theme => ({
-	sectionHeader: r`
+let listStyles;
+export const rebuild = () =>
+	(listStyles = {
+		sectionHeader: r`
 		p 2 10
-		fs ${fontSizeStandard}
+		fs $fontSizeStandard
 		fw bold
-		bc ${theme.contentBackgroundColorDark}
-		c ${theme.textColorSecondary}
+		bc $contentBackgroundColorDark
+		c $textColorSecondary
 	`,
-	item: r`
+		item: r`
 		pt 0; pb 0
-		h ${listItemHeight}
-		bc ${theme.contentBackgroundColor}
+		h $listItemHeight
+		bc $contentBackgroundColor
 	`,
-	itemText: r`fs ${fontSizeMedium}; c ${theme.textColor}`,
-	divider: r`bc ${theme.dividerColor}`
-});
+		itemText: r`fs $fontSizeMedium; c $textColor`,
+		divider: r`bc $dividerColor`
+	});
+export default () => listStyles;

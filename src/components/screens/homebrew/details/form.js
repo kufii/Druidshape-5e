@@ -1,5 +1,6 @@
 import t from 'tcomb-form-native';
 import _ from 'lodash';
+import r from 'rnss';
 import { range } from '../../../../api/util';
 import listTemplate from '../../../../styles/tcomb/list';
 import selectTemplate from '../../../../styles/tcomb/select';
@@ -59,34 +60,30 @@ export const getStruct = beasts => {
 	});
 };
 
-export const getOptions = theme => {
+export const getOptions = () => {
 	const stylesheet = _.cloneDeep(Form.stylesheet);
-	stylesheet.textbox.normal.color = stylesheet.textbox.error.color = theme.textColor;
-	stylesheet.textbox.normal.backgroundColor = theme.contentBackgroundColor;
-	stylesheet.textbox.normal.borderColor = theme.textColorSecondary;
-	stylesheet.controlLabel.normal.color = theme.textColor;
-	stylesheet.select.normal.color = theme.textColor;
-	stylesheet.select.normal.borderColor = theme.textColorSecondary;
-	stylesheet.pickerContainer.normal.color = theme.textColor;
-	stylesheet.pickerContainer.normal.borderColor = theme.textColorSecondary;
-	stylesheet.pickerValue.normal.color = stylesheet.pickerValue.error.color = theme.textColor;
-	stylesheet.formGroup.normal.cardColor = stylesheet.formGroup.error.cardColor = theme.cardColor;
-	stylesheet.checkbox.normal.checkedColor = stylesheet.checkbox.error.checkedColor =
-		theme.formButtonColor;
-	stylesheet.checkbox.normal.uncheckedColor = stylesheet.checkbox.error.uncheckedColor =
-		theme.textColorDisabled;
-	stylesheet.checkbox.normal.backgroundColor = stylesheet.checkbox.error.backgroundColor =
-		theme.contentBackgroundColorDark;
-	stylesheet.checkbox.normal.borderColor = stylesheet.checkbox.error.borderColor =
-		theme.textColorSecondary;
-	stylesheet.checkbox.normal.textColor = stylesheet.checkbox.error.textColor = theme.textColor;
+	stylesheet.textbox.normal.color = stylesheet.textbox.error.color = r.vars().textColor;
+	stylesheet.textbox.normal.backgroundColor = r.vars().contentBackgroundColor;
+	stylesheet.textbox.normal.borderColor = r.vars().textColorSecondary;
+	stylesheet.controlLabel.normal.color = r.vars().textColor;
+	stylesheet.select.normal.color = r.vars().textColor;
+	stylesheet.select.normal.borderColor = r.vars().textColorSecondary;
+	stylesheet.pickerContainer.normal.color = r.vars().textColor;
+	stylesheet.pickerContainer.normal.borderColor = r.vars().textColorSecondary;
+	stylesheet.pickerValue.normal.color = stylesheet.pickerValue.error.color = r.vars().textColor;
+	stylesheet.formGroup.normal.cardColor = stylesheet.formGroup.error.cardColor = r.vars().cardColor;
+	stylesheet.checkbox.normal.checkedColor = stylesheet.checkbox.error.checkedColor = r.vars().formButtonColor;
+	stylesheet.checkbox.normal.uncheckedColor = stylesheet.checkbox.error.uncheckedColor = r.vars().textColorDisabled;
+	stylesheet.checkbox.normal.backgroundColor = stylesheet.checkbox.error.backgroundColor = r.vars().contentBackgroundColorDark;
+	stylesheet.checkbox.normal.borderColor = stylesheet.checkbox.error.borderColor = r.vars().textColorSecondary;
+	stylesheet.checkbox.normal.textColor = stylesheet.checkbox.error.textColor = r.vars().textColor;
 
 	const multilineStylesheet = _.cloneDeep(stylesheet);
 	multilineStylesheet.textbox.normal.height = multilineStylesheet.textbox.error.height = 100;
 	multilineStylesheet.textbox.normal.textAlignVertical = multilineStylesheet.textbox.error.textAlignVertical =
 		'top';
 
-	const placeholderTextColor = theme.textColorSecondary;
+	const placeholderTextColor = r.vars().textColorSecondary;
 
 	const attributeListConfig = {
 		item: {
@@ -105,11 +102,11 @@ export const getOptions = theme => {
 	};
 
 	const dropdownConfig = {
-		style: { color: theme.textColor },
-		textStyle: { color: theme.textColor },
-		itemTextStyle: { color: theme.textColor },
-		itemStyle: { color: theme.textColor },
-		placeholderTextColor: theme.textColor
+		style: { color: r.vars().textColor },
+		textStyle: { color: r.vars().textColor },
+		itemTextStyle: { color: r.vars().textColor },
+		itemStyle: { color: r.vars().textColor },
+		placeholderTextColor: r.vars().textColor
 	};
 
 	const envs = environments.map(str => ({

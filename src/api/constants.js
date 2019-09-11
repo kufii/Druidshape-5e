@@ -46,12 +46,16 @@ export const darkTheme = {
 	tabBarInactiveTintColor: '#4d5053',
 	cardColor: '#26292b'
 };
-export const listItemHeight = 60;
-export const bottomButtonHeight = 49;
-export const fontSizeStandard = 14;
-export const fontSizeMedium = 16;
-export const fontSizeLarge = 18;
-export const fontSizeXLarge = 24;
-export const iconSizeMedium = 20;
-export const iconSizeLarge = 28;
-export const modalMargin = 40;
+[lightTheme, darkTheme].forEach(obj =>
+	Object.assign(obj, {
+		listItemHeight: 60,
+		bottomButtonHeight: 49,
+		fontSizeStandard: 14,
+		fontSizeMedium: 16,
+		fontSizeLarge: 18,
+		fontSizeXLarge: 24,
+		iconSizeMedium: 20,
+		iconSizeLarge: 28,
+		modalMargin: 40
+	})
+);

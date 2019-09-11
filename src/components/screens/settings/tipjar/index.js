@@ -4,7 +4,6 @@ import { View, FlatList, Text } from 'react-native';
 import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import { titlecase, sortBy } from '../../../../api/util';
-import { fontSizeMedium } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
@@ -20,17 +19,15 @@ export default class SettingsScreen extends React.Component {
 	};
 
 	get styles() {
-		const { actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
 		return {
-			container: r`f 1; bc ${theme.contentBackgroundColor}`,
+			container: r`f 1; bc $contentBackgroundColor`,
 			disclaimer: r`
-				c ${theme.textColor}
-				fs ${fontSizeMedium}
+				c $textColor
+				fs $fontSizeMedium
 				p 10
 				flex-wrap wrap
 			`,
-			badge: r`bc ${theme.formButtonColor}; border-color transparent`
+			badge: r`bc $formButtonColor; border-color transparent`
 		};
 	}
 
@@ -40,8 +37,6 @@ export default class SettingsScreen extends React.Component {
 
 	render() {
 		const { state, actions } = this.props.screenProps;
-		const theme = actions.getCurrentTheme();
-		const listTheme = listStyles(theme);
 		const styles = this.styles;
 		const getTitle = productId => {
 			const [_, type] = productId.match(/^com\.adpyke\.druidshape\.tip\.(.+)/);
@@ -67,15 +62,15 @@ export default class SettingsScreen extends React.Component {
 						<ListItem
 							title={getTitle(productId)}
 							badge={{ value: localizedPrice, badgeStyle: styles.badge }}
-							titleStyle={listTheme.itemText}
-							containerStyle={listTheme.item}
+							titleStyle={listStyles().itemText}
+							containerStyle={listStyles().item}
 							onPress={() => actions.buyProduct(productId)}
 						/>
 					)}
 					keyExtractor={item => item.productId}
-					ListHeaderComponent={() => <Divider style={listTheme.divider} />}
-					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
-					ListFooterComponent={() => <Divider style={listTheme.divider} />}
+					ListHeaderComponent={() => <Divider style={listStyles().divider} />}
+					ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
+					ListFooterComponent={() => <Divider style={listStyles().divider} />}
 				/>
 			</View>
 		);

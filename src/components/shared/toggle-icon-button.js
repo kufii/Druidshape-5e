@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { lightTheme, iconSizeLarge } from '../../api/constants';
+import r from 'rnss';
+import { lightTheme } from '../../api/constants';
 import IconButton from './icon-button';
 
 export default function ToggleIconButton({
@@ -16,7 +17,7 @@ export default function ToggleIconButton({
 	return (
 		<IconButton
 			icon={active ? activeIcon || icon : inactiveIcon || icon}
-			size={size || iconSizeLarge}
+			size={size || r.vars().iconSizeLarge}
 			color={
 				active
 					? activeColor || lightTheme.textColor

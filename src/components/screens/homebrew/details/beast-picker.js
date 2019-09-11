@@ -4,7 +4,6 @@ import { FlatList } from 'react-native';
 import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import Modal from 'react-native-modal';
-import { iconSizeLarge, modalMargin } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
 
 export default function BeastPicker({ actions, isVisible, onDismiss, onSelect }) {
@@ -12,14 +11,12 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 		.getAllBeasts()
 		.map(({ name }) => name)
 		.sort();
-	const theme = actions.getCurrentTheme();
-	const listTheme = listStyles(theme);
 
 	const dismiss = () => onDismiss && onDismiss();
 
 	return (
 		<Modal
-			style={r`m ${modalMargin}`}
+			style={r`m $modalMargin`}
 			isVisible={isVisible}
 			onBackdropPress={dismiss}
 			onBackButtonPress={dismiss}
@@ -32,14 +29,14 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 							onSelect && onSelect(item);
 							dismiss();
 						}}
-						chevron={{ size: iconSizeLarge }}
+						chevron={{ size: r.vars().iconSizeLarge }}
 						title={item}
-						titleStyle={listTheme.itemText}
-						containerStyle={listTheme.item}
+						titleStyle={listStyles().itemText}
+						containerStyle={listStyles().item}
 					/>
 				)}
 				keyExtractor={item => item}
-				ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+				ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 			/>
 		</Modal>
 	);

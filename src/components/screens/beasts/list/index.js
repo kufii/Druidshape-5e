@@ -8,7 +8,6 @@ import FloatingActionButton from '../../../shared/fab';
 
 import listStyles from '../../../../styles/list';
 
-import { iconSizeMedium } from '../../../../api/constants';
 import { withCollapsible, icon, fabOnScroll, flatten } from '../../../../api/util';
 
 import { Header, ExtendedHeader } from './header';
@@ -62,16 +61,13 @@ export default withCollapsible(
 			const { state, actions } = screenProps;
 			const { paddingHeight, animatedY } = collapsible;
 
-			const theme = actions.getCurrentTheme();
-			const listTheme = listStyles(theme);
-
 			const character = actions.getCurrentCharacter();
 
 			const list = actions.getBeastList();
 			this.flattenedList = list.map(({ data }) => data).reduce(flatten, []);
 
 			return (
-				<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
+				<View style={r`f 1; bc $contentBackgroundColorDark`}>
 					<AnimatedSectionList
 						ref={list => (this.list = list)}
 						keyboardShouldPersistTaps="always"
@@ -80,12 +76,13 @@ export default withCollapsible(
 							state.search
 								? null
 								: ({ section }) => (
-										<Text style={listTheme.sectionHeader}>{section.title}</Text>
+										<Text style={listStyles().sectionHeader}>
+											{section.title}
+										</Text>
 								  )
 						}
 						renderItem={({ item }) => (
 							<BeastListItem
-								actions={actions}
 								state={state}
 								item={item.name}
 								onPress={() =>
@@ -101,7 +98,7 @@ export default withCollapsible(
 								onSeen={() => actions.toggleSeen(item.name)}
 							/>
 						)}
-						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+						ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 						contentContainerStyle={{ paddingTop: paddingHeight }}
 						scrollIndicatorInsets={{ top: paddingHeight }}
 						onScroll={Animated.event(
@@ -125,12 +122,12 @@ export default withCollapsible(
 						hidden={!this.state.isFabVisible}
 						onPress={() => this.setState({ isCharacterPickerVisible: true })}
 						degrees={0}
-						buttonColor={theme.fabColor}
+						buttonColor={r.vars().fabColor}
 						renderIcon={() => (
 							<Icon
 								name={icon('person')}
-								size={iconSizeMedium}
-								color={theme.fabIconColor}
+								size={r.vars().iconSizeMedium}
+								color={r.vars().fabIconColor}
 							/>
 						)}
 					/>

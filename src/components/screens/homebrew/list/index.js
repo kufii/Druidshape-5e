@@ -8,7 +8,6 @@ import FloatingActionButton from '../../../shared/fab';
 import AlertDelete from '../details/alert-delete';
 import { fabOnScroll } from '../../../../api/util';
 import listStyles from '../../../../styles/list';
-import { iconSizeLarge } from '../../../../api/constants';
 
 export default class HomebrewListScreen extends React.Component {
 	state = { isFabVisible: true };
@@ -48,17 +47,14 @@ export default class HomebrewListScreen extends React.Component {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
 
-		const theme = actions.getCurrentTheme();
-		const listTheme = listStyles(theme);
-
 		return (
-			<View style={r`f 1; bc ${theme.contentBackgroundColorDark}`}>
+			<View style={r`f 1; bc $contentBackgroundColorDark`}>
 				<FlatList
 					ref={list => (this.list = list)}
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<Swipeout
-							backgroundColor={theme.contentBackgroundColorDark}
+							backgroundColor={r.vars().contentBackgroundColorDark}
 							buttonWidth={100}
 							right={[
 								{
@@ -73,14 +69,14 @@ export default class HomebrewListScreen extends React.Component {
 									navigation.navigate('HomebrewDetails', { edit: item })
 								}
 								title={item}
-								titleStyle={listTheme.itemText}
-								containerStyle={listTheme.item}
-								chevron={{ size: iconSizeLarge }}
+								titleStyle={listStyles().itemText}
+								containerStyle={listStyles().item}
+								chevron={{ size: r.vars().iconSizeLarge }}
 							/>
 						</Swipeout>
 					)}
 					keyExtractor={item => item}
-					ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+					ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 					onScroll={this.onScroll}
 					onLayout={e => (this._listViewHeight = e.nativeEvent.layout.height)}
 					onContentSizeChange={(_, height) => (this._listViewContentHeight = height)}
@@ -89,7 +85,7 @@ export default class HomebrewListScreen extends React.Component {
 					hidden={!this.state.isFabVisible}
 					onPress={() => navigation.navigate('HomebrewDetails')}
 					degrees={0}
-					buttonColor={theme.fabColor}
+					buttonColor={r.vars().fabColor}
 				/>
 			</View>
 		);

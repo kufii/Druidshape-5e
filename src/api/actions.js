@@ -1,14 +1,18 @@
 import { Alert } from 'react-native';
 import Toast from 'react-native-root-toast';
-import { setPref, loadPrefs, initialPrefs } from './user-prefs';
-import { toDict, iterate, groupBy, sortBy, desc } from './util';
-import { lightTheme, darkTheme } from './constants';
-import { getStruct } from '../components/screens/homebrew/details/form';
 import t from 'tcomb-validation';
 import * as RNIap from 'react-native-iap';
+import r from 'rnss';
+import { getStruct } from '../components/screens/homebrew/details/form';
 import beasts from '../data/beasts.json';
 import products from '../data/iap.json';
 import { filterBeasts, crToNum } from './beasts';
+import { setPref, loadPrefs, initialPrefs } from './user-prefs';
+import { toDict, iterate, groupBy, sortBy, desc } from './util';
+import { lightTheme, darkTheme } from './constants';
+import { rebuild as rebuildListStyles } from '../styles/list';
+import { rebuild as rebuildMenuStyles } from '../styles/menu';
+import { rebuild as rebuildButtonStyles } from '../styles/buttons';
 
 const homebrewStruct = getStruct();
 
@@ -31,6 +35,11 @@ export const actions = (update, states) => {
 		);
 
 	const privateActions = {
+		rebuildStyles: () => {
+			rebuildListStyles();
+			rebuildMenuStyles();
+			rebuildButtonStyles();
+		},
 		async iapConnection(cb) {
 			try {
 				await RNIap.initConnection();
@@ -47,9 +56,9 @@ export const actions = (update, states) => {
 		},
 		iapTransaction: cb =>
 			privateActions.iapConnection(async () => {
-				await RNIap.clearTransaction();
+				RNIap.clearTransaction();
 				await Promise.resolve(cb());
-				await RNIap.finishTransaction();
+				RNIap.finishTransaction();
 			}),
 		removeFalse: obj =>
 			Object.entries(obj)
@@ -102,6 +111,8 @@ export const actions = (update, states) => {
 	const actions = {
 		loadPrefs: async () => {
 			const prefs = await loadPrefs();
+			r.vars(prefs.darkMode ? darkTheme : lightTheme);
+			privateActions.rebuildStyles();
 			update({
 				...prefs,
 				isLoading: false
@@ -121,9 +132,10 @@ export const actions = (update, states) => {
 			}),
 		setDarkMode: darkMode => {
 			update({ darkMode });
+			r.vars(darkMode ? darkTheme : lightTheme);
+			privateActions.rebuildStyles();
 			syncPrefs();
 		},
-		getCurrentTheme: () => (states().darkMode ? darkTheme : lightTheme),
 		getCurrentCharacter: () =>
 			states().characters.find(c => c.key === states().selectedCharacter),
 		toggleMoon: () => {
@@ -275,11 +287,7 @@ export const actions = (update, states) => {
 				beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
 
 			return states().search
-				? [
-						{
-							data: getData(beasts)
-						}
-				  ]
+				? [{ data: getData(beasts) }]
 				: [
 						...(favorites.length
 							? [

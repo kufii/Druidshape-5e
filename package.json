@@ -5,7 +5,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "postinstall": "npx jetify",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,jsx,md,json,css,prettierrc,eslintrc}\""
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
@@ -23,7 +24,7 @@
     "react-native-iap": "^2.5.5",
     "react-native-input-scroll-view": "^1.9.3",
     "react-native-iphone-x-helper": "^1.2.1",
-    "react-native-modal": "^7.0.2",
+    "react-native-modal": "^11.3.1",
     "react-native-popup-menu": "^0.15.6",
     "react-native-root-toast": "^3.1.2",
     "react-native-swipeout": "^2.3.6",
@@ -31,7 +32,7 @@
     "react-navigation": "^3.12.1",
     "react-navigation-collapsible": "^3.0.3",
     "react-navigation-transitions": "^1.0.12",
-    "rnss": "^2.0.0",
+    "rnss": "^2.1.2",
     "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
@@ -39,8 +40,8 @@
     "@babel/runtime": "^7.6.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.3.0",
-    "eslint-config-adpyke-react-native": "^1.0.11",
-    "eslint-config-prettier": "^6.2.0",
+    "eslint-config-adpyke-react-native": "^1.0.14",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-plugin-react-native": "^3.7.0",

@@ -9,8 +9,6 @@ import ToggleIconButton from '../../../shared/toggle-icon-button';
 
 import { icon } from '../../../../api/util';
 
-import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
-
 import { getModifier } from '../../../../api/beasts';
 
 const getSpeedString = ({
@@ -39,7 +37,6 @@ export default class BeastDetailsScreen extends React.Component {
 		const { actions } = screenProps;
 
 		const name = navigation.getParam('title');
-		const theme = actions.getCurrentTheme();
 		const character = actions.getCurrentCharacter();
 
 		return {
@@ -51,15 +48,15 @@ export default class BeastDetailsScreen extends React.Component {
 						inactiveIcon={icon('eye-off')}
 						active={character.seen[name]}
 						onToggle={() => actions.toggleSeen(name)}
-						activeColor={theme.headerTextColor}
-						inactiveColor={theme.headerColorLight}
+						activeColor={r.vars().headerTextColor}
+						inactiveColor={r.vars().headerColorLight}
 					/>
 					<ToggleIconButton
 						icon={icon('star')}
 						active={character.favs[name]}
 						onToggle={() => actions.toggleFav(name)}
-						activeColor={theme.headerTextColor}
-						inactiveColor={theme.headerColorLight}
+						activeColor={r.vars().headerTextColor}
+						inactiveColor={r.vars().headerColorLight}
 					/>
 				</View>
 			)
@@ -75,24 +72,21 @@ export default class BeastDetailsScreen extends React.Component {
 	};
 
 	get styles() {
-		const { actions } = this.props.screenProps;
-
-		const theme = actions.getCurrentTheme();
 		return {
-			scrollView: r`as stretch; bc ${theme.contentBackgroundColor}`,
+			scrollView: r`as stretch; bc $contentBackgroundColor`,
 			containerContent: r`p 10`,
-			divider: r`m 10 0; bc ${theme.dividerColor}`,
+			divider: r`m 10 0; bc $dividerColor`,
 			row: r`fd row`,
-			attribute: r`m 2 0; c ${theme.textColor}`,
+			attribute: r`m 2 0; c $textColor`,
 			header1: r`
 				fw bold
-				fs ${fontSizeXLarge}
-				c ${theme.textColorAccent}
+				fs $fontSizeXLarge
+				c $textColorAccent
 			`,
 			header2: r`
 				fw bold
-				fs ${fontSizeLarge}
-				c ${theme.textColorAccent}
+				fs $fontSizeLarge
+				c $textColorAccent
 			`,
 			stat: r`
 				f 1
@@ -100,11 +94,11 @@ export default class BeastDetailsScreen extends React.Component {
 				ai center
 				m 5 0
 			`,
-			text: r`c ${theme.textColor}`,
+			text: r`c $textColor`,
 			environments: r`f 1; fd row; flex-wrap wrap`,
 			environmentContainer: r`m 5 5 5 0`,
-			environment: r`bc ${theme.formButtonColor}; h auto; br 1000`,
-			environmentText: r`fs ${fontSizeMedium}; p 5 10`
+			environment: r`bc $formButtonColor; h auto; br 1000; border-color transparent`,
+			environmentText: r`fs $fontSizeMedium; p 5 10`
 		};
 	}
 

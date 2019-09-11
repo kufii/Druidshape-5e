@@ -1,11 +1,14 @@
 import r from 'rnss';
 
-export default theme => ({
-	menuOptions: {
-		optionsWrapper: r`bc ${theme.cardColor}`,
-		optionText: r`c ${theme.textColor}; m 10`
-	},
-	rendererProps: {
-		anchorStyle: r`bc ${theme.cardColor}`
-	}
-});
+let menuStyles;
+export const rebuild = () =>
+	(menuStyles = {
+		menuOptions: {
+			optionsWrapper: r`bc $cardColor`,
+			optionText: r`c $textColor; m 10`
+		},
+		rendererProps: {
+			anchorStyle: r`bc $cardColor`
+		}
+	});
+export default () => menuStyles;

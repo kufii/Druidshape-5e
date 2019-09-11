@@ -13,7 +13,6 @@ import IconButton from '../../../shared/icon-button';
 
 import listStyles from '../../../../styles/list';
 import menuStyles from '../../../../styles/menu';
-import { iconSizeLarge, fontSizeLarge } from '../../../../api/constants';
 import { icon } from '../../../../api/util';
 
 export default function CharacterPicker({ isVisible, state, actions, onDismiss }) {
@@ -40,27 +39,23 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 		onDismiss && onDismiss();
 	};
 
-	const theme = actions.getCurrentTheme();
-
 	const styles = {
 		backdrop: r`f 0.5`,
-		container: r`f 0.5; bc ${theme.contentBackgroundColorDark}`,
+		container: r`f 0.5; bc $contentBackgroundColorDark`,
 		modal: r`m 0; jc flex-end`,
 		header: r`
 			fd row
 			jc space-between
 			ai center
-			bc ${theme.contentBackgroundColor}
+			bc $contentBackgroundColor
 			pr 5; pl 10
 		`,
 		headerText: r`
-			c ${theme.textColor}
+			c $textColor
 			fw bold
-			fs ${fontSizeLarge}
+			fs $fontSizeLarge
 		`
 	};
-	const listTheme = listStyles(theme);
-	const menuTheme = menuStyles(theme);
 
 	return (
 		<Modal
@@ -78,18 +73,18 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 						<Text style={styles.headerText}>Characters</Text>
 						<IconButton
 							icon={icon('add')}
-							color={theme.formButtonColor}
-							size={iconSizeLarge}
+							color={r.vars().formButtonColor}
+							size={r.vars().iconSizeLarge}
 							onPress={() => triggerAdd()}
 						/>
 					</View>
-					<Divider style={listTheme.divider} />
+					<Divider style={listStyles().divider} />
 					<FlatList
 						data={state.characters}
 						renderItem={({ item }) => (
 							<Swipeout
 								autoClose
-								backgroundColor={theme.contentBackgroundColorDark}
+								backgroundColor={r.vars().contentBackgroundColorDark}
 								buttonWidth={100}
 								right={[
 									{
@@ -126,15 +121,15 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 											}}
 											onLongPress={() => setContextMenuOpen(item.key)}
 											title={item.name}
-											titleStyle={listTheme.itemText}
-											containerStyle={listTheme.item}
+											titleStyle={listStyles().itemText}
+											containerStyle={listStyles().item}
 											rightIcon={
 												<Icon
-													size={iconSizeLarge}
+													size={r.vars().iconSizeLarge}
 													color={
 														item.key === state.selectedCharacter
-															? theme.formButtonColor
-															: theme.textColorDisabled
+															? r.vars().formButtonColor
+															: r.vars().textColorDisabled
 													}
 													name={icon(
 														item.key === state.selectedCharacter
@@ -145,7 +140,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 											}
 										/>
 									</MenuTrigger>
-									<MenuOptions customStyles={menuTheme.menuOptions}>
+									<MenuOptions customStyles={menuStyles().menuOptions}>
 										<MenuOption text="Rename" value="rename" />
 										{state.characters.length > 1 && (
 											<MenuOption text="Delete" value="delete" />
@@ -155,13 +150,12 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 							</Swipeout>
 						)}
 						keyExtractor={c => c.key.toString()}
-						ItemSeparatorComponent={() => <Divider style={listTheme.divider} />}
+						ItemSeparatorComponent={() => <Divider style={listStyles().divider} />}
 					/>
 				</View>
 			</MenuProvider>
 			<ModalTextbox
 				isRequired
-				actions={actions}
 				isVisible={textboxVisible}
 				text={textboxText}
 				onChangeText={text => setTextboxText(text)}

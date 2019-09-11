@@ -4,7 +4,6 @@ import { View, Text } from 'react-native';
 import r from 'rnss';
 import { Button, Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { iconSizeLarge, lightTheme } from '../../api/constants';
 import { icon } from '../../api/util';
 import buttonStyles from '../buttons';
 
@@ -14,10 +13,10 @@ const renderAddButton = ({ click }) => (
 	<Button
 		key="add"
 		type="outline"
-		buttonStyle={[styles.marginBottom, styles.addButton]}
+		buttonStyle={[styles.marginBottom, r`border-color $formButtonColor`]}
 		onPress={click}
 		title="Add"
-		titleStyle={styles.button}
+		titleStyle={r`c $formButtonColor`}
 	/>
 );
 renderAddButton.propTypes = {
@@ -28,8 +27,8 @@ const renderRowButton = ({ type, click }) => (
 	<Button
 		key={type}
 		type="clear"
-		buttonStyle={buttonStyles.icon.buttonStyle}
-		containerStyle={buttonStyles.icon.containerStyle}
+		buttonStyle={buttonStyles().icon.buttonStyle}
+		containerStyle={buttonStyles().icon.containerStyle}
 		onPress={click}
 		icon={
 			<Icon
@@ -40,8 +39,8 @@ const renderRowButton = ({ type, click }) => (
 						'move-down': 'arrow-down'
 					}[type]
 				)}
-				size={iconSizeLarge}
-				color={lightTheme.formButtonColor}
+				size={r.vars().iconSizeLarge}
+				color={r.vars().formButtonColor}
 			/>
 		}
 	/>
@@ -113,7 +112,5 @@ const styles = {
 		mb 10
 		border-color transparent
 		elevation 4
-	`,
-	addButton: r`border-color ${lightTheme.formButtonColor}`,
-	button: r`c ${lightTheme.formButtonColor}`
+	`
 };
