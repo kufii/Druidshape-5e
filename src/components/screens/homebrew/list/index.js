@@ -8,7 +8,6 @@ import FloatingActionButton from '../../../shared/fab';
 import AlertDelete from '../details/alert-delete';
 import { fabOnScroll } from '../../../../api/util';
 import listStyles from '../../../../styles/list';
-import { iconSizeLarge } from '../../../../api/constants';
 
 export default class HomebrewListScreen extends React.Component {
 	state = { isFabVisible: true };
@@ -48,7 +47,6 @@ export default class HomebrewListScreen extends React.Component {
 		const { screenProps, navigation } = this.props;
 		const { state, actions } = screenProps;
 
-		const theme = actions.getCurrentTheme();
 		const listTheme = listStyles();
 
 		return (
@@ -58,7 +56,7 @@ export default class HomebrewListScreen extends React.Component {
 					data={state.homebrew.map(({ name }) => name).sort()}
 					renderItem={({ item }) => (
 						<Swipeout
-							backgroundColor={theme.contentBackgroundColorDark}
+							backgroundColor={r.vars().contentBackgroundColorDark}
 							buttonWidth={100}
 							right={[
 								{
@@ -75,7 +73,7 @@ export default class HomebrewListScreen extends React.Component {
 								title={item}
 								titleStyle={listTheme.itemText}
 								containerStyle={listTheme.item}
-								chevron={{ size: iconSizeLarge }}
+								chevron={{ size: r.vars().iconSizeLarge }}
 							/>
 						</Swipeout>
 					)}
@@ -89,7 +87,7 @@ export default class HomebrewListScreen extends React.Component {
 					hidden={!this.state.isFabVisible}
 					onPress={() => navigation.navigate('HomebrewDetails')}
 					degrees={0}
-					buttonColor={theme.fabColor}
+					buttonColor={r.vars().fabColor}
 				/>
 			</View>
 		);

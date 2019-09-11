@@ -13,7 +13,6 @@ import IconButton from '../../../shared/icon-button';
 
 import listStyles from '../../../../styles/list';
 import menuStyles from '../../../../styles/menu';
-import { iconSizeLarge, fontSizeLarge } from '../../../../api/constants';
 import { icon } from '../../../../api/util';
 
 export default function CharacterPicker({ isVisible, state, actions, onDismiss }) {
@@ -40,8 +39,6 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 		onDismiss && onDismiss();
 	};
 
-	const theme = actions.getCurrentTheme();
-
 	const styles = {
 		backdrop: r`f 0.5`,
 		container: r`f 0.5; bc $contentBackgroundColorDark`,
@@ -56,7 +53,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 		headerText: r`
 			c $textColor
 			fw bold
-			fs ${fontSizeLarge}
+			fs $fontSizeLarge
 		`
 	};
 	const listTheme = listStyles();
@@ -78,8 +75,8 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 						<Text style={styles.headerText}>Characters</Text>
 						<IconButton
 							icon={icon('add')}
-							color={theme.formButtonColor}
-							size={iconSizeLarge}
+							color={r.vars().formButtonColor}
+							size={r.vars().iconSizeLarge}
 							onPress={() => triggerAdd()}
 						/>
 					</View>
@@ -89,7 +86,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 						renderItem={({ item }) => (
 							<Swipeout
 								autoClose
-								backgroundColor={theme.contentBackgroundColorDark}
+								backgroundColor={r.vars().contentBackgroundColorDark}
 								buttonWidth={100}
 								right={[
 									{
@@ -130,11 +127,11 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 											containerStyle={listTheme.item}
 											rightIcon={
 												<Icon
-													size={iconSizeLarge}
+													size={r.vars().iconSizeLarge}
 													color={
 														item.key === state.selectedCharacter
-															? theme.formButtonColor
-															: theme.textColorDisabled
+															? r.vars().formButtonColor
+															: r.vars().textColorDisabled
 													}
 													name={icon(
 														item.key === state.selectedCharacter

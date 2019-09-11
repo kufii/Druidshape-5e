@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createBottomTabNavigator, BottomTabBar } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { iconSizeLarge } from '../../api/constants';
+import r from 'rnss';
 import { icon } from '../../api/util';
 import Beasts from './beasts';
 import Homebrew from './homebrew';
@@ -10,7 +10,7 @@ import Settings from './settings';
 
 const createTabIcon = name => {
 	const TabIcon = ({ tintColor }) => (
-		<Icon name={icon(name)} size={iconSizeLarge} color={tintColor} />
+		<Icon name={icon(name)} size={r.vars().iconSizeLarge} color={tintColor} />
 	);
 	TabIcon.propTypes = { tintColor: PropTypes.string };
 	return TabIcon;
@@ -33,15 +33,13 @@ const tabBarOnPress = ({ navigation, defaultHandler }) => {
 };
 
 const TabBarComponent = props => {
-	const { actions } = props.screenProps;
-	const theme = actions.getCurrentTheme();
 	return (
 		<BottomTabBar
-			activeTintColor={theme.tabBarActiveTintColor}
-			inactiveTintColor={theme.tabBarInactiveTintColor}
+			activeTintColor={r.vars().tabBarActiveTintColor}
+			inactiveTintColor={r.vars().tabBarInactiveTintColor}
 			style={{
-				backgroundColor: theme.tabBarColor,
-				borderTopColor: theme.dividerColor
+				backgroundColor: r.vars().tabBarColor,
+				borderTopColor: r.vars().dividerColor
 			}}
 			{...props}
 		/>

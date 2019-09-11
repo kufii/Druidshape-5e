@@ -19,13 +19,11 @@ const options = [
 
 export const Header = ({ screenProps }) => {
 	const { state, actions } = screenProps;
-	const theme = actions.getCurrentTheme();
 	const character = actions.getCurrentCharacter();
 	return {
 		headerTitle: (
 			<ModalDropdown
 				state={state}
-				actions={actions}
 				style={globalStyles.marginLarge}
 				items={options}
 				selected={character.level.toString()}
@@ -41,8 +39,8 @@ export const Header = ({ screenProps }) => {
 						actions.toggleMoon();
 						Toast.show(`Circle of the Moon ${isMoon ? 'enabled' : 'disabled'}`);
 					}}
-					activeColor={theme.headerTextColor}
-					inactiveColor={theme.headerColorLight}
+					activeColor={r.vars().headerTextColor}
+					inactiveColor={r.vars().headerColorLight}
 				/>
 			</View>
 		)
@@ -51,7 +49,6 @@ export const Header = ({ screenProps }) => {
 
 export const ExtendedHeader = ({ navigation, screenProps }) => {
 	const { state, actions } = screenProps;
-	const theme = actions.getCurrentTheme();
 	const menuTheme = menuStyles();
 
 	const search = state.search;
@@ -94,8 +91,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 				platform={Platform.OS}
 				containerStyle={styles.filterContainer}
 				inputContainerStyle={styles.filter}
-				placeholderTextColor={theme.headerTextColorFaded}
-				color={theme.headerTextColor}
+				placeholderTextColor={r.vars().headerTextColorFaded}
+				color={r.vars().headerTextColor}
 				clearIcon={styles.filterText}
 				searchIcon={styles.filterText}
 				cancelIcon={styles.filterText}
@@ -104,7 +101,7 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 				cancelButtonTitle="Cancel"
 				cancelButtonProps={{
 					buttonStyle: 'clear',
-					color: theme.headerTextColor
+					color: r.vars().headerTextColor
 				}}
 				onChangeText={search => actions.setSearch(search)}
 				value={search}
@@ -117,8 +114,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 					<ToggleIconButton
 						icon={icon('options')}
 						active={Object.values(filters).filter(v => v).length > 0}
-						activeColor={theme.headerTextColor}
-						inactiveColor={theme.headerColorLight}
+						activeColor={r.vars().headerTextColor}
+						inactiveColor={r.vars().headerColorLight}
 						onToggle={() => navigation.setParams({ isFiltering: !isFiltering })}
 					/>
 				</MenuTrigger>
@@ -127,8 +124,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 						<CheckBox
 							containerStyle={styles.checkbox}
 							textStyle={styles.menuItemText}
-							uncheckedColor={theme.textColorDisabled}
-							checkedColor={theme.formButtonColor}
+							uncheckedColor={r.vars().textColorDisabled}
+							checkedColor={r.vars().formButtonColor}
 							checked={filters.seen}
 							onPress={() => {
 								filters.seen = !filters.seen;
@@ -182,8 +179,8 @@ export const ExtendedHeader = ({ navigation, screenProps }) => {
 						<CheckBox
 							containerStyle={styles.checkbox}
 							textStyle={styles.menuItemText}
-							uncheckedColor={theme.textColorDisabled}
-							checkedColor={theme.formButtonColor}
+							uncheckedColor={r.vars().textColorDisabled}
+							checkedColor={r.vars().formButtonColor}
 							checked={filters.desc}
 							onPress={() => {
 								filters.desc = !filters.desc;

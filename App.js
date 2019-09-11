@@ -28,9 +28,8 @@ export default class App extends React.Component {
 
 	render() {
 		const state = this.state;
-		if (Platform.OS === 'android') {
-			const theme = actions.getCurrentTheme();
-			StatusBar.setBackgroundColor(theme.headerColorDark);
+		if (Platform.OS === 'android' && r.vars().headerColorDark) {
+			StatusBar.setBackgroundColor(r.vars().headerColorDark);
 		}
 		return (
 			<MenuProvider>

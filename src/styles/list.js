@@ -1,19 +1,18 @@
 import r from 'rnss';
-import { listItemHeight, fontSizeStandard, fontSizeMedium } from '../api/constants';
 
 export default () => ({
 	sectionHeader: r`
 		p 2 10
-		fs ${fontSizeStandard}
+		fs $fontSizeStandard
 		fw bold
 		bc $contentBackgroundColorDark
 		c $textColorSecondary
 	`,
 	item: r`
 		pt 0; pb 0
-		h ${listItemHeight}
+		h $listItemHeight
 		bc $contentBackgroundColor
 	`,
-	itemText: r`fs ${fontSizeMedium}; c $textColor`,
+	itemText: r`fs $fontSizeMedium; c $textColor`,
 	divider: r`bc $dividerColor`
 });

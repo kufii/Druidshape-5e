@@ -9,8 +9,6 @@ import ToggleIconButton from '../../../shared/toggle-icon-button';
 
 import { icon } from '../../../../api/util';
 
-import { fontSizeMedium, fontSizeLarge, fontSizeXLarge } from '../../../../api/constants';
-
 import { getModifier } from '../../../../api/beasts';
 
 const getSpeedString = ({
@@ -39,7 +37,6 @@ export default class BeastDetailsScreen extends React.Component {
 		const { actions } = screenProps;
 
 		const name = navigation.getParam('title');
-		const theme = actions.getCurrentTheme();
 		const character = actions.getCurrentCharacter();
 
 		return {
@@ -51,15 +48,15 @@ export default class BeastDetailsScreen extends React.Component {
 						inactiveIcon={icon('eye-off')}
 						active={character.seen[name]}
 						onToggle={() => actions.toggleSeen(name)}
-						activeColor={theme.headerTextColor}
-						inactiveColor={theme.headerColorLight}
+						activeColor={r.vars().headerTextColor}
+						inactiveColor={r.vars().headerColorLight}
 					/>
 					<ToggleIconButton
 						icon={icon('star')}
 						active={character.favs[name]}
 						onToggle={() => actions.toggleFav(name)}
-						activeColor={theme.headerTextColor}
-						inactiveColor={theme.headerColorLight}
+						activeColor={r.vars().headerTextColor}
+						inactiveColor={r.vars().headerColorLight}
 					/>
 				</View>
 			)
@@ -83,12 +80,12 @@ export default class BeastDetailsScreen extends React.Component {
 			attribute: r`m 2 0; c $textColor`,
 			header1: r`
 				fw bold
-				fs ${fontSizeXLarge}
+				fs $fontSizeXLarge
 				c $textColorAccent
 			`,
 			header2: r`
 				fw bold
-				fs ${fontSizeLarge}
+				fs $fontSizeLarge
 				c $textColorAccent
 			`,
 			stat: r`
@@ -100,8 +97,8 @@ export default class BeastDetailsScreen extends React.Component {
 			text: r`c $textColor`,
 			environments: r`f 1; fd row; flex-wrap wrap`,
 			environmentContainer: r`m 5 5 5 0`,
-			environment: r`bc $formButtonColor; h auto; br 1000`,
-			environmentText: r`fs ${fontSizeMedium}; p 5 10`
+			environment: r`bc $formButtonColor; h auto; br 1000; border-color transparent`,
+			environmentText: r`fs $fontSizeMedium; p 5 10`
 		};
 	}
 

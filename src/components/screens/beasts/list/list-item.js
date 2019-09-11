@@ -5,11 +5,9 @@ import { ListItem } from 'react-native-elements';
 import ToggleIconButton from '../../../shared/toggle-icon-button';
 import listStyles from '../../../../styles/list';
 import { icon } from '../../../../api/util';
-import { iconSizeLarge } from '../../../../api/constants';
 
 export default class BeastListItem extends React.Component {
 	static propTypes = {
-		actions: PropTypes.object.isRequired,
 		state: PropTypes.object.isRequired,
 		item: PropTypes.string.isRequired,
 		isFav: PropTypes.bool,
@@ -28,8 +26,7 @@ export default class BeastListItem extends React.Component {
 	}
 
 	render() {
-		const { actions, item, isFav, isSeen, onPress, onFav, onSeen } = this.props;
-		const theme = actions.getCurrentTheme();
+		const { item, isFav, isSeen, onPress, onFav, onSeen } = this.props;
 		const listTheme = listStyles();
 
 		return (
@@ -41,21 +38,21 @@ export default class BeastListItem extends React.Component {
 				leftIcon={
 					<ToggleIconButton
 						active={isSeen}
-						size={iconSizeLarge}
+						size={r.vars().iconSizeLarge}
 						activeIcon={icon('eye')}
 						inactiveIcon={icon('eye-off')}
-						activeColor={theme.formButtonColor}
-						inactiveColor={theme.textColorDisabled}
+						activeColor={r.vars().formButtonColor}
+						inactiveColor={r.vars().textColorDisabled}
 						onToggle={onSeen}
 					/>
 				}
 				rightIcon={
 					<ToggleIconButton
 						active={isFav}
-						size={iconSizeLarge}
+						size={r.vars().iconSizeLarge}
 						icon={icon('star')}
-						activeColor={theme.starColor}
-						inactiveColor={theme.textColorDisabled}
+						activeColor={r.vars().starColor}
+						inactiveColor={r.vars().textColorDisabled}
 						onToggle={onFav}
 					/>
 				}

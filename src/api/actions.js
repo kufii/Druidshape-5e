@@ -126,7 +126,6 @@ export const actions = (update, states) => {
 			r.vars(darkMode ? darkTheme : lightTheme);
 			syncPrefs();
 		},
-		getCurrentTheme: () => (states().darkMode ? darkTheme : lightTheme),
 		getCurrentCharacter: () =>
 			states().characters.find(c => c.key === states().selectedCharacter),
 		toggleMoon: () => {

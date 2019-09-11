@@ -4,7 +4,6 @@ import { View, FlatList, Text } from 'react-native';
 import r from 'rnss';
 import { ListItem, Divider } from 'react-native-elements';
 import { titlecase, sortBy } from '../../../../api/util';
-import { fontSizeMedium } from '../../../../api/constants';
 import listStyles from '../../../../styles/list';
 
 export default class SettingsScreen extends React.Component {
@@ -24,7 +23,7 @@ export default class SettingsScreen extends React.Component {
 			container: r`f 1; bc $contentBackgroundColor`,
 			disclaimer: r`
 				c $textColor
-				fs ${fontSizeMedium}
+				fs $fontSizeMedium
 				p 10
 				flex-wrap wrap
 			`,

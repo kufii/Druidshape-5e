@@ -11,7 +11,6 @@ import IconButton from '../../../shared/icon-button';
 import BeastPicker from './beast-picker';
 import AlertDelete from './alert-delete';
 import { icon } from '../../../../api/util';
-import { iconSizeLarge, bottomButtonHeight } from '../../../../api/constants';
 import buttonStyles from '../../../../styles/buttons';
 
 import { Form, getStruct, getOptions } from './form';
@@ -30,8 +29,8 @@ export default class HomebrewDetailsScreen extends React.Component {
 		headerRight: navigation.getParam('edit') ? (
 			<IconButton
 				icon={icon('trash')}
-				color={screenProps.actions.getCurrentTheme().headerTextColor}
-				size={iconSizeLarge}
+				color={r.vars().headerTextColor}
+				size={r.vars().iconSizeLarge}
 				onPress={() =>
 					AlertDelete(navigation.getParam('edit'), screenProps.actions, () =>
 						navigation.dismiss()
@@ -59,11 +58,6 @@ export default class HomebrewDetailsScreen extends React.Component {
 		return this.props.navigation.getParam('edit');
 	}
 
-	get theme() {
-		const { actions } = this.props.screenProps;
-		return actions.getCurrentTheme();
-	}
-
 	get styles() {
 		return {
 			container: r`
@@ -74,7 +68,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 			`,
 			form: r`f 1`,
 			formContent: r`p 10`,
-			bottomButton: r`h ${bottomButtonHeight + getBottomSpace()}`,
+			bottomButton: r`h ${r.vars().bottomButtonHeight + getBottomSpace()}`,
 			copyButton: r`border-color $formButtonColor`,
 			copyButtonTitle: r`c $formButtonColor`,
 			copyButtonContainer: r`mb 5`,
@@ -105,14 +99,15 @@ export default class HomebrewDetailsScreen extends React.Component {
 	render() {
 		const { actions } = this.props.screenProps;
 		const styles = this.styles;
-		const theme = this.theme;
 		const buttonTheme = buttonStyles.bottom();
 		return (
 			<View style={styles.container}>
 				<View style={styles.form}>
 					<InputScrollView
 						contentContainerStyle={styles.formContent}
-						keyboardOffset={40 + (Platform.OS === 'android' ? bottomButtonHeight : 0)}
+						keyboardOffset={
+							40 + (Platform.OS === 'android' ? r.vars().bottomButtonHeight : 0)
+						}
 						behavior="padding"
 					>
 						<Button
@@ -123,9 +118,9 @@ export default class HomebrewDetailsScreen extends React.Component {
 							containerStyle={styles.copyButtonContainer}
 							icon={
 								<Icon
-									size={iconSizeLarge}
+									size={r.vars().iconSizeLarge}
 									name={icon('copy')}
-									color={theme.formButtonColor}
+									color={r.vars().formButtonColor}
 									style={styles.buttonIcon}
 								/>
 							}
@@ -134,7 +129,7 @@ export default class HomebrewDetailsScreen extends React.Component {
 						<Form
 							ref={form => (this.form = form)}
 							type={this.state.struct}
-							options={getOptions(this.theme)}
+							options={getOptions()}
 							value={this.state.model}
 							onChange={(model, key) => {
 								this.validate(key);

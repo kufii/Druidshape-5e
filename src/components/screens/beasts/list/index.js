@@ -8,7 +8,6 @@ import FloatingActionButton from '../../../shared/fab';
 
 import listStyles from '../../../../styles/list';
 
-import { iconSizeMedium } from '../../../../api/constants';
 import { withCollapsible, icon, fabOnScroll, flatten } from '../../../../api/util';
 
 import { Header, ExtendedHeader } from './header';
@@ -62,7 +61,6 @@ export default withCollapsible(
 			const { state, actions } = screenProps;
 			const { paddingHeight, animatedY } = collapsible;
 
-			const theme = actions.getCurrentTheme();
 			const listTheme = listStyles();
 
 			const character = actions.getCurrentCharacter();
@@ -85,7 +83,6 @@ export default withCollapsible(
 						}
 						renderItem={({ item }) => (
 							<BeastListItem
-								actions={actions}
 								state={state}
 								item={item.name}
 								onPress={() =>
@@ -125,12 +122,12 @@ export default withCollapsible(
 						hidden={!this.state.isFabVisible}
 						onPress={() => this.setState({ isCharacterPickerVisible: true })}
 						degrees={0}
-						buttonColor={theme.fabColor}
+						buttonColor={r.vars().fabColor}
 						renderIcon={() => (
 							<Icon
 								name={icon('person')}
-								size={iconSizeMedium}
-								color={theme.fabIconColor}
+								size={r.vars().iconSizeMedium}
+								color={r.vars().fabIconColor}
 							/>
 						)}
 					/>
