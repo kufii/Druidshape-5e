@@ -278,11 +278,7 @@ export const actions = (update, states) => {
 				beasts.map(b => ({ ...b, key: `${prefix}-${b.name}` })).sort(sortBy(b => b.name));
 
 			return states().search
-				? [
-						{
-							data: getData(beasts)
-						}
-				  ]
+				? [{ data: getData(beasts) }]
 				: [
 						...(favorites.length
 							? [
