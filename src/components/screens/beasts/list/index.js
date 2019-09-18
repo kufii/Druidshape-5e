@@ -35,13 +35,12 @@ export default withCollapsible(
 		static navigationOptions = Header;
 
 		scrollToTop() {
-			this.list &&
-				this.list.getNode().scrollToLocation({
-					itemIndex: 0,
-					sectionIndex: 0,
-					viewPosition: 100,
-					animated: true
-				});
+			this.list?.getNode().scrollToLocation({
+				itemIndex: 0,
+				sectionIndex: 0,
+				viewPosition: 100,
+				animated: true
+			});
 		}
 
 		componentDidMount() {

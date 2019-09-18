@@ -16,7 +16,7 @@ export default function ToggleIconButton({
 }) {
 	return (
 		<IconButton
-			icon={active ? activeIcon || icon : inactiveIcon || icon}
+			icon={(active ? activeIcon : inactiveIcon) || icon}
 			size={size || r.vars().iconSizeLarge}
 			color={
 				active

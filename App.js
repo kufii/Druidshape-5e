@@ -9,8 +9,7 @@ import LoadingScreen from './src/components/shared/loading-screen';
 
 import { initialState, actions as actionsBuilder } from './src/api/actions';
 
-UIManager.setLayoutAnimationEnabledExperimental &&
-	UIManager.setLayoutAnimationEnabledExperimental(true);
+UIManager?.setLayoutAnimationEnabledExperimental(true);
 
 const AppContainer = createAppContainer(Root);
 

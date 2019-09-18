@@ -1,6 +1,12 @@
 {
   "extends": ["adpyke-react-native", "prettier", "prettier/react"],
+  "plugins": ["babel"],
   "rules": {
-    "react/jsx-pascal-case": [1, { "ignore": ["BI"] }]
+    "react/jsx-pascal-case": [1, { "ignore": ["BI"] }],
+    "no-unused-expressions": 0,
+    "babel/no-unused-expressions": [
+      1,
+      { "allowShortCircuit": true, "allowTernary": true, "allowTaggedTemplates": true }
+    ]
   }
 }

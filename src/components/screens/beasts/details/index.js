@@ -245,7 +245,7 @@ export default class BeastDetailsScreen extends React.Component {
 								))}
 							</>
 						)}
-						{beast.environments && beast.environments.length > 0 && (
+						{!!beast.environments?.length && (
 							<>
 								<Divider style={styles.divider} />
 								<Text style={styles.header2}>Environments</Text>

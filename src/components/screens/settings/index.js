@@ -22,7 +22,7 @@ export default class SettingsScreen extends React.Component {
 	};
 
 	scrollToTop() {
-		this.list && this.list.scrollTo({ x: 0, y: 0, animated: true });
+		this.list?.scrollTo({ x: 0, y: 0, animated: true });
 	}
 
 	componentDidMount() {

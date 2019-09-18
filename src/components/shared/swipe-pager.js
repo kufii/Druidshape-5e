@@ -87,7 +87,7 @@ export default class SwipePager extends React.Component {
 
 		if (props.width) {
 			initState.width = props.width;
-		} else if (this.state && this.state.width) {
+		} else if (this.state?.width) {
 			initState.width = this.state.width;
 		} else {
 			initState.width = width;
@@ -95,7 +95,7 @@ export default class SwipePager extends React.Component {
 
 		if (props.height) {
 			initState.height = props.height;
-		} else if (this.state && this.state.height) {
+		} else if (this.state?.height) {
 			initState.height = this.state.height;
 		} else {
 			initState.height = height;

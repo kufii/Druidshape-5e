@@ -22,11 +22,9 @@ const tabBarOnPress = ({ navigation, defaultHandler }) => {
 
 	if (isFocused() && index === 0) {
 		const stackNavigation = routes[0];
-		if (stackNavigation && stackNavigation.params && stackNavigation.params.scrollToTop) {
-			stackNavigation.params.scrollToTop();
-		} else {
-			defaultHandler(navigation);
-		}
+		stackNavigation?.params?.scrollToTop
+			? stackNavigation.params.scrollToTop()
+			: defaultHandler(navigation);
 	} else {
 		defaultHandler(navigation);
 	}
