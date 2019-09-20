@@ -12,7 +12,7 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 		.map(({ name }) => name)
 		.sort();
 
-	const dismiss = () => onDismiss && onDismiss();
+	const dismiss = () => onDismiss?.();
 
 	return (
 		<Modal
@@ -26,7 +26,7 @@ export default function BeastPicker({ actions, isVisible, onDismiss, onSelect })
 				renderItem={({ item }) => (
 					<ListItem
 						onPress={() => {
-							onSelect && onSelect(item);
+							onSelect?.(item);
 							dismiss();
 						}}
 						chevron={{ size: r.vars().iconSizeLarge }}

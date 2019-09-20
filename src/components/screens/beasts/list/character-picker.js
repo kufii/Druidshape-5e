@@ -36,7 +36,7 @@ export default function CharacterPicker({ isVisible, state, actions, onDismiss }
 
 	const dismiss = () => {
 		setContextMenuOpen(null);
-		onDismiss && onDismiss();
+		onDismiss?.();
 	};
 
 	const styles = {

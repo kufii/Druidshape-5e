@@ -10,7 +10,7 @@ export default (name, actions, onDelete) =>
 			text: 'OK',
 			onPress: () => {
 				actions.deleteHomebrew(name);
-				onDelete && onDelete();
+				onDelete?.();
 			}
 		}
 	]);

@@ -159,7 +159,7 @@ export default class SwipePager extends React.Component {
 
 	onScrollBegin(e) {
 		this.internals.isScrolling = true;
-		this.props.onScrollBeginDrag && this.props.onScrollBeginDrag(e, this.fullState, this);
+		this.props.onScrollBeginDrag?.(e, this.fullState, this);
 	}
 
 	onScrollEnd(e) {
@@ -176,8 +176,7 @@ export default class SwipePager extends React.Component {
 		}
 
 		this.updateIndex(e.nativeEvent.contentOffset, this.state.dir, () => {
-			this.props.onMomentumScrollEnd &&
-				this.props.onMomentumScrollEnd(e, this.fullState(), this);
+			this.props.onMomentumScrollEnd?.(e, this.fullState(), this);
 		});
 	}
 
@@ -198,7 +197,7 @@ export default class SwipePager extends React.Component {
 		if (state === 'dragging') {
 			return this.onScrollBegin();
 		} else if (['idle', 'settling'].includes(state)) {
-			this.props.onTouchEnd && this.props.onTouchEnd();
+			this.props.onTouchEnd?.();
 		}
 	}
 
@@ -234,10 +233,9 @@ export default class SwipePager extends React.Component {
 		if (state.dir === 'y') y = diff * state.height;
 
 		if (Platform.OS !== 'ios') {
-			this.scrollView &&
-				this.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff);
+			this.scrollView?.[(animated ? 'setPage' : 'setPageWithoutAnimation')]?.(diff);
 		} else {
-			this.scrollView && this.scrollView.scrollTo({ x, y, animated });
+			this.scrollView?.scrollTo({ x, y, animated });
 		}
 
 		// update scroll state

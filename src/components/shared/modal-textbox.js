@@ -39,7 +39,7 @@ export default function ModalTextbox({
 						type="clear"
 						containerStyle={[buttonTheme.button, buttonTheme.cancelButton]}
 						titleStyle={buttonTheme.cancelButtonTitle}
-						onPress={() => onDismiss && onDismiss()}
+						onPress={() => onDismiss?.()}
 					/>
 					<Button
 						title="OK"
@@ -48,8 +48,8 @@ export default function ModalTextbox({
 						titleStyle={buttonTheme.saveButtonTitle}
 						onPress={() => {
 							if (!text.trim() && isRequired) return;
-							onSubmit && onSubmit(text);
-							onDismiss && onDismiss();
+							onSubmit?.(text);
+							onDismiss?.();
 						}}
 					/>
 				</View>

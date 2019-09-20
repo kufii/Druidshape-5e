@@ -23,7 +23,7 @@ export default function ToggleIconButton({
 					? activeColor || lightTheme.textColor
 					: inactiveColor || lightTheme.textColorSecondary
 			}
-			onPress={() => onToggle && onToggle(!active)}
+			onPress={() => onToggle?.(!active)}
 		/>
 	);
 }

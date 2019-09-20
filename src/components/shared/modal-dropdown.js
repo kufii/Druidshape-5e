@@ -51,7 +51,7 @@ export default function ModalDropdown({ items, selected, onSelect, style }) {
 						renderItem={({ item }) => (
 							<ListItem
 								onPress={() => {
-									onSelect && onSelect(item.key);
+									onSelect?.(item.key);
 									setVisible(false);
 								}}
 								title={item.text}
