@@ -50,9 +50,9 @@ export default class SettingsScreen extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.disclaimer}>
-					{
-						"If you've been enjoying Druidshape, and would like to show your support, please consider leaving a tip. This is obviously not mandatory and just the fact that you're using my app is extremely appreciated. Thanks! :)"
-					}
+					If you&lsquo;ve been enjoying Druidshape, and would like to show your support,
+					please consider leaving a tip. This is obviously not mandatory and just the fact
+					that you&lsquo;re using my app is extremely appreciated. Thanks! :)
 				</Text>
 				<FlatList
 					data={state.iaps
